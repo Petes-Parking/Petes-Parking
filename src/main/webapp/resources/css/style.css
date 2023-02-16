@@ -1,0 +1,23 @@
+@charset "ISO-8859-1";
+
+.bgimage{
+	background-image: url('../image/Bg.jpg');
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+    
+}
+
+.homeHeading{
+	padding-top: 100px;
+	color: white;
+    align-content: center;
+    padding-left: 350px
+}
+
+.center {
+  margin: auto;
+  width: 60%;
+  padding: 300px 50px 250px 50px;
+}
