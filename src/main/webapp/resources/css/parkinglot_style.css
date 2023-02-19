@@ -1,0 +1,24 @@
+@charset "utf-8";
+
+body {
+    width: 350px
+}
+
+#forgot {
+    margin-top: 5px;
+    text-decoration: underline
+}
+
+.permit_pic  {
+    float: left;
+    margin: 0 15px 0 0;}
+
+.hours {
+    clear: left
+}
+
+.hours_pic {
+    float: left;
+    clear: left;
+    margin: 0 15px 0 0;
+}
