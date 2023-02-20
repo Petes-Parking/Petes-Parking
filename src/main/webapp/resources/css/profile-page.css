@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+.profile {
+    width: 150px;
+    height: 150px;
+    margin-right: auto;
+    background-color: transparent;
+    opacity: 40%;
+}
+
+.trash{
+    width: 30px;
+    height: 30px;
+    margin-left: 150px;
+    margin-top: 10px;
+    float: right;
+    opacity: 50%;
+
+}
+
+.pic{
+    margin-left:5px;
+    background-color: transparent;
+    width: 150px;
+    height:150px;
+    float: right;
+    opacity: 50%;
+}
