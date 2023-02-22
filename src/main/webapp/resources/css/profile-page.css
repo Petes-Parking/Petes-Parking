@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.profile{
+    width: 400px;
+    height: 220px;
+    margin-right: auto;
+    background-color: transparent;
+    opacity: 100%;
+}
+
+.trash{
+    margin-right: 20px;
+    opacity: 100%;
+}
+.fields {
+    float: left;
+
+    margin-top: 5px;
+    border-radius: 10px;
+}
+
+.text-field{
+    border-radius: 5px;
+
+}
+
+.fields2 {
+    float: left;
+    margin-top: 5px;
+    margin-left: 120px;
+    border-radius: 50px;
+
+}

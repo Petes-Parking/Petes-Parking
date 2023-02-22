@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>register-page</title>
+    <link href="register-box.css" rel="stylesheet" type="text/css">
+</head>
+<style type="text/css">
+    body {
+        background-image: url(../image/purduebackground.jpeg);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+
+    }
+</style>
+
+<body>
+<div id = "register-box">
+
+    <img id = "logo" src="../Desktop/Pete's Parking v2-1.png"  alt=""/>
+    <div id ="register-input-box">
+        <h2>Register</h2>
+        <form action="/action_page.php">
+            <label for="email">Enter valid email</label> <br>
+            <input class="text-field" id = "email" type="email" placeholder="Email" onClick="this.select();" id="fname" name="fname"><br><br>
+            <input class="text-field" type="password" placeholder="Enter Password" onClick="this.select();"  name="lname"><br><br>
+            <input class="text-field" type="password" placeholder="Enter Password Again" onClick="this.select();"  name="lname"><br><br>
+            <label for="start">Enter Birthday</label>
+            <br>
+            <input type="date" id="start" name="trip-start"> <br> <br>
+            <input id = "register-button" type="submit" value="Register">
+            <input id = "go-back-button" type="submit" value="Back to Login">
+
+
+
+        </form>
+    </div>
+
+</div>
+
+</body>
+</html>
