@@ -4,28 +4,37 @@
   <title>My Parking Pals</title>
   <style>
     body {
-      background-color: #121212;
+      background-color: #CEB888;
       color: #fff;
       font-family: Arial, Helvetica, sans-serif;
     }
     h1 {
       text-align: center;
-      margin-top: 50px;
+      color: black;
+    }
+
+    h3 {
+      color: black;
     }
 
     .container {
-      width: 80%;
+      width: 70%;
       margin: auto;
       margin-top: 50px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     input {
       padding: 10px;
-      width: 100%;
+      width: 95%;
       margin-bottom: 20px;
-      border: none;
+      border-width: thin;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      align-self: auto
     }
 
     table {
@@ -34,29 +43,30 @@
     }
 
     th {
-      background-color: #f5f5f5;
-      color: #333;
+      background-color: #A4A4A4;
+      color: #000;
       text-align: left;
       padding: 10px;
       font-size: 1.1rem;
     }
 
     td {
-      border-bottom: 1px solid #f5f5f5;
+      border-bottom: 1px solid #000;
       padding: 10px;
       font-size: 1rem;
+      color: #000
     }
 
     tr:hover {
-      background-color: #1e1e1e;
+      background-color: #CEB888;
     }
 
     .even {
-      background-color: #333;
+      background-color: #DDDDDD;
     }
 
     .odd {
-      background-color: #121212;
+      background-color: #fff;
     }
   </style>
 </head>
@@ -64,6 +74,7 @@
 <div class="container">
   <h1>My Parking Pals</h1>
   <input type="text" id="search" placeholder="Search a friend's name here...">
+  <h3>My current Parking Pals:</h3>
   <table>
     <thead>
     <tr>
@@ -77,6 +88,11 @@
       <td>Purdue Pete</td>
       <td>pete@purdue.com</td>
       <td>Boilermaker Express</td>
+    </tr>
+    <tr class="even">
+      <td>Daddy Daniels</td>
+      <td>mitch@purdue.com</td>
+      <td>Gold Lambo</td>
     </tr>
     </tbody>
   </table>
