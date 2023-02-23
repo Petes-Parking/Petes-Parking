@@ -14,7 +14,6 @@
 }
 .fields {
     float: left;
-
     margin-top: 5px;
     border-radius: 10px;
 }
@@ -26,8 +25,8 @@
 
 .fields2 {
     float: left;
-    margin-top: 5px;
-    margin-left: 120px;
+    margin-top: -40px;
+    margin-left: 290px;
     border-radius: 50px;
 
 }
