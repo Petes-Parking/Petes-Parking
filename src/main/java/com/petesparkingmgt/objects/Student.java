@@ -29,6 +29,10 @@ public class Student extends User {
         return profilePicture;
     }
 
+    public void setProfilePicture(Image profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
     public List<Vehicle> getVehicleList() {
         return vehicleList;
     }
