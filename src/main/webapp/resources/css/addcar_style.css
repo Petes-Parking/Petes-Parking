@@ -1,0 +1,18 @@
+@charset "utf-8";
+
+body {
+    width: 100%;
+    max-width: 400px;
+    height: 250px;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+}
+
+.inside {
+    background-color: #CEB888;
+    height: 250px;
+    width: 400px;
+}
+
+.header {
+    padding-top: 5px;
+}

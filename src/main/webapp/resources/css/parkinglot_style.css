@@ -1,24 +1,54 @@
 @charset "utf-8";
 
 body {
-    width: 350px
+    width: 100%;
+    max-width: 350px;
+    height: 920px;
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
 }
 
-#forgot {
-    margin-top: 5px;
-    text-decoration: underline
+.inside {
+    background-color: #CEB888;
+    height: 920px;
+    width: 350px;
 }
 
 .permit_pic  {
+    text-indent: 14px;
     float: left;
-    margin: 0 15px 0 0;}
+    margin: 0 15px 0 0;
+}
 
 .hours {
     clear: left
 }
 
 .hours_pic {
+    text-indent: 5px;
     float: left;
     clear: left;
     margin: 0 15px 0 0;
 }
+
+.spots {
+    clear: left
+}
+
+.spots_pic {
+    text-indent: 5px;
+    float: left;
+    clear: left;
+    margin: 0 15px 0 0;
+}
+
+.reserve-button {
+    height: 100px;
+    width: 340px;
+    background-color:#CEB888;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.reserve-button:hover {background-color: #B89954; transition: .3s;}
