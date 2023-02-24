@@ -18,6 +18,25 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/home.jsp" />  
     </definition>   
     
+     	<!-- Login Page  -->
+    <definition name="login" extends="base.definition">  
+        <put-attribute name="title" value="Login" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/login.jsp" />  
+    </definition>
+    
+         	<!-- Registration  -->
+    <definition name="registration" extends="base.definition">  
+        <put-attribute name="title" value="Registration" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/registration.jsp" />  
+    </definition>
+    
+             	<!-- Welcome page -->
+    <definition name="welcome" extends="base.definition">  
+        <put-attribute name="title" value="Welcome" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/welcome.jsp" />  
+    </definition>
+  
+  
   
     
    

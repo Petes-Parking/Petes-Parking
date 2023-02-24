@@ -9,10 +9,84 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">This will be Pete's Parking Home Page</a>
+    <a class="navbar-brand" href="#"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="float-left">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/login">Home</a>
+        </li>
+
+        <c:if test="${sessionScope.user == null}">
+
+        </c:if>
+
+        <c:if test="${sessionScope.user.userRole == 'Admin'}">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Parking
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/parking">Add Parking</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/parkinglist">View List</a>
+        </div>
+      </li>
+
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Users
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/signup">Add User</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/userList">User List</a>
+        </div>
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Booking
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/bookinglist">Booking History</a>
+        </div>
+      </li>
+
+        </c:if>
+
+         <c:if test="${sessionScope.user.userRole == 'Student'}">
+
+       <li class="nav-item dropdown">
+
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/parkinglist">View Parking</a>
+
+      </li>
+
+      <li class="nav-item dropdown">
+        <a class="dropdown-item" href="${pageContext.request.contextPath}/bookinglist">My Booking History</a>
+      </li>
+
+
+        </c:if>
+
+
+
+      </ul>
+      </div>
+      <div class="float-right" style="margin-left: 700px">
+      <ul class="navbar-nav">
+        <c:if test="${sessionScope.user != null}">
+        <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="${pageContext.request.contextPath}/userEdit?id=${sessionScope.user.id}">My Prfile</a>
+        </li>
+        </c:if>
+      </ul>
+      </div>
+    </div>
   </div>
 </nav>

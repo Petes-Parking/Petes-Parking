@@ -4,16 +4,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Home</title>
+<title>Insert title here</title>
 </head>
-<body class="bg-image bgimage" >
+<body>
 
-<div class="container">
-<div class="center">
-
-</div>
-</div>
-
+<h1>Confirmation: You've now logged in...</h1>
 
 </body>
 </html>
