@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="ISO-8859-1">
     <title>Pete's Parking</title>
-    <link href="login-box.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/css/login-box.css">
 
     <style type="text/css">
         body {
