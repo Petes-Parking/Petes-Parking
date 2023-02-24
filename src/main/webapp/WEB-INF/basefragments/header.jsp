@@ -82,7 +82,7 @@
           <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
         </li>
          <li class="nav-item">
-          <a class="nav-link" href="${pageContext.request.contextPath}/userEdit?id=${sessionScope.user.id}">My Prfile</a>
+          <a class="nav-link" href="${pageContext.request.contextPath}/userEdit?id=${sessionScope.user.id}">My Profile</a>
         </li>
         </c:if>
       </ul>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE tiles-definitions PUBLIC  
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">          
@@ -15,44 +15,28 @@
  	<!-- Home Page  -->
     <definition name="home" extends="base.definition">  
         <put-attribute name="title" value="Home" />  
-<<<<<<< HEAD
         <put-attribute name="body" value="/WEB-INF/bodyfragments/home.jsp" />  
-    </definition>   
+    </definition>  
     
-     	<!-- Login Page  -->
+    <!-- Login Page  -->
     <definition name="login" extends="base.definition">  
         <put-attribute name="title" value="Login" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/login.jsp" />  
-    </definition>
+    </definition> 
     
-         	<!-- Registration  -->
+      <!-- Registration Page  -->
     <definition name="registration" extends="base.definition">  
         <put-attribute name="title" value="Registration" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/registration.jsp" />  
-    </definition>
+    </definition> 
     
-             	<!-- Welcome page -->
+        <!-- Welcome Page  -->
     <definition name="welcome" extends="base.definition">  
         <put-attribute name="title" value="Welcome" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/welcome.jsp" />  
     </definition>
-  
-  
-  
     
    
-    
+
    
-=======
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/home.jsp" />
-    </definition>
-
-
-
-
-
-
-
-
->>>>>>> 35f889f24c691ab6c861b2c55d8b130efadf24ba
 </tiles-definitions> 
