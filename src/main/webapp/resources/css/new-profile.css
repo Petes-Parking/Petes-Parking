@@ -1,0 +1,62 @@
+@charset "UTF-8";
+
+.profile{
+    width: 400px;
+    height: 220px;
+    margin-right: auto;
+    background-color: transparent;
+    opacity: 100%;
+}
+
+.trash{
+    margin-right: 20px;
+    opacity: 100%;
+}
+
+.text-field {
+    border-radius: 5px;
+}
+
+.user_info {
+    margin-top: 40px;
+}
+
+
+.car_1 {
+    margin-top: 40px;
+}
+
+.car_2 {
+    margin-top: 40px;
+}
+
+.make1div {
+    float: left;
+    margin-right: 120px;
+}
+
+.userdiv {
+    float: left;
+    margin-right: 120px;
+}
+
+.color1div {
+    float: left;
+    margin-right: 120px;
+}
+
+.make2div {
+    float: left;
+    margin-right: 120px;
+}
+
+.color2div {
+    float: left;
+    margin-right: 120px;
+}
+
+.delete-button {
+    color: #AF1114;
+    font-size: 20px;
+    font-family: Calibri;
+}

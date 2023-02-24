@@ -1,15 +1,50 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
+
+<!doctype html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Home</title>
+    <meta charset="ISO-8859-1">
+    <title>Pete's Parking</title>
+    <link rel="stylesheet" type="text/css" href="/css/login-box.css">
+
+    <style type="text/css">
+        body {
+            background-image: url(../../resources/image/purduebackground.jpeg);
+        }
+    </style>
 </head>
+<<<<<<< HEAD
+<body class="bg-image bgimage" >
+
+<div class="container">
+<div class="center">
+
+</div>
+</div>
+=======
+
+
 <body>
+<div class="login">
+    <div class="logo">
+        <img src="../../resources/image/Petes-Parking-logo.png" width="200" height="200" alt=""/>
+    </div>
+    <div class="fields">
+        <form action="/action_page.php">
 
-<h1>Welcome to Pete's Parking, Everything is coming soon!</h1>
+            <input class="text-field" type="text" placeholder="Email" onClick="this.select();" id="fname" name="fname"><br><br>
+            <input class="text-field" type="password" placeholder="Password" onClick="this.select();" id="lname" name="lname"><br><br>
+            <input class = "login-button" type="" value="Login">
+        </form>
+        <p id="forgot">Forgot Password?</p>
+        <p float="left"> Don't have an account?</p>
 
+
+    </div>
+    <input class = "create-button" type="button" value="Create Account">
+
+>>>>>>> 35f889f24c691ab6c861b2c55d8b130efadf24ba
+
+</div>
 
 </body>
 </html>

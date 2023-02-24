@@ -12,22 +12,57 @@
     margin-right: 20px;
     opacity: 100%;
 }
-.fields {
+
+.fields {/*username*/
     float: left;
-
     margin-top: 5px;
-    border-radius: 10px;
+    border-: 10px;
 }
-
 .text-field{
     border-radius: 5px;
-
 }
-
-.fields2 {
+.fields2 {/*password*/
     float: left;
-    margin-top: 5px;
+    margin-top: -40px;
+    margin-left: 290px;
+}
+.fields3 { /*email*/
+    float: left;
+}
+.text-field3 {
+    margin-top: 55px;
+    margin-left: 1px;
+    border-radius: 5px;
+}
+.fields4 { /*make*/
+    float: left;
+}
+.text-field4 {
+    margin-top: 205px;
+    margin-left: -170px;
+    border-radius: 5px;
+}
+.fields5 { /*model*/
+    float: left;
+}
+.text-field5 {
+    margin-top: 205px;
     margin-left: 120px;
-    border-radius: 50px;
-
+    border-radius: 5px;
+}
+.fields6 { /*color*/
+    float: left;
+}
+.text-field6 {
+    margin-top: 310px;
+    margin-left: -460px;
+    border-radius: 5px;
+}
+.fields7 { /*license#*/
+    float: left;
+}
+.text-field7 {
+    margin-top: 310px;
+    margin-left: -170px;
+    border-radius: 5px;
 }
