@@ -21,6 +21,7 @@ html, body {
     cursor: grab;
 }
 div#zoom > img {
-    width: 100%;
-    height: auto;
+    width: 2000px;
+    height: 1230px;
+    display: inline-block;
 }

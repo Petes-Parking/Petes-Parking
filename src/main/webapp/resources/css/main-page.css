@@ -1,15 +1,9 @@
 @charset "UTF-8";
 .sidebar {
-    width: 475px;
-    height: 920px;
+    width: 465px;
+    height: 1240px;
     background-color: #CEB888;
-}
-.sidebar-border {
-    width: 10px;
-    height: 920px;
-    background-color: #373A36;
-    vertical-align: top;
-    float: right;
+    display: inline-block;
 }
 
 .profile-area {
@@ -27,7 +21,7 @@
     color: black;
     width: 465px;
     height: 10px;
-    veritcal-align: bottom;
+    float: left;
 }
 .profile-button {
     height: 100px;
@@ -190,3 +184,10 @@
 .dropdown-content4 a:hover {background-color: #515650; transition: .3s; border-radius: 10px;}
 .dropdown:hover .dropdown-content {display: block;}
 .dropdown:hover .dropbtn4 {background-color: #B89954; transition: .3s; border-radius: 10px;}
+
+.zoom_outer {
+    width: 2000px;
+    height: 1230px;
+    display: inline-block;
+    margin-left: 50px;
+}
