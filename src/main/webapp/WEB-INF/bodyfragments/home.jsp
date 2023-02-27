@@ -12,7 +12,6 @@
         }
     </style>
 </head>
-<<<<<<< HEAD
 <body class="bg-image bgimage" >
 
 <div class="container">
@@ -42,7 +41,7 @@
     </div>
     <input class = "create-button" type="button" value="Create Account">
 
->>>>>>> 35f889f24c691ab6c861b2c55d8b130efadf24ba
+
 
 </div>
 

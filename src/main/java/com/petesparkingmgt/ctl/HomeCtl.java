@@ -6,11 +6,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class HomeCtl {
 	
-	@GetMapping("/homePage")
+	@GetMapping("/")
 	public String homePage() {
 		return "home";
 	}
 	
-
 
 }

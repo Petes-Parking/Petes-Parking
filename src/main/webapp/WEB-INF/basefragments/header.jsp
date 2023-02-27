@@ -60,12 +60,8 @@
 
        <li class="nav-item dropdown">
 
-          <a class="dropdown-item" href="${pageContext.request.contextPath}/parkinglist">View Parking</a>
+          <a class="dropdown-item" href="${pageContext.request.contextPath}/parkinglist">View Parking Lots</a>
 
-      </li>
-
-      <li class="nav-item dropdown">
-        <a class="dropdown-item" href="${pageContext.request.contextPath}/bookinglist">My Booking History</a>
       </li>
 
 
