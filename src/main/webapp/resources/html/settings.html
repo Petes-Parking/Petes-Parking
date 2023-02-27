@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <title>Settings</title>
   <style>
+
     body {
       background-color: #CEB888;
       font-family: Arial, Helvetica, sans-serif;
       color: #333;
     }
+
     .container {
       width: 70%;
       margin: auto;
@@ -18,10 +20,6 @@
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      text-align: center;
-    }
-
-    .center {
       text-align: center;
     }
 
@@ -65,19 +63,109 @@
     }
 
     button:hover {
+      background-color: #414141;
+    }
+
+    .popup {
+      position: fixed;
+      width: 20%;
+      height: 20%;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 10px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      z-index: 9999;
+      display: none;
+      text-align: center;
+    }
+
+    .popup p {
+      margin: 0;
+      padding: 5px;
+    }
+
+    .popup button {
+      padding: 5px 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
+
+    .popup button:hover {
       background-color: #555;
     }
   </style>
+
 </head>
 <body>
 <div class="container">
   <h1>Settings</h1>
   <h3>Toggle between light mode and dark mode:</h3>
-  <input type="radio" id="lightmode" value="light">
+  <input type="radio" id="lightmode" name="mode" value="light">
   <label for="lightmode">Light mode</label><br>
-  <input type="radio" id="darkmode" value="dark">
+  <input type="radio" id="darkmode" name="mode" value="dark">
   <label for="darkmode">Dark mode</label><br><br>
-  <button type="submit">Save</button><br>
+  <button id="save-button" type="submit">Save</button><br>
 </div>
-</body>
-</html>
+<div id="popup" class="popup">
+  <br><br><p>Settings saved!</p><br>
+  <button id="close-button" type="button">Close</button>
+</div>
+<script>
+  const saveButton = document.getElementById("save-button");
+  const container = document.querySelector(".container");
+  const body = document.querySelector("body");
+  const popup = document.getElementById("popup");
+  const closeButton = document.getElementById("close-button");
+
+  // Get the saved mode from local storage
+  let savedMode = localStorage.getItem("mode");
+
+  // Set the initial mode based on the saved mode or default to light mode
+  let currentMode = savedMode || "light";
+
+  // Set the radio button based on the current mode
+  if (currentMode === "light") {
+    document.getElementById("lightmode").checked = true;
+  } else {
+    document.getElementById("darkmode").checked = true;
+  }
+
+  saveButton.addEventListener("click", () => {
+    const lightMode = document.getElementById("lightmode");
+    const darkMode = document.getElementById("darkmode");
+
+    if (lightMode.checked) {
+      container.style.backgroundColor = "#fff";
+      container.style.color = "#333";
+      body.style.backgroundColor = "#CEB888";
+      lightMode.parentElement.style.color = "#333";
+      darkMode.parentElement.style.color = "#333";
+      currentMode = "light";
+    } else if (darkMode.checked) {
+      container.style.backgroundColor = "#565656";
+      container.style.color = "#fff";
+      body.style.backgroundColor = "#333333";
+      lightMode.parentElement.style.color = "#fff";
+      darkMode.parentElement.style.color = "#fff";
+      currentMode = "dark";
+    }
+
+    // Save the mode to local storage
+    localStorage.setItem("mode", currentMode);
+
+    // Show the popup
+    popup.style.display = "block";
+  });
+
+  closeButton.addEventListener("click", () => {
+    // Hide the popup
+    popup.style.display = "none";
+  });
+</script>
