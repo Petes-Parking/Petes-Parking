@@ -29,7 +29,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<link rel="stylesheet" href="resources/css/login-box.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/login-box.css">
 
 <script type="text/javascript">
 	$(function() {
