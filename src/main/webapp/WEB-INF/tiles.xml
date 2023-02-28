@@ -10,7 +10,12 @@
         <put-attribute name="header" value="/WEB-INF/basefragments/header.jsp" />  
         <put-attribute name="body" value="" />  
         <put-attribute name="footer" value="/WEB-INF/basefragments/footer.jsp" />  
-    </definition>  
+    </definition>
+
+    <definition name="register.def" template="/WEB-INF/bodyfragments/register.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="body" value="" />
+    </definition>
  
  	<!-- Home Page  -->
     <definition name="home" extends="base.definition">
@@ -32,9 +37,9 @@
 
 
     <!-- Registration Page  -->
-    <definition name="registration" extends="base.definition">  
-        <put-attribute name="title" value="Registration" />  
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/registration.jsp" />  
+    <definition name="register" extends="register.def">
+        <put-attribute name="title" value="Register" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/register.jsp" />
     </definition> 
     
         <!-- Welcome Page  -->

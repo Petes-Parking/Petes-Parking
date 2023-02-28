@@ -8,7 +8,7 @@ public class HomeCtl {
 	
 	@GetMapping("/")
 	public String homePage() {
-		return "login";
+		return "home";
 	}
 	
 

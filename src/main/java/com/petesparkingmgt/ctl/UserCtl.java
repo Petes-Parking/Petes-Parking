@@ -31,7 +31,7 @@ public class UserCtl {
 	@GetMapping("/signup")
 	public String signupPage(@ModelAttribute("form") UserForm form) {
 		
-		return "registration";
+		return "register";
 	}
 	
 	@PostMapping("/addUser")
