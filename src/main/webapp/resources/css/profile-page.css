@@ -13,56 +13,55 @@
     opacity: 100%;
 }
 
-.fields {/*username*/
-    float: left;
-    margin-top: 5px;
-    border-: 10px;
-}
-.text-field{
+.text-field {
     border-radius: 5px;
 }
-.fields2 {/*password*/
+
+.user_info {
+    margin-top: 40px;
+}
+
+
+.car_1 {
+    margin-top: 40px;
+}
+
+.car_2 {
+    margin-top: 40px;
+}
+
+.make1div {
     float: left;
-    margin-top: -40px;
-    margin-left: 290px;
+    margin-right: 120px;
 }
-.fields3 { /*email*/
+
+.userdiv {
     float: left;
+    margin-right: 120px;
 }
-.text-field3 {
-    margin-top: 55px;
-    margin-left: 1px;
-    border-radius: 5px;
-}
-.fields4 { /*make*/
+
+.color1div {
     float: left;
+    margin-right: 120px;
 }
-.text-field4 {
-    margin-top: 205px;
-    margin-left: -170px;
-    border-radius: 5px;
-}
-.fields5 { /*model*/
+
+.make2div {
     float: left;
+    margin-right: 120px;
 }
-.text-field5 {
-    margin-top: 205px;
-    margin-left: 120px;
-    border-radius: 5px;
-}
-.fields6 { /*color*/
+
+.color2div {
     float: left;
+    margin-right: 120px;
 }
-.text-field6 {
-    margin-top: 310px;
-    margin-left: -460px;
-    border-radius: 5px;
+
+.delete-button {
+    color: #AF1114;
+    font-size: 20px;
+    font-family: Calibri;
 }
-.fields7 { /*license#*/
-    float: left;
-}
-.text-field7 {
-    margin-top: 310px;
-    margin-left: -170px;
-    border-radius: 5px;
+.save-button{
+    color: #AF1114;
+    font-size: 20px;
+    font-family: Calibri;
 }
