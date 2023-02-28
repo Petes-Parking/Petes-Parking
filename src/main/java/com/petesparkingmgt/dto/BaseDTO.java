@@ -24,3 +24,4 @@ public class BaseDTO {
 	protected long id;
 
 }
+
