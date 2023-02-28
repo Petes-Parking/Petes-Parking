@@ -73,8 +73,8 @@
 
 <body>
 <div class="profile_pic">
-    <img src="C:\Users\sammy\Downloads\Petes-Parking-master\Petes-Parking-master\src\main\webapp\resources\image\nowTransparent.png" width="150" height="150" alt=""/>
-    <img src="C:\Users\sammy\Downloads\Petes-Parking-master\Petes-Parking-master\src\main\webapp\resources\image\trash.png" width="15px" height="15px" alt="" />
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" width="150" height="150" alt=""/>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="15px" height="15px" alt="" />
     <p1>John Purdue</p1>
 </div>
 <div class="user_info">
