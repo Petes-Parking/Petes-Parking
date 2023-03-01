@@ -29,8 +29,11 @@ public class UserCtl {
 	public UserDAO dao;
 
 	@GetMapping("/signup")
-	public String signupPage(@ModelAttribute("form") UserForm form) {
-		
+	public String signupPage(@ModelAttribute("form") UserForm form, Model model) {
+		UserDTO user =	dao.findByEmail(form.getEmail());
+
+		model.addAttribute("gender", "male");
+
 		return "register";
 	}
 
@@ -43,13 +46,13 @@ public class UserCtl {
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
 		
 	UserDTO user =	dao.findByEmail(form.getEmail());
-	
 	if(user == null) {
 		UserDTO dto = form.getDTO();
 		service.add(dto);
+
 		model.addAttribute("success", "User registration success");
 	}else {
-		model.addAttribute("error", "Duplicate emails are not allow!");
+		model.addAttribute("error", "Duplicate emails are not allowedx!");
 	}
 		
 	

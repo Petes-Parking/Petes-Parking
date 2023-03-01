@@ -10,7 +10,6 @@
             background-image: url(https://photos.smugmug.com/photos/i-Z5PSS6Q/0/L/i-Z5PSS6Q-L.jpg);
             background-size: cover;
             background-repeat: no-repeat;
-
         }
     </style>
 
@@ -21,15 +20,18 @@
 
 <body>
 <div class="login">
+
     <div class="logo">
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png" width="200" height="200" alt=""/>
         <input class = "help-button" type="button" value="Help ">
     </div>
     <div class="fields">
-        <form action="/action_page.php">
+        <%@include file="businessMessage.jsp" %>
 
-            <input class="text-field" type="text" placeholder="Email" onClick="this.select();" id="fname" name="fname"><br><br>
-            <input class="text-field" type="password" placeholder="Password" onClick="this.select();" id="lname" name="lname"><br><br>
+        <form method="post" action="${pageContext.request.contextPath}/auth" >
+
+            <input class="text-field" type="email" placeholder="Email" id="fname" name="fname"><br><br>
+            <input class="text-field" type="password" placeholder="Password"  id="lname" name="lname"><br><br>
             <input class = "login-button" type="button" value="Login">
         </form>
         <a href="${pageContext.request.contextPath}/forgotpassword">

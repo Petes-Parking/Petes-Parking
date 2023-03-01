@@ -11,6 +11,13 @@
   I do not think there are any practical issues from doing this besides for readability, but
   in terms of technical correctness, it is all there. - Max
 --%>
+<%@page import="java.text.DateFormat"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="crt"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s"%>
+<%@page import="java.util.Date"%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html>
@@ -39,14 +46,43 @@
     <form action="/action_page.php">
       <label for="email">Enter valid email</label> <br>
       <input class="text-field" id = "email" type="email" placeholder="Email" onClick="this.select();" id="fname" name="fname"><br><br>
-      <input class="text-field" type="password" placeholder="Enter Password" onClick="this.select();"  name="lname"><br><br>
-      <input class="text-field" type="password" placeholder="Enter Password Again" onClick="this.select();"  name="lname"><br><br>
+
+      <label for="pword">Enter new password</label> <br>
+      <input class="text-field" id="pword" type="password" placeholder="Password"   name="lname"><br><br>
+      <label for="pword2">Enter password again</label><br>
+      <input class="text-field" id="pword2" type="password" placeholder="Password"   name="lname"><br><br>
       <label for="start">Enter Birthday</label>
       <br>
       <input type="date" id="start" name="trip-start"> <br> <br>
-      <input id = "register-button" type="submit" value="Register">
-      <input  id = "go-back-button" type="submit" value="Back to Login">
 
+      <div class="col-md-6 mb-4">
+
+        <h6 class="mb-2 pb-1">Gender: </h6>
+        <s:bind path="gender">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"  id="gender"
+                   value="Female" checked name="gender"/>
+<%--            <label class="form-check-label" for="femaleGender">Female</label>--%>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio"  id="gender"
+                   value="Male" checked name="gender"/>
+<%--            <label class="form-check-label" for="maleGender">Male</label>--%>
+          </div>
+
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="gender"
+                   value="Other" checked name="gender" />
+<%--            <label class="form-check-label" for="otherGender">Other</label>--%>
+          </div>
+        </s:bind>
+      </div>
+
+  <input id = "register-button" type="submit" value="Register">
+      <a href="/PeteParkingMgt/">
+           <input  id = "go-back-button" type="submit" value="Back to Login">
+      </a>
 
 
     </form>
