@@ -55,26 +55,26 @@
       <br>
       <input type="date" id="start" name="trip-start"> <br> <br>
 
-      <div class="col-md-6 mb-4">
+      <div id="gender-radio">
 
-        <h6 class="mb-2 pb-1">Gender: </h6>
+        <p>Gender: </p>
         <s:bind path="gender">
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio"  id="gender"
+            <input class="form-check-input" type="radio"  id="femaleGender"
                    value="Female" checked name="gender"/>
-<%--            <label class="form-check-label" for="femaleGender">Female</label>--%>
+            <label class="form-check-label" for="femaleGender">Female</label>
           </div>
 
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio"  id="gender"
+            <input class="form-check-input" type="radio"  id="maleGender"
                    value="Male" checked name="gender"/>
-<%--            <label class="form-check-label" for="maleGender">Male</label>--%>
+            <label class="form-check-label" for="maleGender">Male</label>
           </div>
 
           <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="gender"
+            <input class="form-check-input" type="radio" id="otherGender"
                    value="Other" checked name="gender" />
-<%--            <label class="form-check-label" for="otherGender">Other</label>--%>
+            <label class="form-check-label" for="otherGender">Other</label>
           </div>
         </s:bind>
       </div>

@@ -4,7 +4,7 @@
 
     margin: auto;
     width: 650px;
-    height: 400px;
+    height: 375px;
     padding: 10px;
     background-color: lightslategray;
     margin-top: 250px;
@@ -17,6 +17,11 @@
     float: left;
 }
 
+#gender-radio {
+    float: right;
+    margin-top: -200px;
+    margin-right: 50px;
+}
 #register-button {
     background-color: #DCAC05;
     border: none;
