@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+.inside {
+    background-color: #9D968D;
+    height: 900px;
+    width: 1200px;
+}
+
+.title {
+    padding-top: 1px;
+    padding-left: 20px;
+    font-family: 'Calibri';
+}
+
+.fields {
+    margin-left: 20px;
+}
+
+.buttons {
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.reserve-button {
+    font-size: 16px;
+    font-family: 'Calibri';
+    color: black
+}
