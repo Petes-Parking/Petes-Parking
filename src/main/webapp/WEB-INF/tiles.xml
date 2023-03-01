@@ -16,7 +16,7 @@
         <put-attribute name="title" value="" />
         <put-attribute name="body" value="" />
     </definition>
- 
+
  	<!-- Home Page  -->
     <definition name="home" extends="base.definition">
         <put-attribute name="title" value="Home" />
@@ -40,9 +40,27 @@
     <definition name="register" extends="register.def">
         <put-attribute name="title" value="Register" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/register.jsp" />
-    </definition> 
-    
-        <!-- Welcome Page  -->
+    </definition>
+
+    <!-- Forgot Password Page  -->
+    <definition name="forgotpassword" extends="base.definition">
+        <put-attribute name="title" value="Forgot Password" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/forgotpassword.jsp" />
+    </definition>
+
+    <!-- Settings Page  -->
+    <definition name="settings" extends="base.definition">
+        <put-attribute name="title" value="Settings" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/settings.jsp" />
+    </definition>
+
+    <!-- Parking Pals Page  -->
+    <definition name="parkingpals" extends="base.definition">
+        <put-attribute name="title" value="Parking Pals" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/parkingpals.jsp" />
+    </definition>
+
+    <!-- Welcome Page  -->
     <definition name="welcome" extends="base.definition">  
         <put-attribute name="title" value="Welcome" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/welcome.jsp" />  

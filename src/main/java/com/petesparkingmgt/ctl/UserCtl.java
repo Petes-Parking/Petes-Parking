@@ -33,6 +33,11 @@ public class UserCtl {
 		
 		return "register";
 	}
+
+	@GetMapping("/forgotpassword")
+	public String forgotPasswordPage(@ModelAttribute("form") UserForm form) {
+		return "forgotpassword";
+	}
 	
 	@PostMapping("/addUser")
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {

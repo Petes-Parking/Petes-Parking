@@ -32,7 +32,9 @@
             <input class="text-field" type="password" placeholder="Password" onClick="this.select();" id="lname" name="lname"><br><br>
             <input class = "login-button" type="button" value="Login">
         </form>
-        <p id="forgot">Forgot Password?</p>
+        <a href="${pageContext.request.contextPath}/forgotpassword">
+            <p id="forgot" href="/forgotpassword">Forgot Password?</p>
+        </a>
         <p float="left"> Don't have an account?</p>
 
 
