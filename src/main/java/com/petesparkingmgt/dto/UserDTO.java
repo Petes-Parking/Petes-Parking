@@ -20,6 +20,9 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "firstName", length = 755)
 	private String firstName;
 
+	@Getter
+	private String code;
+
 	@Column(name = "lastName", length = 755)
 	private String lastName;
 	
