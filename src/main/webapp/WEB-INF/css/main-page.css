@@ -204,12 +204,11 @@
     height: auto;
 }
 
-.zoom_outer .parkbutton {
+.zoom_outer .corecbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
+    transform: translate(-500%, -90%);
     background-color: #555;
     color: white;
     font-size: 16px;
@@ -218,8 +217,104 @@
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
+    width: 90px;
+    height: 130px;
 }
-
-.zoom_outer .parkbutton:hover {
+.zoom_outer .nwbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(640%, -10%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 90px;
+    height: 70px;
+}
+.zoom_outer .univbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(135%, 290%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+}
+.zoom_outer .rossbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15%, -760%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+}
+.zoom_outer .mccutchbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-915%, 220%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 80px;
+    height: 110px;
+}
+.zoom_outer .grantbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(990%, 455%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 70px;
+    height: 80px;
+}
+.zoom_outer .corecbutton:hover {
+    background-color: black;
+}
+.zoom_outer .nwbutton:hover {
+    background-color: black;
+}
+.zoom_outer .univbutton:hover {
+    background-color: black;
+}
+.zoom_outer .rossbutton:hover {
+    background-color: black;
+}
+.zoom_outer .mccutchbutton:hover {
+    background-color: black;
+}
+.zoom_outer .grantbutton:hover {
     background-color: black;
 }
