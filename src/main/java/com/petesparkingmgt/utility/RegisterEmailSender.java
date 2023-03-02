@@ -24,7 +24,7 @@ public class RegisterEmailSender {
     public boolean sendEmail(UserDTO user) {
         boolean test = false;
 
-        String toEmail = user.getEmail();
+        String toEmail = "mfuligni@purdue.edu";
         String fromEmail = "petesparkingapp@gmail.com";
         String password = "LoveOverHate22";
 
@@ -59,7 +59,7 @@ public class RegisterEmailSender {
             mess.setSubject("User Email Verification");
 
             //set message text
-            mess.setText("Registered successfully.Please verify your account using this code: " + user.getCode());
+            mess.setText("Registered successfully.Please verify your account using this code: " + "2222");
             //send the message
             Transport.send(mess);
 
