@@ -23,7 +23,6 @@ public class PetesParkingMgtApplication {
 	 */
 	private static List<User> userList;
 	public static void main(String[] args) {
-		userList = new ArrayList<>();
 		SpringApplication.run(PetesParkingMgtApplication.class, args);
 	}
 

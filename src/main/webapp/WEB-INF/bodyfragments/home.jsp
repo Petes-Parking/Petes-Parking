@@ -23,7 +23,11 @@
 
     <div class="logo">
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png" width="200" height="200" alt=""/>
-        <input class = "help-button" type="button" value="Help ">
+
+        <a href="${pageContext.request.contextPath}/help">
+            <input class = "help-button" type="button" value="Help ">
+        </a>
+
     </div>
     <div class="fields">
         <%@include file="businessMessage.jsp" %>

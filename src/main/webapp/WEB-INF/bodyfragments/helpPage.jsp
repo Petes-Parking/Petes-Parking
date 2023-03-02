@@ -58,10 +58,10 @@
       background-color: #555;
     }
     .buttonCancel{
-      margin-top: 20px;
+      margin-top: 30px;
     }
     .logo{
-      margin-left: 100px;
+      margin-left: 290px;
     }
 
   </style>
