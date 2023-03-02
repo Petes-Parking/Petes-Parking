@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8">jo
     <title>Pete's Parking</title>
     <style>
         <%@include file="/WEB-INF/css/main-page.css"%>
@@ -26,7 +26,10 @@
         <div class="profile-area" width="150" height="175">
             <div class="profile-bar"></div>
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
-            <button class="profile-button">Purdue Pete</button>
+            <a href="${pageContext.request.contextPath}/profile">
+                <button class="profile-button">Purdue Pete</button>
+            </a>
+
             <button class="home-button"><img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png" alt="" width="50" height="50"></button>
             <div class="profile-bar"></div>
         </div>
