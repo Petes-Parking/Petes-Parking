@@ -23,6 +23,11 @@
       text-align: center;
     }
 
+    p {
+      float: left;
+      padding-left: 10px;
+    }
+
     h1 {
       text-align: center;
       margin-bottom: 20px;
@@ -105,12 +110,15 @@
 </head>
 <body>
 <div class="container">
+  <p>< Return to main page</p><br><br>
   <h1>Settings</h1>
   <h3>Toggle between light mode and dark mode:</h3>
   <input type="radio" id="lightmode" name="mode" value="light">
   <label for="lightmode">Light mode</label><br>
   <input type="radio" id="darkmode" name="mode" value="dark">
   <label for="darkmode">Dark mode</label><br><br>
+  <label for="color-input">Background Color (Hexadecimal):</label>
+  <input type="text" id="color-input" name="color" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})?$"><br><br>
   <button id="save-button" type="submit">Save</button><br>
 </div>
 <div id="popup" class="popup">
@@ -140,6 +148,7 @@
   saveButton.addEventListener("click", () => {
     const lightMode = document.getElementById("lightmode");
     const darkMode = document.getElementById("darkmode");
+    const colorInput = document.getElementById("color-input");
 
     if (lightMode.checked) {
       container.style.backgroundColor = "#fff";
@@ -157,8 +166,14 @@
       currentMode = "dark";
     }
 
+    // Set the background color based on the input value
+    if (colorInput.value.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})?$/)) {
+      body.style.backgroundColor = colorInput.value;
+    }
+
     // Save the mode to local storage
     localStorage.setItem("mode", currentMode);
+    localStorage.setItem("color", colorInput.value);
 
     // Show the popup
     popup.style.display = "block";
