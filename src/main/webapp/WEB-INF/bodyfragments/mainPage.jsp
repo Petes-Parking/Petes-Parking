@@ -12,7 +12,7 @@
     <title>Pete's Parking</title>
     <style type="text/css">
     </style>
-    <link href="login-box.css" rel="stylesheet" type="text/css">
+    <link href="main-page.css" rel="stylesheet" type="text/css">
     <link href="map-pan.css" rel="stylesheet" type="text/css">
     <style>
     </style>
