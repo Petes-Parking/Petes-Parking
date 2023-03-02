@@ -56,27 +56,29 @@
         <label for="pword2">Enter password again</label><br>
         </s:bind>
         <input class="text-field" id="pword2" type="password" placeholder="Password"   name="lname"><br><br>
-<%--        <div style="float: right; margin-top: -175px; margin-right: 200px">--%>
-<%--        <s:bind path="firstName">--%>
-<%--            <label for="firstName">First name: </label><br>--%>
-<%--          <sf:input class="text-field" id="firstName" type="text" placeholder="First name"   path="firstName"/><br><br>--%>
-<%--          </s:bind>--%>
+        <div style="float: right; margin-top: -175px; margin-right: 200px">
+        <s:bind path="firstName">
+            <label for="firstName">First name: </label><br>
+          <sf:input class="text-field" id="firstName" type="text" placeholder="First name" name="firstName"  path="firstName"/><br><br>
+          </s:bind>
 
-<%--            <s:bind path="lastName">--%>
-<%--                <label for="firstName">Last name: </label><br>--%>
-<%--                <sf:input class="text-field" id="lastName" type="text" placeholder="Last name"   path="lastName"/><br><br>--%>
-<%--            </s:bind>--%>
+            <s:bind path="lastName">
+                <label for="firstName">Last name: </label><br>
+                <sf:input class="text-field" id="lastName" type="text" placeholder="Last name"  name="lastName" path="lastName"/><br><br>
+            </s:bind>
 
-<%--            <s:bind path="phoneNumber">--%>
-<%--              <label for="pnum">Phone number: </label><br>--%>
-<%--                <sf:input class="text-field" id="pnum" type="tel" placeholder="(###)-###-####"   path="phoneNumber"/><br><br>--%>
-<%--            </s:bind>--%>
+            <s:bind path="phoneNumber">
+              <label for="pnum">Phone number: </label><br>
+                <sf:input class="text-field" id="pnum" type="tel" placeholder="(###)-###-####"  name="phoneNumber" path="phoneNumber"/><br><br>
+            </s:bind>
 
-<%--          <br>--%>
-<%--          </div>--%>
+          <br>
+            <s:bind path="dob">
+          </div>
             <label for="start">Enter Birthday</label>
             <br>
-            <input style="margin-left: 250px" type="date" id="start" name="trip-start"> <br> <br>
+            <sf:input style="margin-left: 250px" type="date" id="start" name="dob" path="dob"/> <br> <br>
+        </s:bind>
 
           <div style="margin-left: 150px" id="gender-radio">
 
