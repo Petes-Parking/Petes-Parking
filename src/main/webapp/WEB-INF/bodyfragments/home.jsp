@@ -35,10 +35,10 @@
         <form method="post" action="${pageContext.request.contextPath}/auth" >
 
             <label for="email">Enter email</label> <br>
-            <input class="text-field" type="email" placeholder="Email" id="email" name="fname"><br><br>
+            <input class="text-field" type="email" placeholder="Email" id="email" name="email"><br><br>
             <label for="lname">Enter password</label> <br>
 
-            <input class="text-field" type="password" placeholder="Password"  id="lname" name="lname"><br><br>
+            <input class="text-field" type="password" placeholder="Password"  id="lname" name="password"><br><br>
             <input class = "login-button" type="submit" value="Login">
         </form>
         <a href="${pageContext.request.contextPath}/forgotpassword">

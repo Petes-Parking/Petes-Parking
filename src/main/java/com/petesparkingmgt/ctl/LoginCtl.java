@@ -40,7 +40,7 @@ public class LoginCtl {
 
 	@PostMapping("/auth")
 	public String Login(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
-       
+
 	  UserDTO user = 	service.login(form.getEmail(), form.getPassword());
 	  if(user == null) {
 		  model.addAttribute("error", "Invalid username/password or register an account.");
