@@ -59,6 +59,7 @@
     }
     .buttonCancel{
       margin-top: 30px;
+      margin-left: 720px ;
     }
     .logo{
       margin-left: 290px;
@@ -76,7 +77,9 @@
     <input type="question" id="question" name="question" placeholder="Explain your issues or ask a question here" required>
     <button type="submit">Submit</button>
 
-    <button class = "buttonCancel" type="cancel" >Cancel</button>
+    <a href="${pageContext.request.contextPath}/login">
+      <button class = "buttonCancel" type="button" >Cancel</button>
+    </a>
   </form>
 </div>
 </body>
