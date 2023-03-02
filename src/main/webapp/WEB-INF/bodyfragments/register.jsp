@@ -43,19 +43,42 @@
   <img id = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png"  alt=""/>
   <div id ="register-input-box">
     <h2>Register</h2>
-    <form action="/action_page.php">
-      <label for="email">Enter valid email</label> <br>
-      <input class="text-field" id = "email" type="email" placeholder="Email" onClick="this.select();" id="fname" name="fname"><br><br>
+    <form method = "post" action="${pageContext.request.contextPath}/addUser">
+        <s:bind path="email">
 
-      <label for="pword">Enter new password</label> <br>
-      <input class="text-field" id="pword" type="password" placeholder="Password"   name="lname"><br><br>
-      <label for="pword2">Enter password again</label><br>
-      <input class="text-field" id="pword2" type="password" placeholder="Password"   name="lname"><br><br>
-      <label for="start">Enter Birthday</label>
-      <br>
-      <input type="date" id="start" name="trip-start"> <br> <br>
+        <label for="email">Enter valid email</label> <br>
+        <sf:input class="text-field" id = "email" type="email" placeholder="Email"  path="email"/><br><br>
 
-      <div id="gender-radio">
+        <label for="pword">Enter new password</label> <br>
+        </s:bind>
+        <s:bind path="password">
+        <sf:input class="text-field" id="pword" type="password" placeholder="Password"   path="password"/><br><br>
+        <label for="pword2">Enter password again</label><br>
+        </s:bind>
+        <input class="text-field" id="pword2" type="password" placeholder="Password"   name="lname"><br><br>
+        <div style="float: right; margin-top: -175px; margin-right: 200px">
+        <s:bind path="firstName">
+            <label for="firstName">First name: </label><br>
+          <sf:input class="text-field" id="firstName" type="text" placeholder="First name"   path="firstName"/><br><br>
+          </s:bind>
+
+            <s:bind path="lastName">
+                <label for="firstName">Last name: </label><br>
+                <sf:input class="text-field" id="lastName" type="text" placeholder="Last name"   path="lastName"/><br><br>
+            </s:bind>
+
+            <s:bind path="phoneNumber">
+              <label for="pnum">Phone number: </label><br>
+                <sf:input class="text-field" id="pnum" type="tel" placeholder="(###)-###-####"   path="phoneNumber"/><br><br>
+            </s:bind>
+
+          <br>
+          </div>
+            <label for="start">Enter Birthday</label>
+            <br>
+            <input style="margin-left: 250px" type="date" id="start" name="trip-start"> <br> <br>
+
+          <div style="margin-left: 150px" id="gender-radio">
 
         <p>Gender: </p>
         <s:bind path="gender">
@@ -79,9 +102,9 @@
         </s:bind>
       </div>
 
-  <input id = "register-button" type="submit" value="Register">
+  <input style="margin-left: 250px" id = "register-button" type="submit" value="Register">
       <a href="/PeteParkingMgt/">
-           <input  id = "go-back-button" type="submit" value="Back to Login">
+           <input  style="margin-left: 125px" id = "go-back-button" type="submit" value="Back to Login">
       </a>
 
 

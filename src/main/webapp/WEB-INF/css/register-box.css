@@ -3,9 +3,9 @@
     border-radius: 25px;
 
     margin: auto;
-    width: 650px;
-    height: 375px;
-    padding: 10px;
+    width: 850px;
+    height: 400px;
+    padding: 5px;
     background-color: lightslategray;
     margin-top: 250px;
     opacity: 0.90;
@@ -16,7 +16,6 @@
     height: 250px;
     float: left;
 }
-
 #gender-radio {
     float: right;
     margin-top: -200px;
@@ -50,9 +49,10 @@
 }
 
 
-#register-input-box {
+.register-input-box {
     border-color: blue;
-    width: 300px;
+    width: 550px;
     height: 350px;
     float: right;
+
 }

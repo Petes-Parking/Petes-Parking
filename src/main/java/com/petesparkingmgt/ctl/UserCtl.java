@@ -32,10 +32,35 @@ public class UserCtl {
 	public String signupPage(@ModelAttribute("form") UserForm form, Model model) {
 		UserDTO user =	dao.findByEmail(form.getEmail());
 
-		model.addAttribute("gender", "male");
+		if (form.getEmail() != null) {
+			System.out.println(form.toString() + " -------");
+			model.addAttribute("email", form.getEmail());
+			model.addAttribute("gender", form.getGender());
+			model.addAttribute("password", form.getPassword());
+			model.addAttribute("firstName", form.getFirstName());
+			model.addAttribute("lastName", form.getLastName());
+			model.addAttribute("phoneNumber", form.getPhoneNumber());
+			model.addAttribute("dob", form.getDob());
+		} else {
+
+			System.out.println("Null! Yikes");
+		model.addAttribute("email", "email");
+		model.addAttribute("gender", "gender");
+		model.addAttribute("password", "password");
+		model.addAttribute("firstName", "firstName");
+		model.addAttribute("lastName", "lastName");
+		model.addAttribute("phoneNumber", "pnum");
+		model.addAttribute("dob", "dobb");
+		}
+
+
+
+
 
 		return "register";
 	}
+
+
 
 	@GetMapping("/forgotpassword")
 	public String forgotPasswordPage(@ModelAttribute("form") UserForm form) {
@@ -46,18 +71,26 @@ public class UserCtl {
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
 		
 	UserDTO user =	dao.findByEmail(form.getEmail());
-	if(user == null) {
+		model.addAttribute("email", form.getEmail());
+		model.addAttribute("gender", form.getGender());
+		model.addAttribute("password", form.getPassword());
+		model.addAttribute("firstName", form.getFirstName());
+		model.addAttribute("lastName", form.getLastName());
+		model.addAttribute("phoneNumber", form.getPhoneNumber());
+		model.addAttribute("dob", form.getDob());
+
+		if(user == null) {
 		UserDTO dto = form.getDTO();
 		service.add(dto);
 
 		model.addAttribute("success", "User registration success");
 	}else {
-		model.addAttribute("error", "Duplicate emails are not allowedx!");
+		model.addAttribute("error", "Duplicate emails are not allowed!");
 	}
 		
 	
 		
-		return "registration";
+		return "register";
 		
 	}
 	

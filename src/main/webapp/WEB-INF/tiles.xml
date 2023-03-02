@@ -42,6 +42,7 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/register.jsp" />
     </definition>
 
+
     <!-- Forgot Password Page  -->
     <definition name="forgotpassword" extends="base.definition">
         <put-attribute name="title" value="Forgot Password" />

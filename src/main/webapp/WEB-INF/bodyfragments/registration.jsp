@@ -56,24 +56,24 @@
 
                 </div>
                 <div class="col-md-6 mb-4">
-                
+
                   <h6 class="mb-2 pb-1">Gender: </h6>
                   <s:bind path="gender">
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio"  id="gender"
-                      value="Female" checked name="gender"/>
+                      value="Female" name="gender" checked/>
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
-                  
+
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio"  id="gender"
-                      value="Male" checked name="gender"/>
+                      value="Male" name="gender"/>
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" id="gender"
-                      value="Other" checked name="gender" />
+                      value="Other" name="gender" />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
 				</s:bind>
