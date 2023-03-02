@@ -82,7 +82,7 @@
         <button class="rossbutton"></button>
         <button class="mccutchbutton"></button>
         <button class="grantbutton"></button>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.png" width="1400" height="1230" align="right" alt="zoom">
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>
 <script>
