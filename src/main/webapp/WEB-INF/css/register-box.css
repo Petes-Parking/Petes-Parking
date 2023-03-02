@@ -4,10 +4,10 @@
 
     margin: auto;
     width: 850px;
-    height: 450px;
+    height: 375px;
     padding: 5px;
     background-color: lightslategray;
-    margin-top: 250px;
+    margin-top: 150px;
     opacity: 0.90;
 }
 
@@ -33,7 +33,15 @@
     font-size: 16px;
     width: 120px;
 }
+#register-button:hover {
+    transition: .3s;
+    background-color: #B89954;
+}
 
+#go-back-button:hover {
+    transition: .3s;
+    background-color: #B89954;
+}
 #go-back-button {
     background-color: #DCAC05;
     border: none;

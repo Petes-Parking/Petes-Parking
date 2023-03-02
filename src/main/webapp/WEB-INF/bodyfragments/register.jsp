@@ -72,7 +72,18 @@
                 <sf:input class="text-field" id="pnum" type="tel" placeholder="(###)-###-####"  name="phoneNumber" path="phoneNumber"/><br><br>
             </s:bind>
 
-          <br>
+            <div>
+                <label for="userRole" class="form-label select-label">Select User Role</label>
+
+                <select id="userRole" name = "userRole">
+                    <option value="1" disabled>Select Role</option>
+                    <option value="Student">User</option>
+                    <option value="Admin">Admin</option>
+                </select>
+            </div>
+
+
+            <br>
             <s:bind path="dob">
           </div>
             <label for="start">Enter Birthday</label>
@@ -104,7 +115,8 @@
         </s:bind>
       </div>
 
-  <input style="margin-left: 250px" id = "register-button" type="submit" value="Register">
+
+        <input style="margin-left: 250px" id = "register-button" type="submit" value="Register">
       <a href="/PeteParkingMgt/">
            <input  style="margin-left: 125px" id = "go-back-button" type="button" value="Back to Login">
       </a>
