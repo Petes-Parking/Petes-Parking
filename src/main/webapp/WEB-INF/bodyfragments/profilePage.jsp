@@ -2,6 +2,16 @@
 <html>
 <head>
     <title>Profile Page</title>
+    <script>
+        function showPopup() {
+            var answer = confirm("Are you sure you want to delete your profile picture?");
+            if (answer) {
+                alert("You clicked Yes!");
+            } else {
+                alert("You clicked No.");
+            }
+        }
+    </script>
     <link href="../css/profile-page.css" rel="stylesheet" type="text/css">
     <style type="text/css">
         p1 { /*john purdue*/
@@ -68,13 +78,21 @@
         body {
             background: #CEB888;
         }
+        #deletePic:hover {
+            transition: .3s;
+            background-color: #B89954;
+            opacity: 0.5;
+        }
     </style>
 </head>
 
 <body>
 <div class="profile_pic">
     <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" width="150" height="150" alt=""/>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="15px" height="15px" alt="" />
+
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="15px" height="15px" alt=""  id="deletePic" onclick="showPopup()"/>
+
+
     <p1>John Purdue</p1>
 </div>
 <div class="user_info">

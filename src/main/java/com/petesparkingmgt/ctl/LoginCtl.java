@@ -22,7 +22,7 @@ public class LoginCtl {
 	
 	@GetMapping("/login")
 	public String loginPage() {
-		return "login";
+		return "home";
 	}
 	
 	
@@ -33,22 +33,22 @@ public class LoginCtl {
 			session.invalidate();
 			model.addAttribute("success", "Logout Sucessfully");
 		}
-		return "login";
+		return "home";
 	}
 	
 	
 
 	@PostMapping("/auth")
 	public String Login(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
-       
+
 	  UserDTO user = 	service.login(form.getEmail(), form.getPassword());
 	  if(user == null) {
-		  model.addAttribute("error", "Invalid UserName or Password"); 
+		  model.addAttribute("error", "Invalid username/password or register an account.");
 	  }else {
 		  session.setAttribute("user", user);
 		  return "welcome";
 	  }
-		return "login";
+		return "home";
 	}
 	
 	

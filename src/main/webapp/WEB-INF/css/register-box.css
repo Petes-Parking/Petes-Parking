@@ -3,11 +3,11 @@
     border-radius: 25px;
 
     margin: auto;
-    width: 550px;
-    height: 320px;
-    padding: 10px;
+    width: 850px;
+    height: 425px;
+    padding: 5px;
     background-color: lightslategray;
-    margin-top: 250px;
+    margin-top: 150px;
     opacity: 0.90;
 }
 
@@ -16,7 +16,11 @@
     height: 250px;
     float: left;
 }
-
+#gender-radio {
+    float: right;
+    margin-top: -200px;
+    margin-right: 50px;
+}
 #register-button {
     background-color: #DCAC05;
     border: none;
@@ -29,7 +33,15 @@
     font-size: 16px;
     width: 120px;
 }
+#register-button:hover {
+    transition: .3s;
+    background-color: #B89954;
+}
 
+#go-back-button:hover {
+    transition: .3s;
+    background-color: #B89954;
+}
 #go-back-button {
     background-color: #DCAC05;
     border: none;
@@ -45,9 +57,10 @@
 }
 
 
-#register-input-box {
+.register-input-box {
     border-color: blue;
-    width: 300px;
+    width: 550px;
     height: 350px;
     float: right;
+
 }

@@ -8,6 +8,8 @@ import java.nio.file.Paths;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Locale;
 import java.util.Random;
@@ -118,6 +120,21 @@ public class DataUtility {
 			return "";
 		}
 
+	}
+
+	/**
+	 *
+	 * @param date
+	 * @return if user is above 16 years old
+	 */
+	public static boolean isAbove16(String date) {
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate limit = LocalDate.now().minusYears(16);
+
+
+
+		return LocalDate.parse(date, formatter).isBefore(limit);
 	}
 
 	public static Date getDate(Date date, int day) {

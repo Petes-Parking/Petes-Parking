@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>book-reservation</title>
+  <link href="reservation_style.css" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    p {
+      font-family: 'Calibri';
+    }
+  </style>
+</head>
+
+<body>
+<ol></ol>
+<div class="inside">
+  <div class="title">
+    <h1>Book Reservation:</h1>
+  </div>
+  <div class="fields">
+    <p>Name of Parking Area:</p>
+    <input list="lots" name="parking_lots" placeholder="Choose Lot"/>
+    <datalist id="lots">
+      <option value="COREC Parking Lot"></option>
+      <option value="Grant St. Parking Garage"></option>
+      <option value="McCutcheon Dr. Parking Garage"></option>
+      <option value="Northwestern St. Parking Garage"></option>
+      <option value="University St. Parking Garage"></option>
+      <option value="Wood St. Parking Garage"></option>
+    </datalist>
+
+    <p>Date:</p>
+    <input type="date" />
+
+    <p>Arrival Time:</p>
+    <input type="time" />
+
+    <p>Departure Time:</p>
+    <input type="time" />
+
+    <p>Select Car:</p>
+    <input list="cars" name="cars" placeholder="Choose Car"/>
+    <datalist id="cars">
+      <option value="Car 1"></option>
+      <option value="Car 2"></option>
+    </datalist>
+  </div>
+  <div class="buttons">
+    <button class="reserve-button">Reserve!</button>
+  </div>
+</div>
+
+</body>
+</html>

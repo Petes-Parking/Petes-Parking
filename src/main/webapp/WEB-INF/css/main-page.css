@@ -25,13 +25,14 @@
 }
 .profile-button {
     height: 100px;
-    width: 200px;
+    width: 250px;
     background-color:#CEB888;
     cursor: pointer;
-    margin-left: 0%;
+    margin-left: 15px;
     font-size: 24pt;
     border: none;
     border-radius: 15px;
+    margin-top: 0px;
 }
 .profile-button:hover {background-color: #B89954; transition: .3s;}
 .home-button {
@@ -41,16 +42,20 @@
     cursor: pointer;
     border: none;
     border-radius: 250px;
+    margin-left: 0px;
 }
 .home-button:hover {background-color: #B89954; transition: .3s;}
 .settings-button {
     height: 100px;
-    width: 250px;
+    width: 350px;
     background-color:#CEB888;
     cursor: pointer;
-    margin-left: 0%;
+    margin-right: 0%;
     border-radius: 15px;
-    font-size: 16px;
+    font-size: 20px;
+    vertical-align: top;
+    margin-top: 500px;
+    border: none;
 }
 .settings-button:hover {background-color: #B89954; transition: .3s;}
 
@@ -62,19 +67,20 @@
     border: none;
     height: 140px;
     width: 350px;
-    border-radius: 15px;
-    margin-left: 2%;
+    border-radius: 5px;
+    margin-right: 0%;
+    display: inline-block;
 }
 .dropbtn2 {
     background-color: #CEB888;
     color: Black;
-    padding: 16px;
     font-size: 26px;
     border: none;
     height: 140px;
     width: 350px;
-    border-radius: 15px;
-    margin-left: 2%;
+    border-radius: 5px;
+    margin-left: 15px;
+    display: inline-block;
 }
 .dropbtn3 {
     background-color: #CEB888;
@@ -84,8 +90,8 @@
     border: none;
     height: 140px;
     width: 350px;
-    border-radius: 15px;
-    margin-left: 6%;
+    border-radius: 5px;
+    margin-left: 15px;
 }
 .dropbtn4 {
     background-color: #CEB888;
@@ -95,7 +101,7 @@
     border: none;
     height: 140px;
     width: 350px;
-    border-radius: 15px;
+    border-radius: 5px;
     margin-left: 6%;
 }
 
@@ -110,7 +116,7 @@
     background-color: #373A36;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 0;
     margin-left: 2%;
     border-radius: 10px;
 
@@ -121,7 +127,7 @@
     background-color: #373A36;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 0;
     margin-left: 2%;
     border-radius: 10px;
 }
@@ -131,7 +137,7 @@
     background-color: #373A36;
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 0;
     margin-left: 20%;
     border-radius: 10px;
 }
@@ -171,23 +177,144 @@
 }
 .dropdown-content1 a:hover {background-color: #515650; transition: .3s; border-radius: 10px;}
 .dropdown:hover .dropdown-content1 {display: block;}
-.dropdown:hover .dropbtn1 {background-color: #B89954; transition: .3s; border-radius: 10px;}
+.dropdown:hover .dropbtn1 {background-color: #B89954; transition: .3s; border-radius: 35px;}
 
 .dropdown-content2 a:hover {background-color: #515650; transition: .3s; border-radius: 10px;}
 .dropdown:hover .dropdown-content2 {display: block;}
-.dropdown:hover .dropbtn2 {background-color: #B89954; transition: .3s; border-radius: 10px;}
+.dropdown:hover .dropbtn2 {background-color: #B89954; transition: .3s; border-radius: 35px;}
 
 .dropdown-content3 a:hover {background-color: #515650; transition: .3s; border-radius: 10px;}
 .dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn3 {background-color: #B89954; transition: .3s; border-radius: 10px;}
+.dropdown:hover .dropbtn3 {background-color: #B89954; transition: .3s; border-radius: 35px;}
 
 .dropdown-content4 a:hover {background-color: #515650; transition: .3s; border-radius: 10px;}
 .dropdown:hover .dropdown-content {display: block;}
-.dropdown:hover .dropbtn4 {background-color: #B89954; transition: .3s; border-radius: 10px;}
+.dropdown:hover .dropbtn4 {background-color: #B89954; transition: .3s; border-radius: 35px;}
 
 .zoom_outer {
     width: 2000px;
     height: 1230px;
     display: inline-block;
     margin-left: 50px;
+    position: relative;
+}
+
+.zoom_outer img {
+    width: 100%;
+    height: auto;
+}
+
+.zoom_outer .corecbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-500%, -90%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 90px;
+    height: 130px;
+}
+.zoom_outer .nwbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(640%, -10%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 90px;
+    height: 70px;
+}
+.zoom_outer .univbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(135%, 290%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+}
+.zoom_outer .rossbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-15%, -760%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 80px;
+    height: 80px;
+}
+.zoom_outer .mccutchbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-915%, 220%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 80px;
+    height: 110px;
+}
+.zoom_outer .grantbutton {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(990%, 455%);
+    background-color: #555;
+    color: white;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    width: 70px;
+    height: 80px;
+}
+.zoom_outer .corecbutton:hover {
+    background-color: black;
+}
+.zoom_outer .nwbutton:hover {
+    background-color: black;
+}
+.zoom_outer .univbutton:hover {
+    background-color: black;
+}
+.zoom_outer .rossbutton:hover {
+    background-color: black;
+}
+.zoom_outer .mccutchbutton:hover {
+    background-color: black;
+}
+.zoom_outer .grantbutton:hover {
+    background-color: black;
 }
