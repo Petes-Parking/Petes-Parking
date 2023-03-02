@@ -40,6 +40,15 @@
 <body>
 <div id = "register-box">
 
+    <c:if test="${not empty error}">
+    <div class="alert alert-danger">
+        <ul>
+            <c:forEach items="${error}" var="error">
+                <li style="font-size: 15px; color: red">${error}</li>
+            </c:forEach>
+        </ul>
+    </div>
+    </c:if>
   <img id = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png"  alt=""/>
   <div id ="register-input-box">
     <h2>Register</h2>
@@ -88,7 +97,9 @@
           </div>
             <label for="start">Enter Birthday</label>
             <br>
-            <sf:input style="margin-left: 250px" type="date" id="start" name="dob" path="dob"/> <br> <br>
+         <font color="red" style="font-size: 15px"><sf:errors path="${status.expression}" /></font>
+
+        <sf:input style="margin-left: 250px" type="date" id="start" name="dob" path="dob"/> <br> <br>
         </s:bind>
 
           <div style="margin-left: 150px" id="gender-radio">

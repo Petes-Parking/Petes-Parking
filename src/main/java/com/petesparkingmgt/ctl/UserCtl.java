@@ -2,6 +2,7 @@ package com.petesparkingmgt.ctl;
 
 
 
+import com.petesparkingmgt.utility.DataUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import com.petesparkingmgt.dao.UserDAO;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.UserService;
+
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -71,6 +74,7 @@ public class UserCtl {
 		
 	UserDTO user =	dao.findByEmail(form.getEmail());
 		if (form.getEmail() != null) {
+
 			System.out.println(form.toString() + "-bang");
 			model.addAttribute("email", form.getEmail());
 			model.addAttribute("gender", form.getGender());
@@ -79,6 +83,14 @@ public class UserCtl {
 			model.addAttribute("lastName", form.getLastName());
 			model.addAttribute("phoneNumber", form.getPhoneNumber());
 			model.addAttribute("dob", form.getDob());
+
+			if (!DataUtility.isAbove16(form.getDob())) {
+				System.out.println("Minor detected!");
+				model.addAttribute("error", "You must be at least 16 to use!");
+				return "register";
+			}
+
+
 		} else {
 
 			System.out.println("Boo");
@@ -92,6 +104,7 @@ public class UserCtl {
 		}
 
 		if(user == null) {
+
 		UserDTO dto = form.getDTO();
 		service.add(dto);
 
