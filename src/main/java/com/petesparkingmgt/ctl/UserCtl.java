@@ -43,7 +43,6 @@ public class UserCtl {
 			model.addAttribute("dob", form.getDob());
 		} else {
 
-			System.out.println("Null! Yikes");
 		model.addAttribute("email", "email");
 		model.addAttribute("gender", "gender");
 		model.addAttribute("password", "password");
@@ -71,13 +70,26 @@ public class UserCtl {
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
 		
 	UserDTO user =	dao.findByEmail(form.getEmail());
-		model.addAttribute("email", form.getEmail());
-		model.addAttribute("gender", form.getGender());
-		model.addAttribute("password", form.getPassword());
-		model.addAttribute("firstName", form.getFirstName());
-		model.addAttribute("lastName", form.getLastName());
-		model.addAttribute("phoneNumber", form.getPhoneNumber());
-		model.addAttribute("dob", form.getDob());
+		if (form.getEmail() != null) {
+			System.out.println(form.toString() + "-bang");
+			model.addAttribute("email", form.getEmail());
+			model.addAttribute("gender", form.getGender());
+			model.addAttribute("password", form.getPassword());
+			model.addAttribute("firstName", form.getFirstName());
+			model.addAttribute("lastName", form.getLastName());
+			model.addAttribute("phoneNumber", form.getPhoneNumber());
+			model.addAttribute("dob", form.getDob());
+		} else {
+
+			System.out.println("Boo");
+			model.addAttribute("email", "email");
+			model.addAttribute("gender", "gender");
+			model.addAttribute("password", "password");
+			model.addAttribute("firstName", "firstName");
+			model.addAttribute("lastName", "lastName");
+			model.addAttribute("phoneNumber", "pnum");
+			model.addAttribute("dob", "dobb");
+		}
 
 		if(user == null) {
 		UserDTO dto = form.getDTO();

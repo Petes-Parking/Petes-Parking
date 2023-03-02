@@ -47,33 +47,33 @@
         <s:bind path="email">
 
         <label for="email">Enter valid email</label> <br>
-        <sf:input class="text-field" id = "email" type="email" placeholder="Email"  path="email"/><br><br>
+        <sf:input class="text-field" id = "email" type="email" placeholder="Email"  name="email" path="email"/><br><br>
 
         <label for="pword">Enter new password</label> <br>
         </s:bind>
         <s:bind path="password">
-        <sf:input class="text-field" id="pword" type="password" placeholder="Password"   path="password"/><br><br>
+        <sf:input class="text-field" id="pword" type="password" placeholder="Password"  name="password"  path="password"/><br><br>
         <label for="pword2">Enter password again</label><br>
         </s:bind>
         <input class="text-field" id="pword2" type="password" placeholder="Password"   name="lname"><br><br>
-        <div style="float: right; margin-top: -175px; margin-right: 200px">
-        <s:bind path="firstName">
-            <label for="firstName">First name: </label><br>
-          <sf:input class="text-field" id="firstName" type="text" placeholder="First name"   path="firstName"/><br><br>
-          </s:bind>
+<%--        <div style="float: right; margin-top: -175px; margin-right: 200px">--%>
+<%--        <s:bind path="firstName">--%>
+<%--            <label for="firstName">First name: </label><br>--%>
+<%--          <sf:input class="text-field" id="firstName" type="text" placeholder="First name"   path="firstName"/><br><br>--%>
+<%--          </s:bind>--%>
 
-            <s:bind path="lastName">
-                <label for="firstName">Last name: </label><br>
-                <sf:input class="text-field" id="lastName" type="text" placeholder="Last name"   path="lastName"/><br><br>
-            </s:bind>
+<%--            <s:bind path="lastName">--%>
+<%--                <label for="firstName">Last name: </label><br>--%>
+<%--                <sf:input class="text-field" id="lastName" type="text" placeholder="Last name"   path="lastName"/><br><br>--%>
+<%--            </s:bind>--%>
 
-            <s:bind path="phoneNumber">
-              <label for="pnum">Phone number: </label><br>
-                <sf:input class="text-field" id="pnum" type="tel" placeholder="(###)-###-####"   path="phoneNumber"/><br><br>
-            </s:bind>
+<%--            <s:bind path="phoneNumber">--%>
+<%--              <label for="pnum">Phone number: </label><br>--%>
+<%--                <sf:input class="text-field" id="pnum" type="tel" placeholder="(###)-###-####"   path="phoneNumber"/><br><br>--%>
+<%--            </s:bind>--%>
 
-          <br>
-          </div>
+<%--          <br>--%>
+<%--          </div>--%>
             <label for="start">Enter Birthday</label>
             <br>
             <input style="margin-left: 250px" type="date" id="start" name="trip-start"> <br> <br>
@@ -104,7 +104,7 @@
 
   <input style="margin-left: 250px" id = "register-button" type="submit" value="Register">
       <a href="/PeteParkingMgt/">
-           <input  style="margin-left: 125px" id = "go-back-button" type="submit" value="Back to Login">
+           <input  style="margin-left: 125px" id = "go-back-button" type="button" value="Back to Login">
       </a>
 
 
