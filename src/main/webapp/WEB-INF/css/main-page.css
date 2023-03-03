@@ -318,3 +318,260 @@
 .zoom_outer .grantbutton:hover {
     background-color: black;
 }
+
+.corec-popup {
+    display: none;
+    position: fixed;
+    width: 350px;
+    height: 920px;
+    left: 35%;
+    top: 10%;
+    background: #CEB888;
+    z-index: 20;
+}
+
+#corec-popup:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+#corec-popup:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: -1;
+}
+
+.mccutch-popup {
+    display: none;
+    position: fixed;
+    width: 350px;
+    height: 920px;
+    left: 35%;
+    top: 10%;
+    background: #CEB888;
+    z-index: 20;
+}
+
+#mccutch-popup:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+#mccutch-popup:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: -1;
+}
+
+.rossade-popup {
+    display: none;
+    position: fixed;
+    width: 350px;
+    height: 920px;
+    left: 35%;
+    top: 10%;
+    background: #CEB888;
+    z-index: 20;
+}
+
+#rossade-popup:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+#rossade-popup:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: -1;
+}
+
+.nw-popup {
+    display: none;
+    position: fixed;
+    width: 350px;
+    height: 920px;
+    left: 35%;
+    top: 10%;
+    background: #CEB888;
+    z-index: 20;
+}
+
+#nw-popup:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+#nw-popup:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: -1;
+}
+
+.univ-popup {
+    display: none;
+    position: fixed;
+    width: 350px;
+    height: 920px;
+    left: 35%;
+    top: 10%;
+    background: #CEB888;
+    z-index: 20;
+}
+
+#univ-popup:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+#univ-popup:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: -1;
+}
+
+.grant-popup {
+    display: none;
+    position: fixed;
+    width: 350px;
+    height: 920px;
+    left: 35%;
+    top: 10%;
+    background: #CEB888;
+    z-index: 20;
+}
+
+#grant-popup:after {
+    position: fixed;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: -2;
+}
+
+#grant-popup:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: #FFF;
+    z-index: -1;
+}
+
+
+.inside {
+    background-color: #CEB888;
+    height: 920px;
+    width: 350px;
+}
+
+.permit_pic  {
+    text-indent: 14px;
+    float: left;
+    margin: 0 15px 0 0;
+}
+
+.hours {
+    clear: left
+}
+
+.hours_pic {
+    text-indent: 5px;
+    float: left;
+    clear: left;
+    margin: 0 15px 0 0;
+}
+
+.spots {
+    clear: left
+}
+
+.spots_pic {
+    text-indent: 5px;
+    float: left;
+    clear: left;
+    margin: 0 15px 0 0;
+}
+
+.reserve-button {
+    height: 100px;
+    width: 340px;
+    background-color:#CEB888;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.reserve-button:hover {background-color: #B89954; transition: .3s;}
+
+.close {
+    height: 100px;
+    width: 340px;
+    background-color:#CEB888;
+    cursor: pointer;
+    margin-left: 5px;
+    border-radius: 15px;
+    font-size: 16px;
+}
+
+.close:hover {background-color: #B89954; transition: .3s;}
