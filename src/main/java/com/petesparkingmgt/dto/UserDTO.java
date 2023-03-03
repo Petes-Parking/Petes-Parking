@@ -2,6 +2,7 @@ package com.petesparkingmgt.dto;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -67,6 +68,9 @@ public class UserDTO extends BaseDTO {
 				+ ", email=" + email + ", password=" + password + ", phoneNumber="
 				+ phoneNumber + ", userRole=" + userRole + " , points=" + points+"]";
 	}
+
+
+
 
 
 

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,11 +69,13 @@ public class BookingCtl {
 		}else {
 			BookingDTO bean = form.getDTO();
 			bean.setId(0);
-		    SlotDTO slotDTO =	slotDAO.findById(bean.getSlotId());			
+		    SlotDTO slotDTO =	slotDAO.findById(bean.getSlotId());
 			bean.setSlot(slotDTO.getSlot());
 			bean.setSlotId(slotDTO.getId());
 			bean.setStatus("Cancel");
 			service.Add(bean);
+//			UserDTO user = (UserDTO) model.getAttribute("user");
+//			user.setPoints(user.getPoints() + PointsManager.getPointsForHistory(null));
 			model.addAttribute("success", "Booking successfully");
 			return "booking";
 		}}catch (RecordNotFoundException e) {
