@@ -241,4 +241,12 @@ public class DataUtility {
 		System.out.println(getTime("02:03:22"));
 	}
 
+	public static boolean containsUpperCaseLetter(String password) {
+		for (int i = 0; i < password.length(); i++) {
+			char j = password.charAt(i);
+			if (Character.isUpperCase(j)) return true;
+		}
+
+		return false;
+	}
 }

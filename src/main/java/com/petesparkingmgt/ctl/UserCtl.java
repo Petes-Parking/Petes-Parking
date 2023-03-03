@@ -40,6 +40,8 @@ public class UserCtl {
 			model.addAttribute("email", form.getEmail());
 			model.addAttribute("gender", form.getGender());
 			model.addAttribute("password", form.getPassword());
+			model.addAttribute("password2", form.getPassword2());
+
 			model.addAttribute("firstName", form.getFirstName());
 			model.addAttribute("lastName", form.getLastName());
 			model.addAttribute("phoneNumber", form.getPhoneNumber());
@@ -49,6 +51,8 @@ public class UserCtl {
 			model.addAttribute("email", "email");
 			model.addAttribute("gender", "gender");
 			model.addAttribute("password", "password");
+			model.addAttribute("password2", "password2");
+
 			model.addAttribute("firstName", "firstName");
 			model.addAttribute("lastName", "lastName");
 			model.addAttribute("phoneNumber", "pnum");
@@ -82,11 +86,28 @@ public class UserCtl {
 			model.addAttribute("email", form.getEmail());
 			model.addAttribute("gender", form.getGender());
 			model.addAttribute("password", form.getPassword());
+			model.addAttribute("password2", form.getPassword2());
+
 			model.addAttribute("firstName", form.getFirstName());
 			model.addAttribute("lastName", form.getLastName());
 			model.addAttribute("phoneNumber", form.getPhoneNumber());
 			model.addAttribute("dob", form.getDob());
 
+			if(form.getPassword().length() < 8) {
+				model.addAttribute("error", "Password needs at least 8 characters!");
+				return "register";
+			}
+
+			if (!form.getPassword().equals(form.getPassword2())) {
+				System.out.println("Passwords not equal!");
+				model.addAttribute("error", "Passwords do not match!");
+				return "register";
+			}
+
+			if (!DataUtility.containsUpperCaseLetter(form.getPassword())) {
+				model.addAttribute("error", "Password must have at least one uppercase character");
+				return "register";
+			}
 			if (!DataUtility.isAbove16(form.getDob())) {
 				System.out.println("Minor detected!");
 				model.addAttribute("error", "You must be at least 16 to use!");
@@ -100,6 +121,8 @@ public class UserCtl {
 			model.addAttribute("email", "email");
 			model.addAttribute("gender", "gender");
 			model.addAttribute("password", "password");
+			model.addAttribute("password2", "password2");
+
 			model.addAttribute("firstName", "firstName");
 			model.addAttribute("lastName", "lastName");
 			model.addAttribute("phoneNumber", "pnum");

@@ -39,6 +39,10 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "password", length = 755)
 	private String password;
 
+
+	@Column(name = "password2", length = 755)
+	private String password2;
+
 	@Column(name = "phoneNumber", length = 755)
 	private String phoneNumber;
 

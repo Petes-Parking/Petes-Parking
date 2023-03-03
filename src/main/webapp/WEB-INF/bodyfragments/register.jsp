@@ -64,7 +64,12 @@
                 <sf:input class="text-field" id="pword" type="password" placeholder="Password"  name="password"  path="password"/><br><br>
                 <label for="pword2">Enter password again</label><br>
             </s:bind>
-            <input class="text-field" id="pword2" type="password" placeholder="Password"   name="lname"><br><br>
+
+            <s:bind path="password2">
+            <sf:input class="text-field" id="pword2" type="password" placeholder="Password"  path="password2" name="password2"/><br><br>
+            </s:bind>
+
+
             <div style="float: right; margin-top: -175px; margin-right: 200px">
                 <s:bind path="firstName">
                     <label for="firstName">First name: </label><br>
