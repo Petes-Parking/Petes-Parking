@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxfuligni
@@ -11,7 +12,6 @@
 <head>
     <meta charset="UTF-8">
     <title>view-history</title>
-    <link href="register-box.css" rel="stylesheet" type="text/css">
 </head>
 <style type="text/css">
     <%@include file="/WEB-INF/css/adminview-box.css"%>
@@ -31,14 +31,15 @@
 
     <div>
 
+        <c:if test="${not empty dateList}">
         <ul>
-            <li>John Doe</li>
-            <li>Purdue Pete</li>
-            <li>John Doe</li>
-
-
-
+            <c:forEach items="${dateList}" var="dateList">
+                <li style=""> ${dateList}
+                </li>
+            </c:forEach>
         </ul>
+    </div>
+    </c:if>
 
         <a href="/PeteParkingMgt/adminview">
 

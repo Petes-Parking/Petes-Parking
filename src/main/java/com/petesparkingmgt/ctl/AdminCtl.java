@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AdminCtl {
@@ -28,9 +29,20 @@ public class AdminCtl {
         return "adminview";
     }
 
-    @GetMapping("/viewuser")
+    @PostMapping("/viewuser")
     public String adminViewPage(@ModelAttribute("form") UserForm form, Model model){
-        return "";
+
+        System.out.println("Dates--" + form.getDTO().getBdate1());
+        if (form.getDTO().getBdate1() != null) {
+            model.addAttribute("dateList", form.getDTO().getBdate1());
+            model.addAttribute("datesList", form.getDTO().getBdate2());
+            model.addAttribute("datesList", form.getDTO().getBdate3());
+        } else {
+            model.addAttribute("dateList", "No history yet!");
+
+        }
+
+        return "adminviewhistory";
     }
 
 

@@ -36,7 +36,11 @@
             <c:if test="${not empty userlist}">
                     <ul>
                         <c:forEach items="${userlist}" var="userlist">
-                            <li style="">${userlist}</li>
+                            <li style="">
+                                <form method="post" action="${pageContext.request.contextPath}/viewuser">
+                                <input type="submit" value="${userlist}">
+                                </form>
+                            </li>
                         </c:forEach>
                     </ul>
                 </div>

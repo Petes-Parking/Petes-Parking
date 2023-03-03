@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.petesparkingmgt.dto.UserDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface UserDAO extends JpaRepository<UserDTO, Long> {
@@ -15,6 +16,7 @@ public interface UserDAO extends JpaRepository<UserDTO, Long> {
 	public UserDTO findById(long id);
 
 	public List<UserDTO> findAll();
+
 
 
 }
