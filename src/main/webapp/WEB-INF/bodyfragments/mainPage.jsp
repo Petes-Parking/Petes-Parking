@@ -76,7 +76,9 @@
 </div>
 <div class="zoom_outer" width="1400" align="right" height="1230">
     <div id="zoom" width="1400" height="1230" align="right">
-        <button class="corecbutton"></button>
+        <a href="${pageContext.request.contextPath}/lot">
+            <button class="corecbutton"></button>
+        </a>
         <button class="nwbutton"></button>
         <button class="univbutton"></button>
         <button class="rossbutton"></button>

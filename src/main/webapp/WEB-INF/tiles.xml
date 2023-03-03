@@ -111,5 +111,11 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/mainPage.jsp" />
     </definition>
 
+        <!-- Parking Lot -->
+    <definition name="parking-lot" extends="base.definition">
+        <put-attribute name="title" value="Parking Lot" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/parking-lot.jsp" />
+    </definition>
+
 
 </tiles-definitions> 
