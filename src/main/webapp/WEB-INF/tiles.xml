@@ -41,6 +41,13 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/helpPage.jsp" />
     </definition>
 
+    <!-- Email Sent Page  -->
+    <definition name="email-sent" extends="base.definition">
+        <put-attribute name="title" value="EmailSent" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/email-sent.jsp" />
+    </definition>
+
+
 
     <!-- Registration Page  -->
     <definition name="register" extends="register.def">
