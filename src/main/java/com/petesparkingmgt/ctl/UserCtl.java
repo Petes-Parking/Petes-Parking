@@ -17,7 +17,6 @@ import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.UserService;
 
-import javax.xml.crypto.Data;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -25,10 +24,10 @@ import java.util.List;
 
 @Controller
 public class UserCtl {
-	
+
 	@Autowired
 	public UserService service;
-	
+
 	@Autowired
 	public UserDAO dao;
 
@@ -49,15 +48,15 @@ public class UserCtl {
 			model.addAttribute("dob", form.getDob());
 		} else {
 
-		model.addAttribute("email", "email");
-		model.addAttribute("gender", "gender");
-		model.addAttribute("password", "password");
+			model.addAttribute("email", "email");
+			model.addAttribute("gender", "gender");
+			model.addAttribute("password", "password");
 			model.addAttribute("password2", "password2");
 
 			model.addAttribute("firstName", "firstName");
-		model.addAttribute("lastName", "lastName");
-		model.addAttribute("phoneNumber", "pnum");
-		model.addAttribute("dob", "dobb");
+			model.addAttribute("lastName", "lastName");
+			model.addAttribute("phoneNumber", "pnum");
+			model.addAttribute("dob", "dobb");
 		}
 
 
@@ -76,11 +75,11 @@ public class UserCtl {
 
 	@GetMapping("/resetpassword")
 	public String resetPasswordPage(@ModelAttribute("form") UserForm form) { return "resetpassword"; }
-	
+
 	@PostMapping("/addUser")
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
-		
-	UserDTO user =	dao.findByEmail(form.getEmail());
+
+		UserDTO user =	dao.findByEmail(form.getEmail());
 		if (form.getEmail() != null) {
 
 			System.out.println(form.toString() + "-bang");
@@ -99,21 +98,29 @@ public class UserCtl {
 				return "register";
 			}
 
-			if (!DataUtility.containsUpperCaseLetter(form.getPassword())) {
-				model.addAttribute("error", "Password must have at least one uppercase character");
-				return "register";
-			}
-
-			if (!DataUtility.isAbove16(form.getDob())) {
-				System.out.println("Minor detected!");
-				model.addAttribute("error", "You must be at least 16 to use!");
-				return "register";
-			}
 			if (!form.getPassword().equals(form.getPassword2())) {
 				System.out.println("Passwords not equal!");
 				model.addAttribute("error", "Passwords do not match!");
 				return "register";
 			}
+			if (form.getDob().equals("") || form.getFirstName().equals("") || form.getLastName().equals("") ||
+					form.getPhoneNumber().equals("") ){
+				model.addAttribute("error", "Please enter all fields!");
+				return "register";
+			}
+
+			if (!DataUtility.containsUpperCaseLetter(form.getPassword())) {
+				model.addAttribute("error", "Password must have at least one uppercase character");
+				return "register";
+			}
+			if (!DataUtility.isAbove16(form.getDob())) {
+				System.out.println("Minor detected!");
+				model.addAttribute("error", "You must be at least 16 to use!");
+				return "register";
+			}
+
+
+
 
 
 		} else {
@@ -122,7 +129,7 @@ public class UserCtl {
 			model.addAttribute("email", "email");
 			model.addAttribute("gender", "gender");
 			model.addAttribute("password", "password");
-			model.addAttribute("password", "password2");
+			model.addAttribute("password2", "password2");
 
 			model.addAttribute("firstName", "firstName");
 			model.addAttribute("lastName", "lastName");
@@ -132,18 +139,18 @@ public class UserCtl {
 
 		if(user == null) {
 
-		UserDTO dto = form.getDTO();
-		service.add(dto);
+			UserDTO dto = form.getDTO();
+			service.add(dto);
 
-		model.addAttribute("success", "User registration success");
-	}else {
-		model.addAttribute("error", "Duplicate emails are not allowed!");
-	}
-		
-	
-		
+			model.addAttribute("success", "User registration success");
+		}else {
+			model.addAttribute("error", "Duplicate emails are not allowed!");
+		}
+
+
+
 		return "register";
-		
+
 	}
 
 	@PostMapping("/map")
@@ -151,6 +158,6 @@ public class UserCtl {
 
 		return "welcome";
 	}
-	
+
 
 }

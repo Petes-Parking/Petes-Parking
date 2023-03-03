@@ -15,8 +15,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDTO extends BaseDTO {
-	
-	
+
+
 	@Column(name = "firstName", length = 755)
 	private String firstName;
 
@@ -25,25 +25,27 @@ public class UserDTO extends BaseDTO {
 
 	@Column(name = "lastName", length = 755)
 	private String lastName;
-	
+
 	@Column(name = "dob")
 	private String dob;
-	
+
 	@Column(name = "gender", length = 755)
 	private String gender;
 
 
-	private String password2;
-	
 	@Column(name = "email", length = 755)
 	private String email;
-	
+
 	@Column(name = "password", length = 755)
 	private String password;
-	
+
+
+	@Column(name = "password2", length = 755)
+	private String password2;
+
 	@Column(name = "phoneNumber", length = 755)
 	private String phoneNumber;
-	
+
 	@Column(name = "userRole", length = 755)
 	private String userRole;
 
@@ -65,9 +67,8 @@ public class UserDTO extends BaseDTO {
 				+ ", email=" + email + ", password=" + password + ", phoneNumber="
 				+ phoneNumber + ", userRole=" + userRole + " , points=" + points+"]";
 	}
-	
-	
-	
-	
-}
 
+
+
+
+}

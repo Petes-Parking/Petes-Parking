@@ -19,15 +19,15 @@ public class DataUtility {
 	public static final String APP_DATE_FORMAT = "MM/dd/yyyy";
 
 	private static final SimpleDateFormat formatter = new SimpleDateFormat(APP_DATE_FORMAT);
-	
+
 	public static final String APP_DATE_FORMAT1 = "yyyy-MM-dd";
-	
+
 	public static final String APP_TIME_FORMAT = "hh:mm";
-	
+
 	private static final SimpleDateFormat timeFormatter = new SimpleDateFormat(APP_TIME_FORMAT);
 
 	private static final SimpleDateFormat formatter1 = new SimpleDateFormat(APP_DATE_FORMAT1);
-	
+
 
 
 	public static String getString(String val) {
@@ -72,7 +72,7 @@ public class DataUtility {
 		}
 		return date;
 	}
-	
+
 	public static Date getTime(String val) {
 		Date date = null;
 		try {
@@ -107,7 +107,7 @@ public class DataUtility {
 		}
 
 	}
-	
+
 	public static String getDateString1(Date date) {
 
 		try {
@@ -181,21 +181,6 @@ public class DataUtility {
 
 	}
 
-
-	/**
-	 *
-	 * @param password
-	 * @return if password contains an uppercase character
-	 */
-	public static boolean containsUpperCaseLetter(String password) {
-		for (int i = 0; i < password.length(); i++) {
-			char j = password.charAt(i);
-			if (Character.isUpperCase(j)) return true;
-		}
-
-		return false;
-	}
-
 	public static String generatePassword() {
 		String capitalCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";
@@ -256,4 +241,12 @@ public class DataUtility {
 		System.out.println(getTime("02:03:22"));
 	}
 
+	public static boolean containsUpperCaseLetter(String password) {
+		for (int i = 0; i < password.length(); i++) {
+			char j = password.charAt(i);
+			if (Character.isUpperCase(j)) return true;
+		}
+
+		return false;
+	}
 }

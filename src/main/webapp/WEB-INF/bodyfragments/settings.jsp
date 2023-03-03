@@ -118,7 +118,7 @@
 </head>
 <body>
 <div class="container">
-  <a href="${pageContext.request.contextPath}/mainPage">
+  <a href="${pageContext.request.contextPath}/auth">
     <p id="return" href="/mainPage">< Return to main page</p><br><br>
   </a>
   <h1>Settings</h1>

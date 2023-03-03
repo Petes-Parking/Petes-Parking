@@ -16,16 +16,16 @@ import com.petesparkingmgt.form.UserForm;
 
 @Controller
 public class LoginCtl {
-	
+
 	@Autowired
 	public UserService service;
-	
+
 	@GetMapping("/login")
 	public String loginPage() {
 		return "home";
 	}
-	
-	
+
+
 	@GetMapping("/logout")
 	public String logout(HttpSession session, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
@@ -35,23 +35,21 @@ public class LoginCtl {
 		}
 		return "home";
 	}
-	
-	
+
+
 
 	@PostMapping("/auth")
 	public String Login(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
 
-	  UserDTO user = service.login(form.getEmail(), form.getPassword());
-	  if(user == null) {
-		  model.addAttribute("error", "Invalid username/password or register an account.");
-	  }else {
-		  session.setAttribute("user", user);
-		  return "mainPage";
-	  }
+		UserDTO user = 	service.login(form.getEmail(), form.getPassword());
+		if(user == null) {
+			model.addAttribute("error", "Invalid username/password or register an account.");
+		}else {
+			session.setAttribute("user", user);
+			return "mainPage";
+		}
 		return "home";
 	}
-
-
 
 
 

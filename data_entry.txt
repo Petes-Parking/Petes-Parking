@@ -1,0 +1,87 @@
+// Copy and past the below text into your MySQL workbench and run it
+
+
+INSERT INTO parking (address, number_of_slot, parking_name)
+VALUES ("France A. Córdova Recreational Sports Center
+        355 N Martin Jischke Dr, West Lafayette, IN 47906", 10, "Corec Parking Lot");
+
+INSERT INTO parking (address, number_of_slot, parking_name)
+VALUES ("McCutcheon Drive Parking GarageWest Lafayette, IN 47906
+", 9, "McCutcheon Drive Parking Garage");
+
+
+INSERT INTO parking (address, number_of_slot, parking_name)
+VALUES ("University St. Parking Garage", 9, "University St. Parking Garage");
+
+INSERT INTO parking (address, number_of_slot, parking_name)
+VALUES ("850 Steven Beering Drive, West Lafayette, IN 47906", 5, "Ross-Ade Stadium Parking Lot");
+
+INSERT INTO parking (address, number_of_slot, parking_name)
+VALUES ("504 Northwestern Ave, West Lafayette, IN 47906", 7, "Northwestern St. Parking Garage");
+
+INSERT INTO parking (address, number_of_slot, parking_name)
+VALUES ("120 Grant St, West Lafayette, IN 47906" , 5, "Grant St. Parking Garage");
+
+
+
+// Manual insertion of slots per area.
+
+// Corec Slots
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 1, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 2, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 3, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 4, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 5, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 6, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 7, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 8, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 9, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (1, 10, 1);
+
+
+//McCutchen Drive Slots
+
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 1, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 2, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 3, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 4, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 5, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 6, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 7, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 8, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (2, 9, 1);
+
+// univeresity parking slots
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 1, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 2, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 3, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 4, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 5, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 6, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 7, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 8, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (3, 9, 1);
+
+// Ross-Ade
+INSERT INTO slots (parking_id, slot, status) VALUES (4, 1, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (4, 2, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (4, 3, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (4, 4, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (4, 5, 1);
+
+// Northwestern
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 1, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 2, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 3, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 4, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 5, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 6, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (5, 7, 1);
+
+
+// Grant St Slots
+INSERT INTO slots (parking_id, slot, status) VALUES (6, 1, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (6, 2, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (6, 3, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (6, 4, 1);
+INSERT INTO slots (parking_id, slot, status) VALUES (6, 5, 1);
