@@ -142,7 +142,10 @@
         <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" id="clickable-image" width="210" height="210" alt=""/>
         <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="trash-image" onclick="deleteImage()"/>
         <p1>John Purdue</p1>
-        <button class="logout-button" type="button"> Log Out</button>
+        <a href="${pageContext.request.contextPath}/logout">
+            <button class="logout-button" type="button"> Log Out</button>
+        </a>
+
 
     </div>
     <div class="user_info">

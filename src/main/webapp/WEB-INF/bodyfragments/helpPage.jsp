@@ -18,6 +18,7 @@
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      text-align: center;
     }
 
     h1 {
@@ -52,35 +53,29 @@
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       cursor: pointer;
+      width:100%;
     }
 
     button:hover {
       background-color: #555;
     }
-    .buttonCancel{
-      margin-top: 30px;
-      margin-left: 720px ;
 
-    }
-    .logo{
-      margin-left: 290px;
-    }
 
 
   </style>
 </head>
 <body>
 <div class="container">
-  <img  class = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png" width="200" height="200" alt="" />
+  <img  class = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png" width="250" height="250" alt="" />
   <h1>Need Help?</h1>
   <form action="" method="post">
     <label for="email">You can contact us by sending an email about your issues. We will responde within 3 business days.</label>
     <input type="email" id="email" name="email" placeholder="Enter email address here" required>
     <input type="text" id="question" name="question" placeholder="Explain your issues or ask a question here" required>
-    <button type="submit">Submit</button>
+    <button type="submit">Submit</button> <br>
 
     <a href="${pageContext.request.contextPath}/login">
-      <button class = "buttonCancel" type="button" >Cancel</button>
+      <button type="button" >Cancel</button>
     </a>
   </form>
 </div>
