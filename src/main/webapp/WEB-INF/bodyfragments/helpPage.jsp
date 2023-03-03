@@ -68,11 +68,11 @@
 <div class="container">
   <img  class = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png" width="250" height="250" alt="" />
   <h1>Need Help?</h1>
-  <form action="" method="post">
-    <label for="email">You can contact us by sending an email about your issues. We will responde within 3 business days.</label>
+  <form action="mailto:petesparkingapp@gmail.com" method="get" enctype="text/plain">
+    <label for="email">You can contact us by sending an email about your issues. We will respond within 2 business days.</label>
     <input type="email" id="email" name="email" placeholder="Enter email address here" required>
     <input type="text" id="question" name="question" placeholder="Explain your issues or ask a question here" required>
-    <button type="submit">Submit</button> <br>
+    <button type="submit" value="submit">Submit</button> <br>
 
     <a href="${pageContext.request.contextPath}/login">
       <button type="button" >Cancel</button>
