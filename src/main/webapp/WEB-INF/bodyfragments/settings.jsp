@@ -118,17 +118,22 @@
 </head>
 <body>
 <div class="container">
-  <a href="${pageContext.request.contextPath}/auth">
-    <p id="return" href="/mainPage">< Return to main page</p><br><br>
+  <a href="${pageContext.request.contextPath}/main">
+    <p id="return" href="/main">< Return to main page</p><br><br>
   </a>
   <h1>Settings</h1>
+  <s:bind path="mode">
   <h3>Toggle between light mode and dark mode:</h3>
   <input type="radio" id="lightmode" name="mode" value="light">
   <label for="lightmode">Light mode</label><br>
   <input type="radio" id="darkmode" name="mode" value="dark">
   <label for="darkmode">Dark mode</label><br><br>
+  </s:bind>
+
+  <s:bind path="hexColor">
   <label for="color-input">Background Color (Hexadecimal):</label>
   <input type="text" id="color-input" name="color" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})?$"><br><br>
+  </s:bind>
   <button id="save-button" type="submit">Save</button><br>
 </div>
 <div id="popup" class="popup">

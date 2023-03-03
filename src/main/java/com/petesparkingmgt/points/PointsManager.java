@@ -35,7 +35,7 @@ public class PointsManager {
     static int base = 20; /* Can scale base by increasing or decreasing this value to adjust our point economy */
 
     public static int getPointsForHistory(List<LocalDate> lastThreeBookings){
-        if(lastThreeBookings.isEmpty()){
+        if(lastThreeBookings == null || lastThreeBookings.isEmpty()){
             return base;
         }
 

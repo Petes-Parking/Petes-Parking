@@ -209,7 +209,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-500%, -90%);
-    background-color: #555;
+    background-color: #373A36;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -225,7 +225,7 @@
     top: 50%;
     left: 50%;
     transform: translate(640%, -10%);
-    background-color: #555;
+    background-color: #373A36;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -241,7 +241,7 @@
     top: 50%;
     left: 50%;
     transform: translate(135%, 290%);
-    background-color: #555;
+    background-color: #373A36;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -257,7 +257,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-15%, -760%);
-    background-color: #555;
+    background-color: #373A36;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -273,7 +273,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-915%, 220%);
-    background-color: #555;
+    background-color: #373A36;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -289,7 +289,7 @@
     top: 50%;
     left: 50%;
     transform: translate(990%, 455%);
-    background-color: #555;
+    background-color: #373A36;
     color: white;
     font-size: 16px;
     padding: 12px 24px;
@@ -301,22 +301,34 @@
     height: 80px;
 }
 .zoom_outer .corecbutton:hover {
-    background-color: black;
+    transition: .3s;
+    border-radius: 15px;
+    background-color: #CEB888;
 }
 .zoom_outer .nwbutton:hover {
-    background-color: black;
+    transition: .3s;
+    border-radius: 15px;
+    background-color: #CEB888;
 }
 .zoom_outer .univbutton:hover {
-    background-color: black;
+    transition: .3s;
+    border-radius: 15px;
+    background-color: #CEB888;
 }
 .zoom_outer .rossbutton:hover {
-    background-color: black;
+    transition: .3s;
+    border-radius: 15px;
+    background-color: #CEB888;
 }
 .zoom_outer .mccutchbutton:hover {
-    background-color: black;
+    transition: .3s;
+    border-radius: 15px;
+    background-color: #CEB888;
 }
 .zoom_outer .grantbutton:hover {
-    background-color: black;
+    transition: .3s;
+    border-radius: 15px;
+    background-color: #CEB888;
 }
 
 .corec-popup {

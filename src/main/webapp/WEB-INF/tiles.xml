@@ -55,6 +55,19 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/register.jsp" />
     </definition>
 
+    <!-- Admin Page  -->
+    <definition name="adminview" extends="base.definition">
+        <put-attribute name="title" value="Admin View" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/adminview.jsp" />
+    </definition>
+
+    <!-- Admin Page  -->
+    <definition name="adminviewhistory" extends="base.definition">
+        <put-attribute name="title" value="Admin View history" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/adminviewhistory.jsp" />
+    </definition>
+
+
 
     <!-- Forgot Password Page  -->
     <definition name="forgotpassword" extends="base.definition">

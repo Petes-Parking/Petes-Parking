@@ -208,11 +208,9 @@
             </div>
         </form>
     </div>
-    <a href="${pageContext.request.contextPath}/main">
-        <button class="Save-button" type="button"> Save Changes</button>
-    </a>
-
-    <button class="delete-button" type="button" onclick="showPopup1()">Delete Account</button>
+    <button class="Save-button" type="button"> Save Changes</button>
+    <button class="delete-button" type="button" onclick="showPopup1()">
+    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Delete Account</a></button>
 
 </div>
 
