@@ -130,6 +130,7 @@
   closeButton.addEventListener("click", () => {
     // Hide the popup
     popup.style.display = "none";
+    window.location.href = "${pageContext.request.contextPath}/login";
   });
 </script>
 </body>
