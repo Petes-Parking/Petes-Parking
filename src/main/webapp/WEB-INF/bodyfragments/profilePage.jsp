@@ -11,6 +11,9 @@
                 alert("You clicked No.");
             }
         }
+        function showPopup1() {
+            confirm("Are you sure you want to delete your account?");
+        }
     </script>
     <link href="../css/profile-page.css" rel="stylesheet" type="text/css">
     <style type="text/css">
@@ -88,18 +91,28 @@
         .box1{
             margin-left: 50px;
         }
+        button{
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
     </style>
 </head>
 
 <body>
 <div class = "box1" >
     <div class="profile_pic">
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" width="150" height="150" alt=""/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" width="150" height="150" alt="" />
         <img class = "trash"  src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="15px" height="15px" alt=""  id="deletePic" onclick="showPopup()"/>
         <p1>John Purdue</p1>
     </div>
-    <div class="user_info">
 
+    <div class="user_info">
+        <button class = "edit" type="button" >Edit</button>
         <form action="/action_page.php">
             <div class="userdiv">
                 <p2>Username:</p2><br>
@@ -159,8 +172,13 @@
             </div>
         </form>
     </div>
-    <button class="delete-button">Delete Account</button>
-    <button class="save-button">Save Changes</button>
+    <button class="delete-button" type="button" onclick="showPopup1()">Delete Account</button>
+    <button class="Save-button" type="button"> Save Changes</button>
+
+<%--    <a href="${pageContext.request.contextPath}/help">--%>
+<%--        <input type ="button" action="${pageContext.request.contextPath}/map" class="save-button">Save Changes</input>--%>
+<%--    </a>--%>
+
 </div>
 </body>
 </html>

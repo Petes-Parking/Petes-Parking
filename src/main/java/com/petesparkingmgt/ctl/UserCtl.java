@@ -118,6 +118,12 @@ public class UserCtl {
 		return "register";
 		
 	}
+
+	@PostMapping("/map")
+	public String mapPage(@ModelAttribute("form") UserForm form, Model model) {
+
+		return "welcome";
+	}
 	
 
 }
