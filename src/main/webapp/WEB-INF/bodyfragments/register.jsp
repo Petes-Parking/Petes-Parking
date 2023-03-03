@@ -44,10 +44,20 @@
         <div class="alert alert-danger">
             <ul>
                 <c:forEach items="${error}" var="error">
-                    <li style="font-size: 15px; color: red">${error}</li>
+                    <li style="font-size: 20px; color: red">${error}</li>
                 </c:forEach>
             </ul>
         </div>
+    </c:if>
+
+    <c:if test="${not empty success}">
+    <div class="alert alert-danger">
+        <ul>
+            <c:forEach items="${success}" var="error">
+                <li style="font-size: 20px; color: limegreen">${success}</li>
+            </c:forEach>
+        </ul>
+    </div>
     </c:if>
     <img id = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png"  alt=""/>
     <div id ="register-input-box">

@@ -103,6 +103,11 @@ public class UserCtl {
 				model.addAttribute("error", "Passwords do not match!");
 				return "register";
 			}
+			if (form.getDob().equals("") || form.getFirstName().equals("") || form.getLastName().equals("") ||
+					form.getPhoneNumber().equals("") ){
+				model.addAttribute("error", "Please enter all fields!");
+				return "register";
+			}
 
 			if (!DataUtility.containsUpperCaseLetter(form.getPassword())) {
 				model.addAttribute("error", "Password must have at least one uppercase character");
@@ -113,6 +118,9 @@ public class UserCtl {
 				model.addAttribute("error", "You must be at least 16 to use!");
 				return "register";
 			}
+
+
+
 
 
 		} else {
