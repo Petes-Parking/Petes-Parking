@@ -181,6 +181,21 @@ public class DataUtility {
 
 	}
 
+
+	/**
+	 *
+	 * @param password
+	 * @return if password contains an uppercase character
+	 */
+	public static boolean containsUpperCaseLetter(String password) {
+		for (int i = 0; i < password.length(); i++) {
+			char j = password.charAt(i);
+			if (Character.isUpperCase(j)) return true;
+		}
+
+		return false;
+	}
+
 	public static String generatePassword() {
 		String capitalCaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		String lowerCaseLetters = "abcdefghijklmnopqrstuvwxyz";

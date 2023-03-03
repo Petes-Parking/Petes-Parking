@@ -33,7 +33,7 @@
         <div class="spots_pic">
           <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/car-image.png" height="40" alt=""/>
         </div>
-        <p style="padding-top: 10px">15/100 Spots Available</p>
+        <p style="padding-top: 10px">100 Total Spots</p>
       </div>
     </div>
   </div>

@@ -43,7 +43,7 @@
 
 
     <!-- Registration Page  -->
-    <definition name="register" extends="base.definition">
+    <definition name="register" extends="register.def">
         <put-attribute name="title" value="Register" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/register.jsp" />
     </definition>
@@ -80,20 +80,20 @@
     </definition>
     
     
-            <!-- User List Vpage  -->
+    <!-- User List Vpage  -->
     <definition name="userList" extends="base.definition">  
         <put-attribute name="title" value="UserList" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/userListView.jsp" />  
     </definition>
     
         
-            <!-- Parking List View -->
+    <!-- Parking List View -->
     <definition name="parkinglist" extends="base.definition">  
         <put-attribute name="title" value="Parkinglist" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/parkinglistview.jsp" />  
     </definition>
     
-               <!-- Booking View  -->
+    <!-- Booking View  -->
     <definition name="booking" extends="base.definition">  
         <put-attribute name="title" value="Booking View" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/bookingview.jsp" />  
@@ -112,7 +112,7 @@
     </definition>
 
         <!-- Main Page -->
-    <definition name="mainPage" extends="base.definition">
+    <definition name="mainPage" extends="register.def">
         <put-attribute name="title" value="Main Page" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/mainPage.jsp" />
     </definition>

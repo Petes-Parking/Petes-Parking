@@ -118,7 +118,9 @@
 </head>
 <body>
 <div class="container">
-  <p>< Return to main page</p><br><br>
+  <a href="${pageContext.request.contextPath}/mainPage">
+    <p id="return" href="/mainPage">< Return to main page</p><br><br>
+  </a>
   <h1>Settings</h1>
   <h3>Toggle between light mode and dark mode:</h3>
   <input type="radio" id="lightmode" name="mode" value="light">

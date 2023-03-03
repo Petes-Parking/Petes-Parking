@@ -14,7 +14,7 @@
 
 <div class="container" >
 
-<h2 style="padding: 30px">Parking List</h2>
+<h2 style="padding: 30px"> Parking List</h2>
 <%@include file="businessMessage.jsp" %>
 <table class="table bg-light text-dark">
   <thead>

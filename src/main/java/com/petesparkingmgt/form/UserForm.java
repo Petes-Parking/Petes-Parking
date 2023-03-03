@@ -33,6 +33,9 @@ public class UserForm extends BaseDTO {
 	
 	@NotEmpty(message = "First name is required")
 	private String password;
+
+
+	private String password2;
 	
 	@NotEmpty(message = "First name is required")
 	private String phoneNumber;
@@ -42,7 +45,9 @@ public class UserForm extends BaseDTO {
 
 	private int points;
 
-	
+
+
+
 	
 	public UserDTO getDTO() {
 		UserDTO bean=new UserDTO();
@@ -56,6 +61,7 @@ public class UserForm extends BaseDTO {
 		bean.setPhoneNumber(phoneNumber);
 		bean.setUserRole(userRole);
 		bean.setPoints(points);
+		bean.setPassword2(password2);
 
 		return bean;
 	}
