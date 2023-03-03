@@ -25,10 +25,10 @@ import java.util.List;
 
 @Controller
 public class UserCtl {
-	
+
 	@Autowired
 	public UserService service;
-	
+
 	@Autowired
 	public UserDAO dao;
 
@@ -49,15 +49,15 @@ public class UserCtl {
 			model.addAttribute("dob", form.getDob());
 		} else {
 
-		model.addAttribute("email", "email");
-		model.addAttribute("gender", "gender");
-		model.addAttribute("password", "password");
+			model.addAttribute("email", "email");
+			model.addAttribute("gender", "gender");
+			model.addAttribute("password", "password");
 			model.addAttribute("password2", "password2");
 
 			model.addAttribute("firstName", "firstName");
-		model.addAttribute("lastName", "lastName");
-		model.addAttribute("phoneNumber", "pnum");
-		model.addAttribute("dob", "dobb");
+			model.addAttribute("lastName", "lastName");
+			model.addAttribute("phoneNumber", "pnum");
+			model.addAttribute("dob", "dobb");
 		}
 
 
@@ -76,11 +76,11 @@ public class UserCtl {
 
 	@GetMapping("/resetpassword")
 	public String resetPasswordPage(@ModelAttribute("form") UserForm form) { return "resetpassword"; }
-	
+
 	@PostMapping("/addUser")
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
-		
-	UserDTO user =	dao.findByEmail(form.getEmail());
+
+		UserDTO user =	dao.findByEmail(form.getEmail());
 		if (form.getEmail() != null) {
 
 			System.out.println(form.toString() + "-bang");
@@ -132,18 +132,18 @@ public class UserCtl {
 
 		if(user == null) {
 
-		UserDTO dto = form.getDTO();
-		service.add(dto);
+			UserDTO dto = form.getDTO();
+			service.add(dto);
 
-		model.addAttribute("success", "User registration success");
-	}else {
-		model.addAttribute("error", "Duplicate emails are not allowed!");
-	}
-		
-	
-		
+			model.addAttribute("success", "User registration success");
+		}else {
+			model.addAttribute("error", "Duplicate emails are not allowed!");
+		}
+
+
+
 		return "register";
-		
+
 	}
 
 	@PostMapping("/map")
@@ -151,6 +151,6 @@ public class UserCtl {
 
 		return "welcome";
 	}
-	
+
 
 }
