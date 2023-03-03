@@ -50,6 +50,11 @@ public class UserService {
 	}
 
 
+	public List<UserDTO> getAllUser() {
+		return dao.findAll();
+	}
+
+
 	
 
 }

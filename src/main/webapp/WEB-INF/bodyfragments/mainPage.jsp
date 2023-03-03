@@ -83,12 +83,12 @@
 </div>
 <div class="zoom_outer" width="1400" align="right" height="1230">
     <div id="zoom" width="1400" height="1230" align="right">
-        <button class="corecbutton", href="#", onclick="show('corec-popup')"></button>
-        <button class="nwbutton", href="#", onclick="show('nw-popup')"></button>
-        <button class="univbutton", href="#", onclick="show('univ-popup')"></button>
-        <button class="rossbutton", href="#", onclick="show('rossade-popup')"></button>
-        <button class="mccutchbutton", href="#", onclick="show('mccutch-popup')"></button>
-        <button class="grantbutton", href="#", onclick="show('grant-popup')"></button>
+        <button class="corecbutton", href="#", onclick="show('corec-popup')">CRL</button>
+        <button class="nwbutton", href="#", onclick="show('nw-popup')">NWG</button>
+        <button class="univbutton", href="#", onclick="show('univ-popup')">USG</button>
+        <button class="rossbutton", href="#", onclick="show('rossade-popup')">RAL</button>
+        <button class="mccutchbutton", href="#", onclick="show('mccutch-popup')">MCG</button>
+        <button class="grantbutton", href="#", onclick="show('grant-popup')">GSG</button>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>

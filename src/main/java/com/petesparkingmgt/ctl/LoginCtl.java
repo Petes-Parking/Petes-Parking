@@ -45,8 +45,19 @@ public class LoginCtl {
 		if(user == null) {
 			model.addAttribute("error", "Invalid username/password or register an account.");
 		}else {
-			session.setAttribute("user", user);
-			return "mainPage";
+			if (user.getUserRole().equals("Admin")) {
+				session.setAttribute("user", user);
+
+
+				for (UserDTO dto : service.getAllUser()) {
+					model.addAttribute("userlist", dto.getFirstName() + " " + dto.getLastName());
+				}
+				return "adminview";
+
+			} else {
+				session.setAttribute("user", user);
+				return "mainPage";
+			}
 		}
 		return "home";
 	}
