@@ -208,7 +208,10 @@
             </div>
         </form>
     </div>
-    <button class="Save-button" type="button"> Save Changes</button>
+    <a href="${pageContext.request.contextPath}/main">
+        <button class="Save-button" type="button"> Save Changes</button>
+    </a>
+
     <button class="delete-button" type="button" onclick="showPopup1()">Delete Account</button>
 
 </div>
