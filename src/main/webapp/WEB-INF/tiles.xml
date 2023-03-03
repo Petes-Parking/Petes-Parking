@@ -67,6 +67,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/parkingpals.jsp" />
     </definition>
 
+    <!-- Reset Password Page  -->
+    <definition name="resetpassword" extends="base.definition">
+        <put-attribute name="title" value="Reset Password" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/resetpassword.jsp" />
+    </definition>
+
     <!-- Welcome Page  -->
     <definition name="welcome" extends="base.definition">  
         <put-attribute name="title" value="Welcome" />  

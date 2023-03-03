@@ -68,6 +68,9 @@ public class UserCtl {
 	public String forgotPasswordPage(@ModelAttribute("form") UserForm form) {
 		return "forgotpassword";
 	}
+
+	@GetMapping("/resetpassword")
+	public String resetPasswordPage(@ModelAttribute("form") UserForm form) { return "resetpassword"; }
 	
 	@PostMapping("/addUser")
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
