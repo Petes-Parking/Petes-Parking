@@ -104,6 +104,9 @@
 </head>
 <body>
 <div class="container">
+  <a href="${pageContext.request.contextPath}/login">
+    <p id="return" href="/login">< Return to login page</p><br><br>
+  </a>
   <h1>Forgot Password?</h1>
   <form action="" method="post" onsubmit="event.preventDefault(); showPopup();">
     <label for="email">Please enter the email associated with your Pete's Parking account below to reset your password.</label><br>

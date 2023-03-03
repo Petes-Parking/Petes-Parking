@@ -53,7 +53,9 @@
         </div>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px;"/>
         <div class="dropdown">
-            <button class="dropbtn3">Parking Pals</button>
+            <a href="${pageContext.request.contextPath}/parkingpals">
+                <button class="dropbtn3">Parking Pals</button>
+            </a>
             <div class="dropdown-content2">
                 <a href="#">Link 7</a>
                 <a href="#">Link 8</a>
@@ -72,7 +74,9 @@
                     </div>
         -->
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-top: 210px;"/>
-        <button class="settings-button">Settings</button>
+        <a href="${pageContext.request.contextPath}/settings">
+            <button class="settings-button">Settings</button>
+        </a>
     </div>
 </div>
 <div class="zoom_outer" width="1400" align="right" height="1230">

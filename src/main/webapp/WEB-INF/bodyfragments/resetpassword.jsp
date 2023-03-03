@@ -119,12 +119,20 @@
   <button id="close-button" type="button">Close</button>
 </div>
 <script>
+  const password1Input = document.getElementById("password1");
+  const password2Input = document.getElementById("password2");
   const submitButton = document.getElementById("submit");
   const closeButton = document.getElementById("close-button");
 
   submitButton.addEventListener("click", () => {
-    // Show the popup
-    popup.style.display = "block";
+    // If the two passwords don't match, prevent the form submission
+    if (password1Input.value !== password2Input.value) {
+      event.preventDefault();
+      alert("The two passwords must match.");
+    } else {
+      // Show the popup
+      popup.style.display = "block";
+    }
   });
 
   closeButton.addEventListener("click", () => {
