@@ -73,7 +73,7 @@
 <%--    <input type="text" id="question" name="question" placeholder="Explain your issues or ask a question here" required>--%>
 
     </form>
-    <form action="submit_help_request.jsp" method="post">
+    <form action="mailto:petesparkingapp@gmail.com" method="post">
       <label for="email">You can contact us by sending an email about your issues. We will respond within 3 business days.</label>
       <input type="email" id="email" name="email" placeholder="Enter your email address here" required>
       <input type="text" id="message" name="message" placeholder="Explain your issues or ask a question here"><br>
