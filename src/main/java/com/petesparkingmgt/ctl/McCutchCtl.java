@@ -4,11 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class LotCtl {
+public class McCutchCtl {
 
-    @GetMapping("/corec")
-    public String LotPage() {
-        return "parking-lot";
+    @GetMapping("/mccutcheon")
+    public String McCutchPage() {
+        return "mccutcheon-lot";
     }
 
 

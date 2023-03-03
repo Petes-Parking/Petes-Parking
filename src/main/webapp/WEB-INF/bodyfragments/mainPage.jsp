@@ -83,13 +83,15 @@
 </div>
 <div class="zoom_outer" width="1400" align="right" height="1230">
     <div id="zoom" width="1400" height="1230" align="right">
-        <a href="${pageContext.request.contextPath}/lot">
+        <a href="${pageContext.request.contextPath}/corec">
             <button class="corecbutton"></button>
         </a>
         <button class="nwbutton"></button>
         <button class="univbutton"></button>
         <button class="rossbutton"></button>
-        <button class="mccutchbutton"></button>
+        <a href="${pageContext.request.contextPath}/mccutcheon">
+            <button class="mccutchbutton"></button>
+        </a>
         <button class="grantbutton"></button>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
