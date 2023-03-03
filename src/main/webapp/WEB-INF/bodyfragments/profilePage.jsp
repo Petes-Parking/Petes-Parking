@@ -75,14 +75,6 @@
             font-size: 20px;
             font-family: Calibri;
         }
-        p15 { /*points*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p16 { /*level*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
         body {
             background: #CEB888;
         }
@@ -102,11 +94,6 @@
 
 
     <p1>John Purdue</p1>
-
-    <div class="points_level">
-        <p15>Points: 0</p15><br>
-        <p16>Level: 1</p16>
-    </div>
 </div>
 <div class="user_info">
     <form action="/action_page.php">

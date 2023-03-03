@@ -60,6 +60,7 @@
     .buttonCancel{
       margin-top: 30px;
       margin-left: 720px ;
+
     }
     .logo{
       margin-left: 290px;
@@ -75,7 +76,7 @@
   <form action="" method="post">
     <label for="email">You can contact us by sending an email about your issues. We will responde within 3 business days.</label>
     <input type="email" id="email" name="email" placeholder="Enter email address here" required>
-    <input type="question" id="question" name="question" placeholder="Explain your issues or ask a question here" required>
+    <input type="text" id="question" name="question" placeholder="Explain your issues or ask a question here" required>
     <button type="submit">Submit</button>
 
     <a href="${pageContext.request.contextPath}/login">
