@@ -117,17 +117,5 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/mainPage.jsp" />
     </definition>
 
-    <!-- COREC Lot -->
-    <definition name="parking-lot" extends="base.definition">
-        <put-attribute name="title" value="COREC Lot" />
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/parking-lot.jsp" />
-    </definition>
-
-    <!-- McCutcheon Lot -->
-    <definition name="mccutcheon-lot" extends="base.definition">
-        <put-attribute name="title" value="McCutechon Lot" />
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/mccutcheon-lot.jsp" />
-    </definition>
-
 
 </tiles-definitions> 
