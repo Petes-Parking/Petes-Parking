@@ -22,6 +22,7 @@
             font-family: Calibri;
         }
         p2 { /*Username*/
+            margin-top: 50px;
             font-size: 20px;
             font-family: Calibri;
         }
@@ -92,14 +93,29 @@
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             cursor: pointer;
         }
-        .box{
-            margin-left: 20px;
-        }
+
         .trash{
             margin-top: 200px;
         }
         .edit{
             margin-top: -30px;
+        }
+        .logout-button{
+            float: right;
+        }
+        .Save-button{
+            float: right;
+        }
+
+        .box {
+            width: 50%;
+            margin-left: 50px;
+            margin: auto;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: #EFECEC;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
     </style>
@@ -112,6 +128,7 @@
         <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" width="210" height="210" alt=""/>
         <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="deletePic" onclick="showPopup()"/>
         <p1>John Purdue</p1>
+        <button class="logout-button" type="button"> Log Out</button>
 
     </div>
     <div class="user_info">
@@ -174,9 +191,8 @@
             </div>
         </form>
     </div>
-
-    <button class="delete-button" type="button" onclick="showPopup1()">Delete Account</button>
     <button class="Save-button" type="button"> Save Changes</button>
+    <button class="delete-button" type="button" onclick="showPopup1()">Delete Account</button>
 
 </div>
 
