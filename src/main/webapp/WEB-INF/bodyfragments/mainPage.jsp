@@ -71,10 +71,8 @@
                         </div>
                     </div>
         -->
-        <footer>
-            <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-top: 510px;"/>
-            <button class="settings-button">Settings</button>
-        </footer>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-top: 210px;"/>
+        <button class="settings-button">Settings</button>
     </div>
 </div>
 <div class="zoom_outer" width="1400" align="right" height="1230">
