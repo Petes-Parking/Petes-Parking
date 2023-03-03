@@ -3,17 +3,28 @@
 <head>
     <title>Profile Page</title>
     <script>
-        function showPopup() {
-            var answer = confirm("Are you sure you want to delete your profile picture?");
-            if (answer) {
-                alert("You clicked Yes!");
-            } else {
-                alert("You clicked No.");
-            }
-        }
+
         function showPopup1() {
             confirm("Are you sure you want to delete your account?");
         }
+        function changeImage() {
+            var input = document.getElementById("image-input");
+            input.click();
+        }
+        function handleImageSelect(e) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                document.getElementById("clickable-image").src = event.target.result;
+            }
+            reader.readAsDataURL(e.target.files[0]);
+        }
+        function deleteImage() {
+            var answer = confirm("Do you want to delete your profile picture?");
+            if (answer) {
+                document.getElementById("clickable-image").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png";
+            }
+        }
+
     </script>
     <link href="../css/profile-page.css" rel="stylesheet" type="text/css">
     <style type="text/css">
@@ -79,11 +90,7 @@
         body {
             background: #CEB888;
         }
-        #deletePic:hover {
-            transition: .3s;
-            background-color: #B89954;
-            opacity: 0.5;
-        }
+
         button{
             padding: 10px;
             background-color: #333;
@@ -94,8 +101,14 @@
             cursor: pointer;
         }
 
+        button:hover{
+            background-color: #555;
+        }
         .trash{
             margin-top: 200px;
+        }
+        #trash-image:hover{
+            background-color: #555;
         }
         .edit{
             margin-top: -30px;
@@ -125,14 +138,15 @@
 
 <div class = "box" >
     <div class="profile_pic">
-        <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" width="210" height="210" alt=""/>
-        <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="deletePic" onclick="showPopup()"/>
+        <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)">
+        <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" id="clickable-image" width="210" height="210" alt=""/>
+        <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="trash-image" onclick="deleteImage()"/>
         <p1>John Purdue</p1>
         <button class="logout-button" type="button"> Log Out</button>
 
     </div>
     <div class="user_info">
-        <button class = "edit" type="button" >Edit</button>
+        <button class = "edit" type="button" onclick="changeImage()">Edit</button>
         <form action="/action_page.php">
             <div class="userdiv">
                 <p2>Username:</p2><br>
