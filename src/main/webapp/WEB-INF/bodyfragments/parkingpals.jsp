@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: aakashjariwala
-  Date: 2/28/23
-  Time: 7:26 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -98,12 +91,38 @@
       <td>Boilermaker Express</td>
     </tr>
     <tr class="even">
-      <td>Daddy Daniels</td>
+      <td>Mitch Daniels</td>
       <td>mitch@purdue.com</td>
       <td>Gold Lambo</td>
+    </tr>
+    <tr class="odd">
+      <td>Naia Echevarria</td>
+      <td>naia@purdue.com</td>
+      <td>Toyota RAV4</td>
+    </tr>
+    <tr class="even">
+      <td>Alejandra Suarez</td>
+      <td>alejandra@purdue.com</td>
+      <td>Jeep Cherokee</td>
     </tr>
     </tbody>
   </table>
 </div>
+<script>
+  const searchInput = document.getElementById('search');
+  const tableRows = document.querySelectorAll('tbody tr');
+
+  searchInput.addEventListener('input', () => {
+    const searchValue = searchInput.value.toLowerCase();
+    tableRows.forEach(row => {
+      const name = row.querySelector('td:first-child').textContent.toLowerCase();
+      if (name.includes(searchValue)) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  });
+</script>
 </body>
 </html>
