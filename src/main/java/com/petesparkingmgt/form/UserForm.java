@@ -15,31 +15,28 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserForm extends BaseDTO {
-	
+
 	@NotEmpty(message = "First name is required")
 	private String firstName;
 
 	@NotEmpty(message = "Last name is required")
 	private String lastName;
-	
+
 	@NotEmpty(message = "DOB name is required")
 	private String dob;
-	
+
 	@NotEmpty(message = "First name is required")
 	private String gender;
-	
+
 	@NotEmpty(message = "First name is required")
 	private String email;
-	
+
 	@NotEmpty(message = "First name is required")
 	private String password;
 
-
-	private String password2;
-	
 	@NotEmpty(message = "First name is required")
 	private String phoneNumber;
-	
+
 	@NotEmpty(message = "userRole is required")
 	private String userRole;
 
@@ -47,8 +44,6 @@ public class UserForm extends BaseDTO {
 
 
 
-
-	
 	public UserDTO getDTO() {
 		UserDTO bean=new UserDTO();
 		bean.setId(id);
@@ -61,7 +56,6 @@ public class UserForm extends BaseDTO {
 		bean.setPhoneNumber(phoneNumber);
 		bean.setUserRole(userRole);
 		bean.setPoints(points);
-		bean.setPassword2(password2);
 
 		return bean;
 	}
@@ -86,13 +80,13 @@ public class UserForm extends BaseDTO {
 				+ ", email=" + email + ", password=" + password + ", phoneNumber="
 				+ phoneNumber + ", points= " + points + "]";
 	}
-	
-	
 
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 
 }
