@@ -46,7 +46,7 @@ public class LoginCtl {
 		  model.addAttribute("error", "Invalid username/password or register an account.");
 	  }else {
 		  session.setAttribute("user", user);
-		  return "welcome";
+		  return "mainPage";
 	  }
 		return "home";
 	}

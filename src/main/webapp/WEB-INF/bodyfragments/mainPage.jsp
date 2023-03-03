@@ -10,12 +10,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Pete's Parking</title>
-    <style type="text/css">
+    <style>
+        <%@include file="/WEB-INF/css/main-page.css"%>
+        <%@include file="/WEB-INF/css/map-pan.css"%>
     </style>
     <link href="main-page.css" rel="stylesheet" type="text/css">
     <link href="map-pan.css" rel="stylesheet" type="text/css">
-    <style>
-    </style>
+
 </head>
 
 <body style="background-color: #373A36;">
@@ -24,12 +25,12 @@
     <div class="buttons" width="465" height="920">
         <div class="profile-area" width="150" height="175">
             <div class="profile-bar"></div>
-            <img src="profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
+            <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
             <button class="profile-button">Purdue Pete</button>
-            <button class="home-button"><img src="HomeIcon.png" alt="" width="50" height="50"></button>
+            <button class="home-button"><img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png" alt="" width="50" height="50"></button>
             <div class="profile-bar"></div>
         </div>
-        <img src="BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px;"/>
         <div class="dropdown">
             <button class="dropbtn1">Book Reservation</button>
             <div class="dropdown-content1">
@@ -38,7 +39,7 @@
                 <a href="#">Link 3</a>
             </div>
         </div>
-        <img src="StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px;"/>
         <div class="dropdown">
             <button class="dropbtn2">View Favorite Parkings</button>
             <div class="dropdown-content2">
@@ -47,7 +48,7 @@
                 <a href="#">Link 6</a>
             </div>
         </div>
-        <img src="PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px;"/>
         <div class="dropdown">
             <button class="dropbtn3">Parking Pals</button>
             <div class="dropdown-content2">
@@ -68,7 +69,7 @@
                     </div>
         -->
         <footer>
-            <img src="SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-top: 510px;"/>
+            <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-top: 510px;"/>
             <button class="settings-button">Settings</button>
         </footer>
     </div>
@@ -81,7 +82,7 @@
         <button class="rossbutton"></button>
         <button class="mccutchbutton"></button>
         <button class="grantbutton"></button>
-        <img src="Map.png" width="1400" height="1230" align="right" alt="zoom">
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>
 <script>

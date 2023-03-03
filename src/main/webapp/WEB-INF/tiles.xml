@@ -7,9 +7,9 @@
     <!-- Base Define -->
     <definition name="base.definition" template="/WEB-INF/layouts/layout.jsp">  
         <put-attribute name="title" value="" />  
-        <put-attribute name="header" value="/WEB-INF/basefragments/header.jsp" />  
+        <put-attribute name="header" value="/WEB-INF/basefragments/header.jsp" />
         <put-attribute name="body" value="" />  
-        <put-attribute name="footer" value="/WEB-INF/basefragments/footer.jsp" />  
+        <put-attribute name="footer" value="/WEB-INF/basefragments/footer.jsp" />
     </definition>
 
     <definition name="register.def" template="/WEB-INF/bodyfragments/register.jsp">
@@ -43,7 +43,7 @@
 
 
     <!-- Registration Page  -->
-    <definition name="register" extends="register.def">
+    <definition name="register" extends="base.definition">
         <put-attribute name="title" value="Register" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/register.jsp" />
     </definition>
@@ -103,7 +103,13 @@
     <definition name="viewslots" extends="base.definition">  
         <put-attribute name="title" value="View slots List" />  
         <put-attribute name="body" value="/WEB-INF/bodyfragments/viewslots.jsp" />  
-    </definition> 
-   
+    </definition>
+
+        <!-- Main Page -->
+    <definition name="mainPage" extends="base.definition">
+        <put-attribute name="title" value="Main Page" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/mainPage.jsp" />
+    </definition>
+
 
 </tiles-definitions> 
