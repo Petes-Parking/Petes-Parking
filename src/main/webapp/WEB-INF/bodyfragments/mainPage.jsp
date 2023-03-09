@@ -35,33 +35,27 @@
             </a>
             <div class="profile-bar"></div>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px; vertical-align: top;"/>
         <div class="dropdown">
-            <button class="dropbtn1">Book Reservation</button>
-            <div class="dropdown-content1">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
-            </div>
+            <button class="bookBtn">Book Reservation</button>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
         <div class="dropdown">
-            <button class="dropbtn2">View Favorite Parkings</button>
-            <div class="dropdown-content2">
-                <a href="#">Link 4</a>
-                <a href="#">Link 5</a>
-                <a href="#">Link 6</a>
-            </div>
+            <button class="favoriteBtn">View Favorite Parkings</button>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
         <div class="dropdown">
             <a href="${pageContext.request.contextPath}/parkingpals">
-                <button class="dropbtn3">Parking Pals</button>
+                <button class="palsBtn">Parking Pals</button>
             </a>
-            <div class="dropdown-content2">
+        </div>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+        <div class="dropdown">
+                <button class="reportbtn">File a Report</button>
+            </a>
+            <div class="dropdown-content1">
                 <a href="#">Link 7</a>
                 <a href="#">Link 8</a>
-                <a href="#">Link 9</a>
             </div>
         </div>
         <!--
@@ -75,7 +69,7 @@
                         </div>
                     </div>
         -->
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-top: 210px;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; vertical-align: bottom;"/>
         <a href="${pageContext.request.contextPath}/settings">
             <button class="settings-button">Settings</button>
         </a>
@@ -395,3 +389,4 @@
 </script>
 </body>
 </html>
+  
