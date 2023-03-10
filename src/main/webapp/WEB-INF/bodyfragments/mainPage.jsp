@@ -37,7 +37,9 @@
         </div>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px; vertical-align: top;"/>
         <div class="dropdown">
-            <button class="bookBtn">Book Reservation</button>
+            <a href="${pageContext.request.contextPath}/parkinglist">
+                <button class="bookBtn">Book Reservation</button>
+            </a>
         </div>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
         <div class="dropdown">
@@ -54,8 +56,8 @@
                 <button class="reportbtn">File a Report</button>
             </a>
             <div class="dropdown-content1">
-                <a href="#">Link 7</a>
-                <a href="#">Link 8</a>
+                <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
+                <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
             </div>
         </div>
         <!--
@@ -120,10 +122,9 @@
 
     <c:if test="${sessionScope.user.userRole == 'Student'}">
 
-        <button class="reserve-button">
-            <a class="reserve-button"
-               href="${pageContext.request.contextPath}/parkinglist">Reserve a Spot Here</a>
-        </button>
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="reserve-button">Reserve a Spot Here</button>
+        </a>
     </c:if>
     <button class="close", href="#", onclick="hide('corec-popup')">Close</button>
 </div>
@@ -160,10 +161,9 @@
     </div>
     <c:if test="${sessionScope.user.userRole == 'Student'}">
 
-        <button class="reserve-button">
-            <a class="reserve-button"
-               href="${pageContext.request.contextPath}/parkinglist">Reserve a Spot Here</a>
-        </button>
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="reserve-button">Reserve a Spot Here</button>
+        </a>
     </c:if>
     <button class="close", href="#", onclick="hide('mccutch-popup')">Close</button>
 </div>
@@ -200,10 +200,9 @@
     </div>
     <c:if test="${sessionScope.user.userRole == 'Student'}">
 
-        <button class="reserve-button">
-            <a class="reserve-button"
-               href="${pageContext.request.contextPath}/parkinglist">Reserve a Spot Here</a>
-        </button>
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="reserve-button">Reserve a Spot Here</button>
+        </a>
     </c:if>
     <button class="close", href="#", onclick="hide('rossade-popup')">Close</button>
 </div>
@@ -240,10 +239,9 @@
     </div>
     <c:if test="${sessionScope.user.userRole == 'Student'}">
 
-        <button class="reserve-button">
-            <a class="reserve-button"
-               href="${pageContext.request.contextPath}/parkinglist">Reserve a Spot Here</a>
-        </button>
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="reserve-button">Reserve a Spot Here</button>
+        </a>
     </c:if>
     <button class="close", href="#", onclick="hide('nw-popup')">Close</button>
 </div>
@@ -280,10 +278,9 @@
     </div>
     <c:if test="${sessionScope.user.userRole == 'Student'}">
 
-        <button class="reserve-button">
-            <a class="reserve-button"
-               href="${pageContext.request.contextPath}/parkinglist">Reserve a Spot Here</a>
-        </button>
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="reserve-button">Reserve a Spot Here</button>
+        </a>
     </c:if>
     <button class="close", href="#", onclick="hide('univ-popup')">Close</button>
 </div>
@@ -319,11 +316,9 @@
         </div>
     </div>
     <c:if test="${sessionScope.user.userRole == 'Student'}">
-
-        <button class="reserve-button">
-            <a class="reserve-button"
-               href="${pageContext.request.contextPath}/parkinglist">Reserve a Spot Here</a>
-        </button>
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="reserve-button">Reserve a Spot Here</button>
+        </a>
     </c:if>
     <button class="close", href="#", onclick="hide('grant-popup')">Close</button>
 </div>

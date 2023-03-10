@@ -137,5 +137,16 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/mainPage.jsp" />
     </definition>
 
+    <!-- Exp Report -->
+    <definition name="exp-report" extends="base.definition">
+        <put-attribute name="title" value="Expiration Report" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/exp-report.jsp" />
+    </definition>
+
+    <!-- Poor Parking Report -->
+    <definition name="poorpark-report" extends="base.definition">
+        <put-attribute name="title" value="Poor Parking Report" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/poorpark-report.jsp" />
+    </definition>
 
 </tiles-definitions> 
