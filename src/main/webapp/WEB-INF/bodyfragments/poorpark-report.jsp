@@ -83,6 +83,38 @@
     .image {
       width: 50%;
     }
+    .confirmed-popup {
+      display: none;
+      position: fixed;
+      width: 350px;
+      height: 350px;
+      left: 35%;
+      top: 10%;
+      background: #CEB888;
+      z-index: 20;
+    }
+
+    #confirmed-popup:after {
+      position: fixed;
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: -2;
+    }
+
+    #confirmed-popup:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: #FFF;
+      z-index: -1;
+    }
 
   </style>
 </head>
@@ -108,8 +140,30 @@
     <input class="image" type="file" id="img" name="img" accept="image/*"><br>
   </form>
   <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"><br>
-  <button type="submit" value="Submit">Submit</button>
-  <button type="button" >Cancel</button>
+  <button class="save-button", href="#", id="save-button">Submit</button>
+  <a href="${pageContext.request.contextPath}/main">
+    <button type="button">Cancel</button>
+  </a>
 </div>
+
+<div class="confirmed-popup" id="confirmed-popup">
+  <p2>Report Submitted.</p2>
+  <button class="close-button", href="#", id="close-button">Close</button>
+</div>
+
+<script>
+  const saveButton = document.getElementById("save-button");
+  const closeButton = document.getElementById("close-button");
+  const popup = document.getElementById("confirmed-popup");
+
+  saveButton.addEventListener("click", () => {
+    popup.style.display = "block";
+  });
+
+  closeButton.addEventListener("click", () => {
+    popup.style.display = "none";
+    document.location.href = "${pageContext.request.contextPath}/main";
+  });
+</script>
 </body>
 </html>

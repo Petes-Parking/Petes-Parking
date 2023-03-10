@@ -141,6 +141,7 @@
         <p2>Image:</p2>
         <input class="image" type="file" id="img" name="img" accept="image/*"><br>
     </form>
+    <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"><br>
     <button class="save-button", href="#", id="save-button">Submit</button>
     <a href="${pageContext.request.contextPath}/main">
         <button type="button">Cancel</button>
@@ -152,12 +153,6 @@
     <button class="close-button", href="#", id="close-button">Close</button>
 </div>
 <script>
-    var show = function(id) {
-        $(id).style.display ='block';
-    }
-    var hide = function(id) {
-        $(id).style.display ='none';
-    }
     const saveButton = document.getElementById("save-button");
     const closeButton = document.getElementById("close-button");
     const popup = document.getElementById("confirmed-popup");
@@ -168,6 +163,7 @@
 
     closeButton.addEventListener("click", () => {
         popup.style.display = "none";
+        document.location.href = "${pageContext.request.contextPath}/main";
     });
 </script>
 </body>
