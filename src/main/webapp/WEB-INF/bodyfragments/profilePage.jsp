@@ -26,115 +26,60 @@
         }
 
     </script>
+    <link href="main-page.css" rel="stylesheet" type="text/css">
     <link href="../css/profile-page.css" rel="stylesheet" type="text/css">
-    <style type="text/css">
-        p1 { /*john purdue*/
-            font-size: 45px;
-            font-family: Calibri;
-        }
-        p2 { /*Username*/
-            margin-top: 50px;
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p3 { /*Password*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p4 { /*Email*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p5 { /*Car 1*/
-            font-size: 20px;
-            font-family: Calibri;
-            font-weight: bold;
-        }
-        p6 { /*Make 1*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p7 { /*Model 1*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p8 { /*Color 1*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p9 { /*License 1*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p10 { /*Car 2*/
-            font-size: 20px;
-            font-family: Calibri;
-            font-weight: bold;
-        }
-        p11 { /*Make 2*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p12 { /*Model 2*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p13 { /*Color 2*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        p14 { /*Lic 2*/
-            font-size: 20px;
-            font-family: Calibri;
-        }
-        body {
-            background: #CEB888;
-        }
-
-        button{
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-
-        button:hover{
-            background-color: #555;
-        }
-        .trash{
-            margin-top: 200px;
-        }
-        #trash-image:hover{
-            background-color: #555;
-        }
-        .edit{
-            margin-top: -30px;
-        }
-        .logout-button{
-            float: right;
-        }
-        .Save-button{
-            float: right;
-        }
-
-        .box {
-            width: 50%;
-            margin-left: 50px;
-            margin: auto;
-            margin-top: 50px;
-            padding: 30px;
-            background-color: #EFECEC;
-            border-radius: 10px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-
+    <style>
+        <%@include file="/WEB-INF/css/main-page.css"%>
+        <%@include file="/WEB-INF/css/profile-page.css"%>
     </style>
+
 </head>
 
 <body>
+
+<div class="sidebar">
+    <div class="buttons" width="465" height="920">
+        <div class="profile-area" width="150" height="175">
+            <div class="profile-bar"></div>
+            <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
+            <a href="${pageContext.request.contextPath}/profile">
+                <button class="profile-button">Purdue Pete</button>
+            </a>
+
+            <a href="${pageContext.request.contextPath}/main">
+                <button class="home-button"><img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png" alt="" width="50" height="50"></button>
+            </a>
+            <div class="profile-bar"></div>
+        </div>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px; vertical-align: top;"/>
+        <div class="dropdown">
+            <button class="bookBtn">Book Reservation</button>
+        </div>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
+        <div class="dropdown">
+            <button class="favoriteBtn">View Favorite Parkings</button>
+        </div>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+        <div class="dropdown">
+            <a href="${pageContext.request.contextPath}/parkingpals">
+                <button class="palsBtn">Parking Pals</button>
+            </a>
+        </div>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+        <div class="dropdown">
+            <button class="reportbtn">File a Report</button>
+            </a>
+            <div class="dropdown-content1">
+                <a href="#">Link 7</a>
+                <a href="#">Link 8</a>
+            </div>
+        </div>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; vertical-align: bottom;"/>
+        <a href="${pageContext.request.contextPath}/settings">
+            <button class="settings-button">Settings</button>
+        </a>
+    </div>
+</div>
 
 <div class = "box" >
     <div class="profile_pic">
@@ -143,13 +88,13 @@
         <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="trash-image" onclick="deleteImage()"/>
         <p1>John Purdue</p1>
         <a href="${pageContext.request.contextPath}/logout">
-            <button class="logout-button" type="button"> Log Out</button>
+            <button1 class="logout-button" type="button"> Log Out</button1>
         </a>
 
 
     </div>
     <div class="user_info">
-        <button class = "edit" type="button" onclick="changeImage()">Edit</button>
+        <button1 class = "edit" type="button" onclick="changeImage()">Edit</button1>
         <form action="/action_page.php">
             <div class="userdiv">
                 <p2>Username:</p2><br>
@@ -210,11 +155,11 @@
     </div>
 
     <a href="${pageContext.request.contextPath}/main">
-        <button class="Save-button" type="button"> Save Changes</button>
+        <button1 class="save-button" type="button"> Save Changes</button1>
     </a>
 
-    <button class="delete-button" type="button" onclick="showPopup1()">
-    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Delete Account</a></button>
+    <button1 class="delete-button" type="button" onclick="showPopup1()">
+    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Delete Account</a></button1>
 
 </div>
 

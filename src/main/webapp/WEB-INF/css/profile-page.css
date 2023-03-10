@@ -8,7 +8,7 @@
     opacity: 100%;
 }
 
-.trash{
+.trash {
     margin-right: 20px;
     opacity: 100%;
 }
@@ -19,15 +19,18 @@
 
 .user_info {
     margin-top: 40px;
+    margin-left: 20px;
 }
 
 
 .car_1 {
     margin-top: 40px;
+    margin-left: 20px;
 }
 
 .car_2 {
     margin-top: 40px;
+    margin-left: 20px;
 }
 
 .make1div {
@@ -59,13 +62,118 @@
     color: #AF1114;
     font-size: 20px;
     font-family: Calibri;
+    margin-left: 20px;
 }
 .save-button{
     color: #AF1114;
     font-size: 20px;
     font-family: Calibri;
+    margin-left: 20px;
 }
 
 .points_level {
     float: right
+}
+
+p1 { /*john purdue*/
+    font-size: 45px;
+    font-family: Calibri;
+}
+p2 { /*Username*/
+    margin-top: 50px;
+    font-size: 20px;
+    font-family: Calibri;
+}
+p3 { /*Password*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p4 { /*Email*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p5 { /*Car 1*/
+    font-size: 20px;
+    font-family: Calibri;
+    font-weight: bold;
+}
+p6 { /*Make 1*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p7 { /*Model 1*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p8 { /*Color 1*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p9 { /*License 1*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p10 { /*Car 2*/
+    font-size: 20px;
+    font-family: Calibri;
+    font-weight: bold;
+}
+p11 { /*Make 2*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p12 { /*Model 2*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p13 { /*Color 2*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+p14 { /*Lic 2*/
+    font-size: 20px;
+    font-family: Calibri;
+}
+body {
+    background: #373A36;
+}
+
+button1{
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+button1:hover{
+    background-color: #555;
+}
+.trash{
+    margin-top: 200px;
+}
+#trash-image:hover{
+    background-color: #555;
+}
+.edit{
+    margin-top: -30px;
+}
+.logout-button{
+    float: right;
+    margin-top: 20px;
+    margin-right: 20px;
+}
+
+.box {
+    width: 900px;
+    height: 1150px;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 10px;
+    background-color: #CEB888;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
