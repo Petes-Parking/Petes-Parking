@@ -19,13 +19,13 @@
     }
 
     .container {
-      width: 70%;
       margin: auto;
-      margin-top: 50px;
+      margin-top: 20px;
       padding: 30px;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: inline-block;
     }
 
     input {
@@ -72,9 +72,26 @@
   </style>
 </head>
 <body>
-<div class="container">
-  <h1>My Parking Pals</h1>
-  <input type="text" id="search" placeholder="Search a friend's name here...">
+<h1 style="text-align: center; margin-top: 50px">Parking Pals</h1>
+<div class="container" style="float: left; margin-left: 20px; width: 55%">
+  <h3>Add new Parking Pals:</h3>
+  <input type="text" id="search" placeholder="Search for a name here...">
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Vehicle</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</div>
+<div class="container" style="float: right; margin-right: 20px; width: 30%; text-align: center">
+  <h3>Incoming Friend Requests:</h3>
+</div>
+<div class="container" style="float: left; margin-left: 20px; width: 55%">
   <h3>My current Parking Pals:</h3>
   <table>
     <thead>
@@ -95,18 +112,11 @@
       <td>mitch@purdue.com</td>
       <td>Gold Lambo</td>
     </tr>
-    <tr class="odd">
-      <td>Naia Echevarria</td>
-      <td>naia@purdue.com</td>
-      <td>Toyota RAV4</td>
-    </tr>
-    <tr class="even">
-      <td>Alejandra Suarez</td>
-      <td>alejandra@purdue.com</td>
-      <td>Jeep Cherokee</td>
-    </tr>
     </tbody>
   </table>
+</div>
+<div class="container" style="float: right; margin-right: 20px; width: 30%; text-align: center">
+  <h3>Outgoing Friend Requests:</h3>
 </div>
 <script>
   const searchInput = document.getElementById('search');
