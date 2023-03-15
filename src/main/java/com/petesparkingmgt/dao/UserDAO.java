@@ -19,4 +19,9 @@ public interface UserDAO extends JpaRepository<UserDTO, Long> {
 
 
 
+
+
+
+
+
 }

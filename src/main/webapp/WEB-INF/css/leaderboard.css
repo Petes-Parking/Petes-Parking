@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+#leaderboard-page{
+    background-color: goldenrod;
+    width: 500px;
+    height: 700px;
+    margin:auto;
+    margin-top: 20px;
+
+}
+.entry {
+    width: 495px;
+    height: 50px;
+    color: black;
+    border: 100px solid;
+    border-color: gold;
+    border-width: medium;
+
+}
+
+.entry:hover {
+    font-size: 20px;
+}
+
+.button{
+    background-color: gold;
+    border: none;
+    border-radius: 12px;
+    color: black;
+    padding: 10px 24px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    width: 75px;
+}
+#buttons-layout{
+    margin:auto;
+    margin-top: 75px;
+    margin-left: 150px;
+}
+#header{
+    color: #2A2626;
+    background-color: goldenrod;
+    height: 75px;
+}

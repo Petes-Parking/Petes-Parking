@@ -39,7 +39,8 @@ public class UserService {
 	}
 	
 	
-	
+
+
 	public void delete(long id) throws Exception {
 		if(id>0)
 		{
@@ -53,6 +54,8 @@ public class UserService {
 	public List<UserDTO> getAllUser() {
 		return dao.findAll();
 	}
+
+
 
 
 	
