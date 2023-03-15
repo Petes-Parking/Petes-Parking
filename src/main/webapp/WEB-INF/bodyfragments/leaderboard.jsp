@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxfuligni
@@ -11,9 +12,10 @@
 <head>
   <meta charset="UTF-8">
   <title>Leaderboard</title>
-  <link href="register-box.css" rel="stylesheet" type="text/css">
 </head>
 <style type="text/css">
+  <%@include file="/WEB-INF/css/leaderboard.css"%>
+
   body {
     background-color: black;
     background-size: cover;
@@ -29,17 +31,15 @@
   <h2 style="margin: auto; margin-left: 525px;">Global Leaderboard</h2>
 </div>
 <div id="leaderboard-page">
-  <div class="entry"><p> <b>#(Count)</b> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
+  <c:if test="${not empty leaderboardList}">
+    <c:forEach items="${leaderboardList}" var="user">
 
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
-  <div class="entry"><p> Name: Max Fuligni | Points: 30 | Level: 1</p></div>
+
+      <div class="entry"><p> <b>#(Count)</b> Name: ${user.firstName} ${user.lastName}  | Points: ${user.points} | Level: 1</p></div>
+
+    </c:forEach>
+</c:if>
+
 
   <div id="buttons-layout">
     <button class="button">←</button>

@@ -61,6 +61,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/adminview.jsp" />
     </definition>
 
+    <!-- Leaderboard Page  -->
+    <definition name="leaderboard" template="/WEB-INF/bodyfragments/leaderboard.jsp">
+        <put-attribute name="title" value="Leaderboard" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/leaderboard.jsp" />
+    </definition>
+
     <!-- Admin Page  -->
     <definition name="adminviewhistory" extends="base.definition">
         <put-attribute name="title" value="Admin View history" />
