@@ -137,6 +137,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/viewslots.jsp" />
     </definition>
 
+    <!-- Error  -->
+    <definition name="error" template="/WEB-INF/bodyfragments/error.jsp">
+        <put-attribute name="title" value="Error" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/error.jsp" />
+    </definition>
+
     <!-- Main Page -->
     <definition name="mainPage" extends="base.definition">
         <put-attribute name="title" value="Main Page" />

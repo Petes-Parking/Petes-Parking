@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import javax.servlet.http.HttpSession;
 import java.util.Comparator;
 import java.util.List;
 
@@ -24,8 +25,13 @@ public class LeaderboardCtl {
 
 
     @GetMapping("/leaderboard")
-    public String leaderboard(@ModelAttribute("form") UserForm form, Model model) {
+    public String leaderboard(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
 
+        UserDTO user = (UserDTO) session.getAttribute("user");
+
+        if (user == null) {
+            return "error";
+        }
         // Removing the below code breaks, not exactly sure why, very janky, I know. Need to really dig into to determine
         // why
         model.addAttribute("email", "t");
@@ -45,7 +51,6 @@ public class LeaderboardCtl {
         model.addAttribute("leaderboardList", users);
 
 
-        System.out.println(model.getAttribute("leaderboardList"));
         return "leaderboard";
     }
 
