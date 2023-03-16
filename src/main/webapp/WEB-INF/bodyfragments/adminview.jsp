@@ -7,56 +7,62 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>admin-view</title>
-    <link href="register-box.css" rel="stylesheet" type="text/css">
+    <title>Admin View</title>
+    <style>
+        <%@include file="/WEB-INF/css/admin-box.css"%>
+
+    </style>
 </head>
-<style type="text/css">
-    <%@include file="/WEB-INF/css/admin-box.css"%>
-
-    body {
-        background-image: url(https://photos.smugmug.com/photos/i-Z5PSS6Q/0/L/i-Z5PSS6Q-L.jpg);
-        background-size: cover;
-        background-repeat: no-repeat;
-
-
-    }
-</style>
-
 <body>
-<div id="admin-box">
-    <h2 style="margin:auto; margin-left: 350px;">Admin View</h2>
-
-    <div>
-        <nav>
-
-            <c:if test="${not empty userlist}">
-                    <ul>
-                        <c:forEach items="${userlist}" var="userlist">
-                            <li style="">
-                                <form method="post" action="${pageContext.request.contextPath}/viewuser">
-                                <input type="submit" value="${userlist}">
-                                </form>
-                            </li>
-                        </c:forEach>
-                    </ul>
-                </div>
-            </c:if>
-
-
-        </nav>
-
-        <a href="/PeteParkingMgt/">
-
-        <input style="margin-left: 350px;" type="submit" id="back-button" value="Back to Login">
-        </a>
+<header>
+    <h1>Welcome Admin!</h1>
+    <a href="#">Log out</a>
+</header>
+<div class="widgets">
+    <div class="widget">
+        <h2>Widget 1</h2>
+        <p>Widget 1 content goes here</p>
     </div>
-
-
+    <div class="widget">
+        <h2>Widget 2</h2>
+        <p>Widget 2 content goes here</p>
+    </div>
+    <div class="widget">
+        <h2>Widget 3</h2>
+        <p>Widget 3 content goes here</p>
+    </div>
+    <div class="widget">
+        <h2>Widget 4</h2>
+        <p>Widget 3 content goes here</p>
+    </div>
+    <div class="widget">
+        <h2>Widget 5</h2>
+        <p>Widget 3 content goes here</p>
+    </div>
+    <div class="widget">
+        <h2>Widget 6</h2>
+        <p>Widget 3 content goes here</p>
+    </div>
 </div>
+<div class="user-list">
+    <h2>User List</h2>
+    <ul>
+    <c:if test="${not empty adminUserList}">
 
+        <c:forEach var="user" items="${adminUserList}"  varStatus="loop">
+
+
+        <li> ${user.firstName} ${user.lastName}</li>
+
+
+
+        </c:forEach>
+    </c:if>
+    </ul>
+</div>
 </body>
 </html>
+

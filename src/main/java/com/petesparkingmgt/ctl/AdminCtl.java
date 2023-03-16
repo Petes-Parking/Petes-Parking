@@ -2,6 +2,7 @@ package com.petesparkingmgt.ctl;
 
 
 import com.petesparkingmgt.dao.UserDAO;
+import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
 
 @Controller
 public class AdminCtl {
@@ -25,7 +28,10 @@ public class AdminCtl {
     public String adminPage(@ModelAttribute("form") UserForm form, Model model) {
 
 
+        List<UserDTO> users = dao.findAll();
         model.addAttribute("email", "email");
+
+        model.addAttribute("adminUserList", users);
         return "adminview";
     }
 

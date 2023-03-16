@@ -2,6 +2,7 @@ package com.petesparkingmgt.ctl;
 
 import javax.servlet.http.HttpSession;
 
+import com.petesparkingmgt.dao.UserDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,12 +14,17 @@ import com.petesparkingmgt.service.UserService;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 
+import java.util.List;
+
 
 @Controller
 public class LoginCtl {
 
 	@Autowired
 	public UserService service;
+
+	@Autowired
+	public UserDAO dao;
 
 	@GetMapping("/login")
 	public String loginPage() {
@@ -47,11 +53,12 @@ public class LoginCtl {
 		}else {
 			if (user.getUserRole().equals("Admin")) {
 				session.setAttribute("user", user);
+				List<UserDTO> users = dao.findAll();
+				model.addAttribute("email", "email");
+
+				model.addAttribute("adminUserList", users);
 
 
-				for (UserDTO dto : service.getAllUser()) {
-					model.addAttribute("userlist", dto.getFirstName() + " " + dto.getLastName());
-				}
 				return "adminview";
 
 			} else {

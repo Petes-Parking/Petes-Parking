@@ -16,7 +16,7 @@
 <c:set var="currentPage" value="${param.page ne null ? param.page : 1}" />
 <c:set var="startIndex" value="${(currentPage - 1) * ENTRIES_PER_PAGE}" />
 <c:set var="endIndex" value="${fn:length(leaderboardList)}" />
-
+<c:set var="globalCounter" value="${startIndex + 1}"/>
 <c:if test="${startIndex + ENTRIES_PER_PAGE > fn:length(leaderboardList)}">
   <c:set var="endIndex" value="${fn:length(leaderboardList)}" />
 </c:if>
@@ -27,11 +27,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 
-<%!
-  int min(int a, int b) {
-  return Math.min(a, b);
-  }
-%>
+
 
 <%--
 current page = 1
@@ -80,7 +76,13 @@ entries. This assumes that the list is continuous except at end points.
 
 
 
-       <div class="entry"><p> <b>#${loop.count}</b> Name: ${user.firstName} ${user.lastName}  | Points: ${user.points} | Level: 1</p></div>
+
+
+
+      <div class="entry"><p> <b>#${globalCounter}</b> Name: ${user.firstName} ${user.lastName}  | Points: ${user.points} | Level: 1</p></div>
+
+      <c:set var="globalCounter" value="${globalCounter + 1}"/>
+
     </c:forEach>
 </c:if>
 
