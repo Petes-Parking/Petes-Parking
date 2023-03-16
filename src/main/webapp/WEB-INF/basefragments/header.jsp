@@ -33,6 +33,9 @@
 						aria-current="page"
 						href="${pageContext.request.contextPath}/">Home</a></li>
 
+
+
+
 					<c:if test="${sessionScope.user == null}">
 
 					</c:if>
@@ -42,6 +45,10 @@
 						<li class="nav-item dropdown"><a class="dropdown-item"
 							href="${pageContext.request.contextPath}/parkinglist">View
 								Parking Lots</a></li>
+
+						<li class="nav-item"><a class="nav-link active"
+												aria-current="page"
+												href="${pageContext.request.contextPath}/leaderboard">Leaderboard</a></li>
 					</c:if>
 
 				</ul>
