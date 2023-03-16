@@ -2,6 +2,7 @@ package com.petesparkingmgt.service;
 
 import java.util.List;
 
+import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.petesparkingmgt.dao.BookingDAO;
@@ -33,7 +34,7 @@ public class BookingService {
 	    
 	    System.out.println("Booked Slot id: "+booking.getSlotId());
 	    System.out.println("Booking After Save: "+booking);
-	    
+
 	    SlotDTO slot = slotDAO.findById(booking.getSlotId());
 	    slot.setStatus(false);
 	    slotDAO.saveAndFlush(slot);
