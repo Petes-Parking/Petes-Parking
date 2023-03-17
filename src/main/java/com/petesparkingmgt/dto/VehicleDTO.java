@@ -42,7 +42,7 @@ public class VehicleDTO extends BaseDTO {
 
     @Override
     public String toString() {
-        return "ProfileDTO [make1=" + make1 + ", model1=" + model1 + ", color1=" + color1 + ", license1=" + license1
+        return "VehicleDTO [make1=" + make1 + ", model1=" + model1 + ", color1=" + color1 + ", license1=" + license1
                 + ", make2=" + make2 + ", model2=" + model2 + ", color2="
                 + color2 + ", license2=" + license2 + "]";
     }
