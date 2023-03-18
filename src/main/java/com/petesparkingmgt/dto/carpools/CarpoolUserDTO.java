@@ -1,5 +1,6 @@
 package com.petesparkingmgt.dto.carpools;
 
+import com.petesparkingmgt.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -9,17 +10,17 @@ import javax.persistence.*;
 @Table(name="carpool_users")
 @Getter
 @Setter
-public class CarpoolUserDTO {
+public class CarpoolUserDTO extends BaseDTO {
 
-    @EmbeddedId
-    @Column(name ="id", length = 255)
-    private CarpoolUserKey id;
+//    @EmbeddedId
+//    @Column(name ="id", length = 255)
+//    private CarpoolUserKey id;
 
-//    @Column(name = "carpool_id", length = 755)
-//    private long carpoolId;
-//
-//    @Column(name = "user_id", length = 755)
-//    private long userId;
+    @Column(name = "carpoolId", length = 755)
+    private long carpoolId;
+
+    @Column(name = "userId", length = 755)
+    private long userId;
 
 
 

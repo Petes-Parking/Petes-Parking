@@ -31,6 +31,16 @@
       </ul>
     </div>
   </c:if>
+
+  <c:if test="${not empty errors}">
+    <div class="alert alert-danger">
+      <ul>
+        <c:forEach items="${errors}" var="error">
+          <li style="font-size: 20px; color: firebrick">${error}</li>
+        </c:forEach>
+      </ul>
+    </div>
+  </c:if>
 </header>
 <main>
   <section id="create-carpool">
@@ -55,13 +65,33 @@
 <c:if test="${hasCarpool && isLeader}">
 <section id="invite-friends">
     <h2>Invite Friends to Your Carpool</h2>
-    <form>
+    <form method = "post" action="${pageContext.request.contextPath}/carpoolInvite">
       <label for="friend-email">Friend's Email:</label>
       <input type="email" id="friend-email" name="friend-email"><br>
       <button type="submit">Invite</button>
     </form>
   </section>
 </c:if>
+
+  <c:if test="${hasCarpool}">
+    <section id="carpool-members">
+      <h2>Carpool Members</h2>
+
+      <ul>
+
+      <c:forEach items="${members}" var="member">
+        <li>${member.firstName} ${member.lastName}</li>
+
+      </c:forEach>
+      </ul>
+
+
+
+    </section>
+
+
+
+  </c:if>
   <section id="invitations">
     <h2>Invitations</h2>
     <ul>

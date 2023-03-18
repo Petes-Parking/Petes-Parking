@@ -1,9 +1,11 @@
 package com.petesparkingmgt.ctl;
 
 import com.petesparkingmgt.dao.CarpoolDAO;
+import com.petesparkingmgt.dao.CarpoolUsersDAO;
 import com.petesparkingmgt.dao.UserDAO;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
+import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.form.CarpoolForm;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.CarpoolService;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class CarpoolCtl {
@@ -25,6 +29,12 @@ public class CarpoolCtl {
 
     @Autowired
     public CarpoolDAO dao;
+
+    @Autowired
+    public CarpoolUsersDAO carpoolUsersDAO;
+
+    @Autowired
+    public UserDAO userDAO;
 
     @GetMapping("/carpool")
     public String carpool(@ModelAttribute("form") CarpoolForm form, Model model, HttpSession session) {
@@ -37,11 +47,18 @@ public class CarpoolCtl {
         System.out.println("User: " + user.toString() + " on /carpool");
         CarpoolDTO carpool = dao.getCarpoolDTOByLeaderId(user.getId());
         model.addAttribute("carPoolName", "");
-
         if (carpool != null) {
             model.addAttribute("carpool", carpool);
             model.addAttribute("hasCarpool", true);
             model.addAttribute("carPoolName", carpool.getCarPoolName());
+
+            // Mapping CarpoolUserDTO to UserDTO
+            List<UserDTO> carpoolMembers = carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(carpool.getId())
+                    .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
+            if (!carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(carpool.getId()).isEmpty()) {
+                model.addAttribute("members", carpoolMembers);
+            }
+
 
         } else {
             model.addAttribute("hasCarpool", false);
