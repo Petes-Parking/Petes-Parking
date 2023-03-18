@@ -1,6 +1,7 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxfuligni
@@ -21,18 +22,35 @@
 <body>
 <header>
   <h1>Carpool Page</h1>
+<%--  <c:if test="${not empty messages}">--%>
+<%--    <div class="alert alert-danger">--%>
+<%--      <ul>--%>
+<%--        <c:forEach items="${messages}" var="message">--%>
+<%--          <li style="font-size: 20px; color: limegreen">${message}</li>--%>
+<%--        </c:forEach>--%>
+<%--      </ul>--%>
+<%--    </div>--%>
+<%--  </c:if>--%>
 </header>
 <main>
   <section id="create-carpool">
+    <c:if test="${hasCarpool == false}">
     <h2>Create a Carpool</h2>
     <form method ="post" action="${pageContext.request.contextPath}/createCarpool">
       <label for="carPoolName">Carpool Name:</label>
-<%--      <s:bind path="carPoolName">--%>
       <input type="text" id="carPoolName" name="carPoolName" />
-<%--      </s:bind>--%>
 
       <button type="submit">Create Carpool</button>
     </form>
+    </c:if>
+    <c:if test="${hasCarpool == true}">
+      <h2>Your Carpool</h2><br>
+      <p>Name: ${carPoolName}</p><br>
+      <a href="${pageContext.request.contextPath}/leaveCarpool">
+      <button type="submit">Leave Carpool</button>
+      </a>
+
+    </c:if>
   </section>
   <section id="invite-friends">
     <h2>Invite Friends to Your Carpool</h2>

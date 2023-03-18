@@ -33,7 +33,8 @@ public class CarpoolCtl {
         if (user == null) {
             return "error";
         }
-        CarpoolDTO carpool = dao.getCarpoolDTOById(user.getId());
+
+        CarpoolDTO carpool = dao.getCarpoolDTOByLeaderId(user.getId());
         model.addAttribute("carPoolName", "");
 
         if (carpool != null) {
@@ -46,6 +47,7 @@ public class CarpoolCtl {
         }
         return "carpool";
     }
+
 
     @PostMapping("/createCarpool")
     public String createCarpool(@ModelAttribute("carform") CarpoolForm form, Model model, HttpSession session) {
@@ -66,6 +68,26 @@ public class CarpoolCtl {
 
         }
         return "carpool";
+    }
+
+
+    /**
+     * Mapping for when a user leaves a carpool. If leader leaves, it disbands the entire carpool.
+     * @param model
+     * @param session
+     * @return jsp to follow
+     */
+    @GetMapping("/leaveCarpool")
+    public String leaveCarpool(@ModelAttribute("form") CarpoolForm form, Model model, HttpSession session) {
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        model.addAttribute("carPoolName", "");
+        model.addAttribute("hasCarPool", false);
+        model.addAttribute("messages", "You have left your carpool!");
+        service.removeCarpoolFor(user);
+
+
+        return "carpool";
+
     }
 
 }
