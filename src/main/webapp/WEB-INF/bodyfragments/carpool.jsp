@@ -22,15 +22,15 @@
 <body>
 <header>
   <h1>Carpool Page</h1>
-<%--  <c:if test="${not empty messages}">--%>
-<%--    <div class="alert alert-danger">--%>
-<%--      <ul>--%>
-<%--        <c:forEach items="${messages}" var="message">--%>
-<%--          <li style="font-size: 20px; color: limegreen">${message}</li>--%>
-<%--        </c:forEach>--%>
-<%--      </ul>--%>
-<%--    </div>--%>
-<%--  </c:if>--%>
+  <c:if test="${not empty messages}">
+    <div class="alert alert-danger">
+      <ul>
+        <c:forEach items="${messages}" var="message">
+          <li style="font-size: 20px; color: limegreen">${message}</li>
+        </c:forEach>
+      </ul>
+    </div>
+  </c:if>
 </header>
 <main>
   <section id="create-carpool">
@@ -52,7 +52,8 @@
 
     </c:if>
   </section>
-  <section id="invite-friends">
+<c:if test="${hasCarpool && isLeader}">
+<section id="invite-friends">
     <h2>Invite Friends to Your Carpool</h2>
     <form>
       <label for="friend-email">Friend's Email:</label>
@@ -60,6 +61,7 @@
       <button type="submit">Invite</button>
     </form>
   </section>
+</c:if>
   <section id="invitations">
     <h2>Invitations</h2>
     <ul>

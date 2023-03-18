@@ -34,6 +34,7 @@ public class CarpoolCtl {
             return "error";
         }
 
+        System.out.println("User: " + user.toString() + " on /carpool");
         CarpoolDTO carpool = dao.getCarpoolDTOByLeaderId(user.getId());
         model.addAttribute("carPoolName", "");
 
@@ -55,13 +56,22 @@ public class CarpoolCtl {
         UserDTO user = (UserDTO) session.getAttribute("user");
 
         model.addAttribute("carPoolName", "");
+        model.addAttribute("hasCarpool", true);
+        model.addAttribute("isLeader", true);
 
 
+        System.out.println(user.toString() + " on /createCarpool");
 
         if (form.getDTO() != null) {
             CarpoolDTO dto = form.getDTO();
             dto.setLeaderId(user.getId());
             service.add(dto);
+            model.addAttribute("carpool", dto);
+            model.addAttribute("carPoolName", dto.getCarPoolName());
+
+            model.addAttribute("messages", "New carpool created!");
+
+
             System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());
         } else {
             System.out.println("CarpoolDTO was null!");
@@ -80,8 +90,11 @@ public class CarpoolCtl {
     @GetMapping("/leaveCarpool")
     public String leaveCarpool(@ModelAttribute("form") CarpoolForm form, Model model, HttpSession session) {
         UserDTO user = (UserDTO) session.getAttribute("user");
-        model.addAttribute("carPoolName", "");
-        model.addAttribute("hasCarPool", false);
+
+        System.out.println(user.toString() + " on /leaveCarpool");
+
+       // model.addAttribute("carPoolName", "");
+        model.addAttribute("hasCarpool", false);
         model.addAttribute("messages", "You have left your carpool!");
         service.removeCarpoolFor(user);
 
