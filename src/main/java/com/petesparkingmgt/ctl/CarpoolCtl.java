@@ -43,27 +43,24 @@ public class CarpoolCtl {
 
         } else {
             model.addAttribute("hasCarpool", false);
-
         }
-
-
         return "carpool";
-
     }
 
     @PostMapping("/createCarpool")
-    public String createCarpool(@ModelAttribute("form") CarpoolForm form, Model model) {
+    public String createCarpool(@ModelAttribute("carform") CarpoolForm form, Model model, HttpSession session) {
+
+        UserDTO user = (UserDTO) session.getAttribute("user");
+
         model.addAttribute("carPoolName", "");
 
-        System.out.println("Created carpool named: " + form.getCarpoolName());
-        System.out.println("Created carpool named (model): " + model.getAttribute("carPoolName"));
-        model.addAttribute("carPoolName", "");
-        System.out.println("Created carpool named (model): " + model.getAttribute("carPoolName"));
 
 
         if (form.getDTO() != null) {
-            service.add(form.getDTO());
-            System.out.println("Created carpool DTO with name " + form.getCarpoolName());
+            CarpoolDTO dto = form.getDTO();
+            dto.setLeaderId(user.getId());
+            service.add(dto);
+            System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());
         } else {
             System.out.println("CarpoolDTO was null!");
 

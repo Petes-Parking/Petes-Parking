@@ -12,24 +12,24 @@ import javax.validation.constraints.NotEmpty;
 public class CarpoolForm extends BaseDTO {
 
     @NotEmpty(message = "Carpool name is required!")
-    private String carpoolName;
+    private String carPoolName;
 
    // private long leaderId;
 
     public CarpoolDTO getDTO() {
         CarpoolDTO bean = new CarpoolDTO();
-        if (this.carpoolName == null){
+        if (this.carPoolName == null){
             System.out.println("Name is null!");
             return null;
          }
-        bean.setCarPoolName(this.carpoolName);
+        bean.setCarPoolName(this.carPoolName);
        // bean.setLeaderId(leaderId);
         return bean;
     }
 
     public void populate(CarpoolDTO bean) {
       // leaderId = bean.getLeaderId();
-       carpoolName = bean.getCarPoolName();
+       carPoolName = bean.getCarPoolName();
        id = bean.getId();
 
 
@@ -38,7 +38,8 @@ public class CarpoolForm extends BaseDTO {
 
     @Override
     public String toString() {
-        return "CarpoolForm [id=" + id + ", carPoolName=" + carpoolName + ", leaderid=" +  "-1]";
+        return "CarpoolForm [id=" + id + ", carPoolName=" + carPoolName + ", leaderid=" +  "-1]";
     }
+
 
 }

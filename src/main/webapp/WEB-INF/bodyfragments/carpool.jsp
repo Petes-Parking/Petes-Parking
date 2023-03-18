@@ -1,5 +1,6 @@
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: maxfuligni
@@ -26,9 +27,9 @@
     <h2>Create a Carpool</h2>
     <form method ="post" action="${pageContext.request.contextPath}/createCarpool">
       <label for="carPoolName">Carpool Name:</label>
-      <s:bind path="carPoolName">
-      <sf:input type="text" id="carPoolName" name="carPoolName" path="carPoolName"/>
-      </s:bind>
+<%--      <s:bind path="carPoolName">--%>
+      <input type="text" id="carPoolName" name="carPoolName" />
+<%--      </s:bind>--%>
 
       <button type="submit">Create Carpool</button>
     </form>
