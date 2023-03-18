@@ -41,15 +41,20 @@ public class CarpoolUsersCtl {
         model.addAttribute("hasCarpool", true);
         model.addAttribute("carpool", carpool);
         model.addAttribute("carPoolName", carpool.getCarPoolName());
+        model.addAttribute("isLeader", true);
+
 
         if (toInvite == null) {
             // not an existing user, tell user this
             model.addAttribute("errors", form.getEmail() + " is not a registered email!");
+            model.addAttribute("carPoolName", carpool.getCarPoolName());
+
         } else {
             model.addAttribute("messages", "You have invited " + toInvite.getFirstName() + " " + toInvite.getLastName() + "!");
             CarpoolUserDTO dto = new CarpoolUserDTO();
             dto.setCarpoolId(carpool.getId());
             dto.setUserId(toInvite.getId());
+            dao.save(dto);
         }
         return "carpool";
 

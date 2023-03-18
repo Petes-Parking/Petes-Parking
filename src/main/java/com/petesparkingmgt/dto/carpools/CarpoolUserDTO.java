@@ -12,9 +12,7 @@ import javax.persistence.*;
 @Setter
 public class CarpoolUserDTO extends BaseDTO {
 
-//    @EmbeddedId
-//    @Column(name ="id", length = 255)
-//    private CarpoolUserKey id;
+
 
     @Column(name = "carpoolId", length = 755)
     private long carpoolId;

@@ -67,7 +67,7 @@
     <h2>Invite Friends to Your Carpool</h2>
     <form method = "post" action="${pageContext.request.contextPath}/carpoolInvite">
       <label for="friend-email">Friend's Email:</label>
-      <input type="email" id="friend-email" name="friend-email"><br>
+      <input type="email" id="friend-email" name="email"><br>
       <button type="submit">Invite</button>
     </form>
   </section>
