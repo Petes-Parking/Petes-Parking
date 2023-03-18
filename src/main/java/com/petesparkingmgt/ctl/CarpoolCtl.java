@@ -52,6 +52,12 @@ public class CarpoolCtl {
             model.addAttribute("hasCarpool", true);
             model.addAttribute("carPoolName", carpool.getCarPoolName());
 
+            if(carpool.getLeaderId() == user.getId()) {
+                model.addAttribute("isLeader", true);
+            } else {
+                model.addAttribute("isLeader", false);
+            }
+
             // Mapping CarpoolUserDTO to UserDTO
             List<UserDTO> carpoolMembers = carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(carpool.getId())
                     .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
