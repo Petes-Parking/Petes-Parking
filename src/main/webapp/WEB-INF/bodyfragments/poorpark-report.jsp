@@ -87,11 +87,12 @@
       display: none;
       position: fixed;
       width: 350px;
-      height: 350px;
-      left: 35%;
-      top: 10%;
+      height: 200px;
+      left: 43%;
+      top: 20%;
       background: #CEB888;
       z-index: 20;
+      border-radius: 30px;
     }
 
     #confirmed-popup:after {
@@ -103,6 +104,7 @@
       right: 0;
       background: rgba(0,0,0,0.5);
       z-index: -2;
+      border-radius: 30px;
     }
 
     #confirmed-popup:before {
@@ -114,6 +116,24 @@
       right: 0;
       background: #FFF;
       z-index: -1;
+      border-radius: 30px;
+    }
+
+    .close-button {
+      margin-top: 20%;
+      margin-left: 10%;
+      align-content: center;
+    }
+
+    p3 {
+      font-family: Helvetica, sans-serif;
+      text-align: center;
+      font-size: large;
+    }
+
+    .text {
+      margin-left: 30%;
+      margin-top: 10%;
     }
 
   </style>
@@ -147,7 +167,9 @@
 </div>
 
 <div class="confirmed-popup" id="confirmed-popup">
-  <p2>Report Submitted.</p2>
+  <div class="text">
+    <p3>Report Submitted.</p3>
+  </div>
   <button class="close-button", href="#", id="close-button">Close</button>
 </div>
 
