@@ -27,7 +27,8 @@ public class CarpoolDTO extends BaseDTO {
      *
      * ------Carpools ---
      * id: 1
-     * leader_id: 1
+     * leaderId: 1
+     * carPoolName: "Max's Carpool"
      *
      *
      *
@@ -44,7 +45,10 @@ public class CarpoolDTO extends BaseDTO {
      */
 
 
-    @Column(name = "leader_id")
+    @Column(name = "leaderId")
     private long leaderId;
+
+    @Column(name = "carPoolName", length = 755)
+    private String carPoolName;
 
 }
