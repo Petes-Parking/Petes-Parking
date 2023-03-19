@@ -33,9 +33,10 @@ public class CarpoolUsersService {
         return dao.getCarpoolUserDTOByUserId(userid);
     }
 
-    public void acceptInvite(long carpoolId, long userId){
+    public CarpoolUserDTO acceptInvite(long carpoolId, long userId){
         CarpoolUserDTO dto = dao.getCarpoolUserDTOSByCarpoolIdAndUserId(carpoolId, userId);
         dto.setStatus(1);
+        return dto;
     }
 
     public void rejectInvite(long carpoolId, long userId){

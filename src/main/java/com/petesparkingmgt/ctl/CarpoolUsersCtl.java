@@ -79,11 +79,6 @@ public class CarpoolUsersCtl {
 
         if (user == null) return "error";
 
-        List<String> invites = service.getInvitesForUser(user.getId()).stream()
-                .map(carpoolUserDTO -> carpoolDAO.getCarpoolDTOById(carpoolUserDTO.getCarpoolId()).getCarPoolName()).collect(Collectors.toList());
-
-
-        model.addAttribute("invitations", invites); // can be empty
 
         if (responseCarpool != null) {
             if (action.equalsIgnoreCase("accept")) {
@@ -129,6 +124,9 @@ public class CarpoolUsersCtl {
                         model.addAttribute("members", carpoolMembers);
                     }
 
+                } else {
+                    model.addAttribute("hasCarpool", false);
+                    model.addAttribute("isLeader", false);
                 }
 
 
@@ -137,6 +135,14 @@ public class CarpoolUsersCtl {
                 return "error";
             }
         }
+
+        // Doing this at the end because a user can reject an invite, which should be reflected.
+
+        List<String> invites = service.getInvitesForUser(user.getId()).stream()
+                .map(carpoolUserDTO -> carpoolDAO.getCarpoolDTOById(carpoolUserDTO.getCarpoolId()).getCarPoolName()).collect(Collectors.toList());
+
+
+        model.addAttribute("invitations", invites); // can be empty
 
 
         return "carpool";

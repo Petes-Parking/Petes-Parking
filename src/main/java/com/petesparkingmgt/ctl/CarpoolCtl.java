@@ -101,12 +101,25 @@ public class CarpoolCtl {
 
         if (form.getDTO() != null) {
             CarpoolDTO dto = form.getDTO();
+
+            // Insert into users table as well
+            CarpoolUserDTO carpoolUserDTO = new CarpoolUserDTO();
+            carpoolUserDTO.setCarpoolId(dto.getId());
+            carpoolUserDTO.setUserId(user.getId());
+            carpoolUserDTO.setStatus(1);
+
             dto.setLeaderId(user.getId());
             service.add(dto);
+            carpoolUsersService.add(carpoolUserDTO);
             model.addAttribute("carpool", dto);
             model.addAttribute("carPoolName", dto.getCarPoolName());
 
             model.addAttribute("messages", "New carpool created!");
+            List<UserDTO> carpoolMembers = carpoolUsersService.getConfirmedUsersFor(dto.getId())
+                    .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
+            if (!carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(dto.getId()).isEmpty()) {
+                model.addAttribute("members", carpoolMembers);
+            }
 
 
             System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());
