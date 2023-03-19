@@ -9,4 +9,8 @@ public interface CarpoolDAO extends JpaRepository<CarpoolDTO, Long> {
 
     public void deleteById(long id);
 
+    public CarpoolDTO getCarpoolDTOById(long id);
+
+    public CarpoolDTO getCarpoolDTOByCarPoolName(String name);
+
 }

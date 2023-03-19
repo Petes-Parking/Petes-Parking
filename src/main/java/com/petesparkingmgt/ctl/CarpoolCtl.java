@@ -9,6 +9,7 @@ import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.form.CarpoolForm;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.CarpoolService;
+import com.petesparkingmgt.service.CarpoolUsersService;
 import com.petesparkingmgt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +27,9 @@ public class CarpoolCtl {
 
     @Autowired
     public CarpoolService service;
+
+    @Autowired
+    public CarpoolUsersService carpoolUsersService;
 
     @Autowired
     public CarpoolDAO dao;
@@ -47,6 +51,16 @@ public class CarpoolCtl {
         System.out.println("User: " + user.toString() + " on /carpool");
         CarpoolDTO carpool = dao.getCarpoolDTOByLeaderId(user.getId());
         model.addAttribute("carPoolName", "");
+
+
+        // Potential issue here where duplicate names can cause issues, but will examine this later
+        // Thinking of maybe creating a wrapper object, refactoring CarpoolUserDTO to contain name maybe
+        List<String> invites = carpoolUsersService.getInvitesForUser(user.getId()).stream()
+                .map(carpoolUserDTO -> dao.getCarpoolDTOById(carpoolUserDTO.getCarpoolId()).getCarPoolName()).collect(Collectors.toList());
+
+
+        model.addAttribute("invitations", invites); // can be empty
+
         if (carpool != null) {
             model.addAttribute("carpool", carpool);
             model.addAttribute("hasCarpool", true);
@@ -59,7 +73,7 @@ public class CarpoolCtl {
             }
 
             // Mapping CarpoolUserDTO to UserDTO
-            List<UserDTO> carpoolMembers = carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(carpool.getId())
+            List<UserDTO> carpoolMembers = carpoolUsersService.getConfirmedUsersFor(carpool.getId())
                     .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
             if (!carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(carpool.getId()).isEmpty()) {
                 model.addAttribute("members", carpoolMembers);

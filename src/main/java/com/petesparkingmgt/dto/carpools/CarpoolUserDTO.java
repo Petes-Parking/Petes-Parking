@@ -20,6 +20,9 @@ public class CarpoolUserDTO extends BaseDTO {
     @Column(name = "userId", length = 755)
     private long userId;
 
+    @Column(name = "status")
+    private long status; // 0 is pending, 1 is accepted
+
 
 
 

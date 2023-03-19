@@ -23,7 +23,7 @@ public class CarpoolService {
      * @param user
      */
     public void removeCarpoolFor(UserDTO user) {
-        CarpoolDTO remove = dao.getCarpoolDTOByLeaderId(user.getId());
+        CarpoolDTO remove = dao.getCarpoolDTOByLeaderId(user.getId()); // this will only work for leaders FYI
         if (remove.getLeaderId() == user.getId()) {
             // delete the entire carpool
 

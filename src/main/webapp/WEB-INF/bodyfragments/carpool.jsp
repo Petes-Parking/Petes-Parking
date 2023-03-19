@@ -94,16 +94,53 @@
   </c:if>
   <section id="invitations">
     <h2>Invitations</h2>
-    <ul>
-      <li>
         <h3>Carpool Name</h3>
-        <p>Pickup Location - Destination</p>
-        <div class="invitation-buttons">
-          <button class="accept">Accept</button>
-          <button class="reject">Reject</button>
-        </div>
-      </li>
-    </ul>
+
+    <form action="${pageContext.request.contextPath}/inviteResponse" method="post">
+      <select name="carPoolName">
+
+    <c:forEach items="${invitations}" var="invite">
+        <option name="option" value="${invite}"> ${invite}</option>
+
+    </c:forEach>
+
+      </select>
+      <br><br>
+
+      <button class="accept" type="submit" name="action" value="accept">Accept</button>
+      <button class="reject" type="submit" name="action" value="reject">Reject</button>
+    </form>
+
+
+
+  <%--    <label>--%>
+<%--      <select name="invitationList">--%>
+<%--      <c:forEach items="${invitations}" var="invite">--%>
+<%--        <c:out value="${invite}"/>--%>
+<%--        <option value="${invite}">${invite}</option>--%>
+<%--      </c:forEach>--%>
+<%--      </select>--%>
+<%--    </label>--%>
+
+<%--    <%--%>
+<%--      String selectedInvite = request.getParameter("invitationList");--%>
+<%--      System.out.println(selectedInvite + " in JSP.");--%>
+<%--      String option = selectedInvite != null ? selectedInvite : "null";--%>
+<%--      pageContext.setAttribute("choice", option);--%>
+
+<%--    %>--%>
+<%--    <div class="invitation-buttons">--%>
+<%--      <form method="post" action="${pageContext.request.contextPath}/acceptInvite">--%>
+<%--        <input class="accept" type="submit" name="carPoolName" value="Accept"/>--%>
+<%--        <input type="hidden" name="carPoolName" value="${choice}" />--%>
+<%--      </form>--%>
+<%--      <form method="post" action="${pageContext.request.contextPath}/rejectInvite">--%>
+<%--        <input class="reject" type="submit" name="carPoolName" value="Reject"/>--%>
+<%--        <input type="hidden" name="carpoolName" value="${choice}" />--%>
+
+<%--      </form>--%>
+<%--    </div>--%>
+
   </section>
 </main>
 </body>

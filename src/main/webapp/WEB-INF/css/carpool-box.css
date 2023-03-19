@@ -44,7 +44,7 @@ input[type="text"], input[type="email"] {
     width: 100%;
 }
 
-button[type="submit"], button.accept, button.reject {
+button[type="submit"], input.accept, input.reject {
     padding: 10px;
     border-radius: 5px;
     border: none;
