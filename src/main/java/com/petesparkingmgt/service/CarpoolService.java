@@ -17,19 +17,7 @@ public class CarpoolService {
         dao.save(dto);
     }
 
-    public void removeCarpoolFor(UserDTO user) {
-        CarpoolDTO remove = dao.getCarpoolDTOByLeaderId(user.getId()); // this will only work for leaders FYI
-        if (remove.getLeaderId() == user.getId()) {
-            // delete the entire carpool
 
-            dao.deleteById(remove.getId());
-            System.out.println("Deleted " + remove.getCarPoolName());
-
-        } else {
-            // TODO remove the entry in Carpool users table
-
-        }
-    }
 
 
     /**

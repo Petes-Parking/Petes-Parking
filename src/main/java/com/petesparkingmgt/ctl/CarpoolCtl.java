@@ -103,13 +103,14 @@ public class CarpoolCtl {
             CarpoolDTO dto = form.getDTO();
 
             // Insert into users table as well
-            CarpoolUserDTO carpoolUserDTO = new CarpoolUserDTO();
-            carpoolUserDTO.setCarpoolId(dto.getId());
-            carpoolUserDTO.setUserId(user.getId());
-            carpoolUserDTO.setStatus(1);
+
 
             dto.setLeaderId(user.getId());
             service.add(dto);
+            CarpoolUserDTO carpoolUserDTO = new CarpoolUserDTO();
+            carpoolUserDTO.setCarpoolId(dao.getCarpoolDTOByLeaderId(user.getId()).getId());
+            carpoolUserDTO.setUserId(user.getId());
+            carpoolUserDTO.setStatus(1);
             carpoolUsersService.add(carpoolUserDTO);
             model.addAttribute("carpool", dto);
             model.addAttribute("carPoolName", dto.getCarPoolName());
@@ -140,13 +141,16 @@ public class CarpoolCtl {
     @GetMapping("/leaveCarpool")
     public String leaveCarpool(@ModelAttribute("form") CarpoolForm form, Model model, HttpSession session) {
         UserDTO user = (UserDTO) session.getAttribute("user");
+        CarpoolUserDTO leaving = carpoolUsersService.getCarpoolFor(user.getId());
 
         System.out.println(user.toString() + " on /leaveCarpool");
 
         // model.addAttribute("carPoolName", "");
         model.addAttribute("hasCarpool", false);
         model.addAttribute("messages", "You have left your carpool!");
-        service.removeCarpoolFor(user);
+
+        carpoolUsersService.leaveCarpoolFor(user.getId(), leaving.getCarpoolId());
+
 
 
         return "carpool";
