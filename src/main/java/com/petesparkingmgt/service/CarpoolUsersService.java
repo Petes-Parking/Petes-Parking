@@ -40,7 +40,7 @@ public class CarpoolUsersService {
     }
 
     public void rejectInvite(long carpoolId, long userId){
-       dao.deleteCarpoolUserDTOByCarpoolIdAndUserId(carpoolId, userId);
+        dao.deleteCarpoolUserDTOByCarpoolIdAndUserId(carpoolId, userId);
     }
 
 

@@ -17,11 +17,6 @@ public class CarpoolService {
         dao.save(dto);
     }
 
-
-    /**
-     *
-     * @param user
-     */
     public void removeCarpoolFor(UserDTO user) {
         CarpoolDTO remove = dao.getCarpoolDTOByLeaderId(user.getId()); // this will only work for leaders FYI
         if (remove.getLeaderId() == user.getId()) {
@@ -35,5 +30,12 @@ public class CarpoolService {
 
         }
     }
+
+
+    /**
+     *
+     * @param user
+     */
+
 
 }

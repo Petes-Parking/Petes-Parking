@@ -6,7 +6,6 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
-import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -67,6 +66,7 @@ public class BookingCtl {
 			System.out.println("bindingResult : "+bindingResult);
 			return "booking";
 		}else {
+			// check right here if in carpool && not leader, cancel booking.
 			BookingDTO bean = form.getDTO();
 			bean.setId(0);
 		    SlotDTO slotDTO =	slotDAO.findById(bean.getSlotId());

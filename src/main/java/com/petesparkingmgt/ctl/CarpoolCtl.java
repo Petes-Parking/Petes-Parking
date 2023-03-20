@@ -143,7 +143,7 @@ public class CarpoolCtl {
 
         System.out.println(user.toString() + " on /leaveCarpool");
 
-       // model.addAttribute("carPoolName", "");
+        // model.addAttribute("carPoolName", "");
         model.addAttribute("hasCarpool", false);
         model.addAttribute("messages", "You have left your carpool!");
         service.removeCarpoolFor(user);
