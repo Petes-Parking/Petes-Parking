@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">jo
+    <meta charset="UTF-8">
     <title>Pete's Parking</title>
     <style>
         <%@include file="/WEB-INF/css/main-page.css"%>
@@ -43,22 +43,15 @@
         </div>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
         <div class="dropdown">
-            <button class="favoriteBtn">View Favorite Parkings</button>
+            <a href="${pageContext.request.contextPath}/history">
+                <button class="favoriteBtn">View Favorite Parkings</button>
+            </a>
         </div>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
         <div class="dropdown">
             <a href="${pageContext.request.contextPath}/parkingpals">
                 <button class="palsBtn">Parking Pals</button>
             </a>
-        </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
-        <div class="dropdown">
-                <button class="reportbtn">File a Report</button>
-            </a>
-            <div class="dropdown-content1">
-                <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
-                <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
-            </div>
         </div>
 
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
@@ -68,27 +61,24 @@
             <button class="favoriteBtn">Carpools</button>
             </a>
         </div>
-
-
-        <!--
-                    <img src="StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0;"/>
-                    <div class="dropdown">
-                        <button class="dropbtn4">Option 4</button>
-                        <div class="dropdown-content2">
-                            <a href="#">Link 10</a>
-                            <a href="#">Link 11</a>
-                            <a href="#">Link 12</a>
-                        </div>
-                    </div>
-        -->
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; vertical-align: bottom;"/>
         <a href="${pageContext.request.contextPath}/settings">
             <button class="settings-button">Settings</button>
         </a>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+        <div class="dropdown">
+            <button class="reportbtn">File a Report</button>
+            </a>
+            <div class="dropdown-content1">
+                <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
+                <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
+            </div>
+        </div>
     </div>
 </div>
-<div class="zoom_outer" width="1400" align="right" height="1230">
-    <div id="zoom" width="1400" height="1230" align="right">
+
+<div class="zoom_outer" width="1400" align="right" height="1220">
+    <div id="zoom" width="1400" height="1220" align="right">
         <button class="corecbutton", href="#", onclick="show('corec-popup')">CRL</button>
         <button class="nwbutton", href="#", onclick="show('nw-popup')">NWG</button>
         <button class="univbutton", href="#", onclick="show('univ-popup')">USG</button>

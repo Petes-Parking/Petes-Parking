@@ -131,6 +131,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/bookinglistview.jsp" />
     </definition>
 
+    <!-- History Page View  -->
+    <definition name="historyPage" extends="base.definition">
+        <put-attribute name="title" value="History" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/historyPage.jsp" />
+    </definition>
+
     <!-- View Slots List View  -->
     <definition name="viewslots" extends="base.definition">
         <put-attribute name="title" value="View slots List" />

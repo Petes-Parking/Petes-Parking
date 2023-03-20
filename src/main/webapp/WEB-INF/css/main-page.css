@@ -1,9 +1,11 @@
 @charset "UTF-8";
 .sidebar {
     width: 465px;
-    height: 1240px;
+    height: 1230px;
     background-color: #CEB888;
     display: inline-block;
+    margin-left: 10px;
+    border-radius: 10px;
 }
 
 .profile-area {
@@ -52,7 +54,7 @@
     cursor: pointer;
     margin-right: 0%;
     border-radius: 15px;
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 15px;
     vertical-align: bottom;
     border: none;
@@ -143,7 +145,7 @@
 
 .zoom_outer {
     width: 2000px;
-    height: 1230px;
+    height: 1220px;
     display: inline-block;
     margin-left: 50px;
     position: relative;
