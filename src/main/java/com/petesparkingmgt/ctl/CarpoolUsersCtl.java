@@ -84,23 +84,30 @@ public class CarpoolUsersCtl {
             if (action.equalsIgnoreCase("accept")) {
                 // Update status to 1, we can just get the current CarpoolUsersDTO and update it and
                 // it should store to database
-                service.acceptInvite(responseCarpool.getId(), user.getId());
+                CarpoolUserDTO existingUserDTO = service.getCarpoolFor(user.getId());
+                if (existingUserDTO != null) {
+                    String existingCarpoolName = carpoolDAO.getCarpoolDTOById(existingUserDTO.getCarpoolId()).getCarPoolName();
+                    model.addAttribute("errors", "You are already in a carpool!");
+                    model.addAttribute("hasCarpool", true);
+                    model.addAttribute("carPoolName", existingCarpoolName); //  change to CarpoolDTO name
+                    return "carpool";
+                } else {
+                    service.acceptInvite(responseCarpool, user.getId());
 
-                model.addAttribute("carpool", responseCarpool);
-                model.addAttribute("hasCarpool", true);
-                model.addAttribute("carPoolName", responseCarpool.getCarPoolName());
+                    model.addAttribute("carpool", responseCarpool);
+                    model.addAttribute("hasCarpool", true);
+                    model.addAttribute("carPoolName", responseCarpool.getCarPoolName());
 
-                model.addAttribute("isLeader", false);
+                    model.addAttribute("isLeader", false);
 
-                // Mapping CarpoolUserDTO to UserDTO
-                List<UserDTO> carpoolMembers = service.getConfirmedUsersFor(responseCarpool.getId())
-                        .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
-                if (!dao.getCarpoolUserDTOSByCarpoolId(responseCarpool.getId()).isEmpty()) {
-                    model.addAttribute("members", carpoolMembers);
+                    // Mapping CarpoolUserDTO to UserDTO
+                    List<UserDTO> carpoolMembers = service.getConfirmedUsersFor(responseCarpool.getId())
+                            .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
+                    if (!dao.getCarpoolUserDTOSByCarpoolId(responseCarpool.getId()).isEmpty()) {
+                        model.addAttribute("members", carpoolMembers);
+                    }
+
                 }
-
-
-
             } else if (action.equalsIgnoreCase("reject")) {
                 // delete from database
                 service.rejectInvite(responseCarpool.getId(), user.getId());

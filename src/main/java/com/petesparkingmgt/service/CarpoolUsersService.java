@@ -43,10 +43,16 @@ public class CarpoolUsersService {
         return dao.getCarpoolUserDTOByUserIdAndStatusEquals(userid, 1);
     }
 
-    public CarpoolUserDTO acceptInvite(long carpoolId, long userId){
-        CarpoolUserDTO dto = dao.getCarpoolUserDTOSByCarpoolIdAndUserId(carpoolId, userId);
-        dto.setStatus(1);
-        return dto;
+    public CarpoolUserDTO acceptInvite(CarpoolDTO carpool, long userId){
+        // Delete entry with status 0, reinsert with status 1
+        dao.deleteCarpoolUserDTOByCarpoolIdAndUserId(carpool.getId(), userId);
+        CarpoolUserDTO accepted = new CarpoolUserDTO();
+        accepted.setCarpoolId(carpool.getId());
+        accepted.setUserId(userId);
+        accepted.setStatus(1);
+        add(accepted);
+
+        return accepted;
     }
 
     public void rejectInvite(long carpoolId, long userId){

@@ -49,19 +49,22 @@ public class CarpoolCtl {
         }
 
         System.out.println("User: " + user.toString() + " on /carpool");
-        CarpoolDTO carpool = dao.getCarpoolDTOByLeaderId(user.getId());
+        CarpoolUserDTO carpoolUserDTO = carpoolUsersService.getCarpoolFor(user.getId());
+
         model.addAttribute("carPoolName", "");
 
 
         // Potential issue here where duplicate names can cause issues, but will examine this later
         // Thinking of maybe creating a wrapper object, refactoring CarpoolUserDTO to contain name maybe
         List<String> invites = carpoolUsersService.getInvitesForUser(user.getId()).stream()
-                .map(carpoolUserDTO -> dao.getCarpoolDTOById(carpoolUserDTO.getCarpoolId()).getCarPoolName()).collect(Collectors.toList());
+                .map(cu -> dao.getCarpoolDTOById(cu.getCarpoolId()).getCarPoolName()).collect(Collectors.toList());
 
 
         model.addAttribute("invitations", invites); // can be empty
 
-        if (carpool != null) {
+        if (carpoolUserDTO != null) {
+            CarpoolDTO carpool = dao.getCarpoolDTOById(carpoolUserDTO.getCarpoolId());
+
             model.addAttribute("carpool", carpool);
             model.addAttribute("hasCarpool", true);
             model.addAttribute("carPoolName", carpool.getCarPoolName());
