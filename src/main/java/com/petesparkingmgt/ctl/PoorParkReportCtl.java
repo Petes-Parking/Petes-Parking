@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.Date;
 
 @Controller
 public class PoorParkReportCtl {
@@ -32,6 +33,9 @@ public class PoorParkReportCtl {
 
         if (form.getDTO() != null) {
             PoorParkReportDTO dto = form.getDTO();
+            dto.setReporterEmail(user.getEmail());
+            Date date = new Date();
+            dto.setReportDate(date);
             dao.save(dto);
         }
 

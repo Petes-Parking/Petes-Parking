@@ -147,10 +147,10 @@
     <form method="post" action="${pageContext.request.contextPath}/submitExpReport" style="display: inline;">
 
         <label for="licensePlate">License Plate:</label>
-        <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate" required><br>
+        <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate"><br>
 
         <label for="parkingLot">Parking Lot:</label>
-        <select name="parkingLot" id="parkingLot" placeholder="Parking Lot" required>
+        <select name="parkingLot" id="parkingLot" placeholder="Parking Lot">
             <option value="corec">COREC Parking Lot</option>
             <option value="mccutcheon">McCutcheon Dr. Parking Garage</option>
             <option value="grant">Grant St. Parking Garage</option>
@@ -160,7 +160,7 @@
         </select><br>
 
         <label for="description">Description:</label>
-        <input class="desc" type="text" id="description" name="description" placeholder="Enter description here." required><br>
+        <input class="desc" type="text" id="description" name="description" placeholder="Enter description here."><br>
             <label for="imageURL">Image:</label>
             <input class="image" type="file" id="imageURL" name="imageURL" accept="image/*"><br>
     <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
