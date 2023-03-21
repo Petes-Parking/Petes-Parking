@@ -127,6 +127,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('corec-popup')">Close</button>
+    <button class="favorite" onclick="favoriteArea()" style="font-size: 16px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="imgClickAndChange" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -381,6 +383,14 @@
         $(id).style.display ='none';
     }
 
+    function favoriteArea() {
+        if (document.getElementById("imgClickAndChange").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png"){
+            document.getElementById("imgClickAndChange").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("imgClickAndChange").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png"){
+            document.getElementById("imgClickAndChange").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
+        } else {
+        }
+    }
 </script>
 </body>
 </html>
