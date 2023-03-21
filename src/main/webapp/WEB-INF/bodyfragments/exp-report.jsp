@@ -121,7 +121,7 @@
             border-radius: 30px;
         }
 
-        .close-button {
+        .submit {
             margin-top: 20%;
             margin-left: 10%;
             align-content: center;
@@ -145,10 +145,12 @@
     <h1>Expiration Report</h1>
     <p>Please enter information about a car that is still in a spot after its timer has expired. We will review the report as soon as possible and reward points for correct reports.</p>
     <form method="post" action="${pageContext.request.contextPath}/submitExpReport" style="display: inline;">
-        <p2>License Plate:</p2>
+
+        <label for="licensePlate">License Plate:</label>
         <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate" required><br>
-        <p2>Parking Lot:</p2>
-        <select name="parkingLot" id=lot" placeholder="Parking Lot" required>
+
+        <label for="parkingLot">Parking Lot:</label>
+        <select name="parkingLot" id="parkingLot" placeholder="Parking Lot" required>
             <option value="corec">COREC Parking Lot</option>
             <option value="mccutcheon">McCutcheon Dr. Parking Garage</option>
             <option value="grant">Grant St. Parking Garage</option>
@@ -156,27 +158,28 @@
             <option value="rossade">Ross-Ade Stadium Parking Lot</option>
             <option value="northwestern">Northwestern St. Parking Garage</option>
         </select><br>
-        <p2>Description:</p2>
+
+        <label for="description">Description:</label>
         <input class="desc" type="text" id="description" name="description" placeholder="Enter description here." required><br>
-            <p2>Image:</p2>
+            <label for="imageURL">Image:</label>
             <input class="image" type="file" id="imageURL" name="imageURL" accept="image/*"><br>
     <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
-    <button type="submit" class="save-button", id="submit">Submit</button>
+
+    <button type="save-button" class="save-button", id="save-button">Submit</button>
     <a href="${pageContext.request.contextPath}/main">
         <button type="button">Cancel</button>
     </a>
+        <div class="confirmed-popup" id="confirmed-popup">
+            <div class="text">
+                <p3>Report Submitted.</p3>
+            </div>
+            <button class="submit", type="submit" id="submit">Close</button>
+        </div>
     </form>
-</div>
-
-<div class="confirmed-popup" id="confirmed-popup">
-    <div class="text">
-        <p3>Report Submitted.</p3>
-    </div>
-    <button class="close-button", href="#", id="close-button">Close</button>
 </div>
 <script>
     const saveButton = document.getElementById("save-button");
-    const closeButton = document.getElementById("close-button");
+    const closeButton = document.getElementById("submit");
     const popup = document.getElementById("confirmed-popup");
 
     saveButton.addEventListener("click", () => {

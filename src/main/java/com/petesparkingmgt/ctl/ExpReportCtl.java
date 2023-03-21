@@ -1,5 +1,6 @@
 package com.petesparkingmgt.ctl;
 
+import com.fasterxml.jackson.core.JsonToken;
 import com.petesparkingmgt.dao.ExpReportDAO;
 import com.petesparkingmgt.dto.ExpReportDTO;
 import com.petesparkingmgt.dto.UserDTO;
@@ -33,6 +34,6 @@ public class ExpReportCtl {
             dao.save(dto);
         }
 
-        return "exp-report";
+        return "mainPage";
     }
 }
