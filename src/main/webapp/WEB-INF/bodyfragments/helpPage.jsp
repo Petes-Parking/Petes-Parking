@@ -77,8 +77,9 @@
       <label for="email">You can contact us by sending an email about your issues. We will respond within 3 business days.</label>
       <input type="email" id="email" name="email" placeholder="Enter your email address here" required>
       <input type="text" id="message" name="message" placeholder="Explain your issues or ask a question here"><br>
+
     <a href="${pageContext.request.contextPath}/emailsent">
-        <button type="submit" value="Submit">Submit</button>
+        <button type="button" >Submit</button>
     </a>
 
    </form>

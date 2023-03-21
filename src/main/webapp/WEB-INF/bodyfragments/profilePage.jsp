@@ -167,7 +167,7 @@
     </div>
 
     <a href="${pageContext.request.contextPath}/main">
-        <button1 class="save-button" type="button"> Save Changes</button1>
+        <button1 class="save-button" type="button" color="white"> Save Changes </button1>
     </a>
 
     <button1 class="delete-button" type="button" onclick="showPopup1()">
