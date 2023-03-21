@@ -75,12 +75,7 @@ public class CarpoolCtl {
                 model.addAttribute("isLeader", false);
             }
 
-            // Mapping CarpoolUserDTO to UserDTO
-            List<UserDTO> carpoolMembers = carpoolUsersService.getConfirmedUsersFor(carpool.getId())
-                    .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
-            if (!carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(carpool.getId()).isEmpty()) {
-                model.addAttribute("members", carpoolMembers);
-            }
+            model.addAttribute("members", service.getNamesOfMembers(carpool.getId()));
 
 
         } else {
@@ -111,7 +106,8 @@ public class CarpoolCtl {
             dto.setLeaderId(user.getId());
             service.add(dto);
             CarpoolUserDTO carpoolUserDTO = new CarpoolUserDTO();
-            carpoolUserDTO.setCarpoolId(dao.getCarpoolDTOByLeaderId(user.getId()).getId());
+            CarpoolDTO inTable = dao.getCarpoolDTOByLeaderId(user.getId());
+            carpoolUserDTO.setCarpoolId(inTable.getId());
             carpoolUserDTO.setUserId(user.getId());
             carpoolUserDTO.setStatus(1);
             carpoolUsersService.add(carpoolUserDTO);
@@ -119,11 +115,8 @@ public class CarpoolCtl {
             model.addAttribute("carPoolName", dto.getCarPoolName());
 
             model.addAttribute("messages", "New carpool created!");
-            List<UserDTO> carpoolMembers = carpoolUsersService.getConfirmedUsersFor(dto.getId())
-                    .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
-            if (!carpoolUsersDAO.getCarpoolUserDTOSByCarpoolId(dto.getId()).isEmpty()) {
-                model.addAttribute("members", carpoolMembers);
-            }
+
+            model.addAttribute("members", service.getNamesOfMembers(inTable.getId()));
 
 
             System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());

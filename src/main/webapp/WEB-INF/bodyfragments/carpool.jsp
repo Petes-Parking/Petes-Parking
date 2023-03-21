@@ -80,7 +80,7 @@
       <ul>
 
       <c:forEach items="${members}" var="member">
-        <li>${member.firstName} ${member.lastName}</li>
+        <li>${member}</li>
 
       </c:forEach>
       </ul>
@@ -88,7 +88,6 @@
 
 
     </section>
-
 
 
   </c:if>

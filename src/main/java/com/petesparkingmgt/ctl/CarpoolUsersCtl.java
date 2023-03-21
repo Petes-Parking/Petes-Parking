@@ -8,6 +8,7 @@ import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.form.CarpoolAddMemberForm;
 import com.petesparkingmgt.form.CarpoolResponseForm;
+import com.petesparkingmgt.service.CarpoolService;
 import com.petesparkingmgt.service.CarpoolUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,9 @@ public class CarpoolUsersCtl {
 
     @Autowired
     public CarpoolUsersService service;
+
+    @Autowired
+    public CarpoolService carpoolService;
 
     @Autowired
     public CarpoolUsersDAO dao;
@@ -100,12 +104,8 @@ public class CarpoolUsersCtl {
 
                     model.addAttribute("isLeader", false);
 
-                    // Mapping CarpoolUserDTO to UserDTO
-                    List<UserDTO> carpoolMembers = service.getConfirmedUsersFor(responseCarpool.getId())
-                            .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
-                    if (!dao.getCarpoolUserDTOSByCarpoolId(responseCarpool.getId()).isEmpty()) {
-                        model.addAttribute("members", carpoolMembers);
-                    }
+                    model.addAttribute("members", carpoolService.getNamesOfMembers(responseCarpool.getId()));
+
 
                 }
             } else if (action.equalsIgnoreCase("reject")) {
@@ -125,11 +125,8 @@ public class CarpoolUsersCtl {
                         model.addAttribute("isLeader", false);
                     }
 
-                    List<UserDTO> carpoolMembers = service.getConfirmedUsersFor(responseCarpool.getId())
-                            .stream().map(cuserDTO -> userDAO.findById(cuserDTO.getUserId())).collect(Collectors.toList());
-                    if (!dao.getCarpoolUserDTOSByCarpoolId(responseCarpool.getId()).isEmpty()) {
-                        model.addAttribute("members", carpoolMembers);
-                    }
+                    model.addAttribute("members", carpoolService.getNamesOfMembers(responseCarpool.getId()));
+
 
                 } else {
                     model.addAttribute("hasCarpool", false);

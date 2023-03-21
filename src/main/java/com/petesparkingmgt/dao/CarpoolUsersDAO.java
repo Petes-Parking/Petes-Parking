@@ -13,6 +13,8 @@ public interface CarpoolUsersDAO extends JpaRepository<CarpoolUserDTO, Long> {
     public List<CarpoolUserDTO> getCarpoolUserDTOSByCarpoolId(long id);
 
 
+    public List<CarpoolUserDTO> getCarpoolUserDTOSByCarpoolIdAndStatusEquals(long carpoolid, long status);
+
     public List<CarpoolUserDTO> getCarpoolUserDTOSByUserIdAndStatusEquals(long userid, long status);
 
     public CarpoolUserDTO getCarpoolUserDTOSByCarpoolIdAndUserId(long carpoolid, long userid);
