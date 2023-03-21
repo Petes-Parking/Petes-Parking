@@ -144,28 +144,28 @@
 <div class="container">
     <h1>Expiration Report</h1>
     <p>Please enter information about a car that is still in a spot after its timer has expired. We will review the report as soon as possible and reward points for correct reports.</p>
-    <p2>License Plate:</p2>
-    <input class="license" type="text" id="license" name="license" placeholder="License Plate" required><br>
-    <p2>Parking Lot:</p2>
-    <select name="lot" id="lot" placeholder="Parking Lot" required>
-        <option value="corec">COREC Parking Lot</option>
-        <option value="mccutcheon">McCutcheon Dr. Parking Garage</option>
-        <option value="grant">Grant St. Parking Garage</option>
-        <option value="univ">University St. Parking Garage</option>
-        <option value="rossade">Ross-Ade Stadium Parking Lot</option>
-        <option value="northwestern">Northwestern St. Parking Garage</option>
-    </select><br>
-    <p2>Description:</p2>
-    <input class="desc" type="text" id="desc" name="desc" placeholder="Enter description here." required><br>
-    <form action="/action_page.php" style="display: inline;">
-        <p2>Image:</p2>
-        <input class="image" type="file" id="img" name="img" accept="image/*"><br>
-    </form>
-    <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"><br>
-    <button class="save-button", href="#", id="save-button">Submit</button>
+    <form method="post" action="${pageContext.request.contextPath}/submitExpReport" style="display: inline;">
+        <p2>License Plate:</p2>
+        <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate" required><br>
+        <p2>Parking Lot:</p2>
+        <select name="parkingLot" id=lot" placeholder="Parking Lot" required>
+            <option value="corec">COREC Parking Lot</option>
+            <option value="mccutcheon">McCutcheon Dr. Parking Garage</option>
+            <option value="grant">Grant St. Parking Garage</option>
+            <option value="univ">University St. Parking Garage</option>
+            <option value="rossade">Ross-Ade Stadium Parking Lot</option>
+            <option value="northwestern">Northwestern St. Parking Garage</option>
+        </select><br>
+        <p2>Description:</p2>
+        <input class="desc" type="text" id="description" name="description" placeholder="Enter description here." required><br>
+            <p2>Image:</p2>
+            <input class="image" type="file" id="imageURL" name="imageURL" accept="image/*"><br>
+    <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
+    <button type="submit" class="save-button", id="submit">Submit</button>
     <a href="${pageContext.request.contextPath}/main">
         <button type="button">Cancel</button>
     </a>
+    </form>
 </div>
 
 <div class="confirmed-popup" id="confirmed-popup">

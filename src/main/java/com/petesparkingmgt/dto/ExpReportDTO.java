@@ -31,9 +31,6 @@ public class ExpReportDTO extends BaseDTO {
     @Column(name = "parkingLot", length = 755)
     private String parkingLot;
 
-    @Column(name = "exp_reportID", length = 45)
-    private String exp_reportID;
-
     @Column(name = "reportDate")
     private Date reportDate;
 
