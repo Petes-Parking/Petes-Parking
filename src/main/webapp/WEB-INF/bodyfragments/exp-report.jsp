@@ -123,7 +123,7 @@
 
         .submit {
             margin-top: 20%;
-            margin-left: 10%;
+            margin-left: 0%;
             align-content: center;
         }
 
@@ -134,7 +134,7 @@
         }
 
         .text {
-            margin-left: 30%;
+            margin-left: 0%;
             margin-top: 10%;
         }
 
@@ -165,7 +165,7 @@
             <input class="image" type="file" id="imageURL" name="imageURL" accept="image/*"><br>
     <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
 
-    <button type="save-button" class="save-button", id="save-button">Submit</button>
+    <button type="button" class="save-button", id="save-button">Submit</button>
     <a href="${pageContext.request.contextPath}/main">
         <button type="button">Cancel</button>
     </a>
