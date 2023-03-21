@@ -19,7 +19,7 @@ public class PoorParkReportDTO extends BaseDTO {
     @Column(name = "description", length = 755)
     private String description;
 
-    @Column(name = "license", length = 755)
+    @Column(name = "licensePlate", length = 755)
     private String licensePlate;
 
     @Column(name = "reporterEmail", length = 755)
@@ -30,9 +30,6 @@ public class PoorParkReportDTO extends BaseDTO {
 
     @Column(name = "parkingLot", length = 755)
     private String parkingLot;
-
-    @Column(name = "poorpark_reportID")
-    private int exp_reportID;
 
     @Column(name = "reportDate")
     private Date reportDate;
