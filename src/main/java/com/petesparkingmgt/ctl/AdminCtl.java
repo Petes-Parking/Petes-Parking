@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -39,21 +40,16 @@ public class AdminCtl {
         return "adminview";
     }
 
-    @PostMapping("/viewuser")
-    public String adminViewPage(@ModelAttribute("form") UserForm form, Model model){
+    @GetMapping("/admin/edit/{userId}")
+    public String adminEdit(@PathVariable("userId") Long userId, Model model) {
+        // Retrieve the user by the userId from the database
+        UserDTO user = service.findUserById(userId);
 
-        System.out.println("Dates--" + form.getDTO().getBdate1());
-        if (form.getDTO().getBdate1() != null) {
-            model.addAttribute("dateList", form.getDTO().getBdate1());
-            model.addAttribute("datesList", form.getDTO().getBdate2());
-            model.addAttribute("datesList", form.getDTO().getBdate3());
-        } else {
-            model.addAttribute("dateList", "No history yet!");
+        // Add the user object to the model
+        model.addAttribute("user", user);
 
-        }
-
-        return "adminviewhistory";
+        // Return the view name for the edit user page
+        return "adminEditUser";
     }
-
 
 }

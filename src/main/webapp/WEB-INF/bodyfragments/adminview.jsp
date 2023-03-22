@@ -122,6 +122,7 @@
         </div>
     </div>
 
+
     <div class="row">
         <div class="col-md-12">
             <button class="btn btn-primary" id="editUserBtn" disabled>Edit User</button>
@@ -151,8 +152,9 @@
     // Add click event listeners for buttons
     $('#editUserBtn').on('click', function() {
         let selectedUserId = $('#selectedUserId').val();
-        window.location.href = `/admin/editUser/${selectedUserId}`;
+        window.location.href = `${pageContext.request.contextPath}/admin/edit/` + selectedUserId;
     });
+
 
     $('#deleteUserBtn').on('click', function() {
         let selectedUserId = $('#selectedUserId').val();
