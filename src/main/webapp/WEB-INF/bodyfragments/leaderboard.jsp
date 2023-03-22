@@ -33,7 +33,7 @@
 
 <div class="container">
   <h1 class="text-center">Leaderboard</h1>
-  <button class="btn btn-secondary back-btn" onclick="window.location.href='/main'">&larr; Back</button>
+  <button class="btn btn-secondary back-btn" onclick="window.location.href='${pageContext.request.contextPath}/main'">&larr; Back</button>
   <hr/>
   <c:set var="ENTRIES_PER_PAGE" value="10" />
   <c:set var="currentPage" value="${param.page ne null ? param.page : 1}" />
