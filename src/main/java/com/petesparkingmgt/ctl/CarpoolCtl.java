@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -127,7 +128,11 @@ public class CarpoolCtl {
 
             model.addAttribute("messages", "New carpool created!");
 
-            model.addAttribute("members", service.getNamesOfMembers(inTable.getId()));
+            // Special case here, on create, there is only one member, the leader.
+            // Method before wasnt working because it was too quick for the database, so just manually doing it.
+            List<String> members = new ArrayList<>();
+            members.add("(leader) " + user.getFirstName() + " " + user.getLastName());
+            model.addAttribute("members", members);
 
 
             System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());

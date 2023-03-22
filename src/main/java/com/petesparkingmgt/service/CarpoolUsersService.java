@@ -55,6 +55,14 @@ public class CarpoolUsersService {
         return accepted;
     }
 
+    public boolean isInCarpoolButNotLeader(long userid) {
+        return getCarpoolFor(userid) != null && carpoolDAO.getCarpoolDTOById(getCarpoolFor(userid).getCarpoolId()).getLeaderId() != userid;
+    }
+
+    public boolean isLeader(long userid) {
+        return carpoolDAO.getCarpoolDTOByLeaderId(userid) != null;
+    }
+
     public void rejectInvite(long carpoolId, long userId){
         dao.deleteCarpoolUserDTOByCarpoolIdAndUserId(carpoolId, userId);
     }
