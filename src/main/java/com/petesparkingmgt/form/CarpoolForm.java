@@ -32,8 +32,6 @@ public class CarpoolForm extends BaseDTO {
        carPoolName = bean.getCarPoolName();
        id = bean.getId();
 
-
-
     }
 
     @Override

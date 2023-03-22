@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class AdminCtl {
@@ -32,6 +33,9 @@ public class AdminCtl {
         model.addAttribute("email", "email");
 
         model.addAttribute("adminUserList", users);
+
+
+        users.stream().map(UserDTO::getFirstName).collect(Collectors.toList());
         return "adminview";
     }
 

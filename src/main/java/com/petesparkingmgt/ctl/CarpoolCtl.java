@@ -22,6 +22,17 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+3. Deleting a carpool should remove from users table too (if leader left, this would cause bugs) --- DONE (think needs to be tested)
+4. When creating a carpool while having active invitations, and after creating, those invitations vanish -- need to test
+5. Probably need to check for no duplicate group names - not done
+6. More probably
+
+
+after a certain point, it is beneficial to just finish the user story and not worry about every single edge
+case since there is a lot no doubt. as long as the core functionality is working.
+
+ */
 @Controller
 public class CarpoolCtl {
 

@@ -13,6 +13,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Carpool Page</title>
   <style>
     <%@include file="/WEB-INF/css/carpool-box.css"%>
@@ -22,6 +23,7 @@
 <body>
 <header>
   <h1>Carpool Page</h1>
+
   <c:if test="${not empty messages}">
     <div class="alert alert-danger">
       <ul>
@@ -104,43 +106,17 @@
     </c:forEach>
 
       </select>
+
       <br><br>
 
       <button class="accept" type="submit" name="action" value="accept">Accept</button>
       <button class="reject" type="submit" name="action" value="reject">Reject</button>
     </form>
-
-
-
-  <%--    <label>--%>
-<%--      <select name="invitationList">--%>
-<%--      <c:forEach items="${invitations}" var="invite">--%>
-<%--        <c:out value="${invite}"/>--%>
-<%--        <option value="${invite}">${invite}</option>--%>
-<%--      </c:forEach>--%>
-<%--      </select>--%>
-<%--    </label>--%>
-
-<%--    <%--%>
-<%--      String selectedInvite = request.getParameter("invitationList");--%>
-<%--      System.out.println(selectedInvite + " in JSP.");--%>
-<%--      String option = selectedInvite != null ? selectedInvite : "null";--%>
-<%--      pageContext.setAttribute("choice", option);--%>
-
-<%--    %>--%>
-<%--    <div class="invitation-buttons">--%>
-<%--      <form method="post" action="${pageContext.request.contextPath}/acceptInvite">--%>
-<%--        <input class="accept" type="submit" name="carPoolName" value="Accept"/>--%>
-<%--        <input type="hidden" name="carPoolName" value="${choice}" />--%>
-<%--      </form>--%>
-<%--      <form method="post" action="${pageContext.request.contextPath}/rejectInvite">--%>
-<%--        <input class="reject" type="submit" name="carPoolName" value="Reject"/>--%>
-<%--        <input type="hidden" name="carpoolName" value="${choice}" />--%>
-
-<%--      </form>--%>
-<%--    </div>--%>
-
   </section>
+  <a href="${pageContext.request.contextPath}/main">
+    <button style="margin:auto" type="submit">Back</button>
+  </a>
+
 </main>
 </body>
 </html>
