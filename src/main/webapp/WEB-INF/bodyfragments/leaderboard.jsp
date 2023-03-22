@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +35,19 @@
   <h1 class="text-center">Leaderboard</h1>
   <button class="btn btn-secondary back-btn" onclick="window.location.href='/main'">&larr; Back</button>
   <hr/>
+  <c:set var="ENTRIES_PER_PAGE" value="10" />
+  <c:set var="currentPage" value="${param.page ne null ? param.page : 1}" />
+  <c:set var="startIndex" value="${(currentPage - 1) * ENTRIES_PER_PAGE}" />
+  <c:set var="endIndex" value="${fn:length(leaderboardList)}" />
+  <c:set var="globalCounter" value="${startIndex + 1}"/>
+  <c:if test="${startIndex + ENTRIES_PER_PAGE > fn:length(leaderboardList)}">
+    <c:set var="endIndex" value="${fn:length(leaderboardList)}" />
+  </c:if>
+
+  <c:if test="${startIndex + ENTRIES_PER_PAGE <= fn:length(leaderboardList)}">
+    <c:set var="endIndex" value="${startIndex + ENTRIES_PER_PAGE}" />
+  </c:if>
+
 
   <table class="table table-striped">
     <thead>
@@ -44,23 +59,25 @@
     </thead>
     <tbody>
     <!-- Loop through the users and display the list -->
-    <c:forEach items="${leaderboardList}" var="user" varStatus="status">
+    <c:forEach items="${leaderboardList}" var="user" varStatus="status" begin="${startIndex}" end="${endIndex - 1}">
       <tr>
-        <td>${status.index + 1 + offset}</td>
+        <td>${status.index + 1 + startIndex}</td>
         <td>${user.firstName} ${user.lastName}</td>
         <td>${user.points}</td>
       </tr>
     </c:forEach>
+
     </tbody>
   </table>
 
   <div class="d-flex justify-content-between">
-    <button class="btn btn-primary" onclick="navigate('${page - 1}')">
+    <button class="btn btn-primary" onclick="navigate('${currentPage - 1}')" <c:if test="${currentPage == 1}">disabled</c:if>>
       <i class="fas fa-arrow-left"></i> Back
     </button>
-    <button class="btn btn-primary" onclick="navigate('${page + 1}')">
+    <button class="btn btn-primary" onclick="navigate('${currentPage + 1}')" <c:if test="${endIndex == fn:length(leaderboardList)}">disabled</c:if>>
       Next <i class="fas fa-arrow-right"></i>
     </button>
+
   </div>
 </div>
 
@@ -73,8 +90,9 @@
 
 <script>
   function navigate(page) {
-    window.location.href = `/leaderboard?page=${page}`;
+    window.location.href = `/leaderboard?page=${currentPage}`;
   }
+
 </script>
 </body>
 </html>
