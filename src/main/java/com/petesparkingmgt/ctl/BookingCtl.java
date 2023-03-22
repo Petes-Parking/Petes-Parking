@@ -95,9 +95,13 @@ public class BookingCtl {
 				bean.setCarpoolId(-1);
 			}
 			service.Add(bean);
-//			UserDTO user = (UserDTO) model.getAttribute("user");
-//			user.setPoints(user.getPoints() + PointsManager.getPointsForHistory(null));
-			model.addAttribute("success", "Booking successfully");
+
+			if (bean.getCarpoolId() > 0 ){
+				String carpoolName = carpoolUsersService.getCarpoolNameFor(user.getId());
+				model.addAttribute("success", "Booking successful for carpool: " + carpoolName);
+			} else {
+				model.addAttribute("success", "Booking successfully");
+			}
 			return "booking";
 		}}catch (RecordNotFoundException e) {
 			// TODO: handle exception
