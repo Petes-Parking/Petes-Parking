@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.service.CarpoolService;
 import com.petesparkingmgt.service.CarpoolUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,6 +49,9 @@ public class BookingCtl {
 	 @Autowired
 	 public CarpoolUsersService carpoolUsersService;
 
+	 @Autowired
+	 public CarpoolService carpoolService;
+
 
 	
 	@GetMapping("/booking")
@@ -79,7 +83,10 @@ public class BookingCtl {
 				// do not allow them to book, only the leader can book
 				model.addAttribute("error", "Only the carpool leader can reserve a slot!");
 				return "booking";
-
+			} else if (carpoolUsersService.isLeader(user.getId()) && carpoolService.hasReservation(carpoolUsersService.getCarpoolFor(user.getId()).getCarpoolId())){
+				// they are a leader but there is currently a reservation, can only have one at a time
+				model.addAttribute("error", "You can only book one reservation per carpool at a time!");
+				return "booking";
 			}
 			BookingDTO bean = form.getDTO();
 			bean.setId(0);

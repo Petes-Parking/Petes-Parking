@@ -64,6 +64,22 @@
 
     </c:if>
   </section>
+
+  <c:if test="${hasCarpool}">
+    <section id="reservations-carpool">
+      <h2>${carPoolName}'s reservations</h2>
+      <c:if test="${hasReservation}">
+        <h4>${reservation.parkingName}</h4>
+        <p>${reservation.fromBookingDate} - ${reservation.toBookingDate}</p>
+        <p>${reservation.fromTime} to ${reservation.toTime}</p>
+
+      </c:if>
+      <c:if test="${!hasReservation}">
+        <h4>No active reservations!</h4>
+      </c:if>
+    </section>
+  </c:if>
+
 <c:if test="${hasCarpool && isLeader}">
 <section id="invite-friends">
     <h2>Invite Friends to Your Carpool</h2>

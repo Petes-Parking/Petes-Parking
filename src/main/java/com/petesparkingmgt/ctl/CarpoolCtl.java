@@ -77,6 +77,13 @@ public class CarpoolCtl {
         if (carpoolUserDTO != null) {
             CarpoolDTO carpool = dao.getCarpoolDTOById(carpoolUserDTO.getCarpoolId());
 
+            if (service.hasReservation(carpool.getId())) {
+                model.addAttribute("hasReservation", true);
+                model.addAttribute("reservation", service.getBookingFor(carpool.getId()));
+            } else {
+                model.addAttribute("hasReservation", false);
+            }
+
             model.addAttribute("carpool", carpool);
             model.addAttribute("hasCarpool", true);
             model.addAttribute("carPoolName", carpool.getCarPoolName());
@@ -133,6 +140,10 @@ public class CarpoolCtl {
             List<String> members = new ArrayList<>();
             members.add("(leader) " + user.getFirstName() + " " + user.getLastName());
             model.addAttribute("members", members);
+
+
+            model.addAttribute("hasReservation", false);
+
 
 
             System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());
