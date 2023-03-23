@@ -29,9 +29,18 @@ public class UserService {
 		return dao.findAll();
 	}
 	
-	public UserDTO update(UserDTO dto){
-		UserDTO bean = dao.saveAndFlush(dto);
-		return bean;
+	public void update(UserDTO user){
+		UserDTO existingUser = dao.findById(user.getId());
+		if (existingUser != null) {
+			existingUser.setFirstName(user.getFirstName());
+			existingUser.setLastName(user.getLastName());
+			existingUser.setEmail(user.getEmail());
+			existingUser.setPassword(user.getPassword());
+			existingUser.setGender(user.getGender());
+
+			// Save the updated user information to the database
+			dao.save(existingUser);
+		}
 	}
 	
 	public UserDTO findUserById(long id) {

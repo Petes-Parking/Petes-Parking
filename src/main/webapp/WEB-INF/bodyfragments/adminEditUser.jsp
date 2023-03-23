@@ -55,7 +55,7 @@
 <body>
 <div class="container">
   <h1>Edit User</h1>
-  <form action="${pageContext.request.contextPath}/user/update" method="POST">
+  <form action="${pageContext.request.contextPath}/admin/update" method="POST">
     <input type="hidden" name="id" value="${user.id}">
 
     <div class="form-group">
