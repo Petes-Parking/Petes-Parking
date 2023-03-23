@@ -9,4 +9,7 @@ import java.util.List;
 public interface PoorParkReportDAO extends JpaRepository<PoorParkReportDTO, Long> {
 
     public List<PoorParkReportDTO> findAll();
+
+    public PoorParkReportDTO getById(Long reportID);
+
 }
