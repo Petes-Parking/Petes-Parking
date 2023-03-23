@@ -102,6 +102,26 @@
                 <a href="/admin/widget4" class="text-decoration-none text-reset">Widget 4</a>
             </div>
         </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget5" class="text-decoration-none text-reset">Widget 5</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget6" class="text-decoration-none text-reset">Widget 6</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget7" class="text-decoration-none text-reset">Widget 7</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget8" class="text-decoration-none text-reset">Widget 8</a>
+            </div>
+        </div>
 
     </div>
 
