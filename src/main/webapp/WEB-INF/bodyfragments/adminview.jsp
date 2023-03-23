@@ -94,12 +94,12 @@
         </div>
         <div class="col-md-3">
             <div class="widget rounded bg-black text-center text-uppercase py-4">
-                <a href="/admin/widget3" class="text-decoration-none text-reset">Widget 3</a>
+                <a href="${pageContext.request.contextPath}/admin/review-exp" class="text-decoration-none text-reset">Review Expiration Reports</a>
             </div>
         </div>
         <div class="col-md-3">
             <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="/admin/widget4" class="text-decoration-none text-reset">Widget 4</a>
+                <a href="${pageContext.request.contextPath}/admin/review-poorpark" class="text-decoration-none text-reset">Review Poor Parking Reports</a>
             </div>
         </div>
         <div class="col-md-3 py-3">
