@@ -13,13 +13,27 @@ import com.petesparkingmgt.dao.UserDAO;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.UserService;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ParkingPalsCtl {
 
+    @Autowired
+    public UserDAO dao;
+
     @GetMapping("/parkingpals")
-    public String parkingPalsPage(@ModelAttribute("form") UserForm form) {
+    public String parkingPalsPage(Model model, HttpSession session) {
+
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        if (user == null) {
+            return "error";
+        }
+
+        List<UserDTO> users = dao.findAll();
+        model.addAttribute("users", users);
         return "parkingpals";
     }
 }

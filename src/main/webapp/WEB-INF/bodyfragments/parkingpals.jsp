@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -79,12 +80,17 @@
   <table>
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Vehicle</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
     </tr>
     </thead>
     <tbody>
+    <c:forEach items="${users}" var="li" varStatus="u">
+      <tr>
+        <td>${li.firstName}</td>
+        <td>${li.lastName}</td>
+      </tr>
+    </c:forEach>
     </tbody>
   </table>
 </div>
@@ -96,27 +102,21 @@
   <table>
     <thead>
     <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Vehicle</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
     </tr>
     </thead>
     <tbody>
     <tr class="odd">
-      <td>Purdue Pete</td>
-      <td>pete@purdue.com</td>
-      <td>Boilermaker Express</td>
+      <td>Purdue</td>
+      <td>Pete</td>
     </tr>
     <tr class="even">
-      <td>Mitch Daniels</td>
-      <td>mitch@purdue.com</td>
-      <td>Gold Lambo</td>
+      <td>Mitch</td>
+      <td>Daniels</td>
     </tr>
     </tbody>
   </table>
-</div>
-<div class="container" style="float: right; margin-right: 20px; width: 30%; text-align: center">
-  <h3>Outgoing Friend Requests:</h3>
 </div>
 <script>
   const searchInput = document.getElementById('search');
