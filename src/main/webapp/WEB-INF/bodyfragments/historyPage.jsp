@@ -4,9 +4,9 @@
   <title>History Page</title>
   <script>
     function generateLists() {
-      historyList = request.getParameter("histories");
+      let historyListElement = document.getElementById("historyList");
+      let historyList = JSON.parse(historyListElement.getAttribute("data-histories"));
       let histList = historyList;
-      histList = ["list 1", "list 2", "list 3"];
       for (let i = 0; i < histList.length; i++) {
         let button = document.createElement("button");
         let buttonName = document.createTextNode(histList.at(i));
@@ -117,7 +117,7 @@
 <div class = "box" >
   <div class="history-area">
     <h1>Parking History</h1>
-    <div id="historyList" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
+    <div id="historyList" data-histories="${histories}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
       <body onload="generateLists()"></body>
     </div>
   </div>
