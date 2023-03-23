@@ -13,12 +13,17 @@
             background-color: white;
             color: goldenrod;
         }
+
         .btn {
             background-color: goldenrod;
             color: black;
         }
         .table-striped tbody tr:nth-of-type(odd) {
             background-color: goldenrod;
+        }
+
+        .table-striped tbody tr.selected {
+            background-color: cornflowerblue;
         }
 
         .widget {
@@ -52,6 +57,9 @@
 
         .bg-oldgoldenrod .widget:hover a {
             color: goldenrod;
+        }
+        .selected {
+            background-color: cornflowerblue;
         }
 
     </style>
