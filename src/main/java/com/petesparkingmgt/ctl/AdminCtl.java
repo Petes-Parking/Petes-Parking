@@ -1,7 +1,11 @@
 package com.petesparkingmgt.ctl;
 
 
+import com.petesparkingmgt.dao.ExpReportDAO;
+import com.petesparkingmgt.dao.PoorParkReportDAO;
 import com.petesparkingmgt.dao.UserDAO;
+import com.petesparkingmgt.dto.ExpReportDTO;
+import com.petesparkingmgt.dto.PoorParkReportDTO;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.UserService;
@@ -23,6 +27,12 @@ public class AdminCtl {
 
     @Autowired
     public UserDAO dao;
+
+    @Autowired
+    public ExpReportDAO expDAO;
+
+    @Autowired
+    public PoorParkReportDAO poorParkDAO;
 
 
     @GetMapping("/adminview")
@@ -82,4 +92,19 @@ public class AdminCtl {
         return modelAndView;
     }
 
+    @GetMapping("/admin/review-exp")
+    public String adminReviewExp(Model model) {
+        List<ExpReportDTO> exps = expDAO.findAll();
+        model.addAttribute("adminExpList", exps);
+
+        return "adminExpReport";
+    }
+
+    @GetMapping("/admin/review-poorpark")
+    public String adminReviewPoorPark(Model model) {
+        List<PoorParkReportDTO> poorParks = poorParkDAO.findAll();
+        model.addAttribute("adminPoorParkList", poorParks);
+
+        return "adminPoorParkReport";
+    }
 }
