@@ -4,16 +4,17 @@
   <title>History Page</title>
   <script>
     function generateLists() {
-      let historyListElement = document.getElementById("historyList");
-      let historyList = JSON.parse(historyListElement.getAttribute("data-histories"));
+      let historyList = document.getElementById("historyList").getAttribute("data-histories");
+      console.log("The stuff: ", historyList)
+
       let histList = historyList;
-      for (let i = 0; i < histList.length; i++) {
+      //for (let i = 0; i < histList.length; i++) {
         let button = document.createElement("button");
-        let buttonName = document.createTextNode(histList.at(i));
+        let buttonName = document.createTextNode(histList);
         button.appendChild(buttonName);
         button.className = "historyButton";
         document.getElementById("historyList").appendChild(button);
-      }
+      //}
       favoriteList = request.getParameter("favorites");
         let favList = favoriteList;
         for (let i = 0; i < favList.length; i++) {

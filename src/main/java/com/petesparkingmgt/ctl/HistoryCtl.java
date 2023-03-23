@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,14 +33,16 @@ public class HistoryCtl {
 
         List<HistoryDTO> historyList = historyDAO.getHistoryDTOSByUserId(user.getId());
         String[] histories = new String[historyList.size()];
+        List<String> formattedList = new ArrayList<>();
         for (int i = 0; i < historyList.size(); i++) {
             String stringOne = historyList.get(i).getDate();
             String stringTwo = historyList.get(i).getArea();
             String history = stringOne + " : " + stringTwo;
+            formattedList.add(history);
+            System.out.println(formattedList.get(i));
             histories[i] = history;
-            System.out.println("TESTESTESTTESTESTSETESTSTSTT:  " + histories[i]);
         }
-        model.addAttribute("histories", histories);
+        model.addAttribute("histories", formattedList);
 
         List<FavoriteDTO> favoriteList = favoriteDAO.getFavoriteDTOSByUserId(user.getId());
         String[] favorites = new String[favoriteList.size()];
