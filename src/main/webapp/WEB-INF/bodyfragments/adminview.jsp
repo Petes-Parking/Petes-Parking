@@ -172,12 +172,12 @@
 
     $('#givePermissionBtn').on('click', function() {
         let selectedUserId = $('#selectedUserId').val();
-        $('#userForm').attr('action', `/admin/givePermission/${selectedUserId}`);
+        $('#userForm').attr('action', `${pageContext.request.contextPath}/admin/givePermission`);
         $('#userForm').submit();
     });
 
     $('#logoutBtn').on('click', function() {
-        window.location.href = '/logout';
+        window.location.href = '${pageContext.request.contextPath}/logout';
     });
 </script>
 </body>

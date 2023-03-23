@@ -73,4 +73,14 @@ public class AdminCtl {
         return modelAndView;
     }
 
+    @PostMapping("/admin/givePermission")
+    public ModelAndView givePermissions(@RequestParam("selectedUserId") Long userId, RedirectAttributes attributes) {
+        service.giveAdminPermission(userId);
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
+        attributes.addFlashAttribute("message", "Successfully given admin permissions!");
+
+        return modelAndView;
+    }
+
 }

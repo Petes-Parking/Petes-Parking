@@ -42,7 +42,16 @@ public class UserService {
 			dao.save(existingUser);
 		}
 	}
-	
+
+	public void giveAdminPermission(long userid){
+		UserDTO existingUser = dao.findById(userid);
+		if (existingUser != null) {
+			existingUser.setUserRole("Admin");
+
+			// Save the updated user information to the database
+			dao.save(existingUser);
+		}
+	}
 	public UserDTO findUserById(long id) {
 		return dao.findById(id);
 	}
