@@ -149,12 +149,12 @@
 
     <label for="parkingLot">Parking Lot:</label>
     <select name="parkingLot" id="parkingLot" placeholder="Parking Lot">
-      <option value="corec">COREC Parking Lot</option>
-      <option value="mccutcheon">McCutcheon Dr. Parking Garage</option>
-      <option value="grant">Grant St. Parking Garage</option>
-      <option value="univ">University St. Parking Garage</option>
-      <option value="rossade">Ross-Ade Stadium Parking Lot</option>
-      <option value="northwestern">Northwestern St. Parking Garage</option>
+      <option value="COREC Parking Lot">COREC Parking Lot</option>
+      <option value="McCutcheon Dr. Parking Garage">McCutcheon Dr. Parking Garage</option>
+      <option value="Grant St. Parking Garage">Grant St. Parking Garage</option>
+      <option value="University St. Parking Garage">University St. Parking Garage</option>
+      <option value="Ross-Ade Stadium Parking Lot">Ross-Ade Stadium Parking Lot</option>
+      <option value="Northwestern St. Parking Garage">Northwestern St. Parking Garage</option>
     </select><br>
 
     <label for="description">Description:</label>
