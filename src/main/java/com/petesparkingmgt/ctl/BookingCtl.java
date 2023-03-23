@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.service.CarpoolService;
+import com.petesparkingmgt.service.CarpoolUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -43,11 +45,20 @@ public class BookingCtl {
      
      @Autowired
      public ParkingService parkingService;
+
+	 @Autowired
+	 public CarpoolUsersService carpoolUsersService;
+
+	 @Autowired
+	 public CarpoolService carpoolService;
+
+
 	
 	@GetMapping("/booking")
 	public String booking(@ModelAttribute("form")BookingForm form, Model model, @RequestParam("id") long id, HttpSession session) {
 		UserDTO user = (UserDTO)session.getAttribute("user");
-		
+
+
 		ParkingDTO parkingDTO = parkingService.findParkingById(id);
 		List<SlotDTO> slotList = slotDAO.findByParkingIdAndStatus(id, true);		
 		model.addAttribute("slotList", slotList);
@@ -58,7 +69,9 @@ public class BookingCtl {
 	}
 	
 	@PostMapping("/addBooking")
-	public String Add(@Valid @ModelAttribute("form")BookingForm form,  BindingResult bindingResult, Model model) {
+	public String Add(@Valid @ModelAttribute("form")BookingForm form,  BindingResult bindingResult, Model model, HttpSession session) {
+
+		UserDTO user = (UserDTO)session.getAttribute("user");
 
 		System.out.println("form: "+form);
 		try {
@@ -66,17 +79,36 @@ public class BookingCtl {
 			System.out.println("bindingResult : "+bindingResult);
 			return "booking";
 		}else {
-			// check right here if in carpool && not leader, cancel booking.
+			if (carpoolUsersService.isInCarpoolButNotLeader(user.getId())){
+				// do not allow them to book, only the leader can book
+				model.addAttribute("error", "Only the carpool leader can reserve a slot!");
+				return "booking";
+			} else if (carpoolUsersService.isLeader(user.getId()) && carpoolService.hasReservation(carpoolUsersService.getCarpoolFor(user.getId()).getCarpoolId())){
+				// they are a leader but there is currently a reservation, can only have one at a time
+				model.addAttribute("error", "You can only book one reservation per carpool at a time!");
+				return "booking";
+			}
 			BookingDTO bean = form.getDTO();
 			bean.setId(0);
 		    SlotDTO slotDTO =	slotDAO.findById(bean.getSlotId());
 			bean.setSlot(slotDTO.getSlot());
 			bean.setSlotId(slotDTO.getId());
 			bean.setStatus("Cancel");
+			if (carpoolUsersService.isLeader(user.getId())) {
+				bean.setCarpoolId(carpoolUsersService.getCarpoolFor(user.getId()).getCarpoolId());
+
+			} else {
+				// not a leader and not in a carpool, so set to -1 to ignore
+				bean.setCarpoolId(-1);
+			}
 			service.Add(bean);
-//			UserDTO user = (UserDTO) model.getAttribute("user");
-//			user.setPoints(user.getPoints() + PointsManager.getPointsForHistory(null));
-			model.addAttribute("success", "Booking successfully");
+
+			if (bean.getCarpoolId() > 0 ){
+				String carpoolName = carpoolUsersService.getCarpoolNameFor(user.getId());
+				model.addAttribute("success", "Booking successful for carpool: " + carpoolName);
+			} else {
+				model.addAttribute("success", "Booking successfully");
+			}
 			return "booking";
 		}}catch (RecordNotFoundException e) {
 			// TODO: handle exception

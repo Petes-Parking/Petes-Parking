@@ -141,7 +141,7 @@
 .dropdown:hover .palsBtn {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 .dropdown:hover .reportBtn {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 
-
+.favorite:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 
 .zoom_outer {
     width: 2000px;

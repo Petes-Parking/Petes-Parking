@@ -19,9 +19,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/*
+3. Deleting a carpool should remove from users table too (if leader left, this would cause bugs) --- DONE (think needs to be tested)
+4. When creating a carpool while having active invitations, and after creating, those invitations vanish -- need to test
+5. Probably need to check for no duplicate group names - not done
+6. More probably
+
+
+after a certain point, it is beneficial to just finish the user story and not worry about every single edge
+case since there is a lot no doubt. as long as the core functionality is working.
+
+ */
 @Controller
 public class CarpoolCtl {
 
@@ -64,6 +76,13 @@ public class CarpoolCtl {
 
         if (carpoolUserDTO != null) {
             CarpoolDTO carpool = dao.getCarpoolDTOById(carpoolUserDTO.getCarpoolId());
+
+            if (service.hasReservation(carpool.getId())) {
+                model.addAttribute("hasReservation", true);
+                model.addAttribute("reservation", service.getBookingFor(carpool.getId()));
+            } else {
+                model.addAttribute("hasReservation", false);
+            }
 
             model.addAttribute("carpool", carpool);
             model.addAttribute("hasCarpool", true);
@@ -116,7 +135,15 @@ public class CarpoolCtl {
 
             model.addAttribute("messages", "New carpool created!");
 
-            model.addAttribute("members", service.getNamesOfMembers(inTable.getId()));
+            // Special case here, on create, there is only one member, the leader.
+            // Method before wasnt working because it was too quick for the database, so just manually doing it.
+            List<String> members = new ArrayList<>();
+            members.add("(leader) " + user.getFirstName() + " " + user.getLastName());
+            model.addAttribute("members", members);
+
+
+            model.addAttribute("hasReservation", false);
+
 
 
             System.out.println("Created carpool DTO with name " + form.getCarPoolName() + " and leaderid " + dto.getLeaderId());

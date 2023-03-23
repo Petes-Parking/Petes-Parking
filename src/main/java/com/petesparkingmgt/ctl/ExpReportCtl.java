@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Controller
 public class ExpReportCtl {
@@ -31,6 +35,9 @@ public class ExpReportCtl {
 
         if (form.getDTO() != null) {
             ExpReportDTO dto = form.getDTO();
+            dto.setReporterEmail(user.getEmail());
+            Date date = new Date();
+            dto.setReportDate(date);
             dao.save(dto);
         }
 

@@ -1,68 +1,222 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: maxfuligni
-  Date: 3/3/23
-  Time: 2:08 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Admin View</title>
+    <!-- Add Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        <%@include file="/WEB-INF/css/admin-box.css"%>
+        body {
+            background-color: white;
+            color: goldenrod;
+        }
+
+        .btn {
+            background-color: goldenrod;
+            color: black;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: goldenrod;
+        }
+
+        .table-striped tbody tr.selected {
+            background-color: cornflowerblue;
+        }
+
+        .widget {
+            height: 150px;
+            border: 1px solid goldenrod;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .widget:hover {
+            background-color: goldenrod;
+            color: black;
+        }
+
+        .bg-oldgoldenrod .widget:hover {
+            background-color: black;
+            color: goldenrod;
+        }
+
+        .widget a {
+            display: block;
+            height: 100%;
+            width: 100%;
+            padding: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .widget:hover a {
+            color: black;
+        }
+
+        .bg-oldgoldenrod .widget:hover a {
+            color: goldenrod;
+        }
+        .selected {
+            background-color: cornflowerblue;
+        }
 
     </style>
 </head>
 <body>
-<header>
-    <h1>Welcome Admin!</h1>
-    <a href="#">Log out</a>
-</header>
-<div class="widgets">
-    <div class="widget">
-        <h2>Widget 1</h2>
-        <p>Widget 1 content goes here</p>
-    </div>
-    <div class="widget">
-        <h2>Widget 2</h2>
-        <p>Widget 2 content goes here</p>
-    </div>
-    <div class="widget">
-        <h2>Widget 3</h2>
-        <p>Widget 3 content goes here</p>
-    </div>
-    <div class="widget">
-        <h2>Widget 4</h2>
-        <p>Widget 3 content goes here</p>
-    </div>
-    <div class="widget">
-        <h2>Widget 5</h2>
-        <p>Widget 3 content goes here</p>
-    </div>
-    <div class="widget">
-        <h2>Widget 6</h2>
-        <p>Widget 3 content goes here</p>
-    </div>
-</div>
-<div class="user-list">
-    <h2>User List</h2>
-    <ul>
-    <c:if test="${not empty adminUserList}">
 
-        <c:forEach var="user" items="${adminUserList}"  varStatus="loop">
+<div class="container">
+    <h1 class="text-center">Admin View</h1>
 
-
-        <li> ${user.firstName} ${user.lastName}</li>
-
-
-
-        </c:forEach>
+    <hr/>
+    <c:if test="${not empty message}">
+        <div class="alert alert-success" role="alert">
+                ${message}
+        </div>
     </c:if>
-    </ul>
+
+
+    <!-- Widget section -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <h3>Widgets:</h3>
+        </div>
+        <div class="col-md-3">
+            <div class="widget rounded bg-black text-center text-uppercase py-4">
+                <a href="/admin/widget1" class="text-decoration-none text-reset">Widget 1</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget2" class="text-decoration-none text-reset">Widget 2</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget rounded bg-black text-center text-uppercase py-4">
+                <a href="${pageContext.request.contextPath}/admin/review-exp" class="text-decoration-none text-reset">Review Expiration Reports</a>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="${pageContext.request.contextPath}/admin/review-poorpark" class="text-decoration-none text-reset">Review Poor Parking Reports</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget5" class="text-decoration-none text-reset">Widget 5</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget6" class="text-decoration-none text-reset">Widget 6</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget7" class="text-decoration-none text-reset">Widget 7</a>
+            </div>
+        </div>
+        <div class="col-md-3 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="/admin/widget8" class="text-decoration-none text-reset">Widget 8</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Users List:</h3>
+            <form action="" method="POST" id="userForm">
+                <input type="hidden" name="selectedUserId" id="selectedUserId">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>User Role</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Loop through the users and display the list -->
+                    <c:forEach items="${adminUserList}" var="user" varStatus="status">
+                        <tr class="user-row" data-user-id="${user.id}">
+                            <td>${user.id}</td>
+                            <td>${user.firstName} ${user.lastName}</td>
+                            <td>${user.email}</td>
+                            <td>${user.dob}</td>
+                            <td>${user.userRole}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12">
+            <button class="btn btn-primary" id="editUserBtn" disabled>Edit User</button>
+            <button class="btn btn-danger" id="deleteUserBtn" disabled>Delete User</button>
+            <button class="btn btn-warning" id="givePermissionBtn" disabled>Give Permission</button>
+            <button class="btn btn-secondary float-right" id="logoutBtn">Logout</button>
+        </div>
+    </div>
 </div>
+
+<!-- Add Bootstrap JS and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Add click event listeners for user rows
+    $('.user-row').on('click', function() {
+        $('.user-row').removeClass('selected');
+        $(this).addClass('selected');
+        let userId = $(this).data('user-id');
+        console.log("Clicked User ID:", userId); // Add this line to log the clicked user ID
+        $('#selectedUserId').val($(this).data('user-id'));
+        $('#editUserBtn').prop('disabled', false);
+        $('#deleteUserBtn').prop('disabled', false);
+        $('#givePermissionBtn').prop('disabled', false);
+    });
+
+    // Add click event listeners for buttons
+    $('#editUserBtn').on('click', function() {
+        let selectedUserId = $('#selectedUserId').val();
+        console.log("Selected User ID:"+selectedUserId);
+        window.location.href = `${pageContext.request.contextPath}/admin/edit/` + selectedUserId;
+    });
+
+
+    $('#deleteUserBtn').on('click', function() {
+        let selectedUserId = $('#selectedUserId').val();
+        if (confirm('Are you sure you want to delete this user?')) {
+            $('#userForm').attr('action', `${pageContext.request.contextPath}/admin/deleteUser`);
+            $('#userForm').submit();
+        }
+    });
+
+    $('#givePermissionBtn').on('click', function() {
+        let selectedUserId = $('#selectedUserId').val();
+        $('#userForm').attr('action', `${pageContext.request.contextPath}/admin/givePermission`);
+        $('#userForm').submit();
+    });
+
+    $('#logoutBtn').on('click', function() {
+        window.location.href = '${pageContext.request.contextPath}/logout';
+    });
+</script>
 </body>
 </html>
+
+
+
+
+
 

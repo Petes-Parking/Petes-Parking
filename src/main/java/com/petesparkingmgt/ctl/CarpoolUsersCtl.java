@@ -52,6 +52,15 @@ public class CarpoolUsersCtl {
         model.addAttribute("carpool", carpool);
         model.addAttribute("carPoolName", carpool.getCarPoolName());
         model.addAttribute("isLeader", true);
+        if (carpoolService.hasReservation(carpool.getId())) {
+            model.addAttribute("hasReservation", true);
+            model.addAttribute("reservation", carpoolService.getBookingFor(carpool.getId()));
+        } else {
+            model.addAttribute("hasReservation", false);
+        }
+
+        model.addAttribute("members", carpoolService.getNamesOfMembers(carpool.getId()));
+
 
 
         if (toInvite == null) {
@@ -62,6 +71,11 @@ public class CarpoolUsersCtl {
 
 
         } else {
+            if (toInvite.getId() == user.getId()){
+                // cannot invite themself
+                model.addAttribute("errors", "You cannot invite yourself!");
+                return "carpool";
+            }
             model.addAttribute("messages", "You have invited " + toInvite.getFirstName() + " " + toInvite.getLastName() + "!");
             CarpoolUserDTO dto = new CarpoolUserDTO();
             dto.setCarpoolId(carpool.getId());
@@ -90,10 +104,20 @@ public class CarpoolUsersCtl {
                 // it should store to database
                 CarpoolUserDTO existingUserDTO = service.getCarpoolFor(user.getId());
                 if (existingUserDTO != null) {
+                    CarpoolDTO exCarpool = carpoolDAO.getCarpoolDTOById(existingUserDTO.getCarpoolId());
                     String existingCarpoolName = carpoolDAO.getCarpoolDTOById(existingUserDTO.getCarpoolId()).getCarPoolName();
                     model.addAttribute("errors", "You are already in a carpool!");
                     model.addAttribute("hasCarpool", true);
                     model.addAttribute("carPoolName", existingCarpoolName); //  change to CarpoolDTO name
+                    model.addAttribute("members", carpoolService.getNamesOfMembers(exCarpool.getId()));
+                    if (carpoolService.hasReservation(exCarpool.getId())) {
+                        model.addAttribute("hasReservation", true);
+                        model.addAttribute("reservation", carpoolService.getBookingFor(exCarpool.getId()));
+                    } else {
+                        model.addAttribute("hasReservation", false);
+                    }
+
+
                     return "carpool";
                 } else {
                     service.acceptInvite(responseCarpool, user.getId());
@@ -105,6 +129,13 @@ public class CarpoolUsersCtl {
                     model.addAttribute("isLeader", false);
 
                     model.addAttribute("members", carpoolService.getNamesOfMembers(responseCarpool.getId()));
+
+                    if (carpoolService.hasReservation(responseCarpool.getId())) {
+                        model.addAttribute("hasReservation", true);
+                        model.addAttribute("reservation", carpoolService.getBookingFor(responseCarpool.getId()));
+                    } else {
+                        model.addAttribute("hasReservation", false);
+                    }
 
 
                 }
@@ -125,7 +156,14 @@ public class CarpoolUsersCtl {
                         model.addAttribute("isLeader", false);
                     }
 
-                    model.addAttribute("members", carpoolService.getNamesOfMembers(responseCarpool.getId()));
+                    model.addAttribute("members", carpoolService.getNamesOfMembers(carpoolDTO.getId()));
+
+                    if (carpoolService.hasReservation(carpoolDTO.getId())) {
+                        model.addAttribute("hasReservation", true);
+                        model.addAttribute("reservation", carpoolService.getBookingFor(carpoolDTO.getId()));
+                    } else {
+                        model.addAttribute("hasReservation", false);
+                    }
 
 
                 } else {

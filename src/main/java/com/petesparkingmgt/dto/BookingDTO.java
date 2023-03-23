@@ -52,6 +52,9 @@ public class BookingDTO extends BaseDTO {
 	@Column(name = "status", length = 755)
 	private String status;
 
+	@Column(name = "carpoolId")
+	private long carpoolId;
+
 	@Override
 	public String toString() {
 		return "BookingDTO [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="

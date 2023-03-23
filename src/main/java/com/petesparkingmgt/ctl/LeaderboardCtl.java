@@ -25,27 +25,17 @@ public class LeaderboardCtl {
 
 
     @GetMapping("/leaderboard")
-    public String leaderboard(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
+    public String leaderboard(Model model, HttpSession session) {
 
         UserDTO user = (UserDTO) session.getAttribute("user");
 
         if (user == null) {
             return "error";
         }
-        // Removing the below code breaks, not exactly sure why, very janky, I know. Need to really dig into to determine
-        // why
-        model.addAttribute("email", "t");
-        model.addAttribute("gender", "gender");
-        model.addAttribute("password", "password");
-        model.addAttribute("password2", "password2");
-
-        model.addAttribute("firstName", "firstName");
-        model.addAttribute("lastName", "lastName");
-        model.addAttribute("phoneNumber", "pnum");
-        model.addAttribute("dob", "dobb");
 
 
-        List<UserDTO> users = dao.findAll();
+
+        List<UserDTO> users = dao.getAllByUserRole("Student");
 
         users.sort((o1, o2) -> o2.getPoints() - o1.getPoints()); // Sorts list in decreasing order
         model.addAttribute("leaderboardList", users);
