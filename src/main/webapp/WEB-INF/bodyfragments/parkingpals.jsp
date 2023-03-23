@@ -39,6 +39,15 @@
       align-self: auto
     }
 
+    .add-friend-button {
+      background-color: #CEB888;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -82,19 +91,27 @@
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
+      <th scope="col"></th> <!-- Column for the "Add friend" button -->
     </tr>
     </thead>
     <tbody>
     <c:forEach items="${users}" var="li" varStatus="u">
+      <c:if test="${li.firstName != user.firstName && li.lastName != user.lastName}">
       <tr>
         <td>${li.firstName}</td>
         <td>${li.lastName}</td>
+        <td>
+          <button class="add-friend-button" data-firstname="${li.firstName}" data-lastname="${li.lastName}">
+            Add friend
+          </button>
+        </td>
       </tr>
+    </c:if>
     </c:forEach>
     </tbody>
   </table>
 </div>
-<div class="container" style="float: right; margin-right: 20px; width: 30%; text-align: center">
+<div class="container" style="float: right; margin-right: 20px; width: 40%; text-align: center">
   <h3>Incoming Friend Requests:</h3>
 </div>
 <div class="container" style="float: left; margin-left: 20px; width: 55%">
