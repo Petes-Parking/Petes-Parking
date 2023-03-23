@@ -33,7 +33,7 @@
 .historyButton {
     width: 400px;
     height: 60px;
-    font-size: 6px;
+    font-size: 10px;
 }
 .historyButton:hover {background-color: #373A36; transition: .3s; color: white;}
 

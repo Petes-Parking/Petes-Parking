@@ -7,14 +7,16 @@
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
       console.log("The stuff: ", historyList)
 
-      let histList = historyList;
-      //for (let i = 0; i < histList.length; i++) {
+      historyList = historyList.substring(1, historyList.length-1);
+      console.log("New stuff: ", historyList);
+      let histList = historyList.split(", ");
+      for (let i = 0; i < histList.length; i++) {
         let button = document.createElement("button");
-        let buttonName = document.createTextNode(histList);
+        let buttonName = document.createTextNode(histList.at(i));
         button.appendChild(buttonName);
         button.className = "historyButton";
         document.getElementById("historyList").appendChild(button);
-      //}
+      }
       favoriteList = request.getParameter("favorites");
         let favList = favoriteList;
         for (let i = 0; i < favList.length; i++) {
