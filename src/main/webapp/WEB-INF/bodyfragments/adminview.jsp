@@ -76,7 +76,6 @@
         </div>
     </c:if>
 
-    <!-- Add your widgets section here -->
 
     <!-- Widget section -->
     <div class="row mb-4">
@@ -114,20 +113,22 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        <th>#</th>
                         <th>User ID</th>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Date of Birth</th>
+                        <th>User Role</th>
                     </tr>
                     </thead>
                     <tbody>
                     <!-- Loop through the users and display the list -->
                     <c:forEach items="${adminUserList}" var="user" varStatus="status">
                         <tr class="user-row" data-user-id="${user.id}">
-                            <td>${status.index + 1}</td>
                             <td>${user.id}</td>
                             <td>${user.firstName} ${user.lastName}</td>
                             <td>${user.email}</td>
+                            <td>${user.dob}</td>
+                            <td>${user.userRole}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -157,6 +158,8 @@
     $('.user-row').on('click', function() {
         $('.user-row').removeClass('selected');
         $(this).addClass('selected');
+        let userId = $(this).data('user-id');
+        console.log("Clicked User ID:", userId); // Add this line to log the clicked user ID
         $('#selectedUserId').val($(this).data('user-id'));
         $('#editUserBtn').prop('disabled', false);
         $('#deleteUserBtn').prop('disabled', false);
@@ -166,6 +169,7 @@
     // Add click event listeners for buttons
     $('#editUserBtn').on('click', function() {
         let selectedUserId = $('#selectedUserId').val();
+        console.log("Selected User ID:"+selectedUserId);
         window.location.href = `${pageContext.request.contextPath}/admin/edit/` + selectedUserId;
     });
 

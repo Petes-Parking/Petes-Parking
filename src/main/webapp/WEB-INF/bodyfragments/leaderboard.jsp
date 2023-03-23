@@ -90,7 +90,7 @@
 
 <script>
   function navigate(page) {
-    window.location.href = `/leaderboard?page=${currentPage}`;
+    window.location.href = `${pageContext.request.contextPath}/leaderboard?page=`+page;
   }
 
 </script>

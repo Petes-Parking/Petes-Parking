@@ -26,16 +26,15 @@ public class AdminCtl {
 
 
     @GetMapping("/adminview")
-    public String adminPage(@ModelAttribute("form") UserForm form, Model model) {
+    public String adminPage(Model model) {
 
 
-        List<UserDTO> users = dao.findAll();
-        model.addAttribute("email", "email");
+        List<UserDTO> users = dao.getAllByUserRole("Student");
+        users.forEach(userDTO -> System.out.println(userDTO.getEmail() + " " + userDTO.getUserRole()));
 
         model.addAttribute("adminUserList", users);
 
 
-        users.stream().map(UserDTO::getFirstName).collect(Collectors.toList());
         return "adminview";
     }
 

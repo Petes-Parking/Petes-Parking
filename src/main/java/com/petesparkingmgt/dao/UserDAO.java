@@ -16,6 +16,8 @@ public interface UserDAO extends JpaRepository<UserDTO, Long> {
 	public UserDTO findById(long id);
 	public List<UserDTO> findAll();
 
+	public List<UserDTO> getAllByUserRole(String userRole);
+
 
 
 
