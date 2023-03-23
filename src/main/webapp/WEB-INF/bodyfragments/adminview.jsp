@@ -60,7 +60,13 @@
 
 <div class="container">
     <h1 class="text-center">Admin View</h1>
+
     <hr/>
+    <c:if test="${not empty message}">
+        <div class="alert alert-success" role="alert">
+                ${message}
+        </div>
+    </c:if>
 
     <!-- Add your widgets section here -->
 
@@ -159,7 +165,7 @@
     $('#deleteUserBtn').on('click', function() {
         let selectedUserId = $('#selectedUserId').val();
         if (confirm('Are you sure you want to delete this user?')) {
-            $('#userForm').attr('action', `/admin/deleteUser/${selectedUserId}`);
+            $('#userForm').attr('action', `${pageContext.request.contextPath}/admin/deleteUser`);
             $('#userForm').submit();
         }
     });

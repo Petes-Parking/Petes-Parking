@@ -65,9 +65,10 @@ public class UserService {
 	}
 
 
+	public void deleteUser(Long userId) {
+		// need to do more here, check other tables and delete but for now keep it simple
+		dao.deleteById(userId);
 
-
-	
-
+	}
 }
 
