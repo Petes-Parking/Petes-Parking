@@ -107,4 +107,24 @@ public class AdminCtl {
 
         return "adminPoorParkReport";
     }
+
+    @GetMapping("/admin/review-exp/{expReportID}")
+    public String adminReviewExpDetailed(@PathVariable("expReportID") Long expReportID, Model model) {
+
+        ExpReportDTO expReport = expDAO.getById(expReportID);
+
+        model.addAttribute("report", expReport);
+        System.out.println(expReport);
+        return "adminReviewExpDetailed";
+    }
+
+    @GetMapping("/admin/review-poorpark/{poorParkReportID}")
+    public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {
+
+        PoorParkReportDTO poorParkReport = poorParkDAO.getById(poorParkReportID);
+
+        model.addAttribute("report", poorParkReport);
+        System.out.println(poorParkReport);
+        return "adminReviewExpDetailed";
+    }
 }

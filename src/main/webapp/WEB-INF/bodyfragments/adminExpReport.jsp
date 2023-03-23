@@ -69,7 +69,7 @@
                   <td>${report.parkingLot}</td>
                   <td>${report.description}</td>
                   <td>${report.reporterEmail}</td>
-                  <td>View More</td>
+                  <td><a href="${pageContext.request.contextPath}/admin/review-exp/${report.id}">View More</a></td>
                 </tr>
               </c:forEach>
               </tbody>

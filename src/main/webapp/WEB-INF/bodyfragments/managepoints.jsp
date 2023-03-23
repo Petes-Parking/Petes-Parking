@@ -5,6 +5,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            background: #373A36;
         }
         #container {
             width: 50%;
@@ -14,17 +15,19 @@
             border-radius: 10px;
             box-shadow: 0 2px 5px rgba(7, 3, 3, 0.82);
             text-align: center;
-            height: 1200px;
-            display: inline-block;
-            vertical-align: top;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             background-color: #CEB888;
-
         }
 
         #buttons {
-            display: inline-block;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
         }
-        #add-btn, #deduct-btn { /*red and green circle buttons*/
+        .circle-btn {
             width: 50px;
             height: 50px;
             border-radius: 50%;
@@ -32,6 +35,7 @@
             color: white;
             font-size: 24px;
             margin-right: 10px;
+            margin-bottom: 20px;
         }
         #add-btn {
             background-color: green;
@@ -39,32 +43,15 @@
         #deduct-btn {
             background-color: red;
         }
-        #points {
-            margin-top: 20px;
-            align-items: center;
-            text-align: center;
-        }
-        #points-to-add {
-            margin-top: 20px;
-            align-items: center;
-            text-align: center;
 
+        #points, #points-to-add, #points-to-change {
+            margin-bottom: 20px;
         }
-        #points-to-add label {
+        label, input[type="number"], input[type="submit"], button {
             margin-right: 10px;
-            align-items: center;
-            text-align: center;
         }
-        #points-to-add input[type="number"] { /*text input*/
-            width: 100px;
-            font-size: 16px;
-            padding: 5px;
-            margin-right: 10px;
-            align-items: center;
-            text-align: center;
 
-        }
-        #points-to-add input[type="submit"] { /* first add button*/
+        .input-button, .circle-btn {
             padding: 10px;
             background-color: #333;
             color: white;
@@ -72,80 +59,9 @@
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
             cursor: pointer;
-            align-items: center;
-            text-align: center;
         }
-        button1:hover{
+        .input-button:hover {
             background-color: #555;
-        }
-        #points-to-change {
-            margin-top: 20px;
-            align-items: center;
-            text-align: center;
-        }
-        #points-to-change label {
-            margin-right: 10px;
-            align-items: center;
-            text-align: center;
-        }
-        #points-to-change select {
-            font-size: 16px;
-            padding: 5px;
-            margin-right: 10px;
-            align-items: center;
-            text-align: center;
-        }
-        #points-to-change #add-btn, #points-to-change #deduct-btn {
-            margin-right: 10px;
-            align-items: center;
-            text-align: center;
-
-        }
-        #save-btn {
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-
-        button{
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-
-        #addButton{
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-
-        }
-        #deductButton {
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-            cursor: pointer;
-        }
-        body{
-            background: #373A36;
-        }
-
-        h1{
-            text-align: center;
         }
     </style>
 </head>
@@ -153,15 +69,15 @@
 <div id="container">
     <h1>Student Name - Points </h1>
     <div id="buttons">
-        <button id="add-btn">+</button>
-        <button id="deduct-btn">-</button>
+        <button class="circle-btn" id="add-btn">+</button>
+        <button class="circle-btn" id="deduct-btn">-</button>
     </div>
     <div id="points">
         <h2>Points to be added:</h2>
         <form id="points-to-add">
             <label for="points-input">THIS</label>
             <input type="number" id="points-input" name="points" required>
-            <input type="submit" value="Add">
+            <input class="input-button" type="submit" value="Add">
         </form>
     </div>
     <div id="points-to-change">
@@ -179,11 +95,7 @@
             <option value="45">45</option>
             <option value="50">50</option>
         </select>
-        <button id="save-btn">Save Changes</button>
-    </div>
-    <div class="row">
-        <button1 id="addButton">Add</button1>
-        <button1 id="deductButton">Deduct</button1>
+        <button class="input-button" id="save-btn">Save Changes</button>
     </div>
 </div>
-
+```

@@ -37,7 +37,7 @@ public class HistoryCtl {
             String stringTwo = historyList.get(i).getArea();
             String history = stringOne + " : " + stringTwo;
             histories[i] = history;
-            System.out.println(histories[i]);
+            System.out.println("TESTESTESTTESTESTSETESTSTSTT:  " + histories[i]);
         }
         model.addAttribute("histories", histories);
 

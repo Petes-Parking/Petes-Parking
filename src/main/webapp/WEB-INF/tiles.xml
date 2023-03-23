@@ -198,6 +198,18 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/adminPoorParkReport.jsp" />
     </definition>
 
+    <!-- Admin Review Exp Detailed -->
+    <definition name="adminReviewExpDetailed" extends="base.definition">
+        <put-attribute name="title" value="Admin Review Exp Detailed" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/adminReviewExpDetailed.jsp" />
+    </definition>
+
+    <!-- Admin Review Poor Park Detailed -->
+    <definition name="adminReviewPoorParkDetailed" extends="base.definition">
+        <put-attribute name="title" value="Admin Review Poor Park Detailed" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/adminReviewPoorParkDetailed.jsp" />
+    </definition>
+
 
 
 </tiles-definitions> 

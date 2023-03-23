@@ -9,4 +9,6 @@ import java.util.List;
 public interface ExpReportDAO extends JpaRepository<ExpReportDTO, Long> {
 
     public List<ExpReportDTO> findAll();
+
+    public ExpReportDTO getById(Long reportID);
 }

@@ -6,6 +6,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.dao.HistoryDAO;
+import com.petesparkingmgt.dto.*;
 import com.petesparkingmgt.service.CarpoolService;
 import com.petesparkingmgt.service.CarpoolUsersService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +22,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.petesparkingmgt.dao.BookingDAO;
 
 import com.petesparkingmgt.dao.SlotDAO;
-import com.petesparkingmgt.dto.BookingDTO;
-import com.petesparkingmgt.dto.ParkingDTO;
-import com.petesparkingmgt.dto.SlotDTO;
-import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.exception.RecordNotFoundException;
 import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.service.BookingService;
@@ -51,6 +49,9 @@ public class BookingCtl {
 
 	 @Autowired
 	 public CarpoolService carpoolService;
+
+	@Autowired
+	public HistoryDAO historyDAO;
 
 
 	
@@ -89,6 +90,13 @@ public class BookingCtl {
 				return "booking";
 			}
 			BookingDTO bean = form.getDTO();
+
+			HistoryDTO historyBean = new HistoryDTO();
+			historyBean.setUserId(user.getId());
+			historyBean.setArea(form.getParkingName());
+			historyBean.setDate(form.getFromBookingDate());
+			historyDAO.save(historyBean);
+
 			bean.setId(0);
 		    SlotDTO slotDTO =	slotDAO.findById(bean.getSlotId());
 			bean.setSlot(slotDTO.getSlot());
