@@ -4,7 +4,9 @@
   <title>History Page</title>
   <script>
     function generateLists() {
-      let histList = ["History 1", "History 2", "History 3"];
+      historyList = request.getParameter("histories");
+      let histList = historyList;
+      histList = ["list 1", "list 2", "list 3"];
       for (let i = 0; i < histList.length; i++) {
         let button = document.createElement("button");
         let buttonName = document.createTextNode(histList.at(i));
@@ -12,7 +14,8 @@
         button.className = "historyButton";
         document.getElementById("historyList").appendChild(button);
       }
-        let favList = ["Favorite 1", "Favorite 2", "Favorite 3"];
+      favoriteList = request.getParameter("favorites");
+        let favList = favoriteList;
         for (let i = 0; i < favList.length; i++) {
           let button = document.createElement("button");
           let buttonName = document.createTextNode(favList.at(i));

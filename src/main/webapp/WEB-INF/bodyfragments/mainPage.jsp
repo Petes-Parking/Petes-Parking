@@ -127,8 +127,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('corec-popup')">Close</button>
-    <button class="favorite" onclick="favoriteArea()" style="font-size: 16px; width: 200px; height: 40px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png" id="imgClickAndChange" alt="" width="50" height="50">
+    <button class="favorite" onclick="favoriteArea()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="imgClickAndChange" alt="" width="50" height="50">
 </div>
 </div>
 
