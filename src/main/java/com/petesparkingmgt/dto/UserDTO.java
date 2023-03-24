@@ -62,8 +62,7 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "booked_date3")
 	private String bdate3;
 	
-	@Column(name = "status", length = 755)
-	private String status;
+
 	
 	
 

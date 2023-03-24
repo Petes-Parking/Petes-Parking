@@ -1,8 +1,10 @@
 package com.petesparkingmgt.service;
 
 
+import java.util.Date;
 import java.util.List;
 
+import com.petesparkingmgt.dao.CarpoolDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +18,15 @@ public class UserService {
 	
 	@Autowired
 	public UserDAO dao;
+
+	@Autowired
+	public CarpoolUsersService carpoolUsersService;
+
+
+	//Add the CarpoolDAO object
+
+	public CarpoolDAO carpoolDAO;
+
 	
 	public void add(UserDTO dto) {		
 		dao.save(dto);		
@@ -76,8 +87,17 @@ public class UserService {
 
 	public void deleteUser(Long userId) {
 		// need to do more here, check other tables and delete but for now keep it simple
+
+
+		if (carpoolUsersService.getCarpoolFor(userId) != null){
+			carpoolUsersService.leaveCarpoolFor(userId, carpoolUsersService.getCarpoolFor(userId).getCarpoolId());
+		}
+		// delete from
 		dao.deleteById(userId);
 
+
 	}
+
+
 }
 

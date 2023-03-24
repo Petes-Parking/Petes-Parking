@@ -2,6 +2,8 @@ package com.petesparkingmgt.ctl;
 
 
 
+import com.petesparkingmgt.dto.PendingUserDTO;
+import com.petesparkingmgt.service.PendingUserService;
 import com.petesparkingmgt.utility.DataUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +29,9 @@ public class UserCtl {
 
 	@Autowired
 	public UserService service;
+
+	@Autowired
+	public PendingUserService pendingUserService;
 
 	@Autowired
 	public UserDAO dao;
@@ -139,9 +144,19 @@ public class UserCtl {
 
 		if(user == null) {
 
-			UserDTO dto = form.getDTO();
-			dto.setStatus("InActive");
-			service.add(dto);
+			PendingUserDTO dto = new PendingUserDTO();
+			dto.setDob(form.getDob());
+			dto.setGender(form.getGender());
+			dto.setEmail(form.getEmail());
+			dto.setPassword(form.getPassword());
+			dto.setPassword2(form.getPassword2());
+			dto.setPhoneNumber(form.getPhoneNumber());
+			dto.setFirstName(form.getFirstName());
+			dto.setLastName(form.getLastName());
+			dto.setUserRole(form.getUserRole());
+
+			//dto.setStatus("InActive");
+			pendingUserService.add(dto);
 
 			model.addAttribute("success", "User registration success");
 		}else {
@@ -162,28 +177,25 @@ public class UserCtl {
 	
 	@GetMapping("/userApprove")	
 	public String userApprove(Model model, @RequestParam("id") long id ) throws Exception{
-		UserDTO user = service.findUserById(id);
-		user.setStatus("Active");
-		service.update(user);
+		pendingUserService.acceptedUser(id);
 		
-		List<UserDTO> list =	service.list();
+		List<PendingUserDTO> list = pendingUserService.list();
 		model.addAttribute("list", list);	
 		model.addAttribute("success", "User Approved Successfully!");
-		return "userList";
+		return "userListView";
 	}
 	
 	@GetMapping("/userReject")	
 	public String userReject(Model model, @RequestParam("id") long id ) throws Exception{
 		
-     	UserDTO user = service.findUserById(id);	
-		user.setStatus("InActive");
+
 		
-		service.update(user);
+		pendingUserService.rejectUser(id);
 		
-		List<UserDTO> list =	service.list();
+		List<PendingUserDTO> list =	pendingUserService.list();
 		model.addAttribute("list", list);
 		model.addAttribute("success", "User Rejected successfully");
-		return "userList";
+		return "userListView";
 	}
 
 

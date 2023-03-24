@@ -4,13 +4,11 @@ package com.petesparkingmgt.ctl;
 import com.petesparkingmgt.dao.ExpReportDAO;
 import com.petesparkingmgt.dao.PoorParkReportDAO;
 import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.BookingDTO;
-import com.petesparkingmgt.dto.ExpReportDTO;
-import com.petesparkingmgt.dto.PoorParkReportDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.*;
 import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.BookingService;
+import com.petesparkingmgt.service.PendingUserService;
 import com.petesparkingmgt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +27,9 @@ public class AdminCtl {
 
     @Autowired
     public UserService service;
+
+    @Autowired
+    public PendingUserService pendingUserService;
     
     @Autowired
     public BookingService service2;
@@ -192,8 +193,8 @@ public class AdminCtl {
 	
 	@GetMapping("/userList")
 	public String list(@ModelAttribute("form") UserForm form, Model model) {
-        List<UserDTO> list = service.list();
-        model.addAttribute("list", list);
-        return "userList";
+        List<PendingUserDTO> list = pendingUserService.list();
+        model.addAttribute("pendingList", list);
+        return "userListView";
     }
 }

@@ -29,16 +29,15 @@
     </tr>
   </thead>
   <tbody>
-  <c:forEach items="${list}" var="li" varStatus="u">
+  <c:forEach items="${pendingList}" var="li" varStatus="u">
     <tr>     
       <td>${li.firstName}</td>
       <td>${li.lastName}</td>
       <td>${li.email}</td>
       <td>${li.phoneNumber}</td>
       <td>${li.dob}</td>
-      <td>${li.status}</td>
-       <td>     
-       <a href="${pageContext.request.contextPath}/userApprove?id=${li.id}" class="btn btn-primary btn-lg active">Approve</a>    
+       <td>
+       <a href="${pageContext.request.contextPath}/userApprove?id=${li.id}" class="btn btn-primary btn-lg active">Approve</a>
       <a href="${pageContext.request.contextPath}/userReject?id=${li.id}" class="btn btn-danger btn-lg">Reject</a>   
        </td>
     </tr>

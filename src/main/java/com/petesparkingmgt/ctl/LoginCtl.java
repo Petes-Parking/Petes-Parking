@@ -3,6 +3,7 @@ package com.petesparkingmgt.ctl;
 import javax.servlet.http.HttpSession;
 
 import com.petesparkingmgt.dao.UserDAO;
+import com.petesparkingmgt.service.PendingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,9 @@ public class LoginCtl {
 
 	@Autowired
 	public UserService service;
+
+	@Autowired
+	public PendingUserService pendingUserService;
 
 	@Autowired
 	public UserDAO dao;
@@ -42,15 +46,16 @@ public class LoginCtl {
 
 	@PostMapping("/auth")
 	public String Login(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
-		String status = null;
 		UserDTO user = service.login(form.getEmail(), form.getPassword());
 
-		if (user != null) {
-			 status = user.getStatus();
-		}
-		if (user == null) {
 
-			model.addAttribute("error", "Invalid username/password or register an account.");
+		if (user == null) {
+			if (pendingUserService.getPendingUser(form.getEmail()) != null) {
+				model.addAttribute("error", "Admin must approve your account!");
+
+			} else {
+				model.addAttribute("error", "Invalid username/password or register an account.");
+			}
 		} else {
 			if (user.getUserRole().equals("Admin")) {
 				session.setAttribute("user", user);
@@ -61,11 +66,7 @@ public class LoginCtl {
 
 				return "adminview";
 
-			} else if (status.equals("InActive")) {
-				model.addAttribute("error", "Needs admin approval");
-			}
-
-			else if (user != null && status.equals("InActive")) {
+			} else  {
 				session.setAttribute("user", user);
 				return "mainPage";
 			}

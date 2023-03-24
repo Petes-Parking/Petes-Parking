@@ -43,6 +43,10 @@ public class CarpoolUsersService {
         return dao.getCarpoolUserDTOByUserIdAndStatusEquals(userid, 1);
     }
 
+    public CarpoolDTO getCarpoolDTOFor(long userid) {
+        return carpoolDAO.getCarpoolDTOById(dao.getCarpoolUserDTOByUserIdAndStatusEquals(userid, 1).getCarpoolId());
+    }
+
     public CarpoolUserDTO acceptInvite(CarpoolDTO carpool, long userId){
         // Delete entry with status 0, reinsert with status 1
         dao.deleteCarpoolUserDTOByCarpoolIdAndUserId(carpool.getId(), userId);
