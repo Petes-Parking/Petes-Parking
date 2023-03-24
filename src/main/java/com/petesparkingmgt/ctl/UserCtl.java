@@ -140,6 +140,7 @@ public class UserCtl {
 		if(user == null) {
 
 			UserDTO dto = form.getDTO();
+			dto.setStatus("InActive");
 			service.add(dto);
 
 			model.addAttribute("success", "User registration success");
@@ -157,6 +158,32 @@ public class UserCtl {
 	public String mapPage(@ModelAttribute("form") UserForm form, Model model) {
 
 		return "welcome";
+	}
+	
+	@GetMapping("/userApprove")	
+	public String userApprove(Model model, @RequestParam("id") long id ) throws Exception{
+		UserDTO user = service.findUserById(id);
+		user.setStatus("Active");
+		service.update(user);
+		
+		List<UserDTO> list =	service.list();
+		model.addAttribute("list", list);	
+		model.addAttribute("success", "User Approved Successfully!");
+		return "userList";
+	}
+	
+	@GetMapping("/userReject")	
+	public String userReject(Model model, @RequestParam("id") long id ) throws Exception{
+		
+     	UserDTO user = service.findUserById(id);	
+		user.setStatus("InActive");
+		
+		service.update(user);
+		
+		List<UserDTO> list =	service.list();
+		model.addAttribute("list", list);
+		model.addAttribute("success", "User Rejected successfully");
+		return "userList";
 	}
 
 

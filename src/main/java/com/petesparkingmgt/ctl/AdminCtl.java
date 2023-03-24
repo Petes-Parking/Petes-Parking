@@ -141,6 +141,14 @@ public class AdminCtl {
 	return "bookinglist";
 		
 	}
+	
+	@GetMapping("/userList")
+	public String list(@ModelAttribute("form") UserForm form, Model model) {
+		List<UserDTO> list = service.list();
+		model.addAttribute("list", list);
+		return "userList";
+	}
+	
 
     @GetMapping("/admin/review-poorpark/{poorParkReportID}")
     public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {

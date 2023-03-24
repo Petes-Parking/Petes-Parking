@@ -24,6 +24,7 @@
       <th scope="col">Email</th>
       <th scope="col">Phone Number</th>
       <th scope="col">DOB</th>      
+      <th scope="col">Registration Status</th> 
        <th scope="col">Action</th> 
     </tr>
   </thead>
@@ -35,10 +36,10 @@
       <td>${li.email}</td>
       <td>${li.phoneNumber}</td>
       <td>${li.dob}</td>
-       <td>
-      <a href="${pageContext.request.contextPath}/userEdit?id=${li.id}">Edit </a>
-      
-      <a href="${pageContext.request.contextPath}/userDelete?id=${li.id}">Remove</a>   
+      <td>${li.status}</td>
+       <td>     
+       <a href="${pageContext.request.contextPath}/userApprove?id=${li.id}" class="btn btn-primary btn-lg active">Approve</a>    
+      <a href="${pageContext.request.contextPath}/userReject?id=${li.id}" class="btn btn-danger btn-lg">Reject</a>   
        </td>
     </tr>
    </c:forEach>

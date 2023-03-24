@@ -114,7 +114,7 @@
 
     <!-- User List Vpage  -->
     <definition name="userList" extends="base.definition">
-        <put-attribute name="title" value="UserList" />
+        <put-attribute name="title" value="Students with approve or pending resgistration status" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/userListView.jsp" />
     </definition>
 

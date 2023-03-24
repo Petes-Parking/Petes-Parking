@@ -16,7 +16,6 @@ import com.petesparkingmgt.form.UserForm;
 
 import java.util.List;
 
-
 @Controller
 public class LoginCtl {
 
@@ -31,26 +30,28 @@ public class LoginCtl {
 		return "home";
 	}
 
-
 	@GetMapping("/logout")
 	public String logout(HttpSession session, Model model) {
 		UserDTO user = (UserDTO) session.getAttribute("user");
-		if(user != null) {
+		if (user != null) {
 			session.invalidate();
 			model.addAttribute("success", "Logout Sucessfully");
 		}
 		return "home";
 	}
 
-
-
 	@PostMapping("/auth")
 	public String Login(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
+		String status = null;
+		UserDTO user = service.login(form.getEmail(), form.getPassword());
 
-		UserDTO user = 	service.login(form.getEmail(), form.getPassword());
-		if(user == null) {
+		if (user != null) {
+			 status = user.getStatus();
+		}
+		if (user == null) {
+
 			model.addAttribute("error", "Invalid username/password or register an account.");
-		}else {
+		} else {
 			if (user.getUserRole().equals("Admin")) {
 				session.setAttribute("user", user);
 				List<UserDTO> users = dao.findAll();
@@ -58,19 +59,18 @@ public class LoginCtl {
 
 				model.addAttribute("adminUserList", users);
 
-
 				return "adminview";
 
-			} else {
+			} else if (status.equals("InActive")) {
+				model.addAttribute("error", "Needs admin approval");
+			}
+
+			else if (user != null && status.equals("InActive")) {
 				session.setAttribute("user", user);
 				return "mainPage";
 			}
 		}
 		return "home";
 	}
-
-
-
-
 
 }
