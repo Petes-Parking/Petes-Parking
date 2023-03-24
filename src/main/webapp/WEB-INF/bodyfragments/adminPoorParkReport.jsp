@@ -39,42 +39,48 @@
       color: goldenrod;
     }
 
+    .table-responsive {
+      max-height: 75%;
+      max-width: 110%;
+    }
+
   </style>
 </head>
 <body>
 
 <div class="container">
   <h1 class="text-center">Review Poor Parking Reports</h1>
-
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Poor Parking Reports:</h3>
-      <form action="" method="POST" id="poorParkForm">
-        <input type="hidden" name="poorParkReports" id="poorParkReports">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th>Date Report Submitted</th>
-            <th>Parking Lot</th>
-            <th>Description</th>
-            <th>Reporter Email</th>
-            <th>View More Information</th>
-          </tr>
-          </thead>
-          <tbody>
-          <!-- Loop through the users and display the list -->
-          <c:forEach items="${adminPoorParkList}" var="report" varStatus="status">
-            <tr class="poorpark-row" data-report-id="${report.id}">
-              <td>${report.reportDate}</td>
-              <td>${report.parkingLot}</td>
-              <td>${report.description}</td>
-              <td>${report.reporterEmail}</td>
-              <td><a href="${pageContext.request.contextPath}/admin/review-poorpark/${report.id}">View More</a></td>
+  <div class="table-responsive">
+    <div class="row">
+      <div class="col-md-12">
+        <h3>Poor Parking Reports:</h3>
+        <form action="" method="POST" id="poorParkForm">
+          <input type="hidden" name="poorParkReports" id="poorParkReports">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <th>Date Report Submitted</th>
+              <th>Parking Lot</th>
+              <th>Description</th>
+              <th>Reporter Email</th>
+              <th>View More Information</th>
             </tr>
-          </c:forEach>
-          </tbody>
-        </table>
-      </form>
+            </thead>
+            <tbody>
+            <!-- Loop through the users and display the list -->
+            <c:forEach items="${adminPoorParkList}" var="report" varStatus="status">
+              <tr class="poorpark-row" data-report-id="${report.id}">
+                <td>${report.reportDate}</td>
+                <td>${report.parkingLot}</td>
+                <td>${report.description}</td>
+                <td>${report.reporterEmail}</td>
+                <td><a href="${pageContext.request.contextPath}/admin/review-poorpark/${report.id}">View More</a></td>
+              </tr>
+            </c:forEach>
+            </tbody>
+          </table>
+        </form>
+      </div>
     </div>
   </div>
 </div>

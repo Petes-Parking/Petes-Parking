@@ -26,37 +26,25 @@
       width: 200px;
     }
 
-    .form-group {
-      margin-bottom: 15px;
-    }
-
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
     }
-
-    .submit-button {
-      background-color: goldenrod;
-      color: black;
-      border: none;
-      cursor: pointer;
-      padding: 10px 20px;
-      margin-left: 120px;
-      margin-top: 15px;
-    }
   </style>
 </head>
 <body>
 <div class="container">
-  <h1>Poor Parking Report</h1>
-  <p>Report Date: ${report.reportDate}</p>
-  <p>Reporter Email: ${report.reporterEmail}</p>
-  <p>Parking Lot: ${report.parkingLot}</p>
-  <p>License Plate: ${report.licensePlate}</p>
-  <p>Description: ${report.description}</p>
-  <p>Image:</p><br>
-  <img src="${report.imageURL}" alt="Report Image">
+  <form class="container" method="post" id="poorParkDismissForm" action="${pageContext.request.contextPath}/admin/deletePoorParkReport/${report.id}">
+    <h1>Poor Parking Report</h1>
+    <p name="reportDate">Report Date: ${report.reportDate}</p>
+    <p name="reporterEmail">Reporter Email: ${report.reporterEmail}</p>
+    <p name="parkingLot">Parking Lot: ${report.parkingLot}</p>
+    <p name="licensePlate">License Plate: ${report.licensePlate}</p>
+    <p name="description">Description: ${report.description}</p>
+    <p name="imageURL">Image: ${report.imageURL}</p>
+    <button class="dismiss" type="submit">Dismiss Report</button>
+  </form>
 </div>
 </body>
 </html>

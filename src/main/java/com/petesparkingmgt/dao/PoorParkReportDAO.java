@@ -12,4 +12,5 @@ public interface PoorParkReportDAO extends JpaRepository<PoorParkReportDTO, Long
 
     public PoorParkReportDTO getById(Long reportID);
 
+    public void deleteById(Long reportID);
 }

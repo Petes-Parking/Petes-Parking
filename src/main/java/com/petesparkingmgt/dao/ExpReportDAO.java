@@ -11,4 +11,6 @@ public interface ExpReportDAO extends JpaRepository<ExpReportDTO, Long> {
     public List<ExpReportDTO> findAll();
 
     public ExpReportDTO getById(Long reportID);
+
+    public void deleteById(Long reportID);
 }
