@@ -46,6 +46,11 @@
   </tbody>
 </table>
 
+		<form action="${pageContext.request.contextPath}/adminview" method="get">
+			  <input type="hidden" name="id" value="${li.id}">
+			  <button type="submit" class="btn btn-outline-primary">Back</button>
+		</form>
+
 </div>
 
 </body>
