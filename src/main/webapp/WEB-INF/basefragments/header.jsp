@@ -31,24 +31,27 @@
 				<ul class="navbar-nav">
 					<li class="nav-item"><a class="nav-link active"
 						aria-current="page"
-						href="${pageContext.request.contextPath}/main">Home</a></li>
-
-
-
+						href="${pageContext.request.contextPath}/login">Home</a></li>
 
 					<c:if test="${sessionScope.user == null}">
 
 					</c:if>
 
+					<c:if test="${sessionScope.user.userRole == 'Admin'}">
+
+					</c:if>
+
 					<c:if test="${sessionScope.user.userRole == 'Student'}">
 
-						<li class="nav-item dropdown"><a class="dropdown-item"
-							href="${pageContext.request.contextPath}/parkinglist">View
-								Parking Lots</a></li>
 
 						<li class="nav-item"><a class="nav-link active"
-												aria-current="page"
-												href="${pageContext.request.contextPath}/leaderboard">Leaderboard</a></li>
+							aria-current="page"
+							href="${pageContext.request.contextPath}/leaderboard">Leaderboard</a></li>
+
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page"
+							href="${pageContext.request.contextPath}/bookinglist">Booking</a></li>
+
 					</c:if>
 
 				</ul>
@@ -56,11 +59,7 @@
 			<div class="float-right" style="margin-left: 700px">
 				<ul class="navbar-nav">
 					<c:if test="${sessionScope.user != null}">
-						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/logout">Logout</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="${pageContext.request.contextPath}/userEdit?id=${sessionScope.user.id}">My
-								Profile</a></li>
+				
 					</c:if>
 				</ul>
 			</div>
