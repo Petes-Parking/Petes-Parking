@@ -155,6 +155,24 @@ public class AdminCtl {
 
         return modelAndView;
     }
+
+    @PostMapping("/admin/backToAdminView")
+    public ModelAndView backToAdminView() {
+        ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
+        return modelAndView;
+    }
+
+    @PostMapping("/admin/backToExpReport")
+    public ModelAndView backToExpReport() {
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/review-exp");
+        return modelAndView;
+    }
+
+    @PostMapping("/admin/backToPoorParkReport")
+    public ModelAndView backToPoorParkReport() {
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/review-poorpark");
+        return modelAndView;
+    }
     
 	@GetMapping("/bookinglist")
 	public String list(@ModelAttribute("form")BookingForm form, Model model, HttpSession session){

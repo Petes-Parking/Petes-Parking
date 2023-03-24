@@ -83,5 +83,10 @@
           </div>
         </div>
       </div>
+
+      <form action="${pageContext.request.contextPath}/admin/backToAdminView" method="post">
+        <button type="submit" class="btn btn-outline-primary">Back</button>
+      </form>
+
     </div>
 </body>

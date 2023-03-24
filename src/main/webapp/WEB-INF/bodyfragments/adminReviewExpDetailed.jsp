@@ -43,8 +43,10 @@
         <p name="licensePlate">License Plate: ${report.licensePlate}</p>
         <p name="description">Description: ${report.description}</p>
         <p name="imageURL">Image: ${report.imageURL}</p>
-        <button class="dismiss" type="submit">Dismiss Report</button>
-        <p name="expReportID" hidden>${report.id}</p>
+        <button class="btn btn-outline-primary" type="submit">Dismiss Report</button>
+    </form>
+    <form action="${pageContext.request.contextPath}/admin/backToExpReport" method="post">
+        <button type="submit" class="btn btn-outline-primary">Back</button>
     </form>
 </div>
 </body>
