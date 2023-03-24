@@ -125,6 +125,36 @@ public class AdminCtl {
         System.out.println(expReport);
         return "adminReviewExpDetailed";
     }
+
+    @GetMapping("/admin/review-poorpark/{poorParkReportID}")
+    public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {
+
+        PoorParkReportDTO poorParkReport = poorParkDAO.getById(poorParkReportID);
+
+        model.addAttribute("report", poorParkReport);
+        System.out.println(poorParkReport);
+        return "adminReviewPoorParkDetailed";
+    }
+
+    @PostMapping("/admin/deleteExpReport/{expReportID}")
+    public ModelAndView deleteExpReport(@PathVariable("expReportID") Long expReportID, RedirectAttributes attributes) {
+        expDAO.deleteById(expReportID);
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/review-exp");
+        attributes.addFlashAttribute("message", "Report deleted successfully!");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/admin/deletePoorParkReport/{poorParkReportID}")
+    public ModelAndView deletePoorParkReport(@PathVariable("poorParkReportID") Long poorParkReportID, RedirectAttributes attributes) {
+        poorParkDAO.deleteById(poorParkReportID);
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/review-poorpark");
+        attributes.addFlashAttribute("message", "Report deleted successfully!");
+
+        return modelAndView;
+    }
     
 	@GetMapping("/bookinglist")
 	public String list(@ModelAttribute("form")BookingForm form, Model model, HttpSession session){
@@ -144,19 +174,8 @@ public class AdminCtl {
 	
 	@GetMapping("/userList")
 	public String list(@ModelAttribute("form") UserForm form, Model model) {
-		List<UserDTO> list = service.list();
-		model.addAttribute("list", list);
-		return "userList";
-	}
-	
-
-    @GetMapping("/admin/review-poorpark/{poorParkReportID}")
-    public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {
-
-        PoorParkReportDTO poorParkReport = poorParkDAO.getById(poorParkReportID);
-
-        model.addAttribute("report", poorParkReport);
-        System.out.println(poorParkReport);
-        return "adminReviewExpDetailed";
+        List<UserDTO> list = service.list();
+        model.addAttribute("list", list);
+        return "userList";
     }
 }
