@@ -66,9 +66,7 @@ public class UserForm extends BaseDTO {
 		bean.setUserRole(userRole);
 		bean.setPoints(points);
 		bean.setPassword2(password2);
-		bean.setBdate1(bdate1);
-		bean.setBdate1(bdate2);
-		bean.setBdate1(bdate3);
+
 
 		return bean;
 	}
@@ -84,9 +82,7 @@ public class UserForm extends BaseDTO {
 		phoneNumber = bean.getPhoneNumber();
 		userRole = bean.getUserRole();
 		points = bean.getPoints();
-		bdate1 = bean.getBdate1();
-		bdate2 = bean.getBdate2();
-		bdate3 = bean.getBdate3();
+
 
 
 	}

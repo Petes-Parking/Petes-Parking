@@ -8,8 +8,7 @@ import javax.validation.Valid;
 
 import com.petesparkingmgt.dao.HistoryDAO;
 import com.petesparkingmgt.dto.*;
-import com.petesparkingmgt.service.CarpoolService;
-import com.petesparkingmgt.service.CarpoolUsersService;
+import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,9 +23,6 @@ import com.petesparkingmgt.dao.BookingDAO;
 import com.petesparkingmgt.dao.SlotDAO;
 import com.petesparkingmgt.exception.RecordNotFoundException;
 import com.petesparkingmgt.form.BookingForm;
-import com.petesparkingmgt.service.BookingService;
-import com.petesparkingmgt.service.ParkingService;
-
 
 
 @Controller
@@ -40,6 +36,13 @@ public class BookingCtl {
      
      @Autowired
      public BookingService service;
+
+
+	@Autowired
+	public UserService userService;
+
+	 @Autowired
+	 public HistoryService historyService;
      
      @Autowired
      public ParkingService parkingService;
@@ -52,6 +55,8 @@ public class BookingCtl {
 
 	@Autowired
 	public HistoryDAO historyDAO;
+
+
 
 
 	
@@ -111,12 +116,20 @@ public class BookingCtl {
 				bean.setCarpoolId(-1);
 			}
 			service.Add(bean);
+			int points = historyService.getPointsFor(user.getId());
+			int totalPoints = points + user.getPoints();
+
+			user.setPoints(totalPoints);
+
+			userService.update(user);
+
 
 			if (bean.getCarpoolId() > 0 ){
 				String carpoolName = carpoolUsersService.getCarpoolNameFor(user.getId());
 				model.addAttribute("success", "Booking successful for carpool: " + carpoolName);
 			} else {
-				model.addAttribute("success", "Booking successfully");
+				model.addAttribute("success", "Booking successfully!");
+				model.addAttribute("success2", "Gained: " + points + " points. You now have " + totalPoints + " total points!");
 			}
 			return "booking";
 		}}catch (RecordNotFoundException e) {

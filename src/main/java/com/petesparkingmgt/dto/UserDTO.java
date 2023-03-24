@@ -53,15 +53,7 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "points")
 	private int points;
 
-	@Column(name = "booked_date1")
-	private String bdate1;
 
-	@Column(name = "booked_date2")
-	private String bdate2;
-
-	@Column(name = "booked_date3")
-	private String bdate3;
-	
 
 	
 	

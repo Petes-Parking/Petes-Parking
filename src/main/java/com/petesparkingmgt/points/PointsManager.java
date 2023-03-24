@@ -47,10 +47,15 @@ public class PointsManager {
 
             long diff = ChronoUnit.DAYS.between(date, LocalDateTime.now()); // Calculation is in DAYS
             differences[i] = diff;
+            System.out.println("difference calculated: " + diff);
             i++;
             if(i > 2) break;
         }
-        return (int) Math.ceil((int) (base / (sum(differences))));
+        if (sum(differences) != 0 ) {
+            return (int) Math.ceil((int) (base / (sum(differences))));
+        } else {
+            return base;
+        }
 
     }
 
