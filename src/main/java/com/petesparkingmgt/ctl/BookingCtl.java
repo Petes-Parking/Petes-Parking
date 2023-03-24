@@ -102,6 +102,7 @@ public class BookingCtl {
 			bean.setSlot(slotDTO.getSlot());
 			bean.setSlotId(slotDTO.getId());
 			bean.setStatus("Cancel");
+			bean.setReqstatus("Pending");
 			if (carpoolUsersService.isLeader(user.getId())) {
 				bean.setCarpoolId(carpoolUsersService.getCarpoolFor(user.getId()).getCarpoolId());
 
@@ -126,21 +127,6 @@ public class BookingCtl {
 		}
 	}
 	
-	@GetMapping("/bookinglist")
-	public String list(@ModelAttribute("form")BookingForm form, Model model, HttpSession session){
-		List<BookingDTO> list = null;
-		UserDTO user = (UserDTO) session.getAttribute("user");
-		String email  = user.getEmail();
-		System.out.println("Booking list email: "+email);
-		if(user.getUserRole().equals("Admin")) {
-			 list = service.list();
-		}else {
-			list = service.findBookingByEmail(email);
-		}
-	model.addAttribute("list", list);
-	return "bookinglist";
-		
-	}
 	
 	@GetMapping("/cancelBooking")
 	public String cancelBooking(@ModelAttribute("form")BookingForm form, Model model, @RequestParam("id") long id, @RequestParam("slotid") long slotid, HttpSession session) {
@@ -165,5 +151,23 @@ public class BookingCtl {
 		return "bookinglist";
 	}
 	
+	@GetMapping("/approveReq")
+	public String approveReq(Model model, @RequestParam("id") long id, HttpSession session) {
+	
+		BookingDTO dto = service.findBookingById(id);
+		dto.setReqstatus("Approved");
+		service.update(dto);	
+		return "redirect:/bookinglist";
+	}
+	
+
+	@GetMapping("/declineReq")
+	public String declineReq(Model model, @RequestParam("id") long id, HttpSession session) {
+	
+		BookingDTO dto = service.findBookingById(id);
+		dto.setReqstatus("Declined");
+		service.update(dto);	
+		return "redirect:/bookinglist";
+	}
 	
 }

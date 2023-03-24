@@ -29,6 +29,7 @@
       <th scope="col">From Time</th>
       <th scope="col">To Booking Date</th>
       <th scope="col">To Time</th>
+      <th scope="col">Request Status</th>
        <th scope="col">Action</th>
     </tr>
   </thead>
@@ -45,7 +46,17 @@
       <td>${li.fromTime}</td>
       <td>${li.toBookingDate}</td>
       <td>${li.toTime}</td>
-      <td><a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/cancelBooking?slotid=${li.slotId}&id=${li.id}">${li.status}</a></td>
+       <td>${li.reqstatus}</td>
+      <td>
+      
+      <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/cancelBooking?slotid=${li.slotId}&id=${li.id}">${li.status}</a>
+     
+      <c:if test="${sessionScope.user.userRole == 'Admin'}">
+      <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/approveReq?id=${li.id}">Approve</a>
+       <a class="nav-link active" aria-current="page" href="${pageContext.request.contextPath}/declineReq?id=${li.id}">Decline</a>
+      </c:if>
+      
+      </td>
     </tr>
    </c:forEach>
   </tbody>

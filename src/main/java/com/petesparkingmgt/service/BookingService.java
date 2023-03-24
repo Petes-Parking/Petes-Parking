@@ -55,5 +55,14 @@ public class BookingService {
 		SlotDTO dto = slotDAO.findById(id);
 		return dto;
 	}
+	
+	public BookingDTO findBookingById(long id) {
+		return dao.findById(id);
+	}
+	
+	public BookingDTO update(BookingDTO dto) {
+		
+		return dao.saveAndFlush(dto);
+	}
 
 }

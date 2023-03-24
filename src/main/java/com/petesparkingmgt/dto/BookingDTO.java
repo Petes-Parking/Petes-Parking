@@ -54,6 +54,11 @@ public class BookingDTO extends BaseDTO {
 
 	@Column(name = "carpoolId")
 	private long carpoolId;
+	
+	@Column(name = "reqtatus", length = 755)
+	private String reqstatus;
+	
+	
 
 	@Override
 	public String toString() {

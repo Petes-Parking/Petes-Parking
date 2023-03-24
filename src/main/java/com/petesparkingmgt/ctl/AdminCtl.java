@@ -4,10 +4,13 @@ package com.petesparkingmgt.ctl;
 import com.petesparkingmgt.dao.ExpReportDAO;
 import com.petesparkingmgt.dao.PoorParkReportDAO;
 import com.petesparkingmgt.dao.UserDAO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.dto.ExpReportDTO;
 import com.petesparkingmgt.dto.PoorParkReportDTO;
 import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.UserForm;
+import com.petesparkingmgt.service.BookingService;
 import com.petesparkingmgt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +22,16 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 public class AdminCtl {
 
     @Autowired
     public UserService service;
+    
+    @Autowired
+    public BookingService service2;
 
     @Autowired
     public UserDAO dao;
@@ -117,6 +125,22 @@ public class AdminCtl {
         System.out.println(expReport);
         return "adminReviewExpDetailed";
     }
+    
+	@GetMapping("/bookinglist")
+	public String list(@ModelAttribute("form")BookingForm form, Model model, HttpSession session){
+		List<BookingDTO> list = null;
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		String email  = user.getEmail();
+		System.out.println("Booking list email: "+email);
+		if(user.getUserRole().equals("Admin")) {
+			 list = service2.list();
+		}else {
+			list = service2.findBookingByEmail(email);
+		}
+	model.addAttribute("list", list);
+	return "bookinglist";
+		
+	}
 
     @GetMapping("/admin/review-poorpark/{poorParkReportID}")
     public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {

@@ -88,8 +88,8 @@
             </div>
         </div>
         <div class="col-md-3">
-            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="/admin/widget2" class="text-decoration-none text-reset">Widget 2</a>
+            <div class="widget rounded bg-black text-center text-uppercase py-4">
+                <a href="${pageContext.request.contextPath}/bookinglist" class="text-decoration-none text-reset">Booking List</a>
             </div>
         </div>
         <div class="col-md-3">
