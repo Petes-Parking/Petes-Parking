@@ -109,16 +109,17 @@
         <button1 class = "edit" type="button" onclick="changeImage()">Edit</button1>
         <form action="/action_page.php">
             <div class="userdiv">
-                <p2>Username:</p2><br>
-                <input class="text-field" type="username" placeholder="Username" onClick="this.select();" id="user" name="user">
+                <p2>Username: ${user.firstName} ${user.lastName}</p2><br>
+                <input class="text-field" type="hidden" placeholder="${user.password}" onClick="this.select();" id="pass" name="pass"><br><br>
+
             </div>
             <div class="passdiv">
-                <p3>Password:</p3><br>
-                <input class="text-field" type="password" placeholder="Password" onClick="this.select();" id="pass" name="pass"><br><br>
+                <p3>Password: ${user.password}</p3><br>
+                <input class="text-field" type="password" placeholder="${user.password}" onClick="this.select();" id="pass" name="pass"><br><br>
             </div>
             <div class="passdiv">
-                <p4>Email:</p4><br>
-                <input class="text-field" type="email" placeholder="Email" onClick="this.select();" id="email" name="email"><br><br>
+                <p4>Email: ${user.email}</p4><br>
+                <input class="text-field" type="email" placeholder="${user.email}" onClick="this.select();" id="email" name="email"><br><br>
             </div>
         </form>
     </div>
