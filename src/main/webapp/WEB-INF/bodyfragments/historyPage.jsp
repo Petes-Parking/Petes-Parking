@@ -2,6 +2,28 @@
 <html>
 <head>
   <title>History Page</title>
+  <style>
+    .customButton {
+      background-color: #d5c39a;
+      border: none;
+      color: white;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      cursor: pointer;
+      border-radius: 12px;
+      padding: 10px 24px;
+      transition-duration: 0.4s;
+    }
+
+    .customButton:hover {
+      background-color: #45a049;
+      color: white;
+      font-size: larger;
+    }
+  </style>
   <script>
     function generateLists() {
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
@@ -11,11 +33,13 @@
       console.log("New stuff: ", historyList);
       let histList = historyList.split(", ");
       for (let i = 0; i < histList.length; i++) {
-        let button = document.createElement("button");
-        let buttonName = document.createTextNode(histList.at(i));
-        button.appendChild(buttonName);
-        button.className = "historyButton";
-        document.getElementById("historyList").appendChild(button);
+        for (let i = 0; i < histList.length; i++) {
+          let button = document.createElement("button");
+          let buttonName = document.createTextNode(histList.at(i));
+          button.appendChild(buttonName);
+          button.className = "historyButton customButton";
+          document.getElementById("historyList").appendChild(button);
+        }
       }
       favoriteList = request.getParameter("favorites");
         let favList = favoriteList;
