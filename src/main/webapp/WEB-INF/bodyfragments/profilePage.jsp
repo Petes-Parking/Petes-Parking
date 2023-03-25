@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -94,6 +95,25 @@
 </div>
 
 <div class = "box" >
+    <c:if test="${not empty error}">
+        <div class="alert alert-danger">
+            <ul>
+                <c:forEach items="${error}" var="error">
+                    <li style="font-size: 20px; color: red">${error}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
+
+    <c:if test="${not empty success}">
+        <div class="alert alert-danger">
+            <ul>
+                <c:forEach items="${success}" var="error">
+                    <li style="font-size: 20px; color: limegreen">${success}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
     <div class="profile_pic">
         <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)">
         <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" id="clickable-image" width="210" height="210" alt=""/>
@@ -115,11 +135,9 @@
             </div>
             <div class="passdiv">
                 <p3>Password: ${user.password}</p3><br>
-                <input class="text-field" type="password" placeholder="${user.password}" onClick="this.select();" id="pass" name="pass"><br><br>
             </div>
             <div class="passdiv">
                 <p4>Email: ${user.email}</p4><br>
-                <input class="text-field" type="email" placeholder="${user.email}" onClick="this.select();" id="email" name="email"><br><br>
             </div>
         </form>
         <div class="passdiv">
@@ -127,56 +145,56 @@
         </div>
 
         <div class="passdiv">
-            <p4>Level: ${user.level}</p4><br>
+            <p4 style="font-size: larger">Level: ${user.level}</p4><br>
+            <p4>Points Needed To Level Up: ${nextLevelPoints}</p4>
         </div>
     </div>
+    <form method="post" action="${pageContext.request.contextPath}/addVehicle">
     <div class="car_1">
-        <form action="/action_page.php">
             <p5>Car 1 Information</p5><br><br>
             <div class="make1div">
-                <p6>Make:</p6><br>
-                <input class="text-field" type="make1" placeholder="Make" onClick="this.select();" id="make1" name="make1">
+                <p6>Make: ${vehicle.make1}</p6><br>
+                <input class="text-field" type="make1" placeholder="New make" onClick="this.select();" id="make1" name="make1">
             </div>
             <div class="model1div">
-                <p7>Model:</p7><br>
-                <input class="text-field" type="model1" placeholder="Model" onClick="this.select();" id="model1" name="model1"><br><br>
+                <p7>Model: ${vehicle.model1}</p7><br>
+                <input class="text-field" type="model1" placeholder="New Model" onClick="this.select();" id="model1" name="model1"><br><br>
             </div>
             <div class="color1div">
-                <p8>Color:</p8><br>
-                <input class="text-field" type="color1" placeholder="Color" onClick="this.select();" id="color1" name="color1">
+                <p8>Color: ${vehicle.color1}</p8><br>
+                <input class="text-field" type="color1" placeholder="New Color" onClick="this.select();" id="color1" name="color1">
             </div>
             <div class="lic1div">
-                <p9>License Plate Number:</p9><br>
-                <input class="text-field" type="lic1" placeholder="License Plate Number" onClick="this.select();" id="lic1" name="lic1"><br><br>
+                <p9>License Plate Number: ${vehicle.license1}</p9><br>
+                <input class="text-field" type="lic1" placeholder="New License Plate Number" onClick="this.select();" id="license1" name="license1"><br><br>
             </div>
-        </form>
     </div>
     <div class="car_2">
-        <form action="/action_page.php">
             <p10>Car 2 Information</p10><br><br>
             <div class="make2div">
-                <p11>Make:</p11><br>
-                <input class="text-field" type="make2" placeholder="Make" onClick="this.select();" id="make2" name="make2">
+                <p11>Make: ${vehicle.make2}</p11><br>
+                <input class="text-field" type="make2" placeholder="New Make" onClick="this.select();" id="make2" name="make2">
             </div>
             <div class="model2div">
-                <p12>Model:</p12><br>
-                <input class="text-field" type="model2" placeholder="Model" onClick="this.select();" id="model2" name="model2">
+                <p12>Model: ${vehicle.model2}</p12><br>
+                <input class="text-field" type="model2" placeholder="New Model" onClick="this.select();" id="model2" name="model2">
             </div>
             <br>
             <div class="color2div">
-                <p13>Color:</p13><br>
-                <input class="text-field" type="color2" placeholder="Color" onClick="this.select();" id="color2" name="color2">
+                <p13>Color: ${vehicle.color2}</p13><br>
+                <input class="text-field" type="color2" placeholder="New Color" onClick="this.select();" id="color2" name="color2">
             </div>
             <div class="lic2div">
-                <p14>License Plate Number:</p14><br>
-                <input class="text-field" type="lic2" placeholder="License Plate Number" onClick="this.select();" id="lic2" name="lic2"><br><br>
+                <p14>License Plate Number: ${vehicle.license2}</p14><br>
+                <input class="text-field" type="lic2" placeholder="New License Plate Number" onClick="this.select();" id="license2" name="license2"><br><br>
             </div>
-        </form>
     </div>
 
-    <a href="${pageContext.request.contextPath}/main">
-        <button1 class="save-button" type="button" color="white"> Save Changes </button1>
+    <a href="${pageContext.request.contextPath}/addVehicle">
+        <button class="save-button" type="submit" color="white"> Save Changes </button>
     </a>
+    </form>
+
 
     <button1 class="delete-button" type="button" onclick="showPopup1()">
     <a class="nav-link" href="${pageContext.request.contextPath}/logout">Delete Account</a></button1>

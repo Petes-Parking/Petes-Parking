@@ -14,6 +14,8 @@ import lombok.Setter;
 public class VehicleDTO extends BaseDTO {
 
 
+    @Column(name="user_id")
+    private long userId;
     @Column(name = "make1", length = 755)
     private String make1;
 
