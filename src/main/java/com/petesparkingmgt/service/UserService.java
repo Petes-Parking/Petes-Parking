@@ -49,6 +49,7 @@ public class UserService {
 			existingUser.setPassword(user.getPassword());
 			existingUser.setGender(user.getGender());
 			existingUser.setPoints(user.getPoints());
+			existingUser.setLevel(user.getLevel());
 
 			// Save the updated user information to the database
 			dao.save(existingUser);

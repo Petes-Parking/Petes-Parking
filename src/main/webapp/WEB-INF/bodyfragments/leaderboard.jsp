@@ -55,6 +55,7 @@
       <th>Rank</th>
       <th>User Name</th>
       <th>Points</th>
+      <th>Level</th>
     </tr>
     </thead>
     <tbody>
@@ -64,6 +65,7 @@
         <td>${status.index + 1 + startIndex}</td>
         <td>${user.firstName} ${user.lastName}</td>
         <td>${user.points}</td>
+        <td>${user.level}</td>
       </tr>
     </c:forEach>
 
@@ -84,6 +86,7 @@
 <script>
   function navigate(page) {
     window.location.href = `${pageContext.request.contextPath}/leaderboard?page=`+page;
+
   }
 
 </script>

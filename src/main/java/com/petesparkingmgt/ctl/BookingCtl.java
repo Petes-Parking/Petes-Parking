@@ -8,6 +8,7 @@ import javax.validation.Valid;
 
 import com.petesparkingmgt.dao.HistoryDAO;
 import com.petesparkingmgt.dto.*;
+import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -120,8 +121,13 @@ public class BookingCtl {
 			int totalPoints = points + user.getPoints();
 
 			user.setPoints(totalPoints);
+			PointsManager.LevelWrapper wrapper = PointsManager.getLevel(user.getPoints());
+
+			user.setLevel(wrapper.getLevel());
 
 			userService.update(user);
+
+
 
 
 			if (bean.getCarpoolId() > 0 ){
@@ -130,6 +136,8 @@ public class BookingCtl {
 			} else {
 				model.addAttribute("success", "Booking successfully!");
 				model.addAttribute("success2", "Gained: " + points + " points. You now have " + totalPoints + " total points!");
+				model.addAttribute("success3", "Level: " + wrapper.getLevel() + ". Till next level: " + wrapper.getNextLevelThreshold());
+
 			}
 			return "booking";
 		}}catch (RecordNotFoundException e) {

@@ -47,7 +47,6 @@ public class PointsManager {
 
             long diff = ChronoUnit.DAYS.between(date, LocalDateTime.now()); // Calculation is in DAYS
             differences[i] = diff;
-            System.out.println("difference calculated: " + diff);
             i++;
             if(i > 2) break;
         }
@@ -66,6 +65,40 @@ public class PointsManager {
         }
         return total;
     }
+
+    public static LevelWrapper getLevel(int userPoints) {
+        int level = 0;
+        int pointsNeededForNextLevel;
+        int pointsForNextLevel;
+
+        while (true) {
+            int pointsForCurrentLevel = level * level + level * 10;
+             pointsForNextLevel = (level + 1) * (level + 1) + (level + 1) * 10;
+
+            if (userPoints >= pointsForCurrentLevel && userPoints < pointsForNextLevel) {
+                pointsNeededForNextLevel = pointsForNextLevel - userPoints;
+                break;
+            }
+
+            level++;
+        }
+
+        return new LevelWrapper(level, pointsForNextLevel);
+
+    }
+
+    @Getter
+    @Setter
+   public static class LevelWrapper {
+        int level;
+        int nextLevelThreshold;
+
+        public LevelWrapper(int level, int nextLevelThreshold) {
+            this.level = level;
+            this.nextLevelThreshold = nextLevelThreshold;
+        }
+    }
+
 
 
 }

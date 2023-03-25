@@ -53,6 +53,9 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "points")
 	private int points;
 
+	@Column(name = "level")
+	private int level;
+
 
 
 	
@@ -62,7 +65,7 @@ public class UserDTO extends BaseDTO {
 	public String toString() {
 		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", gender=" + gender
 				+ ", email=" + email + ", password=" + password + ", phoneNumber="
-				+ phoneNumber + ", userRole=" + userRole + " , points=" + points+"]";
+				+ phoneNumber + ", userRole=" + userRole + " , points=" + points+ ", level=" + level+"]";
 	}
 
 
