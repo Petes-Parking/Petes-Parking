@@ -122,6 +122,13 @@
                 <input class="text-field" type="email" placeholder="${user.email}" onClick="this.select();" id="email" name="email"><br><br>
             </div>
         </form>
+        <div class="passdiv">
+            <p4>Points: ${user.points}</p4><br>
+        </div>
+
+        <div class="passdiv">
+            <p4>Level: ${user.level}</p4><br>
+        </div>
     </div>
     <div class="car_1">
         <form action="/action_page.php">

@@ -118,10 +118,12 @@ public class BookingCtl {
 			}
 			service.Add(bean);
 			int points = historyService.getPointsFor(user.getId());
+			int priorLevel = user.getLevel();
 			int totalPoints = points + user.getPoints();
 
 			user.setPoints(totalPoints);
 			PointsManager.LevelWrapper wrapper = PointsManager.getLevel(user.getPoints());
+
 
 			user.setLevel(wrapper.getLevel());
 
@@ -138,6 +140,13 @@ public class BookingCtl {
 				model.addAttribute("success2", "Gained: " + points + " points. You now have " + totalPoints + " total points!");
 				model.addAttribute("success3", "Level: " + wrapper.getLevel() + ". Till next level: " + wrapper.getNextLevelThreshold());
 
+			}
+			// Second conditional is so it does not collide during demo purposes
+			if (priorLevel != wrapper.getLevel() && !(bean.getCarpoolId() > 0)) {
+				model.addAttribute("levelUp", true);
+				model.addAttribute("level", wrapper.getLevel());
+				model.addAttribute("pointsToNext", wrapper.getNextLevelThreshold());
+				return "levelup";
 			}
 			return "booking";
 		}}catch (RecordNotFoundException e) {

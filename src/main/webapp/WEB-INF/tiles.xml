@@ -150,10 +150,16 @@
     </definition>
 
 
-    <!-- View Slots List View  -->
+    <!-- Carpool  -->
     <definition name="carpool" template="/WEB-INF/bodyfragments/carpool.jsp">
         <put-attribute name="title" value="Carpools" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/carpool.jsp" />
+    </definition>
+
+    <!-- Level up pop-up -->
+    <definition name="levelup" template="/WEB-INF/bodyfragments/levelup.jsp">
+        <put-attribute name="title" value="Carpools" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/levelup.jsp" />
     </definition>
 
     <!-- Error  -->

@@ -45,12 +45,19 @@
 
 
 						<li class="nav-item"><a class="nav-link active"
+												aria-current="page"
+												href="${pageContext.request.contextPath}/main">Main Page</a></li>
+						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
 							href="${pageContext.request.contextPath}/leaderboard">Leaderboard</a></li>
 
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
 							href="${pageContext.request.contextPath}/bookinglist">Booking</a></li>
+
+						<li class="nav-item"><a class="nav-link active"
+												aria-current="page"
+												href="${pageContext.request.contextPath}/logout">Logout</a></li>
 
 					</c:if>
 
