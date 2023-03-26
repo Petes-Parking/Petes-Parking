@@ -6,11 +6,11 @@
     .customButton {
       background-color: #d5c39a;
       border: none;
-      color: white;
+      color: #373A36;
       text-align: center;
       text-decoration: none;
       display: inline-block;
-      font-size: 16px;
+      font-size: 18px;
       margin: 4px 2px;
       cursor: pointer;
       border-radius: 12px;
@@ -20,17 +20,15 @@
 
     .customButton:hover {
       background-color: #45a049;
-      color: white;
+      color: #373A36;
       font-size: larger;
     }
   </style>
   <script>
     function generateLists() {
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
-      console.log("The stuff: ", historyList)
-
+      console.log(historyList);
       historyList = historyList.substring(1, historyList.length-1);
-      console.log("New stuff: ", historyList);
       let histList = historyList.split(", ");
       for (let i = 0; i < histList.length; i++) {
         for (let i = 0; i < histList.length; i++) {
@@ -41,36 +39,17 @@
           document.getElementById("historyList").appendChild(button);
         }
       }
-      favoriteList = request.getParameter("favorites");
-        let favList = favoriteList;
-        for (let i = 0; i < favList.length; i++) {
-          let button = document.createElement("button");
-          let buttonName = document.createTextNode(favList.at(i));
-          button.appendChild(buttonName);
-          button.className = "favoritesButton";
-          document.getElementById("favoritesList").appendChild(button);
-        }
-      }
-
-
-    function showPopup1() {
-      confirm("Are you sure you want to delete your account?");
-    }
-    function changeImage() {
-      var input = document.getElementById("image-input");
-      input.click();
-    }
-    function handleImageSelect(e) {
-      var reader = new FileReader();
-      reader.onload = function(event) {
-        document.getElementById("clickable-image").src = event.target.result;
-      }
-      reader.readAsDataURL(e.target.files[0]);
-    }
-    function deleteImage() {
-      var answer = confirm("Do you want to delete your profile picture?");
-      if (answer) {
-        document.getElementById("clickable-image").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png";
+      let favoriteList = document.getElementById("favoritesList").getAttribute("data-favorites");
+      console.log(favoriteList);
+      favoriteList = favoriteList.substring(1, favoriteList.length-1);
+      let favList = favoriteList.split(", ");
+      console.log(favList);
+      for (let i = 0; i < favList.length; i++) {
+        let button = document.createElement("button");
+        let buttonName = document.createTextNode(favList.at(i));
+        button.appendChild(buttonName);
+        button.className = "favoritesButton customButton";
+        document.getElementById("favoritesList").appendChild(button);
       }
     }
 
@@ -150,7 +129,7 @@
   </div>
   <div class="favorites-area">
     <h1>Favorite Parking Areas</h1>
-    <div id="favoritesList" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
+    <div id="favoritesList" data-favorites="${favorites}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
     </div>
   </div>
 </div>

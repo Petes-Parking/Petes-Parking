@@ -32,25 +32,23 @@ public class HistoryCtl {
         }
 
         List<HistoryDTO> historyList = historyDAO.getHistoryDTOSByUserId(user.getId());
-        String[] histories = new String[historyList.size()];
-        List<String> formattedList = new ArrayList<>();
-        for (int i = 0; i < historyList.size(); i++) {
-            String stringOne = historyList.get(i).getDate();
-            String stringTwo = historyList.get(i).getArea();
+        List<String> formattedHistList = new ArrayList<>();
+        for (HistoryDTO historyDTO : historyList) {
+            String stringOne = historyDTO.getDate();
+            String stringTwo = historyDTO.getArea();
             String history = stringOne + " : " + stringTwo;
-            formattedList.add(history);
-            System.out.println(formattedList.get(i));
-            histories[i] = history;
+            formattedHistList.add(history);
         }
-        model.addAttribute("histories", formattedList);
+        model.addAttribute("histories", formattedHistList);
 
         List<FavoriteDTO> favoriteList = favoriteDAO.getFavoriteDTOSByUserId(user.getId());
-        String[] favorites = new String[favoriteList.size()];
-        for (int i = 0; i < favoriteList.size(); i++) {
-            String favorite = favoriteList.get(i).getArea();
-            favorites[i] = favorite;
+        List<String> formattedFavList = new ArrayList<>();
+        for (FavoriteDTO favoriteDTO : favoriteList) {
+            String favorite = favoriteDTO.getArea();
+            System.out.println("this fav: " + favorite);
+            formattedFavList.add(favorite);
         }
-        model.addAttribute("favorites", favorites);
+        model.addAttribute("favorites", formattedFavList);
         return "historyPage";
     }
 

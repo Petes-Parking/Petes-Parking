@@ -127,8 +127,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('corec-popup')">Close</button>
-    <button class="favorite" onclick="favoriteArea()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="imgClickAndChange" alt="" width="50" height="50">
+    <button class="favorite" onclick="favoriteCorec()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="corecStar" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -168,6 +168,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('mccutch-popup')">Close</button>
+    <button class="favorite" onclick="favoriteMcCutch()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="mccutchStar" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -207,6 +209,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('rossade-popup')">Close</button>
+    <button class="favorite" onclick="favoriteRossAde()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="rossadeStar" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -246,6 +250,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('nw-popup')">Close</button>
+    <button class="favorite" onclick="favoriteNW()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="nwStar" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -285,6 +291,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('univ-popup')">Close</button>
+    <button class="favorite" onclick="favoriteUniv()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="univStar" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -323,6 +331,8 @@
         </a>
     </c:if>
     <button class="close", href="#", onclick="hide('grant-popup')">Close</button>
+    <button class="favorite" onclick="favoriteGrant()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="grantStar" alt="" width="50" height="50">
 </div>
 </div>
 
@@ -383,12 +393,46 @@
         $(id).style.display ='none';
     }
 
-    function favoriteArea() {
-        if (document.getElementById("imgClickAndChange").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png"){
-            document.getElementById("imgClickAndChange").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
-        } else if (document.getElementById("imgClickAndChange").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png"){
-            document.getElementById("imgClickAndChange").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
-        } else {
+    function favoriteCorec() {
+        if (document.getElementById("corecStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
+            document.getElementById("corecStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("corecStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
+            document.getElementById("corecStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
+        }
+    }
+    function favoriteMcCutch() {
+        if (document.getElementById("mccutchStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
+            document.getElementById("mccutchStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("mccutchStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
+            document.getElementById("mccutchStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
+        }
+    }
+    function favoriteRossAde() {
+        if (document.getElementById("rossadeStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
+            document.getElementById("rossadeStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("rossadeStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
+            document.getElementById("rossadeStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
+        }
+    }
+    function favoriteNW() {
+        if (document.getElementById("nwStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
+            document.getElementById("nwStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("nwStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
+            document.getElementById("nwStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
+        }
+    }
+    function favoriteUniv() {
+        if (document.getElementById("univStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
+            document.getElementById("univStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("univStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
+            document.getElementById("univStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
+        }
+    }
+    function favoriteGrant() {
+        if (document.getElementById("grantStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
+            document.getElementById("grantStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else if (document.getElementById("grantStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
+            document.getElementById("grantStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
         }
     }
 </script>
