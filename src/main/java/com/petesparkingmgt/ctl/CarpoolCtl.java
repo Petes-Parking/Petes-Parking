@@ -120,6 +120,14 @@ public class CarpoolCtl {
             CarpoolDTO dto = form.getDTO();
 
             // Insert into users table as well
+            if (service.isNameTaken(dto.getCarPoolName())) {
+                model.addAttribute("errors", "That name is already taken!");
+                model.addAttribute("hasReservation", false);
+                model.addAttribute("hasCarpool", false);
+                model.addAttribute("isLeader", false);
+                return "carpool";
+            }
+
 
 
             dto.setLeaderId(user.getId());

@@ -63,6 +63,11 @@ public class CarpoolService {
     }
 
 
+    public boolean isNameTaken(String name){
+        return dao.getCarpoolDTOByCarPoolName(name) != null;
+    }
+
+
 
     /**
      *
