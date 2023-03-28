@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -71,14 +72,6 @@
     tr:hover {
       background-color: #CEB888;
     }
-
-    .even {
-      background-color: #DDDDDD;
-    }
-
-    .odd {
-      background-color: #fff;
-    }
   </style>
 </head>
 <body>
@@ -91,28 +84,53 @@
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
       <th scope="col"></th> <!-- Column for the "Add friend" button -->
     </tr>
     </thead>
     <tbody>
+
     <c:forEach items="${users}" var="li" varStatus="u">
-      <c:if test="${li.firstName != user.firstName && li.lastName != user.lastName}">
-      <tr>
-        <td>${li.firstName}</td>
-        <td>${li.lastName}</td>
-        <td>
-          <button class="add-friend-button" data-firstname="${li.firstName}" data-lastname="${li.lastName}">
-            Add friend
-          </button>
-        </td>
-      </tr>
-    </c:if>
+      <c:if test="${li.email != user.email}">
+        <c:set var="isFriend" value="false" />
+        <c:forEach items="${friends}" var="friend">
+          <c:if test="${li.email == friend.senderEmail || li.email == friend.recipientEmail}">
+            <c:set var="isFriend" value="true" />
+          </c:if>
+        </c:forEach>
+        <c:if test="${not isFriend}">
+          <tr>
+            <td>${li.firstName}</td>
+            <td>${li.lastName}</td>
+            <td>${li.email}</td>
+            <td>
+              <form method="post" action="${pageContext.request.contextPath}/friendInvite">
+                <input type="hidden" class="form-control" name="email" value="${li.email}" />
+                <button type="submit" class="add-friend-button" name="submit">
+                  Send friend request
+                </button>
+              </form>
+            </td>
+          </tr>
+        </c:if>
+      </c:if>
     </c:forEach>
+
     </tbody>
   </table>
 </div>
 <div class="container" style="float: right; margin-right: 20px; width: 40%; text-align: center">
   <h3>Incoming Friend Requests:</h3>
+  <form method="post" action="${pageContext.request.contextPath}/friendInviteResponse">
+    <label class="form-label">Select Friend Request</label>
+    <select name="email" class="form-select">
+      <c:forEach items="${requests}" var="request">
+          <option name="option" value="${request.senderEmail}">${request.senderEmail}</option>
+      </c:forEach>
+    </select><br>
+    <button class="btn btn-success" type="submit" name="action" value="accept">Accept</button>
+    <button class="btn btn-danger" type="submit" name="action" value="reject">Reject</button>
+  </form>
 </div>
 <div class="container" style="float: left; margin-left: 20px; width: 55%">
   <h3>My current Parking Pals:</h3>
@@ -121,17 +139,26 @@
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
+      <th scope="col">Email</th>
     </tr>
     </thead>
     <tbody>
-    <tr class="odd">
-      <td>Purdue</td>
-      <td>Pete</td>
-    </tr>
-    <tr class="even">
-      <td>Mitch</td>
-      <td>Daniels</td>
-    </tr>
+    <c:forEach items="${friends}" var="friend">
+      <c:if test="${friend.senderEmail != user.email}">
+      <tr>
+        <td>${friend.senderFirstName}</td>
+        <td>${friend.senderLastName}</td>
+        <td>${friend.senderEmail}</td>
+      </tr>
+      </c:if>
+      <c:if test="${friend.senderEmail == user.email}">
+      <tr>
+        <td>${friend.recipientFirstName}</td>
+        <td>${friend.recipientLastName}</td>
+        <td>${friend.recipientEmail}</td>
+      </tr>
+      </c:if>
+    </c:forEach>
     </tbody>
   </table>
 </div>
