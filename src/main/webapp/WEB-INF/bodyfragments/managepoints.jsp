@@ -77,8 +77,12 @@
 <div id="container">
     <h1>Edit - Points </h1>
     <div id="buttons">
-        <button class="circle-btn" id="add-btn">+</button>
+
+        <form method="POST" id="singlePointForm">
+
+            <button class="circle-btn" id="add-btn">+</button>
         <button class="circle-btn" id="deduct-btn">-</button>
+        </form>
     </div>
     <div id="points">
         <h2>Custom points to be changed:</h2>
@@ -146,58 +150,70 @@
 
 <script>
     // Add click event listeners for user rows
-    // Add click event listeners for user rows
-    $('.user-row').on('click', function() {
-        $('.user-row').removeClass('selected');
-        $(this).addClass('selected');
-        let userId = $(this).data('user-id');
-        $('#selectedUserId').val(userId);
-        console.log("Clicked User ID:", userId);
+    document.querySelectorAll('.user-row').forEach(row => {
+        row.addEventListener('click', function() {
+            document.querySelectorAll('.user-row').forEach(el => el.classList.remove('selected'));
+            this.classList.add('selected');
+            let userId = this.dataset.userId;
+            document.getElementById('selectedUserId').value = userId;
+            console.log("Clicked User ID:", userId);
+        });
     });
 
-    $('#add-btn').on('click', function() {
+    document.getElementById('add-btn').addEventListener('click', function() {
         let points = 1;
-        let userId = $('#selectedUserId').val();
+        let userId = document.getElementById('selectedUserId').value;
         if (userId) {
-            $.post("${pageContext.request.contextPath}/admin/updatePoints", {userId: userId, points: points, action: 'add'}, function() {
-                location.reload();
-            });
+            console.log("Clicked User ID2:", userId);
+
+            $('#singlePointForm').attr('action', `${pageContext.request.contextPath}/admin/updateByOne`);
+            $('#singlePointForm').data('selectedUserId', userId);
+            $('#singlePointForm').submit();        }
+    });
+
+    document.getElementById('deduct-btn').addEventListener('click', function() {
+        let points = 1;
+        let userId = document.getElementById('selectedUserId').value;
+        if (userId) {
+            updatePoints(userId, points, 'deduct');
         }
     });
 
-    $('#deduct-btn').on('click', function() {
-        let points = 1;
-        let userId = $('#selectedUserId').val();
-        if (userId) {
-            $.post("${pageContext.request.contextPath}/admin/updatePoints", {userId: userId, points: points, action: 'deduct'}, function() {
-                location.reload();
-            });
-        }
+    document.querySelectorAll('#points-to-add input[type="submit"]').forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            let points = document.getElementById('points-input').value;
+            let userId = document.getElementById('selectedUserId').value;
+            let action = this.value.toLowerCase();
+
+            if (userId && points) {
+                updatePoints(userId, points, action);
+            }
+        });
     });
 
-    $('#points-to-add input[type="submit"]').on('click', function(event) {
-        event.preventDefault();
-        let points = $('#points-input').val();
-        let userId = $('#selectedUserId').val();
-        let action = $(this).val().toLowerCase();
+    document.getElementById('save-btn').addEventListener('click', function() {
+        let points = document.getElementById('number-select').value;
+        let userId = document.getElementById('selectedUserId').value;
+        let action = this.value.toLowerCase();
 
         if (userId && points) {
-            $.post("${pageContext.request.contextPath}/admin/updatePoints", {userId: userId, points: points, action: action}, function() {
-                location.reload();
-            });
+            updatePoints(userId, points, action);
         }
     });
 
-    $('#save-btn').on('click', function() {
-        let points = $('#number-select').val();
-        let userId = $('#selectedUserId').val();
-        let action = $(this).val().toLowerCase();
-
-        if (userId && points) {
-            $.post("${pageContext.request.contextPath}/admin/updatePoints", {userId: userId, points: points, action: action}, function() {
-                location.reload();
-            });
-        }
-    });
-
+    function updatePoints(userId, points, action) {
+        const url = `${pageContext.request.contextPath}/admin/updatePoints`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userId: userId, points: points, action: action})
+        })
+            .then(response => response.json())
+            .then(() => location.reload())
+            .catch(error => console.error('Error:', error));
+    }
 </script>
+

@@ -208,7 +208,7 @@ public class AdminCtl {
         return "managePoints";
     }
 
-    @PostMapping("/admin/updatePoints")
+    @GetMapping("/admin/updatePoints")
     public String updatePoints(@RequestParam("selectedUserId") Long selectedUserId,
                                @RequestParam("points") Integer points, Model model) {
         // Retrieve the user from the database using the UserDAO
@@ -229,4 +229,27 @@ public class AdminCtl {
     }
 
 
+
+
+    @PostMapping("/admin/updateByOne")
+    public String updateByOne(@RequestParam("selectedUserId") Long userId, Model model) {
+        // Retrieve the user from the database using the UserDAO
+        UserDTO user = dao.getById(userId);
+
+        // Update the user's points
+        System.out.println("--" + user.getPoints());
+
+        user.setPoints(user.getPoints() + 1);
+        System.out.println("--" + user.getPoints());
+
+        // Save the changes to the database using the UserDAO
+        dao.save(user);
+
+        // Retrieve the updated list of users and add it to the model
+        List<UserDTO> adminUserList = dao.findAll();
+        model.addAttribute("adminUserList", adminUserList);
+
+        // Redirect back to the same page with the updated list of users
+        return "managepoints";
+    }
 }
