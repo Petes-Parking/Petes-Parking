@@ -104,6 +104,17 @@ public class AdminCtl {
     @GetMapping("/admin/review-exp")
     public String adminReviewExp(Model model) {
         List<ExpReportDTO> exps = expDAO.findAll();
+
+        for (int i = 0; i < exps.size(); i++) {
+            ExpReportDTO current = exps.get(i);
+            if (current.getDescription() == null || current.getDescription().equals("")) {
+                current.setDescription("[Description not provided]");
+            }
+            if (current.getParkingLot() == null || current.getParkingLot().equals("")) {
+                current.setParkingLot(("[Parking lot not provided]"));
+            }
+        }
+
         model.addAttribute("adminExpList", exps);
 
         return "adminExpReport";
@@ -112,6 +123,18 @@ public class AdminCtl {
     @GetMapping("/admin/review-poorpark")
     public String adminReviewPoorPark(Model model) {
         List<PoorParkReportDTO> poorParks = poorParkDAO.findAll();
+
+        for (int i = 0; i < poorParks.size(); i++) {
+            PoorParkReportDTO current = poorParks.get(i);
+
+            if (current.getDescription() == null || current.getDescription().equals("")) {
+                current.setDescription("[Description not provided]");
+            }
+            if (current.getParkingLot() == null || current.getParkingLot().equals("")) {
+                current.setParkingLot(("[Parking lot not provided]"));
+            }
+        }
+
         model.addAttribute("adminPoorParkList", poorParks);
 
         return "adminPoorParkReport";
@@ -121,9 +144,20 @@ public class AdminCtl {
     public String adminReviewExpDetailed(@PathVariable("expReportID") Long expReportID, Model model) {
 
         ExpReportDTO expReport = expDAO.getById(expReportID);
+        if (expReport.getDescription() == null || expReport.getDescription().equals("")) {
+            expReport.setDescription("[Description not provided]");
+        }
+        if (expReport.getImageURL() == null || expReport.getImageURL().equals("")) {
+            expReport.setImageURL("[Image not provided]");
+        }
+        if (expReport.getLicensePlate() == null || expReport.getLicensePlate().equals("")) {
+            expReport.setLicensePlate("[License plate not provided]");
+        }
+        if (expReport.getParkingLot() == null || expReport.getParkingLot().equals("")) {
+            expReport.setParkingLot("[Parking lot not provided]");
+        }
 
         model.addAttribute("report", expReport);
-        System.out.println(expReport);
         return "adminReviewExpDetailed";
     }
 
@@ -131,9 +165,20 @@ public class AdminCtl {
     public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {
 
         PoorParkReportDTO poorParkReport = poorParkDAO.getById(poorParkReportID);
+        if (poorParkReport.getDescription() == null || poorParkReport.getDescription().equals("")) {
+            poorParkReport.setDescription("[Description not provided]");
+        }
+        if (poorParkReport.getDescription() == null || poorParkReport.getImageURL().equals("")) {
+            poorParkReport.setImageURL("[Image not provided]");
+        }
+        if (poorParkReport.getDescription() == null || poorParkReport.getLicensePlate().equals("")) {
+            poorParkReport.setLicensePlate("[License plate not provided]");
+        }
+        if (poorParkReport.getParkingLot() == null || poorParkReport.getParkingLot().equals("")) {
+            poorParkReport.setParkingLot("[Parking lot not provided]");
+        }
 
         model.addAttribute("report", poorParkReport);
-        System.out.println(poorParkReport);
         return "adminReviewPoorParkDetailed";
     }
 
