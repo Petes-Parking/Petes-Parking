@@ -197,4 +197,36 @@ public class AdminCtl {
         model.addAttribute("pendingList", list);
         return "userListView";
     }
+
+    @GetMapping("/admin/managepoints")
+    public String ProfilePage(Model model) {
+
+        List<UserDTO> users = dao.getAllByUserRole("Student");
+        model.addAttribute("adminUserList", users);
+
+
+        return "managePoints";
+    }
+
+    @PostMapping("/admin/updatePoints")
+    public String updatePoints(@RequestParam("selectedUserId") Long selectedUserId,
+                               @RequestParam("points") Integer points, Model model) {
+        // Retrieve the user from the database using the UserDAO
+        UserDTO user = dao.getById(selectedUserId);
+
+        // Update the user's points
+        user.setPoints(user.getPoints() + points);
+
+        // Save the changes to the database using the UserDAO
+        dao.save(user);
+
+        // Retrieve the updated list of users and add it to the model
+        List<UserDTO> adminUserList = dao.findAll();
+        model.addAttribute("adminUserList", adminUserList);
+
+        // Redirect back to the same page with the updated list of users
+        return "managepoints";
+    }
+
+
 }

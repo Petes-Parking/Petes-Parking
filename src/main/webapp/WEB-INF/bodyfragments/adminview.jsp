@@ -104,7 +104,7 @@
         </div>
         <div class="col-md-3 py-3">
             <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="/admin/widget5" class="text-decoration-none text-reset">Widget 5</a>
+                <a href="${pageContext.request.contextPath}/admin/managepoints" class="text-decoration-none text-reset">Manage Points</a>
             </div>
         </div>
         <div class="col-md-3 py-3">
