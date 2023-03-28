@@ -35,6 +35,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/profilePage.jsp" />
     </definition>
 
+    <!-- Profile Page  -->
+    <definition name="profilePage" extends="base.definition">
+        <put-attribute name="title" value="Profile" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/profilePage.jsp" />
+    </definition>
+
     <!-- Manage Points  -->
     <definition name="managePoints" extends="base.definition">
         <put-attribute name="title" value="ManagePoints" />

@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,6 +21,13 @@
             flex-direction: column;
             justify-content: space-between;
             background-color: #CEB888;
+        }
+
+        .table-striped tbody tr.selected {
+            background-color: cadetblue;
+        }
+        .selected {
+            background-color: cornflowerblue;
         }
 
         #buttons {
@@ -67,21 +75,26 @@
 </head>
 <body>
 <div id="container">
-    <h1>Student Name - Points </h1>
+    <h1>Edit - Points </h1>
     <div id="buttons">
-        <button class="circle-btn" id="add-btn">+</button>
+
+        <form method="POST" id="singlePointForm">
+
+            <button class="circle-btn" id="add-btn">+</button>
         <button class="circle-btn" id="deduct-btn">-</button>
+        </form>
     </div>
     <div id="points">
-        <h2>Points to be added:</h2>
-        <form id="points-to-add">
-            <label for="points-input">THIS</label>
+        <h2>Custom points to be changed:</h2>
+        <form action="${pageContext.request.contextPath}/admin/updatePoints" method="post" id="points-to-add">
+            <label for="points-input">Points</label>
             <input type="number" id="points-input" name="points" required>
             <input class="input-button" type="submit" value="Add">
+            <input class="input-button" type="submit" value="Deduct">
         </form>
     </div>
     <div id="points-to-change">
-        <h2>Points to be changed:</h2>
+        <h2>Edit points in increments:</h2>
         <label for="number-select">Points:</label>
         <select class="dropdown" id="number-select">
             <option value="5">5</option>
@@ -95,7 +108,112 @@
             <option value="45">45</option>
             <option value="50">50</option>
         </select>
-        <button class="input-button" id="save-btn">Save Changes</button>
+        <button class="input-button" id="save-btn">Add</button>
+        <%-- button next to custom points in increments of 5--%>
+
+        <button class="input-button" id="save-btn">Deduct</button>
+        <%-- deduct button next to custom points in increments of 5--%>
+
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Users List:</h3>
+            <form action="" method="POST" id="userForm">
+                <input type="hidden" name="selectedUserId" id="selectedUserId">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>User ID</th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Points</th>
+                        <th>User Role</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- Loop through the users and display the list -->
+                    <c:forEach items="${adminUserList}" var="user" varStatus="status">
+                        <tr class="user-row" data-user-id="${user.id}">
+                            <td>${user.id}</td>
+                            <td>${user.firstName} ${user.lastName}</td>
+                            <td>${user.email}</td>
+                            <td>${user.points}</td>
+                            <td>${user.userRole}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </form>
+        </div>
     </div>
 </div>
-```
+
+<script>
+    // Add click event listeners for user rows
+    document.querySelectorAll('.user-row').forEach(row => {
+        row.addEventListener('click', function() {
+            document.querySelectorAll('.user-row').forEach(el => el.classList.remove('selected'));
+            this.classList.add('selected');
+            let userId = this.dataset.userId;
+            document.getElementById('selectedUserId').value = userId;
+            console.log("Clicked User ID:", userId);
+        });
+    });
+
+    document.getElementById('add-btn').addEventListener('click', function() {
+        let points = 1;
+        let userId = document.getElementById('selectedUserId').value;
+        if (userId) {
+            console.log("Clicked User ID2:", userId);
+
+            $('#singlePointForm').attr('action', `${pageContext.request.contextPath}/admin/updateByOne`);
+            $('#singlePointForm').data('selectedUserId', userId);
+            $('#singlePointForm').submit();        }
+    });
+
+    document.getElementById('deduct-btn').addEventListener('click', function() {
+        let points = 1;
+        let userId = document.getElementById('selectedUserId').value;
+        if (userId) {
+            updatePoints(userId, points, 'deduct');
+        }
+    });
+
+    document.querySelectorAll('#points-to-add input[type="submit"]').forEach(btn => {
+        btn.addEventListener('click', function(event) {
+            event.preventDefault();
+            let points = document.getElementById('points-input').value;
+            let userId = document.getElementById('selectedUserId').value;
+            let action = this.value.toLowerCase();
+
+            if (userId && points) {
+                updatePoints(userId, points, action);
+            }
+        });
+    });
+
+    document.getElementById('save-btn').addEventListener('click', function() {
+        let points = document.getElementById('number-select').value;
+        let userId = document.getElementById('selectedUserId').value;
+        let action = this.value.toLowerCase();
+
+        if (userId && points) {
+            updatePoints(userId, points, action);
+        }
+    });
+
+    function updatePoints(userId, points, action) {
+        const url = `${pageContext.request.contextPath}/admin/updatePoints`;
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({userId: userId, points: points, action: action})
+        })
+            .then(response => response.json())
+            .then(() => location.reload())
+            .catch(error => console.error('Error:', error));
+    }
+</script>
+

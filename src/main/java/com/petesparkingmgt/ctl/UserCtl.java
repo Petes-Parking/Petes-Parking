@@ -85,6 +85,8 @@ public class UserCtl {
 	public String signup(@ModelAttribute("form") UserForm form, Model model) {
 
 		UserDTO user =	dao.findByEmail(form.getEmail());
+		PendingUserDTO pendingUserDTO =	pendingUserService.getPendingUser(form.getEmail());
+
 		if (form.getEmail() != null) {
 
 			System.out.println(form.toString() + "-bang");
@@ -142,7 +144,7 @@ public class UserCtl {
 			model.addAttribute("dob", "dobb");
 		}
 
-		if(user == null) {
+		if(user == null && pendingUserDTO == null) {
 
 			PendingUserDTO dto = new PendingUserDTO();
 			dto.setDob(form.getDob());
