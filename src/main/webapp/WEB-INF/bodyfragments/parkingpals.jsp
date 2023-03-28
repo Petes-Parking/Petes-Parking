@@ -79,7 +79,7 @@
 <div class="container" style="float: left; margin-left: 20px; width: 55%">
   <h3>Add new Parking Pals:</h3>
   <input type="text" id="search" placeholder="Search for a name here...">
-  <table>
+  <table class="add-parking-pals-table">
     <thead>
     <tr>
       <th scope="col">First Name</th>
@@ -89,9 +89,8 @@
     </tr>
     </thead>
     <tbody>
-
     <c:forEach items="${users}" var="li" varStatus="u">
-      <c:if test="${li.email != user.email}">
+      <c:if test="${li.email != user.email && li.userRole != 'Admin'}">
         <c:set var="isFriend" value="false" />
         <c:forEach items="${friends}" var="friend">
           <c:if test="${li.email == friend.senderEmail || li.email == friend.recipientEmail}">
@@ -115,7 +114,6 @@
         </c:if>
       </c:if>
     </c:forEach>
-
     </tbody>
   </table>
 </div>
@@ -164,16 +162,18 @@
 </div>
 <script>
   const searchInput = document.getElementById('search');
-  const tableRows = document.querySelectorAll('tbody tr');
+  const tableRows = document.querySelectorAll('table.add-parking-pals-table > tbody tr');
 
   searchInput.addEventListener('input', () => {
     const searchValue = searchInput.value.toLowerCase();
     tableRows.forEach(row => {
-      const name = row.querySelector('td:first-child').textContent.toLowerCase();
-      if (name.includes(searchValue)) {
+      const first = row.querySelector('td:first-child').textContent.toLowerCase();
+      const last = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+      const full = first + " " + last;
+      if (full.includes(searchValue)) {
         row.style.display = '';
       } else {
-        row.style.display = 'none';
+          row.style.display = 'none';
       }
     });
   });
