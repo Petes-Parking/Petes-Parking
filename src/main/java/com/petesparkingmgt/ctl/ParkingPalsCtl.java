@@ -103,7 +103,6 @@ public class ParkingPalsCtl {
 
         if (action.equalsIgnoreCase("accept")) {
             service.acceptInvite(user.getEmail(), sender);
-            model.addAttribute("friendsExist", true);
         } else if (action.equalsIgnoreCase("reject")) {
             service.rejectInvite(user.getEmail(), sender);
         } else {

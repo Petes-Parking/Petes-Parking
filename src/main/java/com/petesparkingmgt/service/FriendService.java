@@ -43,9 +43,6 @@ public class FriendService {
         accepted.setRecipientLastName(temp.getRecipientLastName());
         dao.save(accepted);
 
-        System.out.println(temp.getStatus());
-        System.out.println(accepted.getStatus());
-
         dao.deleteFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(senderEmail, recipientEmail, 0);
 
     }
