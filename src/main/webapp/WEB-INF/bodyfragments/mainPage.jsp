@@ -88,8 +88,8 @@
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>
-
-<div class="corec-popup" id="corec-popup">
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+<div class="corec-popup" id="corec-popup" data-fav="${favorites}">
     <ol></ol><div class="inside">
     <div class="parkingLot">
         <div class="lotImage">
@@ -126,13 +126,17 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
-    <button class="close", href="#", onclick="hide('corec-popup')">Close</button>
-    <button class="favorite" onclick="favoriteCorec()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="corecStar" alt="" width="50" height="50">
-</div>
-</div>
+    <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+        <input type="hidden" name="area" value="Corec Parking Lot">
+        <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
+    </form>
 
-<div class="mccutch-popup" id="mccutch-popup">
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="corecStar" alt="" width="50" height="50" style="display: inline-block; float: right; margin-right: 15px; margin-top: 35px; vertical-align: top;">
+    <button class="close", href="#", onclick="hide('corec-popup')">Close</button>
+</div>
+</div>
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+<div class="mccutch-popup" id="mccutch-popup" data-fav="${favorites}">
     <ol></ol><div class="inside">
     <div class="parkingLot">
         <div class="lotImage">
@@ -167,13 +171,17 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
-    <button class="close", href="#", onclick="hide('mccutch-popup')">Close</button>
-    <button class="favorite" onclick="favoriteMcCutch()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="mccutchStar" alt="" width="50" height="50">
-</div>
-</div>
+    <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+        <input type="hidden" name="area" value="McCutcheon Drive Parking Garage">
+        <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
+    </form>
 
-<div class="rossade-popup" id="rossade-popup">
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="mccutchStar" alt="" width="50" height="50" style="display: inline-block; float: right; margin-right: 15px; margin-top: 35px; vertical-align: top;">
+    <button class="close", href="#", onclick="hide('mccutch-popup')">Close</button>
+</div>
+</div>
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+<div class="rossade-popup" id="rossade-popup" data-fav="${favorites}">
     <ol></ol><div class="inside">
     <div class="parkingLot">
         <div class="lotImage">
@@ -208,13 +216,17 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
-    <button class="close", href="#", onclick="hide('rossade-popup')">Close</button>
-    <button class="favorite" onclick="favoriteRossAde()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="rossadeStar" alt="" width="50" height="50">
-</div>
-</div>
+    <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+        <input type="hidden" name="area" value="Ross-Ade Stadium Parking Lot">
+        <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
+    </form>
 
-<div class="nw-popup" id="nw-popup">
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="rossadeStar" alt="" width="50" height="50" style="display: inline-block; float: right; margin-right: 15px; margin-top: 35px; vertical-align: top;">
+    <button class="close", href="#", onclick="hide('rossade-popup')">Close</button>
+</div>
+</div>
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+<div class="nw-popup" id="nw-popup" data-fav="${favorites}">
     <ol></ol><div class="inside">
     <div class="parkingLot">
         <div class="lotImage">
@@ -249,13 +261,17 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
-    <button class="close", href="#", onclick="hide('nw-popup')">Close</button>
-    <button class="favorite" onclick="favoriteNW()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="nwStar" alt="" width="50" height="50">
-</div>
-</div>
+    <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+        <input type="hidden" name="area" value="Northwestern St. Parking Garage">
+        <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
+    </form>
 
-<div class="univ-popup" id="univ-popup">
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="nwStar" alt="" width="50" height="50" style="display: inline-block; float: right; margin-right: 15px; margin-top: 35px; vertical-align: top;">
+    <button class="close", href="#", onclick="hide('nw-popup')">Close</button>
+</div>
+</div>
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+<div class="univ-popup" id="univ-popup" data-fav="${favorites}">
     <ol></ol><div class="inside">
     <div class="parkingLot">
         <div class="lotImage">
@@ -290,13 +306,17 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
-    <button class="close", href="#", onclick="hide('univ-popup')">Close</button>
-    <button class="favorite" onclick="favoriteUniv()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="univStar" alt="" width="50" height="50">
-</div>
-</div>
+    <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+        <input type="hidden" name="area" value="University St. Parking Garage">
+        <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
+    </form>
 
-<div class="grant-popup" id="grant-popup">
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="univStar" alt="" width="50" height="50" style="display: inline-block; float: right; margin-right: 15px; margin-top: 35px; vertical-align: top;">
+    <button class="close", href="#", onclick="hide('univ-popup')">Close</button>
+</div>
+</div>
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+<div class="grant-popup" id="grant-popup" data-fav="${favorites}">
     <ol></ol><div class="inside">
     <div class="parkingLot">
         <div class="lotImage">
@@ -330,12 +350,16 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
-    <button class="close", href="#", onclick="hide('grant-popup')">Close</button>
-    <button class="favorite" onclick="favoriteGrant()" style="font-size: 16px; width: 200px; height: 40px; background-color: #CEB888; border-radius: 10px;">Favorite this area!</button>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="grantStar" alt="" width="50" height="50">
-</div>
-</div>
+    <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+        <input type="hidden" name="area" value="Grant St. Parking Garage">
+        <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
+    </form>
 
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" id="grantStar" alt="" width="50" height="50" style="display: inline-block; float: right; margin-right: 15px; margin-top: 35px; vertical-align: top;">
+    <button class="close", href="#", onclick="hide('grant-popup')">Close</button>
+</div>
+</div>
+<%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 <script>
     var scale = 1,
         panning = false,
@@ -393,9 +417,45 @@
         $(id).style.display ='none';
     }
 
+    function checkFavs() {
+        let favList = document.getElementById("corec-popup").getAttribute("data-fav");
+        console.log("array List: ");
+        console.log(favList);
+        favList = favList.substring(1, favList.length-1);
+        let favorites = favList;
+        if (favList.includes(",")) {
+            favorites = favList.split(", ");
+        }
+        console.log("string array:");
+        console.log(favorites);
+
+        if (favorites.includes("Corec Parking Lot")) {
+            console.log("yeah we tried it");
+            document.getElementById("corecStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        } else {
+            console.log("nope didnt");
+        }
+        if (favorites.includes("McCutcheon Drive Parking Garage")) {
+            document.getElementById("mccutchStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        }
+        if (favorites.includes("Ross-Ade Stadium Parking Lot")) {
+            document.getElementById("rossadeStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        }
+        if (favorites.includes("Northwestern St. Parking Garage")) {
+            document.getElementById("nwStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        }
+        if (favorites.includes("University St. Parking Garage")) {
+            console.log("should gone here");
+            document.getElementById("univStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        }
+        if (favorites.includes("Grant St. Parking Garage")) {
+            document.getElementById("grantStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+        }
+    }
     function favoriteCorec() {
         if (document.getElementById("corecStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png") {
             document.getElementById("corecStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
+
         } else if (document.getElementById("corecStar").src === "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png") {
             document.getElementById("corecStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
         }

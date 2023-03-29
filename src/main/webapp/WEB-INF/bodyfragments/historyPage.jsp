@@ -27,10 +27,8 @@
   <script>
     function generateLists() {
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
-      console.log(historyList);
       historyList = historyList.substring(1, historyList.length-1);
       let histList = historyList.split(", ");
-      for (let i = 0; i < histList.length; i++) {
         for (let i = 0; i < histList.length; i++) {
           let button = document.createElement("button");
           let buttonName = document.createTextNode(histList.at(i));
@@ -38,7 +36,6 @@
           button.className = "historyButton customButton";
           document.getElementById("historyList").appendChild(button);
         }
-      }
       let favoriteList = document.getElementById("favoritesList").getAttribute("data-favorites");
       console.log(favoriteList);
       favoriteList = favoriteList.substring(1, favoriteList.length-1);
