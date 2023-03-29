@@ -261,12 +261,24 @@ public class AdminCtl {
         // Retrieve the user from the database using the UserDAO
         UserDTO user = dao.getById(form.getUserId());
         System.out.println(form.toString() +"--");
+        if (form.getAmount() < 0) {
+            List<UserDTO> adminUserList = dao.findAll();
+            model.addAttribute("adminUserList", adminUserList);
+            model.addAttribute("errors", "Do not use negative values!");
+            return "managePoints";
+        }
 
 
 
-        if (form.getType().equals("ADD")) {
+        if (form.getType().equalsIgnoreCase("add")) {
             user.setPoints(user.getPoints() + form.getAmount());
         } else {
+            if (user.getPoints() - form.getAmount() < 0) {
+                List<UserDTO> adminUserList = dao.findAll();
+                model.addAttribute("adminUserList", adminUserList);
+                model.addAttribute("errors", "User's points cannot be negative!");
+                return "managePoints";
+            }
             user.setPoints(user.getPoints() - form.getAmount());
 
         }
@@ -280,6 +292,6 @@ public class AdminCtl {
         model.addAttribute("adminUserList", adminUserList);
 
         // Redirect back to the same page with the updated list of users
-        return "redirect:/admin/managepoints";
+        return "managePoints";
     }
 }

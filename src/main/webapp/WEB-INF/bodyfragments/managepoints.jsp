@@ -74,6 +74,15 @@
     </style>
 </head>
 <body>
+<c:if test="${not empty errors}">
+<div class="alert alert-danger">
+    <ul class="list-unstyled">
+        <c:forEach items="${errors}" var="error">
+            <li>${error}</li>
+        </c:forEach>
+    </ul>
+</div>
+</c:if>
 <div id="container">
     <h1>Edit - Points </h1>
     <div id="buttons">
@@ -108,10 +117,10 @@
             <option value="45">45</option>
             <option value="50">50</option>
         </select>
-        <button class="input-button" id="save-btn">Add</button>
+        <button class="input-button" id="save-btn" value="add">Add</button>
         <%-- button next to custom points in increments of 5--%>
 
-        <button class="input-button" id="save-btn">Deduct</button>
+        <button class="input-button" id="save-btn2" value="minus">Deduct</button>
         <%-- deduct button next to custom points in increments of 5--%>
 
     </div>
@@ -144,6 +153,9 @@
                     </tbody>
                 </table>
             </form>
+            <a href="${pageContext.request.contextPath}/adminview">
+                <button type="button" class="btn btn-primary">Back</button>
+            </a>
         </div>
     </div>
 </div>
@@ -194,8 +206,27 @@
         let points = 1;
         let userId = document.getElementById('selectedUserId').value;
         if (userId) {
-            updatePoints(userId, points, 'deduct');
-        }
+            let managePointForm = document.getElementById('managePointForm');
+            managePointForm.action = `${pageContext.request.contextPath}/admin/updatePoint`;
+            let userIdInput = document.createElement('input');
+            userIdInput.type = 'hidden';
+            userIdInput.name = 'userId';
+            userIdInput.value = userId;
+            managePointForm.appendChild(userIdInput);
+
+            let actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'type';
+            actionInput.value = "MINUS";
+            managePointForm.appendChild(actionInput);
+
+            let amountInput = document.createElement('input');
+            amountInput.type = 'hidden';
+            amountInput.name = 'amount';
+            amountInput.value = 1;
+            managePointForm.appendChild(amountInput);
+
+            managePointForm.submit();        }
     });
 
     document.querySelectorAll('#points-to-add input[type="submit"]').forEach(btn => {
@@ -205,9 +236,31 @@
             let userId = document.getElementById('selectedUserId').value;
             let action = this.value.toLowerCase();
 
+
             if (userId && points) {
-                updatePoints(userId, points, action);
-            }
+                console.log("Information: ", userId, points, action);
+
+                let managePointForm = document.getElementById('managePointForm');
+                managePointForm.action = `${pageContext.request.contextPath}/admin/updatePoint`;
+                let userIdInput = document.createElement('input');
+                userIdInput.type = 'hidden';
+                userIdInput.name = 'userId';
+                userIdInput.value = userId;
+                managePointForm.appendChild(userIdInput);
+
+                let actionInput = document.createElement('input');
+                actionInput.type = 'hidden';
+                actionInput.name = 'type';
+                actionInput.value = action;
+                managePointForm.appendChild(actionInput);
+
+                let amountInput = document.createElement('input');
+                amountInput.type = 'hidden';
+                amountInput.name = 'amount';
+                amountInput.value = points;
+                managePointForm.appendChild(amountInput);
+
+                managePointForm.submit();               }
         });
     });
 
@@ -217,9 +270,58 @@
         let action = this.value.toLowerCase();
 
         if (userId && points) {
-            updatePoints(userId, points, action);
-        }
+            let managePointForm = document.getElementById('managePointForm');
+            managePointForm.action = `${pageContext.request.contextPath}/admin/updatePoint`;
+            let userIdInput = document.createElement('input');
+            userIdInput.type = 'hidden';
+            userIdInput.name = 'userId';
+            userIdInput.value = userId;
+            managePointForm.appendChild(userIdInput);
+
+            let actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'type';
+            actionInput.value = action;
+            managePointForm.appendChild(actionInput);
+
+            let amountInput = document.createElement('input');
+            amountInput.type = 'hidden';
+            amountInput.name = 'amount';
+            amountInput.value = points;
+            managePointForm.appendChild(amountInput);
+
+            managePointForm.submit();            }
     });
+
+    document.getElementById('save-btn2').addEventListener('click', function() {
+        let points = document.getElementById('number-select').value;
+        let userId = document.getElementById('selectedUserId').value;
+        let action = this.value.toLowerCase();
+
+        if (userId && points) {
+            let managePointForm = document.getElementById('managePointForm');
+            managePointForm.action = `${pageContext.request.contextPath}/admin/updatePoint`;
+            let userIdInput = document.createElement('input');
+            userIdInput.type = 'hidden';
+            userIdInput.name = 'userId';
+            userIdInput.value = userId;
+            managePointForm.appendChild(userIdInput);
+
+            let actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'type';
+            actionInput.value = action;
+            managePointForm.appendChild(actionInput);
+
+            let amountInput = document.createElement('input');
+            amountInput.type = 'hidden';
+            amountInput.name = 'amount';
+            amountInput.value = points;
+            managePointForm.appendChild(amountInput);
+
+            managePointForm.submit();            }
+    });
+
 
     function updatePoints(userId, points, action) {
         const url = `${pageContext.request.contextPath}/admin/updatePoints`;
