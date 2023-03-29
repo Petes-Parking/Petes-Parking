@@ -6,6 +6,7 @@ import com.petesparkingmgt.dao.PoorParkReportDAO;
 import com.petesparkingmgt.dao.UserDAO;
 import com.petesparkingmgt.dto.*;
 import com.petesparkingmgt.form.BookingForm;
+import com.petesparkingmgt.form.ManagePointForm;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.BookingService;
 import com.petesparkingmgt.service.PendingUserService;
@@ -253,38 +254,22 @@ public class AdminCtl {
         return "managePoints";
     }
 
-    @GetMapping("/admin/updatePoints")
-    public String updatePoints(@RequestParam("selectedUserId") Long selectedUserId,
-                               @RequestParam("points") Integer points, Model model) {
+
+
+    @PostMapping("/admin/updatePoint")
+    public String updateByOne(@ModelAttribute("managePointForm") ManagePointForm form, Model model) {
         // Retrieve the user from the database using the UserDAO
-        UserDTO user = dao.getById(selectedUserId);
-
-        // Update the user's points
-        user.setPoints(user.getPoints() + points);
-
-        // Save the changes to the database using the UserDAO
-        dao.save(user);
-
-        // Retrieve the updated list of users and add it to the model
-        List<UserDTO> adminUserList = dao.findAll();
-        model.addAttribute("adminUserList", adminUserList);
-
-        // Redirect back to the same page with the updated list of users
-        return "managepoints";
-    }
+        UserDTO user = dao.getById(form.getUserId());
+        System.out.println(form.toString() +"--");
 
 
 
+        if (form.getType().equals("ADD")) {
+            user.setPoints(user.getPoints() + form.getAmount());
+        } else {
+            user.setPoints(user.getPoints() - form.getAmount());
 
-    @PostMapping("/admin/updateByOne")
-    public String updateByOne(@RequestParam("selectedUserId") Long userId, Model model) {
-        // Retrieve the user from the database using the UserDAO
-        UserDTO user = dao.getById(userId);
-
-        // Update the user's points
-        System.out.println("--" + user.getPoints());
-
-        user.setPoints(user.getPoints() + 1);
+        }
         System.out.println("--" + user.getPoints());
 
         // Save the changes to the database using the UserDAO
@@ -295,6 +280,6 @@ public class AdminCtl {
         model.addAttribute("adminUserList", adminUserList);
 
         // Redirect back to the same page with the updated list of users
-        return "managepoints";
+        return "redirect:/admin/managepoints";
     }
 }
