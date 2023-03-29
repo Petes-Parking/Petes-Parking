@@ -84,7 +84,7 @@
         </div>
         <div class="col-md-3">
             <div class="widget rounded bg-black text-center text-uppercase py-4">
-                <a href="${pageContext.request.contextPath}/userList" class="text-decoration-none text-reset">Current Registrations</a>
+                <a href="${pageContext.request.contextPath}/userList" class="text-decoration-none text-reset">Pending Registrations</a>
             </div>
         </div>
         <div class="col-md-3">
