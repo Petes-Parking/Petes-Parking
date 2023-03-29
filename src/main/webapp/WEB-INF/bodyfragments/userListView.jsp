@@ -14,7 +14,7 @@
 
 <div class="container" >
 
-<h2 style="padding: 20px">Current Student Registration</h2>
+<h2 style="padding: 20px">Pending Request</h2>
 <%@include file="businessMessage.jsp" %>
 <table class="table bg-light text-dark">
   <thead>
@@ -45,11 +45,10 @@
   </tbody>
 </table>
 
-		<form action="${pageContext.request.contextPath}/adminview" method="get">
+       	<form action="${pageContext.request.contextPath}/adminview" method="get">
 			  <input type="hidden" name="id" value="${li.id}">
 			  <button type="submit" class="btn btn-outline-primary">Back</button>
 		</form>
-
 </div>
 
 </body>

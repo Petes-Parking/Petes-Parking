@@ -62,6 +62,7 @@
             background-color: cornflowerblue;
         }
 
+
     </style>
 </head>
 <body>
@@ -84,7 +85,7 @@
         </div>
         <div class="col-md-3">
             <div class="widget rounded bg-black text-center text-uppercase py-4">
-                <a href="${pageContext.request.contextPath}/userList" class="text-decoration-none text-reset">Current Registrations</a>
+                <a href="${pageContext.request.contextPath}/userList" class="text-decoration-none text-reset">Pending Registrations</a>
             </div>
         </div>
         <div class="col-md-3">
@@ -102,26 +103,12 @@
                 <a href="${pageContext.request.contextPath}/admin/review-poorpark" class="text-decoration-none text-reset">Review Poor Parking Reports</a>
             </div>
         </div>
-        <div class="col-md-3 py-3">
+        <div class="col-md-12 py-3">
             <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
                 <a href="${pageContext.request.contextPath}/admin/managepoints" class="text-decoration-none text-reset">Manage Points</a>
             </div>
         </div>
-        <div class="col-md-3 py-3">
-            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="/admin/widget6" class="text-decoration-none text-reset">Widget 6</a>
-            </div>
-        </div>
-        <div class="col-md-3 py-3">
-            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="/admin/widget7" class="text-decoration-none text-reset">Widget 7</a>
-            </div>
-        </div>
-        <div class="col-md-3 py-3">
-            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="/admin/widget8" class="text-decoration-none text-reset">Widget 8</a>
-            </div>
-        </div>
+
 
     </div>
 
