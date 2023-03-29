@@ -78,12 +78,13 @@
 <a href="${pageContext.request.contextPath}/main">
   <p id="return" href="/main" style="margin-top: 10px; margin-left: 10px">< Return to main page</p>
 </a>
-<h1 style="text-align: center; margin-top: 50px">Parking Pals</h1>
-<div class="container" style="float: left; margin-left: 20px; width: 55%">
+<h1 style="text-align: center; margin-top: 0px">Parking Pals</h1>
+<div class="container" style="float: left; margin-left: 20px; width: 55%; height: auto">
   <h3>Add new Parking Pals:</h3>
   <input type="text" id="search" placeholder="Search for a name here...">
+  <div style="overflow-y: auto; height: auto; max-height: 240px;">
   <table class="add-parking-pals-table">
-    <thead>
+    <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
@@ -108,7 +109,7 @@
             <td>
               <form method="post" action="${pageContext.request.contextPath}/friendInvite">
                 <input type="hidden" class="form-control" name="email" value="${li.email}" />
-                <button id="add-friend-btn" type="submit" class="add-friend-button" name="submit">
+                <button type="submit" class="add-friend-button" name="submit">
                   Send friend request
                 </button>
               </form>
@@ -119,6 +120,7 @@
     </c:forEach>
     </tbody>
   </table>
+  </div>
 </div>
 <div class="container" style="float: right; margin-right: 20px; width: 40%; text-align: center">
   <h3>Incoming Friend Requests:</h3>
@@ -133,10 +135,11 @@
     <button id="reject-btn" class="btn btn-danger" type="submit" name="action" value="reject">Reject</button>
   </form>
 </div>
-<div class="container" style="float: left; margin-left: 20px; width: 55%">
+<div class="container" style="float: left; margin-left: 20px; width: 55%; height: auto">
   <h3>My current Parking Pals:</h3>
+  <div style="overflow-y: auto; height: auto; max-height: 200px">
   <table>
-    <thead>
+    <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
     <tr>
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
@@ -162,12 +165,14 @@
     </c:forEach>
     </tbody>
   </table>
+  </div>
 </div>
 <script>
   const searchInput = document.getElementById('search');
   const tableRows = document.querySelectorAll('table.add-parking-pals-table > tbody tr');
 
-  const addButton = document.getElementById("add-friend-btn");
+  const addButton = document.querySelectorAll('.add-friend-button');
+  //const addButton = document.getElementById("add-friend-btn");
   const requestSelect = document.getElementById('request-select');
   const acceptBtn = document.getElementById('accept-btn');
   const rejectBtn = document.getElementById('reject-btn');
@@ -186,8 +191,10 @@
     });
   });
 
-  addButton.addEventListener('click', () => {
-    alert('Friend request sent!');
+  addButton.forEach(button => {
+    button.addEventListener('click', () => {
+      alert('Friend request sent!');
+    });
   });
 
   acceptBtn.addEventListener('click', function(event) {
@@ -196,7 +203,7 @@
       alert('You have no friend requests to accept or reject!');
     } else {
       alert('Friend added!');
-      window.location.replace("/parkingpals");
+      window.location.replace("/PeteParkingMgt/parkingpals");
     }
   });
 
@@ -206,14 +213,14 @@
       alert('You have no friend requests to accept or reject!');
     } else {
       alert('Friend request removed.');
-      window.location.replace("/parkingpals");
+      window.location.replace("/PeteParkingMgt/parkingpals");
     }
   });
 
-  setTimeout(() => {
-    window.location.replace("/PeteParkingMgt/parkingpals");
-    //document.location.reload();
-  }, 5000);
+  // setTimeout(() => {
+  //   window.location.replace("/PeteParkingMgt/parkingpals");
+  //   //document.location.reload();
+  // }, 5000);
 
 </script>
 </body>
