@@ -71,6 +71,10 @@
         .input-button:hover {
             background-color: #555;
         }
+
+        #deduct-btn:disabled {
+            background-color: #540000;
+        }
     </style>
 </head>
 <body>
@@ -142,7 +146,7 @@
                     <tbody>
                     <!-- Loop through the users and display the list -->
                     <c:forEach items="${adminUserList}" var="user" varStatus="status">
-                        <tr class="user-row" data-user-id="${user.id}">
+                        <tr class="user-row" data-user-id="${user.id}" data-points="${user.points}">
                             <td>${user.id}</td>
                             <td>${user.firstName} ${user.lastName}</td>
                             <td>${user.email}</td>
@@ -165,8 +169,15 @@
     document.querySelectorAll('.user-row').forEach(row => {
         row.addEventListener('click', function() {
             document.querySelectorAll('.user-row').forEach(el => el.classList.remove('selected'));
+
+            let deduct = document.getElementById('deduct-btn');
+
+
             this.classList.add('selected');
             let userId = this.dataset.userId;
+            let points = this.dataset.points;
+            deduct.disabled = points === '0';
+
             document.getElementById('selectedUserId').value = userId;
             console.log("Clicked User ID:", userId);
         });
