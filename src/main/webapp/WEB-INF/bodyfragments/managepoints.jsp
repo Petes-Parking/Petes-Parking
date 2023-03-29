@@ -78,7 +78,7 @@
     <h1>Edit - Points </h1>
     <div id="buttons">
 
-        <form method="POST" id="singlePointForm">
+        <form method="POST" id="managePointForm">
 
             <button class="circle-btn" id="add-btn">+</button>
         <button class="circle-btn" id="deduct-btn">-</button>
@@ -86,7 +86,7 @@
     </div>
     <div id="points">
         <h2>Custom points to be changed:</h2>
-        <form action="${pageContext.request.contextPath}/admin/updatePoints" method="post" id="points-to-add">
+        <form action="${pageContext.request.contextPath}/admin/updatePoint" method="post" id="points-to-add">
             <label for="points-input">Points</label>
             <input type="number" id="points-input" name="points" required>
             <input class="input-button" type="submit" value="Add">
@@ -166,9 +166,28 @@
         if (userId) {
             console.log("Clicked User ID2:", userId);
 
-            $('#singlePointForm').attr('action', `${pageContext.request.contextPath}/admin/updateByOne`);
-            $('#singlePointForm').data('selectedUserId', userId);
-            $('#singlePointForm').submit();        }
+            let managePointForm = document.getElementById('managePointForm');
+            managePointForm.action = `${pageContext.request.contextPath}/admin/updatePoint`;
+            let userIdInput = document.createElement('input');
+            userIdInput.type = 'hidden';
+            userIdInput.name = 'userId';
+            userIdInput.value = userId;
+            managePointForm.appendChild(userIdInput);
+
+            let actionInput = document.createElement('input');
+            actionInput.type = 'hidden';
+            actionInput.name = 'type';
+            actionInput.value = "ADD";
+            managePointForm.appendChild(actionInput);
+
+            let amountInput = document.createElement('input');
+            amountInput.type = 'hidden';
+            amountInput.name = 'amount';
+            amountInput.value = 1;
+            managePointForm.appendChild(amountInput);
+
+            managePointForm.submit();
+        }
     });
 
     document.getElementById('deduct-btn').addEventListener('click', function() {

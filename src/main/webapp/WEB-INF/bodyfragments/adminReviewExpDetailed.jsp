@@ -6,48 +6,107 @@
     <title>Review Expiration Report</title>
     <style>
         body {
-            background-color: white;
-            font-family: Arial, sans-serif;
+            background-color: #F9F9F9;
         }
 
         h1 {
-            color: goldenrod;
+            color: #333;
+            font-size: 36px;
+            text-align: center;
         }
 
         label {
-            color: black;
+            color: #555;
+            font-size: 16px;
             display: inline-block;
             width: 120px;
             text-align: right;
             margin-bottom: 10px;
         }
 
-        input[type="text"], input[type="password"], select {
-            width: 200px;
-        }
-
         .container {
             display: flex;
             flex-direction: column;
             align-items: center;
+            background-color: goldenrod;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            padding: 30px;
+            width: 60%;
+            margin: 50px auto;
         }
+
+        p {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #333;
+            font-weight: bold;
+        }
+
+        button {
+            background-color: #F9A602;
+            border: none;
+            color: white;
+            padding: 10px 30px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #F5CDA7;
+            color: #333;
+        }
+
+        button[type="submit"] {
+            background-color: #333333;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #A9A9A9;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+        }
+
+        .text {
+            align-content: center;
+        }
+
+        label {
+            color: #555555;
+        }
+
     </style>
 </head>
 <body>
+
+<h1>Expiration Report</h1>
 <div class="container">
-    <form class="container" method="post" id="expDismissForm" action="${pageContext.request.contextPath}/admin/deleteExpReport/${report.id}">
-        <h1>Expiration Report</h1>
-        <p name="reportDate">Report Date: ${report.reportDate}</p>
-        <p name="reporterEmail">Reporter Email: ${report.reporterEmail}</p>
-        <p name="parkingLot">Parking Lot: ${report.parkingLot}</p>
-        <p name="licensePlate">License Plate: ${report.licensePlate}</p>
-        <p name="description">Description: ${report.description}</p>
-        <p name="imageURL">Image: ${report.imageURL}</p>
-        <button class="btn btn-outline-primary" type="submit">Dismiss Report</button>
+    <form class="container2" method="post" id="expDismissForm" action="${pageContext.request.contextPath}/admin/deleteExpReport/${report.id}">
+        <div class="text">
+            <p><label>Report Date:</label> ${report.reportDate}</p>
+            <p><label>Reporter Email:</label> ${report.reporterEmail}</p>
+            <p><label>Parking Lot:</label> ${report.parkingLot}</p>
+            <p><label>License Plate:</label> ${report.licensePlate}</p>
+            <p><label>Description:</label> ${report.description}</p>
+            <p><label>Image:</label> ${report.imageURL}</p>
+            <button type="submit">Dismiss Report</button>
+        </div>
     </form>
     <form action="${pageContext.request.contextPath}/admin/backToExpReport" method="post">
-        <button type="submit" class="btn btn-outline-primary">Back</button>
+        <button type="submit">Back</button>
     </form>
+
 </div>
 </body>
 </html>
