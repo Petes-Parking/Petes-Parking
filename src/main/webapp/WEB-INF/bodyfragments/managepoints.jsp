@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
     <title>Manage Student Points</title>
     <style>
         body {
@@ -75,6 +76,28 @@
         #deduct-btn:disabled {
             background-color: #540000;
         }
+
+        #add-btn:disabled {
+            background-color: #1e4d26;
+        }
+
+        #save-btn2:disabled {
+            background-color: #0E0101;
+            color: #0E0101;
+        }
+
+        #save-btn:disabled {
+            background-color: #0E0101;
+            color: #0E0101;
+
+        }
+
+        #points-to-add input[type="submit"]:disabled {
+            background-color: #0E0101;
+            color: #0E0101;
+
+        }
+
     </style>
 </head>
 <body>
@@ -88,13 +111,13 @@
 </div>
 </c:if>
 <div id="container">
-    <h1>Edit - Points </h1>
+    <h1 id="header-line">Edit - Points </h1>
     <div id="buttons">
 
         <form method="POST" id="managePointForm">
 
-            <button class="circle-btn" id="add-btn">+</button>
-        <button class="circle-btn" id="deduct-btn">-</button>
+            <button class="circle-btn" id="add-btn" disabled>+</button>
+        <button class="circle-btn" id="deduct-btn" disabled>-</button>
         </form>
     </div>
     <div id="points">
@@ -102,8 +125,8 @@
         <form action="${pageContext.request.contextPath}/admin/updatePoint" method="post" id="points-to-add">
             <label for="points-input">Points</label>
             <input type="number" id="points-input" name="points" required>
-            <input class="input-button" type="submit" value="Add">
-            <input class="input-button" type="submit" value="Deduct">
+            <input class="input-button" type="submit" value="Add" disabled>
+            <input class="input-button" type="submit" value="Deduct" disabled>
         </form>
     </div>
     <div id="points-to-change">
@@ -121,10 +144,10 @@
             <option value="45">45</option>
             <option value="50">50</option>
         </select>
-        <button class="input-button" id="save-btn" value="add">Add</button>
+        <button class="input-button" id="save-btn" value="add" disabled>Add</button>
         <%-- button next to custom points in increments of 5--%>
 
-        <button class="input-button" id="save-btn2" value="minus">Deduct</button>
+        <button class="input-button" id="save-btn2" value="minus" disabled>Deduct</button>
         <%-- deduct button next to custom points in increments of 5--%>
 
     </div>
@@ -146,7 +169,7 @@
                     <tbody>
                     <!-- Loop through the users and display the list -->
                     <c:forEach items="${adminUserList}" var="user" varStatus="status">
-                        <tr class="user-row" data-user-id="${user.id}" data-points="${user.points}">
+                        <tr class="user-row" data-user-id="${user.id}" data-points="${user.points}" data-name="${user.firstName} ${user.lastName}">
                             <td>${user.id}</td>
                             <td>${user.firstName} ${user.lastName}</td>
                             <td>${user.email}</td>
@@ -171,15 +194,29 @@
             document.querySelectorAll('.user-row').forEach(el => el.classList.remove('selected'));
 
             let deduct = document.getElementById('deduct-btn');
+            let add = document.getElementById('add-btn');
+            let save1 = document.getElementById('save-btn');
+            let save2 = document.getElementById('save-btn2');
 
 
             this.classList.add('selected');
             let userId = this.dataset.userId;
             let points = this.dataset.points;
+            let userName = this.dataset.name;
+
+            add.disabled = false;
+            document.querySelectorAll('#points-to-add input[type="submit"]').forEach(btn => { btn.disabled = false;});
+
+            save1.disabled = false;
+            save2.disabled = false;
             deduct.disabled = points === '0';
 
             document.getElementById('selectedUserId').value = userId;
             console.log("Clicked User ID:", userId);
+
+
+            document.getElementById('header-line').innerHTML = `Edit ` + userName +   `'s points`;
+
         });
     });
 
