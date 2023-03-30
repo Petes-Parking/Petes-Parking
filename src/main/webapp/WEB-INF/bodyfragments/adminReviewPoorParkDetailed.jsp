@@ -96,7 +96,7 @@
     <p><label>Parking Lot:</label> ${report.parkingLot}</p>
     <p><label>License Plate:</label> ${report.licensePlate}</p>
     <p><label>Description:</label> ${report.description}</p>
-    <p><label>Image:</label> ${report.imageURL}</p>
+    <img src="data:image/jpeg;base64,${reportImage}" alt="Report Image" style="max-width: 500px; height: auto; padding-bottom: 15px;"><br>
     <button type="submit">Dismiss Report</button>
   </form>
   <form action="${pageContext.request.contextPath}/admin/backToPoorParkReport" method="post">

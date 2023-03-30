@@ -18,13 +18,10 @@ public class PoorParkingReportForm extends BaseDTO {
     private String parkingLot;
     @NotEmpty
     private String description;
-    @NotEmpty
-    private String imageURL;
 
     public PoorParkReportDTO getDTO() {
         PoorParkReportDTO report = new PoorParkReportDTO();
         report.setDescription(description);
-        report.setImageURL(imageURL);
         report.setLicensePlate(licensePlate);
         report.setParkingLot(parkingLot);
 
@@ -35,7 +32,6 @@ public class PoorParkingReportForm extends BaseDTO {
         licensePlate = report.getLicensePlate();
         description = report.getDescription();
         parkingLot = report.getParkingLot();
-        imageURL = report.getImageURL();
     }
 
 }

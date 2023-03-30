@@ -142,7 +142,7 @@
 <div class="container">
   <h1>Poor Parking Report</h1>
   <p>Please enter information about a car that is parked incorrectly. We will review the report as soon as possible and reward points for correct reports.</p>
-  <form method="post" action="${pageContext.request.contextPath}/submitPoorParkReport" style="display: inline;">
+  <form method="post" action="${pageContext.request.contextPath}/submitPoorParkReport" enctype="multipart/form-data" style="display: inline;">
 
     <label for="licensePlate">License Plate:</label>
     <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate"><br>
@@ -159,8 +159,8 @@
 
     <label for="description">Description:</label>
     <input class="desc" type="text" id="description" name="description" placeholder="Enter description here."><br>
-    <label for="imageURL">Image:</label>
-    <input class="image" type="file" id="imageURL" name="imageURL" accept="image/*"><br>
+    <label for="imageData">Image:</label>
+    <input class="image" type="file" id="imageData" name="imageData" accept="image/*"><br>
     <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
 
     <button type="button" class="save-button", id="save-button">Submit</button>
