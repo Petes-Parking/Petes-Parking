@@ -1,5 +1,6 @@
 package com.petesparkingmgt.ctl;
 
+import com.petesparkingmgt.dao.UserDAO;
 import com.petesparkingmgt.dao.VehicleDAO;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.dto.VehicleDTO;
@@ -11,8 +12,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
+import java.util.Base64;
 
 @Controller
 public class ProfileCtl {
@@ -20,6 +25,9 @@ public class ProfileCtl {
 
     @Autowired
     public VehicleDAO dao;
+
+    @Autowired
+    public UserDAO userdao;
 
     @GetMapping("/profile")
     public String profilePage(Model model, HttpSession session) {
@@ -41,6 +49,9 @@ public class ProfileCtl {
             model.addAttribute(vehicleDTO);
         }
 
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
 
 
         return "profilePage";
@@ -81,5 +92,14 @@ public class ProfileCtl {
 
     }
 
+    @PostMapping("/addProfilePic")
+    public String addProfilePic(@RequestParam("imageData") MultipartFile imageData, HttpSession session) throws IOException {
+        UserDTO user = (UserDTO) session.getAttribute("user");
+
+        user.setProfilePicture(imageData.getBytes());
+        userdao.save(user);
+
+        return "redirect:/profile";
+    }
 
 }

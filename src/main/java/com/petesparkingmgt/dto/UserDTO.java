@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 
 import lombok.Builder;
@@ -57,6 +58,10 @@ public class UserDTO extends BaseDTO {
 
 	@Column(name = "level")
 	private int level;
+
+	@Lob
+	@Column(name = "profilePicture")
+	private byte[] profilePicture;
 
 	@Override
 	public String toString() {
