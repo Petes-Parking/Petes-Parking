@@ -34,6 +34,11 @@ public class CarpoolForm extends BaseDTO {
 
     }
 
+    public void setDTO(CarpoolDTO dto) {
+        setCarPoolName(dto.getCarPoolName());
+        setId(dto.getId());
+    }
+
     @Override
     public String toString() {
         return "CarpoolForm [id=" + id + ", carPoolName=" + carPoolName + ", leaderid=" +  "-1]";

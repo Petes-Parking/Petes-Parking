@@ -114,7 +114,7 @@ public class CarpoolCtl {
         model.addAttribute("isLeader", true);
 
 
-        System.out.println(user.toString() + " on /createCarpool");
+//        System.out.println(user.toString() + " on /createCarpool");
 
         if (form.getDTO() != null) {
             CarpoolDTO dto = form.getDTO();
