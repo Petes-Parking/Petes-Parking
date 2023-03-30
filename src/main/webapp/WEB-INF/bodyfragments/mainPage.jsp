@@ -126,6 +126,7 @@
             <button class="reserve-button">Reserve a Spot Here</button>
         </a>
     </c:if>
+    <body onload="checkFavs()"></body>
     <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
         <input type="hidden" name="area" value="Corec Parking Lot">
         <button class="favBtn" onclick="favoriteUniv()" type="submit">Favorite this area!</button>
@@ -419,21 +420,14 @@
 
     function checkFavs() {
         let favList = document.getElementById("corec-popup").getAttribute("data-fav");
-        console.log("array List: ");
-        console.log(favList);
         favList = favList.substring(1, favList.length-1);
         let favorites = favList;
         if (favList.includes(",")) {
             favorites = favList.split(", ");
         }
-        console.log("string array:");
-        console.log(favorites);
 
         if (favorites.includes("Corec Parking Lot")) {
-            console.log("yeah we tried it");
             document.getElementById("corecStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
-        } else {
-            console.log("nope didnt");
         }
         if (favorites.includes("McCutcheon Drive Parking Garage")) {
             document.getElementById("mccutchStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
@@ -445,7 +439,6 @@
             document.getElementById("nwStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
         }
         if (favorites.includes("University St. Parking Garage")) {
-            console.log("should gone here");
             document.getElementById("univStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/FilledStarIcon.png";
         }
         if (favorites.includes("Grant St. Parking Garage")) {
