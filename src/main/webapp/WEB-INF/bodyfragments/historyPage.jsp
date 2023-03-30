@@ -30,6 +30,19 @@
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
       historyList = historyList.substring(1, historyList.length-1);
       let histList = historyList.split(", ");
+      console.log("histlist:");
+      console.log(histList);
+      if (histList.at(0) === "") {
+        console.log("you in");
+        console.log(histList.at(0));
+        let a = document.createElement("a");
+        a.setAttribute("href", "${pageContext.request.contextPath}/parkinglist");
+        let button = document.createElement("button");
+        button.appendChild(document.createTextNode("Go to Booking"));
+        button.className = "bookButton";
+        a.appendChild(button);
+        document.getElementById("bookShortcut").appendChild(a);
+      } else {
         for (let i = 0; i < histList.length; i++) {
           let button = document.createElement("button");
           let buttonName = document.createTextNode(histList.at(i));
@@ -37,6 +50,7 @@
           button.className = "historyButton customButton";
           document.getElementById("historyList").appendChild(button);
         }
+      }
       let favoriteList = document.getElementById("favoritesList").getAttribute("data-favorites");
       favoriteList = favoriteList.substring(1, favoriteList.length-1);
       let favList = favoriteList.split(", ");
@@ -149,10 +163,7 @@
     </div>
   </div>
 
-  <div class="bookShortcut">
-    <a href="${pageContext.request.contextPath}/parkinglist">
-      <button class="bookButton">Go to Booking</button>
-    </a>
+  <div id="bookShortcut">
   </div>
 
 </div>
