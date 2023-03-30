@@ -10,9 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import javax.servlet.http.HttpServlet;
 
 public class RegisterUserVerifier extends HttpServlet {
+	
+	@Autowired
+	 UserDTO user;
+	
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -28,7 +34,7 @@ public class RegisterUserVerifier extends HttpServlet {
             String code = sm.getRandom();
 
             //craete new user using all information
-            UserDTO user = new UserDTO();
+           
 
             //call the send email method
             boolean test = sm.sendEmail(user);
@@ -45,6 +51,7 @@ public class RegisterUserVerifier extends HttpServlet {
         }
     }
 
+    
 
 
     @Override

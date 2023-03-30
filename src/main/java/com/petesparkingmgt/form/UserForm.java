@@ -6,6 +6,8 @@ import java.util.Date;
 
 import javax.validation.constraints.NotEmpty;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import com.petesparkingmgt.dto.BaseDTO;
 import com.petesparkingmgt.dto.UserDTO;
 
@@ -51,10 +53,9 @@ public class UserForm extends BaseDTO {
 
 
 
-
-
-	public UserDTO getDTO() {
-		UserDTO bean=new UserDTO();
+	@Autowired
+	UserDTO bean;
+	public UserDTO getDTO() {	
 		bean.setId(id);
 		bean.setFirstName(firstName);
 		bean.setLastName(lastName);

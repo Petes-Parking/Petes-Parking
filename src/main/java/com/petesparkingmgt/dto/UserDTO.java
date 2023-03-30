@@ -8,8 +8,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
+
 
 @Entity
 @Table(name="user")
@@ -56,22 +58,12 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "level")
 	private int level;
 
-
-
-	
-	
-
 	@Override
 	public String toString() {
 		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", gender=" + gender
 				+ ", email=" + email + ", password=" + password + ", phoneNumber="
 				+ phoneNumber + ", userRole=" + userRole + " , points=" + points+ ", level=" + level+"]";
 	}
-
-
-
-
-
 
 
 }

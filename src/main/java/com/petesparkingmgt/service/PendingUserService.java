@@ -26,6 +26,7 @@ public class PendingUserService {
     public List<PendingUserDTO> list() {
         return dao.findAll();
     }
+    
 
 
 
@@ -54,7 +55,6 @@ public class PendingUserService {
             add.setFirstName(pend.getFirstName());
             add.setLastName(pend.getLastName());
             add.setId(add.getId());
-
         }
         return add;
     }
@@ -67,4 +67,5 @@ public class PendingUserService {
         return dao.findByEmail(email);
     }
 
+    
 }

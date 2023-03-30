@@ -40,6 +40,8 @@ public class UserService {
 		return dao.findAll();
 	}
 	
+
+	
 	public void update(UserDTO user){
 		UserDTO existingUser = dao.findById(user.getId());
 		if (existingUser != null) {
@@ -99,6 +101,7 @@ public class UserService {
 
 
 	}
+	
 
 
 }
