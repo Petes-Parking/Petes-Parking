@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.dao.FavoriteDAO;
 import com.petesparkingmgt.dao.HistoryDAO;
 import com.petesparkingmgt.dto.*;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
+import com.petesparkingmgt.form.FavoriteForm;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -220,5 +222,4 @@ public class BookingCtl {
 		service.update(dto);	
 		return "redirect:/bookinglist";
 	}
-	
 }

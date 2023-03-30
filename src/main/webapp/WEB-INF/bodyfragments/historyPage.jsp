@@ -30,11 +30,7 @@
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
       historyList = historyList.substring(1, historyList.length-1);
       let histList = historyList.split(", ");
-      console.log("histlist:");
-      console.log(histList);
       if (histList.at(0) === "") {
-        console.log("you in");
-        console.log(histList.at(0));
         let a = document.createElement("a");
         a.setAttribute("href", "${pageContext.request.contextPath}/parkinglist");
         let button = document.createElement("button");

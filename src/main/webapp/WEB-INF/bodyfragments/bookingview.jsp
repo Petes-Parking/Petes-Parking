@@ -157,7 +157,10 @@
 			</c:choose> 
 
            </sf:form>
-          
+              <form method = "post" action="${pageContext.request.contextPath}/addFavorite" style="display: inline-block;">
+                  <input type="hidden" name="area" value="${parkingDTO.parkingName}">
+                  <button class="favBtn" type="submit" style="width: 150px; height: 50px; border-radius: 5px;">Favorite this area!</button>
+              </form>
           </div>
         </div>
       </div>
