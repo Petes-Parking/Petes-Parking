@@ -71,7 +71,7 @@ public class LoginCtl {
 				return "redirect:/main";
 			}
 		}
-		return "redirect:/main";
+		return "home";
 	}
 
 }

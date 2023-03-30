@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarpoolService {
@@ -59,6 +60,16 @@ public class CarpoolService {
         }
 
         return names;
+
+    }
+
+
+    public List<UserDTO> getUserDTOSForCarpool(long carpoolid) {
+
+        return carpoolUsersDAO.getCarpoolUserDTOSByCarpoolIdAndStatusEquals(carpoolid, 1)
+                .stream()
+                .map(cu -> userDAO.findById(cu.getUserId())).collect(Collectors.toList());
+
 
     }
 

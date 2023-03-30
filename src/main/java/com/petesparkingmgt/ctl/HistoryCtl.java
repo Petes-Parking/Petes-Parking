@@ -49,6 +49,8 @@ public class HistoryCtl {
             formattedFavList.add(favorite);
         }
         model.addAttribute("favorites", formattedFavList);
+        model.addAttribute("username", user.getFirstName() + " " + user.getLastName());
+
         return "historyPage";
     }
 

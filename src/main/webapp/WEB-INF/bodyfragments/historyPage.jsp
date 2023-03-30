@@ -68,7 +68,7 @@
       <div class="profile-bar"></div>
       <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
       <a href="${pageContext.request.contextPath}/profile">
-        <button class="profile-button">Purdue Pete</button>
+        <button class="profile-button">${username}</button>
       </a>
 
       <a href="${pageContext.request.contextPath}/main">
