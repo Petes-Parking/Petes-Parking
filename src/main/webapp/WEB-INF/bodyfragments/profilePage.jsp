@@ -44,7 +44,7 @@
             <div class="profile-bar"></div>
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
             <a href="${pageContext.request.contextPath}/profile">
-                <button class="profile-button">Purdue Pete</button>
+                <button class="profile-button">${user.firstName} ${user.lastName}</button>
             </a>
 
             <a href="${pageContext.request.contextPath}/main">
@@ -118,7 +118,7 @@
         <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)">
         <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" id="clickable-image" width="210" height="210" alt=""/>
         <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="trash-image" onclick="deleteImage()"/>
-        <p1>John Purdue</p1>
+        <p1>${user.firstName} ${user.lastName}</p1>
         <a href="${pageContext.request.contextPath}/logout">
             <button1 class="logout-button" type="button"> Log Out</button1>
         </a>

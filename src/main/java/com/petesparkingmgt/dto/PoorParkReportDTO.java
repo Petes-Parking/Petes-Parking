@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import org.springframework.data.jpa.repository.JpaRepository;
 
@@ -25,8 +26,9 @@ public class PoorParkReportDTO extends BaseDTO {
     @Column(name = "reporterEmail", length = 755)
     private String reporterEmail;
 
-    @Column(name = "imageURL", length = 755)
-    private String imageURL;
+    @Lob
+    @Column(name = "imageData")
+    private byte[] imageData;
 
     @Column(name = "parkingLot", length = 755)
     private String parkingLot;
@@ -36,8 +38,8 @@ public class PoorParkReportDTO extends BaseDTO {
 
     @Override
     public String toString() {
-        return "PoorParkReportDTO [licensePlate=" + licensePlate + ", parkingLot=" + parkingLot + ", description=" + description + ", imageURL="
-                + imageURL + ", reporterEmail=" + reporterEmail + ", reportDate=" + reportDate + "]";
+        return "PoorParkReportDTO [licensePlate=" + licensePlate + ", parkingLot=" + parkingLot + ", description=" + description +
+                 ", reporterEmail=" + reporterEmail + ", reportDate=" + reportDate + "]";
     }
 
 

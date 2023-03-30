@@ -68,7 +68,7 @@ public class LoginCtl {
 
 			} else  {
 				session.setAttribute("user", user);
-				return "mainPage";
+				return "redirect:/main";
 			}
 		}
 		return "home";

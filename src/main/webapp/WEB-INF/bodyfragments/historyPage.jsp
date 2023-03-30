@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
   <title>History Page</title>
@@ -27,10 +28,8 @@
   <script>
     function generateLists() {
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
-      console.log(historyList);
       historyList = historyList.substring(1, historyList.length-1);
       let histList = historyList.split(", ");
-      for (let i = 0; i < histList.length; i++) {
         for (let i = 0; i < histList.length; i++) {
           let button = document.createElement("button");
           let buttonName = document.createTextNode(histList.at(i));
@@ -38,7 +37,6 @@
           button.className = "historyButton customButton";
           document.getElementById("historyList").appendChild(button);
         }
-      }
       let favoriteList = document.getElementById("favoritesList").getAttribute("data-favorites");
       console.log(favoriteList);
       favoriteList = favoriteList.substring(1, favoriteList.length-1);
@@ -71,7 +69,7 @@
       <div class="profile-bar"></div>
       <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
       <a href="${pageContext.request.contextPath}/profile">
-        <button class="profile-button">Purdue Pete</button>
+        <button class="profile-button">${username}</button>
       </a>
 
       <a href="${pageContext.request.contextPath}/main">
@@ -127,12 +125,19 @@
       <body onload="generateLists()"></body>
     </div>
   </div>
+
   <div class="favorites-area">
     <h1>Favorite Parking Areas</h1>
     <div id="favoritesList" data-favorites="${favorites}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
     </div>
   </div>
-</div>
 
+  <div class="bookShortcut">
+    <a href="${pageContext.request.contextPath}/parkinglist">
+      <button class="bookButton">Go to Booking</button>
+    </a>
+  </div>
+
+</div>
 </body>
 </html>

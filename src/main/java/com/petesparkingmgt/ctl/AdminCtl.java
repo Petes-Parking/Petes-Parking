@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -148,9 +149,6 @@ public class AdminCtl {
         if (expReport.getDescription() == null || expReport.getDescription().equals("")) {
             expReport.setDescription("[Description not provided]");
         }
-        if (expReport.getImageURL() == null || expReport.getImageURL().equals("")) {
-            expReport.setImageURL("[Image not provided]");
-        }
         if (expReport.getLicensePlate() == null || expReport.getLicensePlate().equals("")) {
             expReport.setLicensePlate("[License plate not provided]");
         }
@@ -159,6 +157,12 @@ public class AdminCtl {
         }
 
         model.addAttribute("report", expReport);
+
+        byte[] imageData = expReport.getImageData();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("reportImage", base64Image);
+
+
         return "adminReviewExpDetailed";
     }
 
@@ -169,9 +173,6 @@ public class AdminCtl {
         if (poorParkReport.getDescription() == null || poorParkReport.getDescription().equals("")) {
             poorParkReport.setDescription("[Description not provided]");
         }
-        if (poorParkReport.getDescription() == null || poorParkReport.getImageURL().equals("")) {
-            poorParkReport.setImageURL("[Image not provided]");
-        }
         if (poorParkReport.getDescription() == null || poorParkReport.getLicensePlate().equals("")) {
             poorParkReport.setLicensePlate("[License plate not provided]");
         }
@@ -180,6 +181,11 @@ public class AdminCtl {
         }
 
         model.addAttribute("report", poorParkReport);
+
+        byte[] imageData = poorParkReport.getImageData();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("reportImage", base64Image);
+
         return "adminReviewPoorParkDetailed";
     }
 

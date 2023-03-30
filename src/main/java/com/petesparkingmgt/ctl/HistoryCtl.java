@@ -45,10 +45,11 @@ public class HistoryCtl {
         List<String> formattedFavList = new ArrayList<>();
         for (FavoriteDTO favoriteDTO : favoriteList) {
             String favorite = favoriteDTO.getArea();
-            System.out.println("this fav: " + favorite);
             formattedFavList.add(favorite);
         }
         model.addAttribute("favorites", formattedFavList);
+        model.addAttribute("username", user.getFirstName() + " " + user.getLastName());
+
         return "historyPage";
     }
 

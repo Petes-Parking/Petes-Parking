@@ -1,6 +1,7 @@
 package com.petesparkingmgt.ctl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -8,6 +9,7 @@ import javax.validation.Valid;
 
 import com.petesparkingmgt.dao.HistoryDAO;
 import com.petesparkingmgt.dto.*;
+import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -134,7 +136,26 @@ public class BookingCtl {
 
 			if (bean.getCarpoolId() > 0 ){
 				String carpoolName = carpoolUsersService.getCarpoolNameFor(user.getId());
+				List<UserDTO> members = carpoolService.getUserDTOSForCarpool(bean.getCarpoolId());
+
+				// set points for every member in the carpool
+				for (UserDTO member : members) {
+					if (member.getId() == user.getId()) continue;
+
+					int addedPoints = historyService.getPointsFor(member.getId());
+					System.out.println("Adding " + addedPoints + " to " + member.getPoints() + " for " + member.getEmail());
+					member.setPoints(member.getPoints() + addedPoints);
+					PointsManager.LevelWrapper memWrapper = PointsManager.getLevel(user.getPoints());
+
+					member.setLevel(memWrapper.getLevel());
+					userService.update(member);
+
+				}
+
 				model.addAttribute("success", "Booking successful for carpool: " + carpoolName);
+				model.addAttribute("success2", "Gained: " + points + " points. You now have " + totalPoints + " total points!");
+				model.addAttribute("success3", "Level: " + wrapper.getLevel() + ". Till next level: " + wrapper.getNextLevelThreshold());
+
 			} else {
 				model.addAttribute("success", "Booking successfully!");
 				model.addAttribute("success2", "Gained: " + points + " points. You now have " + totalPoints + " total points!");

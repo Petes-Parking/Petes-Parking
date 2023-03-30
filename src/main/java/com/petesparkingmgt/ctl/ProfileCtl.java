@@ -31,6 +31,8 @@ public class ProfileCtl {
         model.addAttribute("nextLevelPoints", wrapper.getNextLevelThreshold());
         model.addAttribute("user", user);
         VehicleDTO vehicleDTO = dao.getVehicleDTOByUserId(user.getId());
+        model.addAttribute("username", user.getFirstName() + " " + user.getLastName());
+
         if (vehicleDTO != null) {
             model.addAttribute("vehicle", vehicleDTO);
         } else {

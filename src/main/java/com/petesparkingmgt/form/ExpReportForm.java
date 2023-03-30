@@ -23,7 +23,6 @@ public class ExpReportForm extends BaseDTO {
     public ExpReportDTO getDTO() {
         ExpReportDTO report = new ExpReportDTO();
         report.setDescription(description);
-        report.setImageURL(imageURL);
         report.setLicensePlate(licensePlate);
         report.setParkingLot(parkingLot);
 
@@ -34,7 +33,6 @@ public class ExpReportForm extends BaseDTO {
         licensePlate = report.getLicensePlate();
         description = report.getDescription();
         parkingLot = report.getParkingLot();
-        imageURL = report.getImageURL();
     }
 
 }

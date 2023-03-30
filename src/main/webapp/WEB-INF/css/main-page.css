@@ -523,19 +523,34 @@
     cursor: pointer;
     margin-left: 5px;
     border-radius: 15px;
-    font-size: 16px;
+    font-size: 24px;
 }
 
-.reserve-button:hover {background-color: #B89954; transition: .3s;}
+.reserve-button:hover {background-color: #373A36; color: white; transition: .3s;}
 
 .close {
-    height: 100px;
+    height: 50px;
     width: 340px;
     background-color:#CEB888;
     cursor: pointer;
-    margin-left: 5px;
+    margin-top: 20px;
+    margin-right: 5px;
     border-radius: 15px;
     font-size: 16px;
+    border: 2px;
 }
 
-.close:hover {background-color: #B89954; transition: .3s;}
+.close:hover {background-color: #373A36; color: white; transition: .3s;}
+
+.favBtn {
+    font-size: 20px;
+    width: 220px;
+    height: 60px;
+    margin-left: 20px;
+    margin-top: 30px;
+    background-color: #CEB888;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.favBtn:hover {background-color: #373A36; color: white; transition: .3s;}

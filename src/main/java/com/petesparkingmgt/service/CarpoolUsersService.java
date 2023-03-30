@@ -30,9 +30,7 @@ public class CarpoolUsersService {
 
     }
 
-    public List<CarpoolUserDTO> getConfirmedUsersFor(long carpoolid) {
-        return dao.getCarpoolUserDTOSByUserIdAndStatusEquals(carpoolid, 1);
-    }
+   
 
     /**
      * Only returns status = 1; not pending
@@ -58,6 +56,7 @@ public class CarpoolUsersService {
 
         return accepted;
     }
+
 
 
     public boolean isInCarpoolButNotLeader(long userid) {
