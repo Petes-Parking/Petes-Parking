@@ -1,4 +1,5 @@
 <!doctype html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
   <title>History Page</title>
@@ -124,12 +125,19 @@
       <body onload="generateLists()"></body>
     </div>
   </div>
+
   <div class="favorites-area">
     <h1>Favorite Parking Areas</h1>
     <div id="favoritesList" data-favorites="${favorites}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
     </div>
   </div>
-</div>
 
+  <div class="bookShortcut">
+    <a href="${pageContext.request.contextPath}/parkinglist">
+      <button class="bookButton">Go to Booking</button>
+    </a>
+  </div>
+
+</div>
 </body>
 </html>

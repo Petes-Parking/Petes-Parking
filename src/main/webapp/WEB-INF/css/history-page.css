@@ -28,6 +28,7 @@
     height: 1000px;
     display: inline-block;
     vertical-align: top;
+    float: right;
 }
 
 .historyButton {
@@ -36,6 +37,17 @@
     font-size: 14px;
 }
 .historyButton:hover {background-color: #373A36; transition: .3s; color: white;}
+
+.bookButton {
+    width: 350px;
+    height: 60px;
+    font-size: 20px;
+    background-color: #CEB888;
+    border: thick;
+    border-radius: 12px;
+    margin-left: 10px;
+}
+.bookButton:hover {background-color: #373A36; transition: .3s; color: white;}
 
 .favoritesButton {
     width: 650px;
