@@ -13,10 +13,10 @@ public interface FriendDAO extends JpaRepository<FriendDTO, Long> {
 
     public List<FriendDTO> getFriendDTOSBySenderEmailAndStatusEquals(String senderEmail, long status);
 
+    public List<FriendDTO> getFriendDTOSBySenderEmailAndRecipientEmailAndStatusEquals(String senderEmail, String recipientEmail, long status);
+
     public FriendDTO getFriendDTOByRecipientEmailAndStatusEquals(String recipientEmail, long status);
 
-    @Transactional
-    public void deleteFriendDTOBySenderEmailAndRecipientEmail(String senderEmail, String recipientEmail);
     @Transactional
     public void deleteFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(String senderEmail, String recipientEmail, long status);
 

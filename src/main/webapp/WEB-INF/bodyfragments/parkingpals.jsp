@@ -49,6 +49,15 @@
       cursor: pointer;
     }
 
+    .view-friend-button {
+      background-color: #CEB888;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+
     table {
       width: 100%;
       border-collapse: collapse;
@@ -75,10 +84,7 @@
   </style>
 </head>
 <body>
-<a href="${pageContext.request.contextPath}/main">
-  <p id="return" href="/main" style="margin-top: 10px; margin-left: 10px">< Return to main page</p>
-</a>
-<h1 style="text-align: center; margin-top: 0px">Parking Pals</h1>
+<h1 style="text-align: center; margin-top: 30px">Parking Pals</h1>
 <div class="container" style="float: left; margin-left: 20px; width: 55%; height: auto">
   <h3>Add new Parking Pals:</h3>
   <input type="text" id="search" placeholder="Search for a name here...">
@@ -89,7 +95,7 @@
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
-      <th scope="col"></th> <!-- Column for the "Add friend" button -->
+      <th scope="col"></th> <!-- Column for the "Send friend request" button -->
     </tr>
     </thead>
     <tbody>
@@ -109,9 +115,22 @@
             <td>
               <form method="post" action="${pageContext.request.contextPath}/friendInvite">
                 <input type="hidden" class="form-control" name="email" value="${li.email}" />
-                <button type="submit" class="add-friend-button" name="submit">
-                  Send friend request
-                </button>
+                <c:set var="isPending" value="false" />
+                <c:forEach items="${outgoingRequests}" var="out">
+                  <c:if test="${li.email == out.recipientEmail}">
+                    <c:set var="isPending" value="true" />
+                  </c:if>
+                </c:forEach>
+                <c:if test="${not isPending}">
+                  <button type="submit" class="add-friend-button" name="submit">
+                    Send friend request
+                  </button>
+                </c:if>
+                <c:if test="${isPending}">
+                  <button type="button" class="add-friend-button" style="background-color: dimgray" name="pending" disabled>
+                    Request pending
+                  </button>
+                </c:if>
               </form>
             </td>
           </tr>
@@ -128,7 +147,7 @@
     <label class="form-label">Select Friend Request</label>
     <select id="request-select" name="email" class="form-select">
       <c:forEach items="${requests}" var="request">
-          <option name="option" value="${request.senderEmail}">${request.senderEmail}</option>
+        <option name="option" value="${request.senderEmail}">${request.senderFirstName} ${request.senderLastName}</option>
       </c:forEach>
     </select><br>
     <button id="accept-btn" class="btn btn-success" type="submit" name="action" value="accept">Accept</button>
@@ -144,15 +163,22 @@
       <th scope="col">First Name</th>
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
+      <th scope="col"></th> <!-- Column for the "Send friend request" button -->
     </tr>
     </thead>
     <tbody>
+    <form method="post" action="${pageContext.request.contextPath}/friendpage">
     <c:forEach items="${friends}" var="friend">
       <c:if test="${friend.senderEmail != user.email}">
       <tr>
         <td>${friend.senderFirstName}</td>
         <td>${friend.senderLastName}</td>
         <td>${friend.senderEmail}</td>
+        <td>
+          <button type="submit" class="view-friend-button" name="email" value="${friend.senderEmail}">
+            View friend profile
+          </button>
+        </td>
       </tr>
       </c:if>
       <c:if test="${friend.senderEmail == user.email}">
@@ -160,9 +186,15 @@
         <td>${friend.recipientFirstName}</td>
         <td>${friend.recipientLastName}</td>
         <td>${friend.recipientEmail}</td>
+        <td>
+          <button type="submit" class="view-friend-button" name="email" value="${friend.recipientEmail}">
+            View friend profile
+          </button>
+        </td>
       </tr>
       </c:if>
     </c:forEach>
+    </form>
     </tbody>
   </table>
   </div>
@@ -172,7 +204,6 @@
   const tableRows = document.querySelectorAll('table.add-parking-pals-table > tbody tr');
 
   const addButton = document.querySelectorAll('.add-friend-button');
-  //const addButton = document.getElementById("add-friend-btn");
   const requestSelect = document.getElementById('request-select');
   const acceptBtn = document.getElementById('accept-btn');
   const rejectBtn = document.getElementById('reject-btn');
@@ -186,7 +217,7 @@
       if (full.includes(searchValue)) {
         row.style.display = '';
       } else {
-          row.style.display = 'none';
+        row.style.display = 'none';
       }
     });
   });
@@ -217,10 +248,9 @@
     }
   });
 
-  // setTimeout(() => {
-  //   window.location.replace("/PeteParkingMgt/parkingpals");
-  //   //document.location.reload();
-  // }, 5000);
+   setTimeout(() => {
+     location.reload();
+   }, 5000);
 
 </script>
 </body>

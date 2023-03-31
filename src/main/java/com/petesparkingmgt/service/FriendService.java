@@ -29,6 +29,11 @@ public class FriendService {
 
     }
 
+    public List<FriendDTO> getOutgoingRequestsFor(String userEmail) {
+
+        return dao.getFriendDTOSBySenderEmailAndStatusEquals(userEmail, 0);
+    }
+
     public void acceptInvite(String recipientEmail, String senderEmail) {
 
         FriendDTO temp = dao.getFriendDTOByRecipientEmailAndStatusEquals(recipientEmail, 0);
