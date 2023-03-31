@@ -221,4 +221,14 @@ public class BookingCtl {
 		return "redirect:/bookinglist";
 	}
 	
+	
+	@GetMapping("/userCancel")
+	public String cancel(Model model, @RequestParam("id") long id, HttpSession session) {
+	
+		BookingDTO dto = service.findBookingById(id);
+		dto.setReqstatus("Cancelled");
+		service.update(dto);	
+		return "redirect:/bookinglist";
+	}
+	
 }

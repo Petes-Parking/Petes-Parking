@@ -83,7 +83,7 @@ public class UnitControllerLayerTest {
 	@Autowired
 	private WebApplicationContext context;
 	
-	// TODO: THIS SECTION IS NOT IN PROGRESS
+	// TODO: THIS SECTION IS NOT Complete - IN PROGRESS
 	
 	@Before(value = "")
 	public void setUp() {

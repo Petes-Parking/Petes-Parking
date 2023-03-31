@@ -39,6 +39,11 @@ public class PendingUserService {
     public void rejectUser(long pendingUserId) {
         dao.deleteById(pendingUserId);
     }
+    
+    public void cancelUser(long pendingUserId) {
+        dao.deleteById(pendingUserId);
+    }
+
 
     public UserDTO pendingUserToUserDTO(long pendingUserId){
         PendingUserDTO pend = getPendingUser(pendingUserId);

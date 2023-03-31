@@ -191,9 +191,6 @@ public class UserCtl {
 	
 	@GetMapping("/userReject")	
 	public String userReject(Model model, @RequestParam("id") long id ) throws Exception{
-		
-
-		
 		pendingUserService.rejectUser(id);
 		
 		List<PendingUserDTO> list =	pendingUserService.list();
@@ -201,7 +198,5 @@ public class UserCtl {
 		model.addAttribute("success", "User Rejected successfully");
 		return "userListView";
 	}
-	
-
 
 }

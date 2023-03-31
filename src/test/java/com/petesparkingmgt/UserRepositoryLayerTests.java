@@ -75,7 +75,7 @@ public class UserRepositoryLayerTests {
 	@Order(3)
 	@Rollback(value = false)
 	void should_Get_Single_User_Test() {
-		UserDTO user = userdao.findById(70);
+		UserDTO user = userdao.findById(72);
 		
 		assertEquals("dummy", user.getFirstName());
 		
@@ -86,11 +86,11 @@ public class UserRepositoryLayerTests {
 	@Order(4)
 	@Rollback(value = false)
 	void should_Update_User_Test() {
-		UserDTO user = userdao.findById(70);
+		UserDTO user = userdao.findById(72);
 		user.setFirstName("Updated_dummy");
 		userdao.save(user);
 		
-		assertNotEquals("dummy", userdao.findById(70).getFirstName());
+		assertNotEquals("dummy", userdao.findById(72).getFirstName());
 		
 					
 	}
@@ -99,10 +99,10 @@ public class UserRepositoryLayerTests {
 	@Order(5)
 	@Rollback(value = false)
 	void should_Delete_User_Test() {
-		UserDTO user = userdao.findById(70);
+		UserDTO user = userdao.findById(72);
 		userdao.delete(user);
 		
-		assertThat(userdao.existsById(70L)).isFalse();
+		assertThat(userdao.existsById(72L)).isFalse();
 		
 		//userdao.deleteById(65L);	
 		
