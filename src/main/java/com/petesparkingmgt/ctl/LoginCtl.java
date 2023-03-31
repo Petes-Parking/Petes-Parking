@@ -52,10 +52,6 @@ public class LoginCtl {
 	public String Login(@ModelAttribute("form") UserForm form, Model model, HttpSession session) {
 		UserDTO user = service.login(form.getEmail(), form.getPassword());
 
-		if (user.getProfilePicture() == null || user.getProfilePicture().length == 0) {
-			user.setProfilePicture(getDefaultProfilePicture());
-			service.update(user);
-		}
 
 
 		if (user == null) {
@@ -76,6 +72,12 @@ public class LoginCtl {
 				return "adminview";
 
 			} else  {
+				if (user.getProfilePicture() == null || user.getProfilePicture().length == 0) {
+					user.setProfilePicture(getDefaultProfilePicture());
+					service.update(user);
+				}
+
+
 				session.setAttribute("user", user);
 				return "redirect:/main";
 			}
