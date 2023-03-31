@@ -30,6 +30,15 @@
       let historyList = document.getElementById("historyList").getAttribute("data-histories");
       historyList = historyList.substring(1, historyList.length-1);
       let histList = historyList.split(", ");
+      if (histList.at(0) === "") {
+        let a = document.createElement("a");
+        a.setAttribute("href", "${pageContext.request.contextPath}/parkinglist");
+        let button = document.createElement("button");
+        button.appendChild(document.createTextNode("Go to Booking"));
+        button.className = "bookButton";
+        a.appendChild(button);
+        document.getElementById("bookShortcut").appendChild(a);
+      } else {
         for (let i = 0; i < histList.length; i++) {
           let button = document.createElement("button");
           let buttonName = document.createTextNode(histList.at(i));
@@ -37,20 +46,38 @@
           button.className = "historyButton customButton";
           document.getElementById("historyList").appendChild(button);
         }
+      }
       let favoriteList = document.getElementById("favoritesList").getAttribute("data-favorites");
-      console.log(favoriteList);
       favoriteList = favoriteList.substring(1, favoriteList.length-1);
       let favList = favoriteList.split(", ");
-      console.log(favList);
       for (let i = 0; i < favList.length; i++) {
         let button = document.createElement("button");
         let buttonName = document.createTextNode(favList.at(i));
         button.appendChild(buttonName);
         button.className = "favoritesButton customButton";
-        document.getElementById("favoritesList").appendChild(button);
+        let a = document.createElement("a");
+        if (favList.at(i) === "Corec Parking Lot") {
+          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=1");
+        }
+        if (favList.at(i) === "McCutcheon Drive Parking Garage") {
+          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=2");
+        }
+        if (favList.at(i) === "University St. Parking Garage") {
+          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=3");
+        }
+        if (favList.at(i) === "Ross-Ade Stadium Parking Lot") {
+          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=4");
+        }
+        if (favList.at(i) === "Northwestern St. Parking Garage") {
+          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=5");
+        }
+        if (favList.at(i) === "Grant St. Parking Garage") {
+          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=6");
+        }
+        a.appendChild(button);
+        document.getElementById("favoritesList").appendChild(a);
       }
     }
-
   </script>
   <link href="main-page.css" rel="stylesheet" type="text/css">
   <link href="../css/history-page.css" rel="stylesheet" type="text/css">
@@ -67,7 +94,7 @@
   <div class="buttons" width="465" height="920">
     <div class="profile-area" width="150" height="175">
       <div class="profile-bar"></div>
-      <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
+      <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 91px; height: auto;">
       <a href="${pageContext.request.contextPath}/profile">
         <button class="profile-button">${username}</button>
       </a>
@@ -119,10 +146,10 @@
 </div>
 
 <div class = "box" >
+  <body onload="generateLists()"></body>
   <div class="history-area">
     <h1>Parking History</h1>
     <div id="historyList" data-histories="${histories}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
-      <body onload="generateLists()"></body>
     </div>
   </div>
 
@@ -132,10 +159,7 @@
     </div>
   </div>
 
-  <div class="bookShortcut">
-    <a href="${pageContext.request.contextPath}/parkinglist">
-      <button class="bookButton">Go to Booking</button>
-    </a>
+  <div id="bookShortcut">
   </div>
 
 </div>

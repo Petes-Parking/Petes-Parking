@@ -25,7 +25,7 @@
     <div class="buttons" width="465" height="920">
         <div class="profile-area" width="150" height="175">
             <div class="profile-bar"></div>
-            <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
+            <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 91px; height: auto;">
             <a href="${pageContext.request.contextPath}/profile">
                 <button class="profile-button">${user.firstName} ${user.lastName}</button>
             </a>

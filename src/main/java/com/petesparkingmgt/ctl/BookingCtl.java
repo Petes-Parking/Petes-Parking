@@ -7,9 +7,11 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.dao.FavoriteDAO;
 import com.petesparkingmgt.dao.HistoryDAO;
 import com.petesparkingmgt.dto.*;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
+import com.petesparkingmgt.form.FavoriteForm;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -220,6 +222,7 @@ public class BookingCtl {
 		service.update(dto);	
 		return "redirect:/bookinglist";
 	}
+<<<<<<< HEAD
 	
 	
 	@GetMapping("/userCancel")
@@ -231,4 +234,6 @@ public class BookingCtl {
 		return "redirect:/bookinglist";
 	}
 	
+=======
+>>>>>>> 2755eb0fa6ac37f74955151034915d1acc868ab0
 }

@@ -39,7 +39,7 @@ public class UserRepositoryLayerTests {
 		
 		//Arrange
 		UserDTO user = new UserDTO();
-		user.setId(1L);
+		user.setId(100);
 		user.setFirstName("dummy");
 		user.setLastName("Testing");
 		user.setDob("12/03/1999");
@@ -75,7 +75,11 @@ public class UserRepositoryLayerTests {
 	@Order(3)
 	@Rollback(value = false)
 	void should_Get_Single_User_Test() {
+<<<<<<< HEAD
 		UserDTO user = userdao.findById(72);
+=======
+		UserDTO user = userdao.findByEmail("dummy@gmail.com");
+>>>>>>> 2755eb0fa6ac37f74955151034915d1acc868ab0
 		
 		assertEquals("dummy", user.getFirstName());
 		
@@ -86,11 +90,19 @@ public class UserRepositoryLayerTests {
 	@Order(4)
 	@Rollback(value = false)
 	void should_Update_User_Test() {
+<<<<<<< HEAD
 		UserDTO user = userdao.findById(72);
 		user.setFirstName("Updated_dummy");
 		userdao.save(user);
 		
 		assertNotEquals("dummy", userdao.findById(72).getFirstName());
+=======
+		UserDTO user = userdao.findById(100);
+		user.setFirstName("Updated_dummy");
+		userdao.save(user);
+		
+		assertNotEquals("dummy", userdao.findById(100).getFirstName());
+>>>>>>> 2755eb0fa6ac37f74955151034915d1acc868ab0
 		
 					
 	}
@@ -99,10 +111,17 @@ public class UserRepositoryLayerTests {
 	@Order(5)
 	@Rollback(value = false)
 	void should_Delete_User_Test() {
+<<<<<<< HEAD
 		UserDTO user = userdao.findById(72);
 		userdao.delete(user);
 		
 		assertThat(userdao.existsById(72L)).isFalse();
+=======
+		UserDTO user = userdao.findById(100);
+		userdao.delete(user);
+		
+		assertThat(userdao.existsById(100)).isFalse();
+>>>>>>> 2755eb0fa6ac37f74955151034915d1acc868ab0
 		
 		//userdao.deleteById(65L);	
 		
