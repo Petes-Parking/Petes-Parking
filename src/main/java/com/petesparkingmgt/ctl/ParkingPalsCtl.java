@@ -69,8 +69,7 @@ public class ParkingPalsCtl {
         List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
         model.addAttribute("requests", requests); // can be empty
 
-        List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
-        model.addAttribute("friends", friends); // can be empty
+
 
         List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
@@ -80,6 +79,7 @@ public class ParkingPalsCtl {
         // Check if a friend request has already been sent
         FriendDTO existingRequest = dao.getFriendDTOByRecipientEmailAndStatusEquals(toInvite.getEmail(), 0);
         if (existingRequest != null) {
+            System.out.println("test");
             return "parkingpals";
         }
 
@@ -93,7 +93,14 @@ public class ParkingPalsCtl {
         dto.setRecipientLastName(toInvite.getLastName());
         dao.save(dto);
 
-        return "parkingpals";
+        FriendDTO retrieve = dao.getFriendDTOByRecipientEmailAndStatusEquals(toInvite.getEmail(), 0);
+        if (retrieve == null ) { System.out.println("retrieve is null!");} else System.out.println("not null!!");
+
+
+        List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
+        model.addAttribute("friends", friends); // can be empty
+
+        return "redirect:/parkingpals";
     }
 
     @PostMapping("/friendInviteResponse")
@@ -108,8 +115,7 @@ public class ParkingPalsCtl {
         List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
         model.addAttribute("requests", requests); // can be empty
 
-        List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
-        model.addAttribute("friends", friends); // can be empty
+
 
         List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
@@ -126,7 +132,10 @@ public class ParkingPalsCtl {
             return "error";
         }
 
-        return "parkingpals";
+        List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
+        model.addAttribute("friends", friends); // can be empty
+
+        return "redirect:/parkingpals";
     }
 
 //    @GetMapping("/viewFriend")

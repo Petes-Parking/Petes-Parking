@@ -50,7 +50,7 @@ public class AdminCtl {
     public String adminPage(Model model) {
 
 
-        List<UserDTO> users = dao.getAllByUserRole("Student");
+        List<UserDTO> users = dao.findAll();
         users.forEach(userDTO -> System.out.println(userDTO.getEmail() + " " + userDTO.getUserRole()));
 
         model.addAttribute("adminUserList", users);
@@ -253,7 +253,7 @@ public class AdminCtl {
     @GetMapping("/admin/managepoints")
     public String ProfilePage(Model model) {
 
-        List<UserDTO> users = dao.getAllByUserRole("Student");
+        List<UserDTO> users = dao.findAll();
         model.addAttribute("adminUserList", users);
 
 

@@ -223,6 +223,7 @@
   });
 
   addButton.forEach(button => {
+
     button.addEventListener('click', () => {
       alert('Friend request sent!');
     });
@@ -234,7 +235,7 @@
       alert('You have no friend requests to accept or reject!');
     } else {
       alert('Friend added!');
-      window.location.replace("/PeteParkingMgt/parkingpals");
+      window.location.replace("/${pageContext.request.contextPath}/parkingpals");
     }
   });
 
@@ -247,10 +248,10 @@
       window.location.replace("/PeteParkingMgt/parkingpals");
     }
   });
-
-   setTimeout(() => {
-     location.reload();
-   }, 5000);
+   //
+   // setTimeout(() => {
+   //   location.reload();
+   // }, 5000);
 
 </script>
 </body>
