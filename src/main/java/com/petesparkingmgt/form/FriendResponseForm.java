@@ -14,6 +14,9 @@ public class FriendResponseForm {
         this.action = action;
     }
 
+    public FriendResponseForm() {
+    }
+
     @NotEmpty(message = "Email is needed")
     private String email;
 

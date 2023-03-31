@@ -17,6 +17,7 @@ public class CarpoolAddMemberForm {
         this.email = email;
     }
 
+
     @NotEmpty(message = "Email is needed")
     private String email;
 
