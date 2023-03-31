@@ -183,7 +183,7 @@ public class UserCtl {
 		pendingUserService.acceptedUser(id);
 		
 		List<PendingUserDTO> list = pendingUserService.list();
-		model.addAttribute("list", list);	
+		model.addAttribute("pendingList", list);
 		model.addAttribute("success", "User Approved Successfully!");
 		return "userListView";
 	}
@@ -193,7 +193,7 @@ public class UserCtl {
 		pendingUserService.rejectUser(id);
 		
 		List<PendingUserDTO> list =	pendingUserService.list();
-		model.addAttribute("list", list);
+		model.addAttribute("pendingList", list);
 		model.addAttribute("success", "User Rejected successfully");
 		return "userListView";
 	}

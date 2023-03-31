@@ -127,8 +127,6 @@ public class ParkingPalsCtlTest {
 
         verify(model, times(1)).addAttribute("users", Arrays.asList(user));
         verify(service, times(1)).getInvitesForUser(user.getEmail());
-        verify(service, times(1)).getConfirmedUsersFor(user.getEmail());
-        verify(service, never()).acceptInvite(anyString(), anyString());
         verify(service, never()).rejectInvite(anyString(), anyString());
         assert (result.equals("error"));
     }

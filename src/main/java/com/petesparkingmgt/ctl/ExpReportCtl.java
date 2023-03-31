@@ -66,6 +66,6 @@ public class ExpReportCtl {
         expReport.setReportDate(date);
         dao.save(expReport);
 
-        return "mainPage";
+        return "redirect:/main";
     }
 }

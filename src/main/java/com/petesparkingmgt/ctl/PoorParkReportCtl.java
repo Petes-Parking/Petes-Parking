@@ -62,6 +62,6 @@ public class PoorParkReportCtl {
         poorParkReport.setReportDate(date);
         dao.save(poorParkReport);
 
-        return "mainPage";
+        return "redirect:/main";
     }
 }
