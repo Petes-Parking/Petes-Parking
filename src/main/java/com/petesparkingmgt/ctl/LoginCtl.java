@@ -15,6 +15,10 @@ import com.petesparkingmgt.service.UserService;
 import com.petesparkingmgt.dto.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Controller
@@ -49,6 +53,7 @@ public class LoginCtl {
 		UserDTO user = service.login(form.getEmail(), form.getPassword());
 
 
+
 		if (user == null) {
 			if (pendingUserService.getPendingUser(form.getEmail()) != null) {
 				model.addAttribute("error", "Admin must approve your account!");
@@ -67,11 +72,29 @@ public class LoginCtl {
 				return "adminview";
 
 			} else  {
+				if (user.getProfilePicture() == null || user.getProfilePicture().length == 0) {
+					user.setProfilePicture(getDefaultProfilePicture());
+					service.update(user);
+				}
+
+
 				session.setAttribute("user", user);
 				return "redirect:/main";
 			}
 		}
 		return "home";
+	}
+
+
+	public byte[] getDefaultProfilePicture() {
+		String defaultProfilePicturePath = "src/main/webapp/resources/image/profile-pic.png";
+		Path path = Paths.get(defaultProfilePicturePath);
+		try {
+			return Files.readAllBytes(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 }

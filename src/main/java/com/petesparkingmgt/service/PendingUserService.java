@@ -7,6 +7,10 @@ import com.petesparkingmgt.dto.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Service
@@ -39,6 +43,11 @@ public class PendingUserService {
     public void rejectUser(long pendingUserId) {
         dao.deleteById(pendingUserId);
     }
+    
+    public void cancelUser(long pendingUserId) {
+        dao.deleteById(pendingUserId);
+    }
+
 
     public UserDTO pendingUserToUserDTO(long pendingUserId){
         PendingUserDTO pend = getPendingUser(pendingUserId);
@@ -55,8 +64,20 @@ public class PendingUserService {
             add.setFirstName(pend.getFirstName());
             add.setLastName(pend.getLastName());
             add.setId(add.getId());
+            add.setProfilePicture(getDefaultProfilePicture());
         }
         return add;
+    }
+
+    public byte[] getDefaultProfilePicture() {
+        String defaultProfilePicturePath = "src/main/webapp/resources/image/profile-pic.png";
+        Path path = Paths.get(defaultProfilePicturePath);
+        try {
+            return Files.readAllBytes(path);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public PendingUserDTO getPendingUser(long id) {

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 @Controller
@@ -49,6 +50,10 @@ public class HistoryCtl {
         }
         model.addAttribute("favorites", formattedFavList);
         model.addAttribute("username", user.getFirstName() + " " + user.getLastName());
+
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
 
         return "historyPage";
     }

@@ -5,6 +5,17 @@
     <title>Profile Page</title>
     <script>
 
+        $ = function(id) {
+            return document.getElementById(id);
+        }
+
+        var show = function(id) {
+            $(id).style.display ='block';
+        }
+        var hide = function(id) {
+            $(id).style.display ='none';
+        }
+
         function showPopup1() {
             confirm("Are you sure you want to delete your account?");
         }
@@ -42,7 +53,7 @@
     <div class="buttons" width="465" height="920">
         <div class="profile-area" width="150" height="175">
             <div class="profile-bar"></div>
-            <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/profile-pic.png" width="75" height="75" alt="" style="border-radius: 425px; margin-top: 15px; margin-left: 15px;"/>
+            <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 91px; height: auto;">
             <a href="${pageContext.request.contextPath}/profile">
                 <button class="profile-button">${user.firstName} ${user.lastName}</button>
             </a>
@@ -114,19 +125,29 @@
             </ul>
         </div>
     </c:if>
-    <div class="profile_pic">
-        <input type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)">
-        <img class = "picture" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nowTransparent.png" id="clickable-image" width="210" height="210" alt=""/>
-        <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="trash-image" onclick="deleteImage()"/>
-        <p1>${user.firstName} ${user.lastName}</p1>
-        <a href="${pageContext.request.contextPath}/logout">
-            <button1 class="logout-button" type="button"> Log Out</button1>
-        </a>
+    <form method="post" action="${pageContext.request.contextPath}/addProfilePic" enctype="multipart/form-data" style="display: inline;">
+        <div class="profile_pic">
+            <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 210px; height: auto;">
+            <img class="trash" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/trash.png" width="30px" height="30px" alt=""  id="trash-image" onclick="deleteImage()"/>
+            <p1>${user.firstName} ${user.lastName}</p1>
+            <a href="${pageContext.request.contextPath}/logout">
+                <button1 class="logout-button" type="button"> Log Out</button1>
+            </a><br>
+            <button1 class = "edit2" id="edit-button" onclick="show('edit-popup')">Edit Profile Pic</button1>
+        </div>
 
+        <div class="edit-popup" id="edit-popup">
+            <label for="imageData">Image:</label>
+            <input class="image" type="file" id="imageData" name="imageData" accept="image/*"><br>
+            <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
 
-    </div>
+            <button type="submit" class="save-button", id="save-button" onclick="hide('edit-popup')">Save Profile Pic</button>
+            <button1 type="button" class="close-button", id="close-button" onclick="hide('edit-popup')">Close</button1>
+
+        </div>
+
+    </form>
     <div class="user_info">
-        <button1 class = "edit" type="button" onclick="changeImage()">Edit</button1>
         <form action="/action_page.php">
             <div class="userdiv">
                 <p2>Username: ${user.firstName} ${user.lastName}</p2><br>

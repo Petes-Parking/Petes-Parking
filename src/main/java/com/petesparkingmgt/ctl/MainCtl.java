@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 @Controller
 public class MainCtl {
@@ -40,6 +41,10 @@ public class MainCtl {
             formattedFavList.add(favorite);
         }
         model.addAttribute("favorites", formattedFavList);
+
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "mainPage";
     }
     @PostMapping("/addFavorite")
