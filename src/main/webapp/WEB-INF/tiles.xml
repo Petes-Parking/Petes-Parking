@@ -105,6 +105,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/parkingpals.jsp" />
     </definition>
 
+    <!-- View Friend Page -->
+    <definition name="friendpage" extends="base.definition">
+        <put-attribute name="title" value="View Friend Profile" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/friendpage.jsp" />
+    </definition>
+
     <!-- Reset Password Page  -->
     <definition name="resetpassword" extends="base.definition">
         <put-attribute name="title" value="Reset Password" />
@@ -118,7 +124,7 @@
     </definition>
 
 
-    <!-- User List Vpage  -->
+    <!-- User List Page  -->
     <definition name="userListView" extends="base.definition">
         <put-attribute name="title" value="Students with approve or pending resgistration status" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/userListView.jsp" />

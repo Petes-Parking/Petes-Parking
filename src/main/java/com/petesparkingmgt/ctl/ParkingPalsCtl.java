@@ -4,6 +4,7 @@ import com.petesparkingmgt.dao.FriendDAO;
 import com.petesparkingmgt.dto.FriendDTO;
 import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
+import com.petesparkingmgt.form.ViewFriendForm;
 import com.petesparkingmgt.objects.users.User;
 import com.petesparkingmgt.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,6 +50,9 @@ public class ParkingPalsCtl {
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
 
+        List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
+        model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
+
         return "parkingpals";
 
     }
@@ -68,7 +72,16 @@ public class ParkingPalsCtl {
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
 
+        List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
+        model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
+
         UserDTO toInvite = userDAO.findByEmail(form.getEmail());
+
+        // Check if a friend request has already been sent
+        FriendDTO existingRequest = dao.getFriendDTOByRecipientEmailAndStatusEquals(toInvite.getEmail(), 0);
+        if (existingRequest != null) {
+            return "parkingpals";
+        }
 
         FriendDTO dto = new FriendDTO();
         dto.setSenderEmail(user.getEmail());
@@ -98,6 +111,9 @@ public class ParkingPalsCtl {
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
 
+        List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
+        model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
+
         String action = form.getAction();
         String sender = form.getEmail();
 
@@ -112,5 +128,17 @@ public class ParkingPalsCtl {
 
         return "parkingpals";
     }
+
+//    @GetMapping("/viewFriend")
+//    public String friendPage(@ModelAttribute("viewFriendForm") ViewFriendForm form, Model model, HttpSession session) {
+//
+//        UserDTO user = (UserDTO) session.getAttribute("user");
+//        if (user == null) return "error";
+//
+//        UserDTO myFriend = userDAO.findByEmail(form.getEmail());
+//        model.addAttribute("myFriend", myFriend);
+//
+//        return "friendpage";
+//    }
 
 }
