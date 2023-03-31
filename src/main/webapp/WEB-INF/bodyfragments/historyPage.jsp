@@ -50,32 +50,35 @@
       let favoriteList = document.getElementById("favoritesList").getAttribute("data-favorites");
       favoriteList = favoriteList.substring(1, favoriteList.length-1);
       let favList = favoriteList.split(", ");
-      for (let i = 0; i < favList.length; i++) {
-        let button = document.createElement("button");
-        let buttonName = document.createTextNode(favList.at(i));
-        button.appendChild(buttonName);
-        button.className = "favoritesButton customButton";
-        let a = document.createElement("a");
-        if (favList.at(i) === "Corec Parking Lot") {
-          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=1");
+      if (favList.at(0) === "") {
+      } else {
+        for (let i = 0; i < favList.length; i++) {
+          let button = document.createElement("button");
+          let buttonName = document.createTextNode(favList.at(i));
+          button.appendChild(buttonName);
+          button.className = "favoritesButton customButton";
+          let a = document.createElement("a");
+          if (favList.at(i) === "Corec Parking Lot") {
+            a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=1");
+          }
+          if (favList.at(i) === "McCutcheon Drive Parking Garage") {
+            a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=2");
+          }
+          if (favList.at(i) === "University St. Parking Garage") {
+            a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=3");
+          }
+          if (favList.at(i) === "Ross-Ade Stadium Parking Lot") {
+            a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=4");
+          }
+          if (favList.at(i) === "Northwestern St. Parking Garage") {
+            a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=5");
+          }
+          if (favList.at(i) === "Grant St. Parking Garage") {
+            a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=6");
+          }
+          a.appendChild(button);
+          document.getElementById("favoritesList").appendChild(a);
         }
-        if (favList.at(i) === "McCutcheon Drive Parking Garage") {
-          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=2");
-        }
-        if (favList.at(i) === "University St. Parking Garage") {
-          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=3");
-        }
-        if (favList.at(i) === "Ross-Ade Stadium Parking Lot") {
-          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=4");
-        }
-        if (favList.at(i) === "Northwestern St. Parking Garage") {
-          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=5");
-        }
-        if (favList.at(i) === "Grant St. Parking Garage") {
-          a.setAttribute("href", "${pageContext.request.contextPath}/booking?id=6");
-        }
-        a.appendChild(button);
-        document.getElementById("favoritesList").appendChild(a);
       }
     }
   </script>
