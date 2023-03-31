@@ -36,7 +36,7 @@ public class FriendService {
 
     public void acceptInvite(String recipientEmail, String senderEmail) {
 
-        FriendDTO temp = dao.getFriendDTOByRecipientEmailAndStatusEquals(recipientEmail, 0);
+        FriendDTO temp = dao.getFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(senderEmail, recipientEmail, 0);
 
         FriendDTO accepted = new FriendDTO();
         accepted.setSenderEmail(senderEmail);

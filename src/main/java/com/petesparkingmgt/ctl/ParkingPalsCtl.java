@@ -47,6 +47,10 @@ public class ParkingPalsCtl {
         List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
         model.addAttribute("requests", requests); // can be empty
 
+        System.out.println("In requests---");
+        requests.forEach(System.out::println);
+        System.out.println("-");
+
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
 
@@ -77,7 +81,7 @@ public class ParkingPalsCtl {
         UserDTO toInvite = userDAO.findByEmail(form.getEmail());
 
         // Check if a friend request has already been sent
-        FriendDTO existingRequest = dao.getFriendDTOByRecipientEmailAndStatusEquals(toInvite.getEmail(), 0);
+        FriendDTO existingRequest = dao.getFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(user.getEmail(), toInvite.getEmail(), 0);
         if (existingRequest != null) {
             System.out.println("test");
             return "parkingpals";
@@ -93,8 +97,6 @@ public class ParkingPalsCtl {
         dto.setRecipientLastName(toInvite.getLastName());
         dao.save(dto);
 
-        FriendDTO retrieve = dao.getFriendDTOByRecipientEmailAndStatusEquals(toInvite.getEmail(), 0);
-        if (retrieve == null ) { System.out.println("retrieve is null!");} else System.out.println("not null!!");
 
 
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
