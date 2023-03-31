@@ -91,60 +91,9 @@ public class UnitControllerLayerTest {
 		
 	}
 	
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void should_Add_A_User() throws Exception {
-	    UserDTO user = new UserDTO();
-	    user.setFirstName("newUser");
-	    user.setLastName("Testing");
-	    user.setDob("12/03/1999");
-	    user.setGender("Male");
-	    user.setEmail("newTest@gmail.com");
-	    user.setPassword("A123456789");
-	    user.setPhoneNumber("2267889091");
-	    user.setUserRole("Admin");
 
-	    String JsonDataRequest = mapper.writeValueAsString(user);
-
-	    MvcResult result = mockMvc.perform(post("/user/addUser").content(JsonDataRequest)
-	            .contentType(MediaType.APPLICATION_JSON_VALUE))
-	            .andExpect(status().isOk())
-	            .andReturn();
-
-	    // Now we change the result in string format
-	    String resultContext = result.getResponse().getContentAsString();
-
-	    // Read the value and convert it to a response
-	    Response response = mapper.readValue(resultContext, Response.class);
-	    Assertions.assertThat(response.equals(Boolean.TRUE));
-
-	  
-
-	}
 	
-	@SuppressWarnings("unlikely-arg-type")
-	@Test
-	void should_Aprrove_A_User() throws Exception {
-	    UserDTO user = new UserDTO();
 
-	    String JsonDataRequest = mapper.writeValueAsString(user);
-
-	    MvcResult result = mockMvc.perform(post("/user/userApprove")
-	            .contentType(MediaType.APPLICATION_JSON_VALUE))
-	            .andExpect(status().isOk())
-	            .andReturn();
-
-	    // Now we change the result in string format
-	    String resultContext = result.getResponse().getContentAsString();
-
-	    // Read the value and convert it to a response
-	    Response response = mapper.readValue(resultContext, Response.class);
-	    
-	    Assertions.assertThat(response.equals("Approved"));
-
-	  
-
-	}
 
 	/**
 	 * Create carpool unit test

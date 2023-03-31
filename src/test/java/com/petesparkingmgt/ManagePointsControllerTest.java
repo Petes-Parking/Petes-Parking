@@ -69,6 +69,10 @@ public class ManagePointsControllerTest {
         assert user.getPoints() == 15;
     }
 
+
+
+
+
     @Test
     void updateByOne_subtractPoints() {
         ManagePointForm form = new ManagePointForm();

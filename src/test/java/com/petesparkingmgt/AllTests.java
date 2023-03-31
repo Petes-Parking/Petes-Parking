@@ -12,10 +12,14 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @RunWith(JUnitPlatform.class)
 @SuiteDisplayName("All Tests")
 @SelectClasses({
+
         UserRepositoryLayerTests.class,
         UnitControllerLayerTest.class,
         LeaderboardControllerUnitTest.class,
-        ManagePointsControllerTest.class
+        ManagePointsControllerTest.class,
+        UserControllerTest.class,
+        AdminControllerTest.class,
+        HistoryCtlTest.class,
 
 })
 public class AllTests {

@@ -24,6 +24,9 @@ public interface UserDAO extends JpaRepository<UserDTO, Long> {
 	public List<UserDTO> getAllByUserRole(String userRole);
 	public boolean existsById(long i);
 
+	public boolean existsByEmail(String email);
+
+
 
 
 
