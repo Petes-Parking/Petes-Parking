@@ -7,9 +7,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeCtl {
 	
 	@GetMapping("/")
+	public String splash() {
+		return "splash";
+	}
+
+	@GetMapping("/home")
 	public String homePage() {
 		return "home";
 	}
-	
 
 }
