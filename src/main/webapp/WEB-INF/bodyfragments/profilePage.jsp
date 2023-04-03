@@ -137,13 +137,13 @@
         </div>
 
         <div class="edit-popup" id="edit-popup">
-            <label for="imageData">Image:</label>
-            <input class="image" type="file" id="imageData" name="imageData" accept="image/*"><br>
-            <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
-
-            <button type="submit" class="save-button", id="save-button" onclick="hide('edit-popup')">Save Profile Pic</button>
-            <button1 type="button" class="close-button", id="close-button" onclick="hide('edit-popup')">Close</button1>
-
+            <label for="imageData">Select file for profile picture:</label>
+            <input class="image" type="file" id="imageData" name="imageData" accept="image/*">
+            <br>
+            <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"></button>
+            <br>
+            <button type="submit" class="save-button" id="save-button" onclick="hide('edit-popup')">Save Profile Pic</button>
+            <button1 type="button" class="close-button" id="close-button" onclick="hide('edit-popup')">Close</button1>
         </div>
 
     </form>

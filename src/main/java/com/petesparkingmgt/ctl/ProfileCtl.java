@@ -96,7 +96,9 @@ public class ProfileCtl {
     public String addProfilePic(@RequestParam("imageData") MultipartFile imageData, HttpSession session) throws IOException {
         UserDTO user = (UserDTO) session.getAttribute("user");
 
-        user.setProfilePicture(imageData.getBytes());
+        if (!imageData.isEmpty()) {
+            user.setProfilePicture(imageData.getBytes());
+        }
         userdao.save(user);
 
         return "redirect:/profile";
