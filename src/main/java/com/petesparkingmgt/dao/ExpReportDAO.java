@@ -1,7 +1,6 @@
 package com.petesparkingmgt.dao;
 
 import com.petesparkingmgt.dto.ExpReportDTO;
-import com.petesparkingmgt.dto.UserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
