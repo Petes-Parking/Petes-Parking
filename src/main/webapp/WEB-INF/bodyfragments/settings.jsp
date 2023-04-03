@@ -6,6 +6,8 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html xmlns:th="http://www.thymeleaf.org">
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,6 +41,7 @@
     h1 {
       text-align: center;
       margin-bottom: 20px;
+      font-weight: bold;
     }
 
     h3 {
@@ -113,6 +116,102 @@
     .popup button:hover {
       background-color: #555;
     }
+
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+      vertical-align: middle;
+    }
+
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+    }
+
+    input:checked + .slider {
+      background-color: #333;
+    }
+
+    input:focus + .slider {
+      box-shadow: 0 0 1px #333;
+    }
+
+    input:checked + .slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
+
+    /* Rounded sliders */
+    .slider.round {
+      border-radius: 34px;
+    }
+
+    .slider.round:before {
+      border-radius: 50%;
+    }
+
+    p2 {
+      text-align: center;
+    }
+
+    p3 {
+      font-size: larger;
+    }
+
+    .prefs {
+      vertical-align: center;
+      padding-left: 25px;
+      padding-top: 20px;
+    }
+
+    .pref-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .pref-item p {
+      margin: 0;
+      margin-left: 10px;
+      text-align: left;
+    }
+
+    .time {
+      text-align: left;
+      padding-left: 83px;
+    }
+
+    .time label {
+      font-size: 16px;
+    }
   </style>
 
 </head>
@@ -123,7 +222,7 @@
   </a>
   <h1>Settings</h1>
   <s:bind path="mode">
-  <h3>Toggle between light mode and dark mode:</h3>
+  <h3>Color Preferences</h3>
   <input type="radio" id="lightmode" name="mode" value="light">
   <label for="lightmode">Light mode</label><br>
   <input type="radio" id="darkmode" name="mode" value="dark">
@@ -135,6 +234,45 @@
   <input type="text" id="color-input" name="color" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})?$"><br><br>
   </s:bind>
   <button id="save-button" type="submit">Save</button><br>
+
+  <h3 style="padding-top: 50px;">Email Notification Preferences</h3>
+  <p2>Select the notifications you'd like to receive from Pete's Parking.</p2><br>
+
+  <form method="post" action="${pageContext.request.contextPath}/settingsSaveEmail">
+    <div class="prefs">
+      <div class="pref-item">
+        <label class="switch">
+          <input type="checkbox" name="palPref" value="true" ${parkingPalPref ? 'checked' : ''}>
+          <span class="slider round"></span>
+        </label>
+        <p><strong>Parking Pals</strong><br>Get notified by email when someone sends you a parking pal request, and when a request you sent is accepted or denied.</p>
+      </div>
+
+      <div class="pref-item">
+        <label class="switch">
+          <input type="checkbox" name="repPref" value="true" ${reportPref ? 'checked' : ''}>
+          <span class="slider round"></span>
+        </label>
+        <p><strong>Reports</strong><br>Get notified by email when someone reports a parking violation associated with your account.</p>
+      </div>
+
+      <div class="pref-item">
+        <label class="switch">
+          <input type="checkbox" name="expPref" onchange="toggleInputField()" value="true" ${expirationPref ? 'checked' : ''}>
+          <span class="slider round"></span>
+        </label>
+        <p><strong>Expiring Timer</strong><br>Get notified by email when your parking timer is about to expire.</p>
+        <br>
+      </div>
+      <div class="time">
+        <label for="timerInput">Enter number of minutes left on timer when email notification should be sent:</label>
+        <input type="number" id="timerInput" name="timerInput" style="text-align:left; padding-right: 5px" min="1" value="${theTimer}" ${expirationPref ? '' : 'disabled'}>
+      </div>
+      <button id="save-email" type="submit">Save Changes</button><br>
+    </div>
+  </form>
+
+
 </div>
 <div id="popup" class="popup">
   <br><br><p>Settings saved!</p><br>
@@ -198,4 +336,14 @@
     // Hide the popup
     popup.style.display = "none";
   });
+
+  function toggleInputField() {
+    var timerInput = document.getElementById("timerInput");
+    if (timerInput.disabled) {
+      timerInput.disabled = false;
+    } else {
+      timerInput.disabled = true;
+    }
+  }
+
 </script>
