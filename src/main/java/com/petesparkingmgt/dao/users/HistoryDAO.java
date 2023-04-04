@@ -1,6 +1,6 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.users;
 
-import com.petesparkingmgt.dto.HistoryDTO;
+import com.petesparkingmgt.dto.user.HistoryDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

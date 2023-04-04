@@ -1,16 +1,11 @@
 package com.petesparkingmgt.ctl;
 
-import com.petesparkingmgt.dao.PoorParkReportDAO;
-import com.petesparkingmgt.dto.ExpReportDTO;
-import com.petesparkingmgt.dto.PoorParkReportDTO;
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.form.ExpReportForm;
-import com.petesparkingmgt.form.PoorParkingReportForm;
+import com.petesparkingmgt.dao.reports.PoorParkReportDAO;
+import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;

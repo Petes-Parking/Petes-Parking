@@ -1,6 +1,7 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.user;
 
 import com.fasterxml.jackson.databind.ser.Serializers;
+import com.petesparkingmgt.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 

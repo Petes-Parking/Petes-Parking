@@ -1,4 +1,4 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.carpools;
 
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import org.springframework.data.jpa.repository.JpaRepository;

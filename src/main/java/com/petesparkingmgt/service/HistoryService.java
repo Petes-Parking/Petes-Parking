@@ -1,13 +1,12 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dao.HistoryDAO;
-import com.petesparkingmgt.dto.HistoryDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.HistoryDAO;
+import com.petesparkingmgt.dto.user.HistoryDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.text.DateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;

@@ -4,11 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.petesparkingmgt.dao.ParkingDAO;
+import com.petesparkingmgt.dao.parking.ParkingDAO;
 import com.petesparkingmgt.exception.RecordNotFoundException;
-import com.petesparkingmgt.dto.ParkingDTO;
-import com.petesparkingmgt.dto.SlotDTO;
-import com.petesparkingmgt.dao.SlotDAO;
+import com.petesparkingmgt.dto.parking.ParkingDTO;
+import com.petesparkingmgt.dto.parking.SlotDTO;
+import com.petesparkingmgt.dao.parking.SlotDAO;
 
 
 @Service

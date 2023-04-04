@@ -1,6 +1,6 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.users;
 
-import com.petesparkingmgt.dto.VehicleDTO;
+import com.petesparkingmgt.dto.user.VehicleDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface VehicleDAO extends JpaRepository<VehicleDTO, Long> {

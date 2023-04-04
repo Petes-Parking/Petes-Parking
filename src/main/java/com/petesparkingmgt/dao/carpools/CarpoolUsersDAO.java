@@ -1,7 +1,5 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.carpools;
 
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;

@@ -2,15 +2,11 @@ package com.petesparkingmgt;
 
 import static org.mockito.Mockito.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.petesparkingmgt.ctl.CarpoolUsersCtl;
-import com.petesparkingmgt.dao.CarpoolDAO;
-import com.petesparkingmgt.dao.CarpoolUsersDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.carpools.CarpoolDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolUsersDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.form.CarpoolAddMemberForm;

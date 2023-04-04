@@ -1,4 +1,4 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.user;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Table;
 
+import com.petesparkingmgt.dto.BaseDTO;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;

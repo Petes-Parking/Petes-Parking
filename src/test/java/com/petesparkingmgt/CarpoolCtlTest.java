@@ -1,6 +1,6 @@
 package com.petesparkingmgt;
 
-import com.petesparkingmgt.dao.CarpoolDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolDAO;
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.form.CarpoolForm;
 import com.petesparkingmgt.service.CarpoolService;
@@ -26,8 +26,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.service.PendingUserService;
 import com.petesparkingmgt.service.UserService;
 

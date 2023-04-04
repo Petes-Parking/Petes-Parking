@@ -1,17 +1,14 @@
 package com.petesparkingmgt.ctl;
 
-import com.petesparkingmgt.dao.HistoryDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.FavoriteDTO;
-import com.petesparkingmgt.dao.FavoriteDAO;
-import com.petesparkingmgt.dto.HistoryDTO;
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.form.CarpoolForm;
+import com.petesparkingmgt.dao.users.HistoryDAO;
+import com.petesparkingmgt.dto.user.FavoriteDTO;
+import com.petesparkingmgt.dao.users.FavoriteDAO;
+import com.petesparkingmgt.dto.user.HistoryDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;

@@ -2,7 +2,7 @@ package com.petesparkingmgt.ctl;
 
 import javax.servlet.http.HttpSession;
 
-import com.petesparkingmgt.dao.UserDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.service.PendingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.petesparkingmgt.service.UserService;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 
 import java.io.IOException;

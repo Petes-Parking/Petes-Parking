@@ -1,11 +1,9 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.users;
 
-import com.petesparkingmgt.dto.FriendDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.FriendDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
-import java.util.ArrayList;
 
 public interface FriendDAO extends JpaRepository<FriendDTO, Long> {
 

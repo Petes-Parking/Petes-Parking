@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: maxfuligni
-  Date: 4/1/23
-  Time: 5:55 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,6 +21,25 @@
             font-size: 48px;
             margin-bottom: 20px;
         }
+        svg {
+            width: 100px;
+            height: 100px;
+        }
+        #circle1, #circle2, #circle3 {
+            transform-origin: center;
+            transform-box: fill-box;
+            animation: circleAnimation 2s infinite;
+        }
+        #circle1 {
+            animation-delay: 0s;
+        }
+        #circle2 {
+            animation-delay: 0.3s;
+        }
+        #circle3 {
+            animation-delay: 0.6s;
+        }
+
         .loader {
             border: 5px solid #f3f3f3;
             border-top: 5px solid #3498db;
@@ -41,13 +52,38 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        @keyframes circleAnimation {
+            0% {
+                transform: scale(0.5);
+                opacity: 0.3;
+            }
+            50% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.5);
+                opacity: 0.3;
+            }
+        }
     </style>
 </head>
 <body>
 <div class="splash-container">
-    <h1>Welcome to Pete's Parking</h1>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png" width="200" height="200" alt=""/>
-    <div class="loader" style="margin-left: 290px"></div>
+    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/4b67a199ff3d8a5cecb315b72bdcf245aedcf515/src/main/webapp/resources/image/Petes-Parking-logo.svg" width="400" height="400" alt=""/>
+
+    <h1>Welcome to Pete's Parking!</h1>
+    <svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <div class="loader" style="margin-left: 300px"></div>
+
+<%--        <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red">--%>
+
+
+<%--        </circle>--%>
+    </svg>
+    <object type="image/svg+xml" data="../../resources/image/Petes-Parking-logo.svg" width="400" height="400"></object>
+
 </div>
 
 <script>
@@ -57,4 +93,3 @@
 </script>
 </body>
 </html>
-

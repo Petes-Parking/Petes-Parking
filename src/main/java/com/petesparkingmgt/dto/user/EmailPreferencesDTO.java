@@ -1,5 +1,6 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.user;
 
+import com.petesparkingmgt.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 

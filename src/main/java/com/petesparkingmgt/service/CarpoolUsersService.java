@@ -1,7 +1,7 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dao.CarpoolDAO;
-import com.petesparkingmgt.dao.CarpoolUsersDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolUsersDAO;
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;

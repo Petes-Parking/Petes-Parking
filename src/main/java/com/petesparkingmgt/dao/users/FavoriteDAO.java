@@ -1,6 +1,6 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.users;
 
-import com.petesparkingmgt.dto.FavoriteDTO;
+import com.petesparkingmgt.dto.user.FavoriteDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.transaction.Transactional;

@@ -1,16 +1,14 @@
 package com.petesparkingmgt.service;
 
 
-import java.util.Date;
 import java.util.List;
 
-import com.petesparkingmgt.dao.CarpoolDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.exception.RecordNotFoundException;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 
 
 @Service

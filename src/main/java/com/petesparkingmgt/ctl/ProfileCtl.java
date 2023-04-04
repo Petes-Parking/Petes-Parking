@@ -1,9 +1,9 @@
 package com.petesparkingmgt.ctl;
 
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dao.VehicleDAO;
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.dto.VehicleDTO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dao.users.VehicleDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.dto.user.VehicleDTO;
 import com.petesparkingmgt.form.VehicleForm;
 import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -3,8 +3,7 @@ package com.petesparkingmgt.form;
 import javax.validation.constraints.NotEmpty;
 
 import com.petesparkingmgt.dto.BaseDTO;
-import com.petesparkingmgt.dto.ParkingDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.utility.DataUtility;
 
 

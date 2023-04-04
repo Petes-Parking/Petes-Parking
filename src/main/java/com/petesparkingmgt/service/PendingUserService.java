@@ -1,9 +1,8 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dao.PendingUserDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.PendingUserDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.PendingUserDAO;
+import com.petesparkingmgt.dto.user.PendingUserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

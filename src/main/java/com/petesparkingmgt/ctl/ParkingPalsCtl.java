@@ -1,11 +1,9 @@
 package com.petesparkingmgt.ctl;
 
-import com.petesparkingmgt.dao.FriendDAO;
-import com.petesparkingmgt.dto.FriendDTO;
+import com.petesparkingmgt.dao.users.FriendDAO;
+import com.petesparkingmgt.dto.user.FriendDTO;
 import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
-import com.petesparkingmgt.form.ViewFriendForm;
-import com.petesparkingmgt.objects.users.User;
 import com.petesparkingmgt.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;

@@ -2,19 +2,12 @@ package com.petesparkingmgt.service;
 
 import java.util.List;
 
-import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.petesparkingmgt.dao.BookingDAO;
-import com.petesparkingmgt.dao.SlotDAO;
-import com.petesparkingmgt.dto.BookingDTO;
-import com.petesparkingmgt.dto.ParkingDTO;
-import com.petesparkingmgt.dto.SlotDTO;
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.exception.RecordNotFoundException;
-import com.petesparkingmgt.form.BookingForm;
-import com.petesparkingmgt.service.BookingService;
-import com.petesparkingmgt.service.ParkingService;
+import com.petesparkingmgt.dao.parking.BookingDAO;
+import com.petesparkingmgt.dao.parking.SlotDAO;
+import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.parking.SlotDTO;
 
 @Service
 public class BookingService {

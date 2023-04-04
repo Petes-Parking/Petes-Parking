@@ -2,7 +2,7 @@ package com.petesparkingmgt.ctl;
 
 
 
-import com.petesparkingmgt.dto.PendingUserDTO;
+import com.petesparkingmgt.dto.user.PendingUserDTO;
 import com.petesparkingmgt.service.PendingUserService;
 import com.petesparkingmgt.utility.DataUtility;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +11,13 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.UserService;
 
-import java.time.LocalDate;
 import java.util.List;
 
 

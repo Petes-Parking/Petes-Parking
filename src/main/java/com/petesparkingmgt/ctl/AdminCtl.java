@@ -1,10 +1,14 @@
 package com.petesparkingmgt.ctl;
 
 
-import com.petesparkingmgt.dao.ExpReportDAO;
-import com.petesparkingmgt.dao.PoorParkReportDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.*;
+import com.petesparkingmgt.dao.reports.ExpReportDAO;
+import com.petesparkingmgt.dao.reports.PoorParkReportDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.reports.ExpReportDTO;
+import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
+import com.petesparkingmgt.dto.user.PendingUserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.ManagePointForm;
 import com.petesparkingmgt.form.UserForm;
@@ -20,7 +24,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Base64;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 

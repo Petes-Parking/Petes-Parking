@@ -1,9 +1,10 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.parking;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.petesparkingmgt.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -3,10 +3,9 @@ package com.petesparkingmgt;
 import static org.mockito.Mockito.*;
 
 import com.petesparkingmgt.ctl.LoginCtl;
-import com.petesparkingmgt.ctl.UserCtl;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.PendingUserDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.PendingUserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.PendingUserService;
 import com.petesparkingmgt.service.UserService;

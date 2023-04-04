@@ -1,6 +1,6 @@
 package com.petesparkingmgt.utility;
 
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import javax.servlet.http.HttpServlet;
 
 public class RegisterUserVerifier extends HttpServlet {
 	

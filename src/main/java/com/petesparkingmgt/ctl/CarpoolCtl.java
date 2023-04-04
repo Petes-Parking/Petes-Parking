@@ -1,16 +1,14 @@
 package com.petesparkingmgt.ctl;
 
-import com.petesparkingmgt.dao.CarpoolDAO;
-import com.petesparkingmgt.dao.CarpoolUsersDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.carpools.CarpoolDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolUsersDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.form.CarpoolForm;
-import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.CarpoolService;
 import com.petesparkingmgt.service.CarpoolUsersService;
-import com.petesparkingmgt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,7 +1,7 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dao.FriendDAO;
-import com.petesparkingmgt.dto.FriendDTO;
+import com.petesparkingmgt.dao.users.FriendDAO;
+import com.petesparkingmgt.dto.user.FriendDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

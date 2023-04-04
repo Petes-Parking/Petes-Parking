@@ -1,8 +1,7 @@
 package com.petesparkingmgt.form;
 
 import com.petesparkingmgt.dto.BaseDTO;
-import com.petesparkingmgt.dto.ExpReportDTO;
-import com.petesparkingmgt.dto.carpools.CarpoolDTO;
+import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import lombok.Getter;
 import lombok.Setter;
 

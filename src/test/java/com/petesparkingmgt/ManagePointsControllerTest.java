@@ -1,8 +1,8 @@
 package com.petesparkingmgt;
 
 import com.petesparkingmgt.ctl.AdminCtl;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.ManagePointForm;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

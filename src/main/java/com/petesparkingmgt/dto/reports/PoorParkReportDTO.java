@@ -1,4 +1,4 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.reports;
 
 import java.util.Date;
 
@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.Table;
+
+import com.petesparkingmgt.dto.BaseDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import lombok.Getter;

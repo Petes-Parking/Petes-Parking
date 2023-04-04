@@ -1,5 +1,6 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.user;
 
+import com.petesparkingmgt.dto.BaseDTO;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,7 +12,7 @@ import javax.persistence.Table;
 @Table(name="user_history")
 @Getter
 @Setter
-public class HistoryDTO extends BaseDTO{
+public class HistoryDTO extends BaseDTO {
 
     @Column(name = "userId", length = 755)
     private long userId;

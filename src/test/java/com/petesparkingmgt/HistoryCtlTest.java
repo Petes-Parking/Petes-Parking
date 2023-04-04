@@ -7,11 +7,11 @@ import java.util.Base64;
 import java.util.List;
 
 import com.petesparkingmgt.ctl.HistoryCtl;
-import com.petesparkingmgt.dao.FavoriteDAO;
-import com.petesparkingmgt.dao.HistoryDAO;
-import com.petesparkingmgt.dto.FavoriteDTO;
-import com.petesparkingmgt.dto.HistoryDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.FavoriteDAO;
+import com.petesparkingmgt.dao.users.HistoryDAO;
+import com.petesparkingmgt.dto.user.FavoriteDTO;
+import com.petesparkingmgt.dto.user.HistoryDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

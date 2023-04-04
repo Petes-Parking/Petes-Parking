@@ -1,15 +1,12 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.users;
 
 
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 
-import java.time.LocalDate;
 import java.util.List;
-import java.util.Optional;
-import java.util.function.IntPredicate;
 
 public interface UserDAO extends JpaRepository<UserDTO, Long> {
 	

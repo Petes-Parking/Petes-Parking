@@ -1,10 +1,10 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.parking;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import com.petesparkingmgt.dto.SlotDTO;
+import com.petesparkingmgt.dto.parking.SlotDTO;
 
 public interface SlotDAO extends JpaRepository<SlotDTO, Long>{
 

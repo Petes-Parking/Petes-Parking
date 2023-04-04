@@ -1,6 +1,6 @@
 package com.petesparkingmgt.utility;
 
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 
 import java.util.Properties;
 import java.util.Random;

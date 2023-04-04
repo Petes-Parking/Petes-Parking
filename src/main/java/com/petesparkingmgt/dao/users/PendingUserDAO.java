@@ -1,10 +1,7 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.users;
 
-import com.petesparkingmgt.dto.PendingUserDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.PendingUserDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface PendingUserDAO extends JpaRepository<PendingUserDTO, Long> {
 

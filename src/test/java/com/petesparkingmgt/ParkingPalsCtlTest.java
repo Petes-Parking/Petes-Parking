@@ -1,10 +1,10 @@
 package com.petesparkingmgt;
 
 import com.petesparkingmgt.ctl.ParkingPalsCtl;
-import com.petesparkingmgt.dao.FriendDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.FriendDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.users.FriendDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.FriendDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
 import com.petesparkingmgt.service.FriendService;

@@ -1,12 +1,9 @@
 package com.petesparkingmgt.form;
 
 import com.petesparkingmgt.dto.BaseDTO;
-import com.petesparkingmgt.dto.UserDTO;
-import com.petesparkingmgt.dto.VehicleDTO;
+import com.petesparkingmgt.dto.user.VehicleDTO;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.persistence.Column;
 
 @Getter
 @Setter

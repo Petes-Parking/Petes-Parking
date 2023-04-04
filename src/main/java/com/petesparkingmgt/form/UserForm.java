@@ -1,15 +1,12 @@
 package com.petesparkingmgt.form;
 
 
-import java.util.Date;
-
-
 import javax.validation.constraints.NotEmpty;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.petesparkingmgt.dto.BaseDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 
 import lombok.Getter;
 import lombok.Setter;

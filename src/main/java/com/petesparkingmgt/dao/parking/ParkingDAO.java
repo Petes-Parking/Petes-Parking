@@ -1,7 +1,7 @@
-package com.petesparkingmgt.dao;
+package com.petesparkingmgt.dao.parking;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.petesparkingmgt.dto.ParkingDTO;
+import com.petesparkingmgt.dto.parking.ParkingDTO;
 
 
 public interface ParkingDAO extends JpaRepository<ParkingDTO, Long>{

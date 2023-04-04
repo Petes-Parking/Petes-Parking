@@ -1,11 +1,11 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dao.BookingDAO;
-import com.petesparkingmgt.dao.CarpoolDAO;
-import com.petesparkingmgt.dao.CarpoolUsersDAO;
-import com.petesparkingmgt.dao.UserDAO;
-import com.petesparkingmgt.dto.BookingDTO;
-import com.petesparkingmgt.dto.UserDTO;
+import com.petesparkingmgt.dao.parking.BookingDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolDAO;
+import com.petesparkingmgt.dao.carpools.CarpoolUsersDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolDTO;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;

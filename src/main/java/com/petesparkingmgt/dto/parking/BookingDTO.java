@@ -1,10 +1,12 @@
-package com.petesparkingmgt.dto;
+package com.petesparkingmgt.dto.parking;
 
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+
+import com.petesparkingmgt.dto.BaseDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import lombok.Getter;

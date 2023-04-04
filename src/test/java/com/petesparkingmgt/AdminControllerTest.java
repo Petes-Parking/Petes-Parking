@@ -7,10 +7,10 @@ import java.util.Base64;
 import java.util.List;
 
 import com.petesparkingmgt.ctl.AdminCtl;
-import com.petesparkingmgt.dao.ExpReportDAO;
-import com.petesparkingmgt.dao.PoorParkReportDAO;
-import com.petesparkingmgt.dto.ExpReportDTO;
-import com.petesparkingmgt.dto.PoorParkReportDTO;
+import com.petesparkingmgt.dao.reports.ExpReportDAO;
+import com.petesparkingmgt.dao.reports.PoorParkReportDAO;
+import com.petesparkingmgt.dto.reports.ExpReportDTO;
+import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
