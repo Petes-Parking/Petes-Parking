@@ -1,9 +1,12 @@
 package com.petesparkingmgt.ctl;
 
+import com.petesparkingmgt.dao.EmailPreferencesDAO;
 import com.petesparkingmgt.dao.users.FriendDAO;
+import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;
 import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
+import com.petesparkingmgt.service.EmailService;
 import com.petesparkingmgt.service.FriendService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +19,8 @@ import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dto.user.UserDTO;
 
 import javax.servlet.http.HttpSession;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.lang.*;
 
@@ -30,6 +35,9 @@ public class ParkingPalsCtl {
 
     @Autowired
     public UserDAO userDAO;
+
+    @Autowired
+    public EmailPreferencesDAO emailDAO;
 
     @GetMapping("/parkingpals")
     public String parkingPals(Model model, HttpSession session) {
@@ -60,7 +68,7 @@ public class ParkingPalsCtl {
     }
 
     @PostMapping("/friendInvite")
-    public String invite(@ModelAttribute("addFriendForm") AddFriendForm form, Model model, HttpSession session) {
+    public String invite(@ModelAttribute("addFriendForm") AddFriendForm form, Model model, HttpSession session) throws NoSuchAlgorithmException, KeyManagementException {
 
         UserDTO user = (UserDTO) session.getAttribute("user");
         if (user == null) return "error";
@@ -94,6 +102,17 @@ public class ParkingPalsCtl {
         dto.setRecipientFirstName(toInvite.getFirstName());
         dto.setRecipientLastName(toInvite.getLastName());
         dao.save(dto);
+
+        EmailPreferencesDTO emailDTO = emailDAO.getByUserID(toInvite.getId());
+        int emailPref = emailDTO.getParkingPalPref();
+        System.out.print("Email preference: ");
+        System.out.println(emailPref);
+        if (emailPref == 1) {
+            EmailService emailService = new EmailService();
+            emailService.createParkingPalRequestEmail(dto);
+        } else {
+            System.out.println("No email sent since pref is off");
+        }
 
 
 
