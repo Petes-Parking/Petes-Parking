@@ -2,9 +2,12 @@ package com.petesparkingmgt.ctl;
 
 import com.petesparkingmgt.dao.referrals.ReferralDAO;
 import com.petesparkingmgt.dao.referrals.ReferralUserDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dto.referrals.ReferralDTO;
 import com.petesparkingmgt.dto.referrals.ReferralUserDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.objects.users.ReferralWrapper;
+import com.petesparkingmgt.service.ReferralService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +31,12 @@ public class ReferralsCtl {
     @Autowired
     public ReferralUserDAO userDAO;
 
+    @Autowired
+    public ReferralService referralService;
+
+    @Autowired
+    public UserDAO users;
+
     @GetMapping("/referrals")
     public String referralPage(Model model, HttpSession session){
         UserDTO user = (UserDTO) session.getAttribute("user");
@@ -35,9 +44,17 @@ public class ReferralsCtl {
             return "error";
         }
 
+        ReferralWrapper referralWrapper = referralService.getReferralThatUserUsedWhenRegistering(user.getId());
         List<ReferralDTO> userCodes = dao.getReferralDTOSByUserId(user.getId());
         model.addAttribute("referralCodes", userCodes);
         model.addAttribute("id", user.getId());
+
+        if (referralWrapper != null) {
+            UserDTO creator = users.findById(referralWrapper.getReferral().getUserId());
+            String creatorName = creator.getFirstName() + " " + creator.getLastName();
+            model.addAttribute("creator", creatorName);
+            model.addAttribute("usedCode", referralWrapper.getReferral().getCode());
+        }
 
 
 

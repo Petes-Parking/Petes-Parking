@@ -5,7 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Purdue Parking Referral</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
+
   <style>
+
     body {
       font-family: Arial, sans-serif;
       color: black;
@@ -85,6 +88,17 @@
   </div>
 </c:if>
 <h1>Pete's Parking Referrals</h1>
+<h2>Your Used Referral Code</h2>
+<c:choose>
+  <c:when test="${not empty creator}">
+    <p id="usedReferralCode">Student who referred you: ${creator} </p>
+    <p>Points gained: 20</p>
+  </c:when>
+  <c:otherwise>
+    <p id="usedReferralCode">You have not used any referral code.</p>
+  </c:otherwise>
+</c:choose>
+
 <h2>Your Referral Codes</h2>
 <table>
   <thead>
@@ -114,16 +128,16 @@
 <h2>Generate a Referral Code</h2>
 <p>If you don't have a referral code, click the button below to generate one:</p>
 <a href="${pageContext.request.contextPath}/generateReferralCode">
-<button class="generate-btn" onclick="generateCode()">Generate Code</button>
+<button class="generate-btn">Generate Code</button>
 </a>
 <p id="generatedCode"></p>
 
+<a href="${pageContext.request.contextPath}/main">
+  <button class="btn btn-secondary back-btn">Back</button>
+</a>
+
 <script>
-  function generateCode() {
-    // Replace with your server-side code to generate a referral code
-    var referralCode = "PU-PARK-12345";
-    document.getElementById("generatedCode").innerHTML = "Your new referral code: " + referralCode;
-  }
+
 
   function copyCodeToClipboard(element) {
     var code = element.getAttribute('data-code');

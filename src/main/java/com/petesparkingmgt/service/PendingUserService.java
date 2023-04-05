@@ -1,6 +1,8 @@
 package com.petesparkingmgt.service;
 
 import com.petesparkingmgt.dao.users.PendingUserDAO;
+import com.petesparkingmgt.dto.referrals.ReferralDTO;
+import com.petesparkingmgt.dto.referrals.ReferralUserDTO;
 import com.petesparkingmgt.dto.user.PendingUserDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +23,9 @@ public class PendingUserService {
     @Autowired
     public UserService userService;
 
+    @Autowired
+    public ReferralService referralService;
+
     public void add (PendingUserDTO dto) {
         dao.save(dto);
     }
@@ -34,7 +39,18 @@ public class PendingUserService {
 
 
     public void acceptedUser (long pendingUserId) {
-        userService.add(pendingUserToUserDTO(pendingUserId));
+        UserDTO transfer = pendingUserToUserDTO(pendingUserId);
+        userService.add(transfer);
+
+
+        ReferralUserDTO referralUserDTO = new ReferralUserDTO();
+        if (transfer.getReferralCodeUsed() != null && !transfer.getReferralCodeUsed().isEmpty()
+        && referralService.isValidReferralCode(transfer.getReferralCodeUsed())) {
+            ReferralDTO referral = referralService.getReferralForCode(transfer.getReferralCodeUsed());
+            referralUserDTO.setReferralId(referral.getId());
+            referralUserDTO.setReferredId(transfer.getId());
+            referralService.saveReferralUserDTO(referralUserDTO);
+        }
         dao.deleteById(pendingUserId);
 
     }
@@ -64,6 +80,7 @@ public class PendingUserService {
             add.setLastName(pend.getLastName());
             add.setId(add.getId());
             add.setProfilePicture(getDefaultProfilePicture());
+            add.setReferralCodeUsed(pend.getReferralCodeUsed());
         }
         return add;
     }
