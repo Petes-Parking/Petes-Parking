@@ -64,6 +64,10 @@ public class UserDTO extends BaseDTO {
 	@Column(name = "profilePicture")
 	private byte[] profilePicture;
 
+
+	@Column(name = "referral_code_used")
+	public String referralCodeUsed;
+
 	@Override
 	public String toString() {
 		return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", gender=" + gender
