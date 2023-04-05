@@ -47,13 +47,16 @@ public class PendingUserDTO extends BaseDTO {
     @Column(name = "userRole", length = 755)
     private String userRole;
 
+    @Column(name ="referral_code_used")
+    private String referralCodeUsed;
+
 
 
 
 
     @Override
     public String toString() {
-        return "UserDTO [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", gender=" + gender
+        return "PendingUserDTO [firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob + ", gender=" + gender
                 + ", email=" + email + ", password=" + password + ", phoneNumber="
                 + phoneNumber + ", userRole=" + userRole + "]";
     }

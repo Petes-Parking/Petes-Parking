@@ -18,6 +18,8 @@ public class UserForm extends BaseDTO {
 	@NotEmpty(message = "First name is required")
 	private String firstName;
 
+	private String referralCode;
+
 	@NotEmpty(message = "Last name is required")
 	private String lastName;
 
@@ -50,9 +52,9 @@ public class UserForm extends BaseDTO {
 
 
 
-	@Autowired
-	UserDTO bean;
-	public UserDTO getDTO() {	
+
+	public UserDTO getDTO() {
+		UserDTO bean = new UserDTO();
 		bean.setId(id);
 		bean.setFirstName(firstName);
 		bean.setLastName(lastName);
@@ -64,6 +66,9 @@ public class UserForm extends BaseDTO {
 		bean.setUserRole(userRole);
 		bean.setPoints(points);
 		bean.setPassword2(password2);
+		bean.setReferralCodeUsed(referralCode);
+
+
 
 
 		return bean;

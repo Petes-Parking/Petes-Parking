@@ -60,6 +60,15 @@
         </ul>
     </div>
     </c:if>
+    <c:if test="${not empty success2}">
+        <div class="alert alert-danger">
+            <ul>
+                <c:forEach items="${success2}" var="error">
+                    <li style="font-size: 20px; color: limegreen">${success2}</li>
+                </c:forEach>
+            </ul>
+        </div>
+    </c:if>
     <img id = "logo" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/Petes-Parking-logo.png"  alt=""/>
     <div id ="register-input-box">
         <h2>Register</h2>
@@ -139,12 +148,42 @@
                                value="Other" checked name="gender" />
                         <label class="form-check-label" for="otherGender">Other</label>
                     </div>
+
+
+
+
                 </s:bind>
             </div>
 
 
-            <input style="margin-left: 250px" id = "register-button" type="submit" value="Register">
-            <a href="/PeteParkingMgt/">
+            <div style="margin-left: 250px">
+                <input type="checkbox" id="referralCheckbox" onclick="toggleReferralCode()">
+                <label for="referralCheckbox">I have a referral code</label>
+                <div id="referralInput" style="display: none;">
+                    <label for="referralCode">Referral code:</label><br>
+                    <input class="text-field" id="referralCode" type="text" placeholder="Referral code" name="referralCode">
+                </div>
+            </div>
+
+
+            <script>
+                function toggleReferralCode() {
+                    var referralInput = document.getElementById("referralInput");
+                    if (document.getElementById("referralCheckbox").checked) {
+                        referralInput.style.display = "block";
+                    } else {
+                        referralInput.style.display = "none";
+                    }
+                }
+            </script>
+
+
+
+
+
+
+            <input style="margin-left: 250px; margin-top: 15px;" id = "register-button" type="submit" value="Register">
+            <a href="/PeteParkingMgt/home">
                 <input  style="margin-left: 125px" id = "go-back-button" type="button" value="Back to Login">
             </a>
 

@@ -4,6 +4,7 @@ package com.petesparkingmgt.ctl;
 
 import com.petesparkingmgt.dto.user.PendingUserDTO;
 import com.petesparkingmgt.service.PendingUserService;
+import com.petesparkingmgt.service.ReferralService;
 import com.petesparkingmgt.utility.DataUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,12 @@ public class UserCtl {
 	public UserService service;
 
 	@Autowired
+	public ReferralService referralService;
+
+	@Autowired
 	public PendingUserService pendingUserService;
+
+
 
 	@Autowired
 	public UserDAO dao;
@@ -87,7 +93,6 @@ public class UserCtl {
 
 		if (form.getEmail() != null) {
 
-			System.out.println(form.toString() + "-bang");
 			model.addAttribute("email", form.getEmail());
 			model.addAttribute("gender", form.getGender());
 			model.addAttribute("password", form.getPassword());
@@ -144,7 +149,15 @@ public class UserCtl {
 
 		if(user == null && pendingUserDTO == null) {
 
-			PendingUserDTO dto = new PendingUserDTO();
+			if (form.getReferralCode() != null && !form.getReferralCode().isEmpty() && !referralService.isValidReferralCode(form.getReferralCode())) {
+
+				model.addAttribute("error", "Referral code is not a valid code!");
+				return "register";
+
+			}
+
+
+				PendingUserDTO dto = new PendingUserDTO();
 			dto.setDob(form.getDob());
 			dto.setGender(form.getGender());
 			dto.setEmail(form.getEmail());
@@ -154,11 +167,21 @@ public class UserCtl {
 			dto.setFirstName(form.getFirstName());
 			dto.setLastName(form.getLastName());
 			dto.setUserRole(form.getUserRole());
+			dto.setReferralCodeUsed(form.getReferralCode());
+			System.out.println("Referral code set: " + form.getReferralCode() + "!");
 
 			//dto.setStatus("InActive");
 			pendingUserService.add(dto);
 
-			model.addAttribute("success", "User registration success");
+			// TODO check with referralDAO to see if it is a valid code to begin with but ok for now.
+
+			if (form.getReferralCode() != null && !form.getReferralCode().isEmpty() && referralService.isValidReferralCode(form.getReferralCode())) {
+				model.addAttribute("success", "Registered with referral code successfully!");
+			} else {
+				model.addAttribute("success", "User registration success");
+			}
+
+
 		}else {
 			model.addAttribute("error", "Duplicate emails are not allowed!");
 		}
