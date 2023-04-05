@@ -17,6 +17,8 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.ui.Model;
 
 import javax.servlet.http.HttpSession;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 
 import static org.mockito.Mockito.*;
@@ -65,7 +67,7 @@ public class ParkingPalsCtlTest {
     }
 
     @Test
-    void invite() {
+    void invite() throws NoSuchAlgorithmException, KeyManagementException {
         AddFriendForm form = new AddFriendForm("invited@example.com");
 
         when(session.getAttribute("user")).thenReturn(user);
