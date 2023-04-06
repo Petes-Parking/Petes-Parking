@@ -1,6 +1,9 @@
 package com.petesparkingmgt.service;
 
+import com.petesparkingmgt.dto.reports.ExpReportDTO;
+import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
@@ -44,6 +47,68 @@ public class EmailService {
                 "User who Sent Request: " + senderFirst + " " + senderLast + "\n" +
                 "\n" +
                 "To accept or deny this request, you can log into Pete’s Parking and navigate to the Parking Pals section.\n" +
+                "\n" +
+                "Pete’s Parking Team" + "\n" +
+                "petesparkingapp@gmail.com";
+        sendEmail(recipientEmail, subject, body);
+    }
+
+    public void createPoorParkReportedEmail(PoorParkReportDTO poorParkReport, UserDTO user) throws NoSuchAlgorithmException, KeyManagementException {
+        String recipientEmail = user.getEmail();
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        String strDate = dateFormat.format(date);
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String strTime = timeFormat.format(date);
+
+        String subject = "[Pete’s Parking] You have been reported by another user!";
+        String body = "Dear " + user.getFirstName() + " " + user.getLastName() + ",\n" +
+                "\n" +
+                "A vehicle linked to your Pete’s Parking account has been reported by another user. Please read the following information about the report:\n" +
+                "\n" +
+                "Date of Report: " + strDate + "\n" +
+                "\n" +
+                "Time of Report: " + strTime + "\n" +
+                "\n" +
+                "License Plate: " + poorParkReport.getLicensePlate() + "\n" +
+                "\n" +
+                "Parking Lot: " + poorParkReport.getParkingLot() + "\n" +
+                "\n" +
+                "Description: " + poorParkReport.getDescription() + "\n" +
+                "\n" +
+                "If you are found in violation of parking rules, you may receive a parking ticket. A Pete’s Parking admin will review this report shortly. Thank you for understanding.\n" +
+                "\n" +
+                "Pete’s Parking Team" + "\n" +
+                "petesparkingapp@gmail.com";
+        sendEmail(recipientEmail, subject, body);
+    }
+
+    public void createExpReportedEmail(ExpReportDTO expReport, UserDTO user) throws NoSuchAlgorithmException, KeyManagementException {
+        String recipientEmail = user.getEmail();
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        String strDate = dateFormat.format(date);
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String strTime = timeFormat.format(date);
+
+        String subject = "[Pete’s Parking] You have been reported by another user!";
+        String body = "Dear " + user.getFirstName() + " " + user.getLastName() + ",\n" +
+                "\n" +
+                "A vehicle linked to your Pete’s Parking account has been reported by another user. Please read the following information about the report:\n" +
+                "\n" +
+                "Date of Report: " + strDate + "\n" +
+                "\n" +
+                "Time of Report: " + strTime + "\n" +
+                "\n" +
+                "License Plate: " + expReport.getLicensePlate() + "\n" +
+                "\n" +
+                "Parking Lot: " + expReport.getParkingLot() + "\n" +
+                "\n" +
+                "Description: " + expReport.getDescription() + "\n" +
+                "\n" +
+                "If you are found in violation of parking rules, you may receive a parking ticket. A Pete’s Parking admin will review this report shortly. Thank you for understanding.\n" +
                 "\n" +
                 "Pete’s Parking Team" + "\n" +
                 "petesparkingapp@gmail.com";
