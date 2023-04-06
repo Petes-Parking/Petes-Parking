@@ -13,6 +13,8 @@
     <style>
         <%@include file="/WEB-INF/css/main-page.css"%>
         <%@include file="/WEB-INF/css/map-pan.css"%>
+
+
     </style>
     <link href="main-page.css" rel="stylesheet" type="text/css">
     <link href="map-pan.css" rel="stylesheet" type="text/css">
@@ -85,14 +87,15 @@
     </div>
 </div>
 
+
 <div class="zoom_outer" width="1400" align="right" height="1220">
     <div id="zoom" width="1400" height="1220" align="right">
-        <button class="corecbutton", href="#", onclick="show('corec-popup')">CRL</button>
-        <button class="nwbutton", href="#", onclick="show('nw-popup')">NWG</button>
-        <button class="univbutton", href="#", onclick="show('univ-popup')">USG</button>
-        <button class="rossbutton", href="#", onclick="show('rossade-popup')">RAL</button>
-        <button class="mccutchbutton", href="#", onclick="show('mccutch-popup')">MCG</button>
-        <button class="grantbutton", href="#", onclick="show('grant-popup')">GSG</button>
+        <button class="corecbutton", data-occupancy="${corecOccupancy}", href="#", onclick="show('corec-popup')">CRL</button>
+        <button class="nwbutton", data-occupancy="${northwesternOccupancy}", href="#", onclick="show('nw-popup')">NWG</button>
+        <button class="univbutton", data-occupancy="${universityOccupancy}", href="#", onclick="show('univ-popup')">USG</button>
+        <button class="rossbutton", data-occupancy="${rossadeOccupancy}", href="#", onclick="show('rossade-popup')">RAL</button>
+        <button class="mccutchbutton", data-occupancy="${mccutcheonOccupancy}" ,href="#", onclick="show('mccutch-popup')">MCG</button>
+        <button class="grantbutton", data-occupancy="${grantOccupancy}", href="#", onclick="show('grant-popup')">GSG</button>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>
@@ -369,6 +372,8 @@
 </div>
 </div>
 <%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
+
+
 <script>
     var scale = 1,
         panning = false,
@@ -496,6 +501,60 @@
             document.getElementById("grantStar").src = "https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png";
         }
     }
+</script>
+
+
+
+<script>
+    <%--var corecOccupancy = ${corecOccupancy};--%>
+    <%--var nwOccupancy = ${northwesternOccupancy};--%>
+    <%--var rosseAdeOccupancy = ${rosseadeOccupancy};--%>
+    <%--var mccutcheonOccupancy = ${mccutcheonOccupancy};--%>
+    <%--var grantOccupancy = ${grantOccupancy};--%>
+    <%--var universityOccupancy = ${universityOccupancy};--%>
+
+
+    function calculateColor(occupancy) {
+        var offset = 50; // You can adjust this value to control the brightness of the colors
+        var red = Math.round(occupancy * (255 - offset) + offset);
+        var green = Math.round((1 - occupancy) * (255 - offset) + offset);
+        var color = "#" + red.toString(16).padStart(2, "0") + green.toString(16).padStart(2, "0") + "00";
+        return color;
+    }
+
+    function calculateHoverColor(color) {
+        var darkenFactor = 0.8; // Adjust this value to control the darkness of the hover color
+        var r = parseInt(color.substring(1, 3), 16);
+        var g = parseInt(color.substring(3, 5), 16);
+
+        var newR = Math.floor(r * darkenFactor).toString(16).padStart(2, "0");
+        var newG = Math.floor(g * darkenFactor).toString(16).padStart(2, "0");
+
+        return "#" + newR + newG + "00";
+    }
+
+
+    function applyColors() {
+        document.querySelectorAll('button').forEach((button) => {
+            const occupancy = parseFloat(button.dataset.occupancy);
+            const color = calculateColor(occupancy);
+            const hoverColor = calculateHoverColor(color);
+            button.style.backgroundColor = color;
+            button.addEventListener('mouseenter', () => {
+                button.style.backgroundColor = hoverColor;
+            });
+
+            button.addEventListener('mouseleave', () => {
+                button.style.backgroundColor = color;
+            });        });
+    }
+
+
+
+
+    // Call the applyColors function when the DOM content is loaded
+    document.addEventListener("DOMContentLoaded", applyColors);
+
 </script>
 </body>
 </html>

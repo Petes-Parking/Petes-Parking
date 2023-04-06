@@ -9,6 +9,7 @@ import com.petesparkingmgt.exception.RecordNotFoundException;
 import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.parking.SlotDTO;
 import com.petesparkingmgt.dao.parking.SlotDAO;
+import org.springframework.ui.Model;
 
 
 @Service
@@ -18,6 +19,39 @@ public class ParkingService {
 	public ParkingDAO dao;
 	@Autowired
 	public SlotDAO slotDao;
+
+	public void addOccupancyData(Model model) {
+
+		List<ParkingDTO> parkingArea = dao.findAll();
+
+		for (ParkingDTO parking : parkingArea) {
+			String name = "";
+			switch (parking.getParkingName()) {
+				case "Corec Parking Lot": name="corec";
+				break;
+				case "McCutcheon Drive Parking Garage": name="mccutcheon";
+				break;
+				case "University St. Parking Garage": name="university";
+				break;
+				case "Ross-Ade Stadium Parking Lot": name="rossade";
+				break;
+				case "Northwestern St. Parking Garage": name="northwestern";
+				break;
+				case "Grant St. Parking Garage": name="grant";
+
+
+			}
+			List<SlotDTO> slots = slotDao.findByParkingId(parking.getId());
+			// 0 is reserved, 1 is open
+			long total = parking.getNumberOfSlot();
+			long occupied = slots.stream().filter(slotDTO -> !slotDTO.isStatus()).count();
+			double occupancy = (double) occupied / total;
+			System.out.println("Occupied: " + occupied + " for " + name + " with value " + occupancy);
+			model.addAttribute(name+"Occupancy", occupancy );
+		}
+
+
+	}
 
 	public ParkingDTO Add(ParkingDTO dto) {
 	ParkingDTO parking = null;

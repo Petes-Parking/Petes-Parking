@@ -18,7 +18,7 @@
 	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
 	crossorigin="anonymous"></script>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddceac">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -46,7 +46,7 @@
 
 						<li class="nav-item"><a class="nav-link active"
 												aria-current="page"
-												href="${pageContext.request.contextPath}/main">Main Page</a></li>
+												href="${pageContext.request.contextPath}/main">Map</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
 							href="${pageContext.request.contextPath}/leaderboard">Leaderboard</a></li>

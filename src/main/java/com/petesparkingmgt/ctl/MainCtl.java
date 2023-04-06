@@ -4,6 +4,7 @@ import com.petesparkingmgt.dto.user.FavoriteDTO;
 import com.petesparkingmgt.dao.users.FavoriteDAO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.FavoriteForm;
+import com.petesparkingmgt.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,9 @@ public class MainCtl {
 
     @Autowired
     public FavoriteDAO favoriteDAO;
+
+    @Autowired
+    public ParkingService parkingService;
     @GetMapping("/main")
     public String MainPage(Model model, HttpSession session) {
         UserDTO user = (UserDTO) session.getAttribute("user");
@@ -39,6 +43,7 @@ public class MainCtl {
         byte[] imageData = user.getProfilePicture();
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
+        parkingService.addOccupancyData(model);
         return "mainPage";
     }
     @PostMapping("/addFavorite")
