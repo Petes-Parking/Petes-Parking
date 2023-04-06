@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface ReferralDAO extends JpaRepository<ReferralDTO, Long> {
 
-    public List<ReferralDTO> getReferralDTOSByUserId(long userid);
+    public ReferralDTO getReferralDTOByUserId(long userid);
 
     public ReferralDTO findByUserId(long userid);
 

@@ -2,11 +2,16 @@ package com.petesparkingmgt.service;
 
 import com.petesparkingmgt.dao.referrals.ReferralDAO;
 import com.petesparkingmgt.dao.referrals.ReferralUserDAO;
+import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dto.referrals.ReferralDTO;
 import com.petesparkingmgt.dto.referrals.ReferralUserDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.objects.users.ReferralWrapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class ReferralService {
@@ -16,6 +21,9 @@ public class ReferralService {
 
     @Autowired
     public ReferralUserDAO userDAO;
+
+    @Autowired
+    public UserDAO users;
 
 
     public boolean isValidReferralCode(String code) {
@@ -37,6 +45,20 @@ public class ReferralService {
         return dao.existsByUserId(userid);
     }
 
+    public List<String> getNamesWhoUsedReferral(long referralId) {
+        List<String> names = new ArrayList<>();
+        List<ReferralUserDTO> referralUsers = userDAO.findAllByReferralId(referralId);
+        for (ReferralUserDTO user : referralUsers) {
+            UserDTO found = users.findById(user.getReferredId());
+            names.add(found.getFirstName() + " " + found.getLastName());
+        }
+
+
+        return names;
+    }
+
+
+
     public ReferralWrapper getReferralThatUserUsedWhenRegistering(long userid){
         if (usedReferralCodeWhenCreatingAccount(userid)) {
             ReferralWrapper wrapper = new ReferralWrapper();
@@ -56,4 +78,10 @@ public class ReferralService {
         return dao.getReferralDTOByCode(code);
     }
 
+    public void updateReferral(ReferralDTO referral) {
+        ReferralDTO existing = dao.getReferralDTOByUserId(referral.getUserId());
+        existing.setUses(referral.getUses());
+        dao.save(existing);
+
+    }
 }

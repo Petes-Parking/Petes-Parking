@@ -109,26 +109,32 @@
   </thead>
   <tbody>
   <!-- Replace with dynamic data -->
-  <c:forEach items="${referralCodes}" var="code">
+  <c:if test="${not empty referralCodes}">
+    <c:forEach items="${studentsUsed}" var="names">
+
     <tr>
 
       <td>
-        <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${code.code}">
-          ${code.code}
-      </button></td>
-<%--      <td>${code.usedBy}</td>--%>
-      <c:if test="${code.uses == 0}">
+        <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${referralCodes.code}">
+            ${referralCodes.code}
+        </button></td>
+        <%--      <td>${code.usedBy}</td>--%>
+      <c:if test="${referralCodes.uses > 0}">
+        <td>${names} - <span style="color: #45a049">+20 points</span></td>
+      </c:if>
+      <c:if test="${referralCodes.uses == 0}">
         <td>None</td>
       </c:if>
     </tr>
-  </c:forEach>
+      </c:forEach>
+  </c:if>
   </tbody>
 </table>
 
 <h2>Generate a Referral Code</h2>
 <p>If you don't have a referral code, click the button below to generate one:</p>
 <a href="${pageContext.request.contextPath}/generateReferralCode">
-<button class="generate-btn">Generate Code</button>
+  <button class="generate-btn">Generate Code</button>
 </a>
 <p id="generatedCode"></p>
 

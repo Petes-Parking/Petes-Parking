@@ -45,9 +45,12 @@ public class ReferralsCtl {
         }
 
         ReferralWrapper referralWrapper = referralService.getReferralThatUserUsedWhenRegistering(user.getId());
-        List<ReferralDTO> userCodes = dao.getReferralDTOSByUserId(user.getId());
+        ReferralDTO userCodes = dao.getReferralDTOByUserId(user.getId());
         model.addAttribute("referralCodes", userCodes);
         model.addAttribute("id", user.getId());
+        if (userCodes != null) {
+            model.addAttribute("studentsUsed", referralService.getNamesWhoUsedReferral(userCodes.getId()));
+        }
 
         if (referralWrapper != null) {
             UserDTO creator = users.findById(referralWrapper.getReferral().getUserId());

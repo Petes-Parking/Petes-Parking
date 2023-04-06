@@ -5,6 +5,7 @@ import com.petesparkingmgt.dto.referrals.ReferralDTO;
 import com.petesparkingmgt.dto.referrals.ReferralUserDTO;
 import com.petesparkingmgt.dto.user.PendingUserDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.points.PointsManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +26,9 @@ public class PendingUserService {
 
     @Autowired
     public ReferralService referralService;
+
+    @Autowired
+    public HistoryService historyService;
 
     public void add (PendingUserDTO dto) {
         dao.save(dto);
@@ -47,9 +51,13 @@ public class PendingUserService {
         if (transfer.getReferralCodeUsed() != null && !transfer.getReferralCodeUsed().isEmpty()
         && referralService.isValidReferralCode(transfer.getReferralCodeUsed())) {
             ReferralDTO referral = referralService.getReferralForCode(transfer.getReferralCodeUsed());
+            referral.setUses(referral.getUses() + 1);
+            historyService.newPoints(transfer.getId());
+            historyService.newPoints(userService.findUserById(referral.getUserId()).getId());
             referralUserDTO.setReferralId(referral.getId());
             referralUserDTO.setReferredId(transfer.getId());
             referralService.saveReferralUserDTO(referralUserDTO);
+            referralService.updateReferral(referral);
         }
         dao.deleteById(pendingUserId);
 

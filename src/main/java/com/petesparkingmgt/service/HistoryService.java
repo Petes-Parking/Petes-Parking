@@ -47,4 +47,13 @@ public class HistoryService {
 
 
     }
+    public void newPoints(long userid) {
+        UserDTO member = userService.findUserById(userid);
+        int addedPoints = getPointsFor(userid);
+        member.setPoints(member.getPoints() + addedPoints);
+        PointsManager.LevelWrapper memWrapper = PointsManager.getLevel(member.getPoints());
+
+        member.setLevel(memWrapper.getLevel());
+        userService.update(member);
+    }
 }
