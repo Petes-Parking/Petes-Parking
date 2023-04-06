@@ -103,7 +103,14 @@
                 <a href="${pageContext.request.contextPath}/admin/review-poorpark" class="text-decoration-none text-reset">Review Poor Parking Reports</a>
             </div>
         </div>
-        <div class="col-md-12 py-3">
+
+        <div class="col-md-6 py-3">
+            <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
+                <a href="${pageContext.request.contextPath}/admin/review-poorpark" class="text-decoration-none text-reset">Edit Parking Map</a>
+            </div>
+        </div>
+
+        <div class="col-md-6 py-3" >
             <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
                 <a href="${pageContext.request.contextPath}/admin/managepoints" class="text-decoration-none text-reset">Manage Points</a>
             </div>
