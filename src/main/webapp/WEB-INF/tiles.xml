@@ -35,10 +35,11 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/profilePage.jsp" />
     </definition>
 
-    <!-- Profile Page  -->
-    <definition name="profilePage" extends="base.definition">
-        <put-attribute name="title" value="Profile" />
-        <put-attribute name="body" value="/WEB-INF/bodyfragments/profilePage.jsp" />
+
+    <!-- Edit Parking Information  -->
+    <definition name="editparkinginfo" extends="base.definition">
+        <put-attribute name="title" value="EditParkingInfo" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/editparkinginfo.jsp" />
     </definition>
 
     <!-- Manage Points  -->

@@ -106,7 +106,7 @@
 
         <div class="col-md-6 py-3">
             <div class="widget rounded bg-oldgoldenrod text-center text-uppercase py-4">
-                <a href="${pageContext.request.contextPath}/admin/review-poorpark" class="text-decoration-none text-reset">Edit Parking Map</a>
+                <a href="${pageContext.request.contextPath}/admin/editparkinginfo" class="text-decoration-none text-reset">Edit Parking Map</a>
             </div>
         </div>
 

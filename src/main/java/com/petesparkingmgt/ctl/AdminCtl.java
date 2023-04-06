@@ -255,14 +255,18 @@ public class AdminCtl {
 
     @GetMapping("/admin/managepoints")
     public String ProfilePage(Model model) {
-
         List<UserDTO> users = dao.findAll();
         model.addAttribute("adminUserList", users);
-
-
         return "managePoints";
     }
 
+
+    @GetMapping("/admin/editparkinginfo")
+    public String EditParkingInfo(Model model) {
+        List<UserDTO> users = dao.findAll();
+        model.addAttribute("editparkinginfo", users);
+        return "editparkinginfo";
+    }
 
 
     @PostMapping("/admin/updatePoint")
