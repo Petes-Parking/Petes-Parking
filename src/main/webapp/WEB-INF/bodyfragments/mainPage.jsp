@@ -37,29 +37,28 @@
             </a>
             <div class="profile-bar"></div>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px; vertical-align: top;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; margin-bottom: 45px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
         <div class="dropdown">
             <a href="${pageContext.request.contextPath}/parkinglist">
                 <button class="bookBtn">Book Reservation</button>
             </a>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; vertical-align: text-bottom; position: relative; margin-bottom: 30px;"/>
         <div class="dropdown">
             <a href="${pageContext.request.contextPath}/history">
                 <button class="favoriteBtn">View Favorite Parkings</button>
             </a>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
         <div class="dropdown">
             <a href="${pageContext.request.contextPath}/parkingpals">
                 <button class="palsBtn">Parking Pals</button>
             </a>
         </div>
 
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 30px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
         <div class="dropdown">
             <a href="${pageContext.request.contextPath}/carpool">
-
             <button class="favoriteBtn">Carpools</button>
             </a>
         </div>
@@ -71,11 +70,12 @@
                 <button class="favoriteBtn">My Referrals</button>
             </a>
         </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; vertical-align: bottom;"/>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; display: inline-block; position: relative;"/>
         <a href="${pageContext.request.contextPath}/settings">
             <button class="settings-button">Settings</button>
         </a>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
         <div class="dropdown">
             <button class="reportbtn">File a Report</button>
             </a>

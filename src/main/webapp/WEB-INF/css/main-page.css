@@ -48,18 +48,18 @@
 }
 .home-button:hover {background-color: #B89954; transition: .3s;}
 .settings-button {
-    height: 100px;
-    width: 350px;
-    background-color:#CEB888;
-    cursor: pointer;
-    margin-right: 0%;
-    border-radius: 15px;
-    font-size: 24px;
-    margin-bottom: 15px;
-    vertical-align: bottom;
+    background-color: #CEB888;
+    color: Black;
+    font-size: 26px;
     border: none;
+    height: 140px;
+    width: 350px;
+    border-radius: 5px;
+    margin-left: 15px;
+    display: inline-block;
+    vertical-align: middle;
 }
-.settings-button:hover {background-color: #B89954; transition: .3s;}
+.settings-button:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 
 .bookBtn {
     background-color: #CEB888;
@@ -73,6 +73,7 @@
     margin-right: 0%;
     display: inline-block;
     z-index: 5;
+    float: right;
 }
 .favoriteBtn {
     background-color: #CEB888;
@@ -109,7 +110,6 @@
 }
 
 .dropdown {
-    position: relative;
     display: inline-block;
     z-index: 5;
 }
