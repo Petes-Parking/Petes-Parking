@@ -59,10 +59,10 @@
   </table>
   
   
-  	      <form action="${pageContext.request.contextPath}/main" method="get">
-	        <input type="hidden" name="id" value="${li.id}">
-	        <button type="submit" class="btn btn-outline-primary">Back</button>
-	      </form>
+  	      <a href="${pageContext.request.contextPath}/main">
+<%--	        <input type="hidden" name="id" value="${li.id}">--%>
+	        <button class="btn btn-outline-primary">Back</button>
+	      </a>
 
 </div>
 

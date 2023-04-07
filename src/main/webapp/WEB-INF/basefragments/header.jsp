@@ -57,6 +57,13 @@
 
 						<li class="nav-item"><a class="nav-link active"
 												aria-current="page"
+												href="${pageContext.request.contextPath}/notifications">
+
+							<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell.png" style="width: 30px; height: 30px;">
+						</a></li>
+
+						<li class="nav-item"><a class="nav-link active"
+												aria-current="page"
 												href="${pageContext.request.contextPath}/logout">Logout</a></li>
 
 					</c:if>

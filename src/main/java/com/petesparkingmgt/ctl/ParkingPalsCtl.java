@@ -8,6 +8,7 @@ import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
 import com.petesparkingmgt.service.EmailService;
 import com.petesparkingmgt.service.FriendService;
+import com.petesparkingmgt.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -38,6 +39,9 @@ public class ParkingPalsCtl {
 
     @Autowired
     public EmailPreferencesDAO emailDAO;
+
+    @Autowired
+    public NotificationService notificationService;
 
     @GetMapping("/parkingpals")
     public String parkingPals(Model model, HttpSession session) {
@@ -103,15 +107,22 @@ public class ParkingPalsCtl {
         dto.setRecipientLastName(toInvite.getLastName());
         dao.save(dto);
 
+        notificationService.addIncomingFriendNotification(toInvite.getId(), user.getFirstName() + " " + user.getLastName());
+
+
+
         EmailPreferencesDTO emailDTO = emailDAO.getByUserID(toInvite.getId());
-        int emailPref = emailDTO.getParkingPalPref();
-        System.out.print("Email preference: ");
-        System.out.println(emailPref);
-        if (emailPref == 1) {
-            EmailService emailService = new EmailService();
-            emailService.createParkingPalRequestEmail(dto);
-        } else {
-            System.out.println("No email sent since pref is off");
+
+        if (emailDTO != null) {
+            int emailPref = emailDTO.getParkingPalPref();
+            System.out.print("Email preference: ");
+            System.out.println(emailPref);
+            if (emailPref == 1) {
+                EmailService emailService = new EmailService();
+                emailService.createParkingPalRequestEmail(dto);
+            } else {
+                System.out.println("No email sent since pref is off");
+            }
         }
 
 

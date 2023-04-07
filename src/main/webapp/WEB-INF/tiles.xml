@@ -205,6 +205,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/poorpark-report.jsp" />
     </definition>
 
+    <!-- Poor Parking Report -->
+    <definition name="notifications" extends="base.definition">
+        <put-attribute name="title" value="Notifications" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/notifications.jsp" />
+    </definition>
+
 <!--        Admin Edit View-->
     <definition name="adminEditUser" template="/WEB-INF/bodyfragments/adminEditUser.jsp">
         <put-attribute name="title" value="" />

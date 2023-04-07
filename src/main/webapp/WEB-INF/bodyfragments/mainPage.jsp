@@ -514,10 +514,21 @@
     <%--var universityOccupancy = ${universityOccupancy};--%>
 
 
+    // function calculateColor(occupancy) {
+    //     var offset = 10; // You can adjust this value to control the brightness of the colors
+    //     var red = Math.round(occupancy * (255 - offset) + offset);
+    //     var green = Math.round((1 - occupancy) * (255 - offset) + offset);
+    //     var color = "#" + red.toString(16).padStart(2, "0") + green.toString(16).padStart(2, "0") + "00";
+    //     return color;
+    // }
+
     function calculateColor(occupancy) {
-        var offset = 50; // You can adjust this value to control the brightness of the colors
-        var red = Math.round(occupancy * (255 - offset) + offset);
-        var green = Math.round((1 - occupancy) * (255 - offset) + offset);
+        var baseOffset = 55; // Controls the minimum brightness of the colors
+        var colorRange = 160; // Controls the range of the colors
+
+        var red = Math.round(occupancy * colorRange + baseOffset);
+        var green = Math.round((1 - occupancy) * colorRange + baseOffset);
+
         var color = "#" + red.toString(16).padStart(2, "0") + green.toString(16).padStart(2, "0") + "00";
         return color;
     }
