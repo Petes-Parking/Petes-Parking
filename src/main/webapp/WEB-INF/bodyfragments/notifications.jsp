@@ -46,12 +46,13 @@
 <div class="container">
   <h1>Notifications</h1>
   <ul class="notification-list">
+
     <c:forEach var="notification" items="${notifications}">
       <li>
-<%--        <a href="${notification.url}">--%>
+        <a href="${pageContext.request.contextPath}/${notification.pageToGoTo}">
             ${notification.message}
+        </a>
           <span class="timestamp">${notification.timeStamp}</span>
-<%--        </a>--%>
       </li>
     </c:forEach>
   </ul>

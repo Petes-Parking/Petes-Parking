@@ -24,13 +24,13 @@ public class NotificationDTO extends BaseDTO {
     private String timeStamp;
 
     @Column(name = "is_read", length = 755)
-    private boolean isRead;
+    private boolean status;
 
     @Column(name = "pageToGo", length = 755)
     private String pageToGoTo;
 
     @Override
     public String toString() {
-        return "NotificationDTO [userid=" + userId + " message=" + message + " timeStamp=" + timeStamp + " isRead=" +isRead;
+        return "NotificationDTO [userid=" + userId + " message=" + message + " timeStamp=" + timeStamp + " isRead=" +status;
     }
 }

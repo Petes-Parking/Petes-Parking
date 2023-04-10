@@ -10,4 +10,6 @@ public interface NotificationDAO extends JpaRepository<NotificationDTO, Long> {
 
     public List<NotificationDTO> getNotificationDTOSByUserId(long userid);
 
+    public List<NotificationDTO> getNotificationDTOSByUserIdAndStatusEquals(long userid, boolean isRead);
+
 }

@@ -2,8 +2,10 @@ package com.petesparkingmgt.ctl;
 
 import com.petesparkingmgt.dto.user.FavoriteDTO;
 import com.petesparkingmgt.dao.users.FavoriteDAO;
+import com.petesparkingmgt.dto.user.NotificationDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.FavoriteForm;
+import com.petesparkingmgt.service.NotificationService;
 import com.petesparkingmgt.service.ParkingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,6 +28,9 @@ public class MainCtl {
 
     @Autowired
     public ParkingService parkingService;
+
+    @Autowired
+    private NotificationService notificationService;
     @GetMapping("/main")
     public String MainPage(Model model, HttpSession session) {
         UserDTO user = (UserDTO) session.getAttribute("user");
@@ -44,6 +49,10 @@ public class MainCtl {
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
         parkingService.addOccupancyData(model);
+        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
+        allNotifications.forEach(System.out::println);
+        model.addAttribute("notifications", allNotifications);
+
         return "mainPage";
     }
     @PostMapping("/addFavorite")

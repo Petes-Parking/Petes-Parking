@@ -64,12 +64,12 @@
 
 <div class="zoom_outer">
     <div id="zoom">
-        <button class="corecbutton", href="#", onclick="show('corec-popup')">CRL</button>
-        <button class="nwbutton", href="#", onclick="show('nw-popup')">NWG</button>
-        <button class="univbutton", href="#", onclick="show('univ-popup')">USG</button>
-        <button class="rossbutton", href="#", onclick="show('rossade-popup')">RAL</button>
-        <button class="mccutchbutton", href="#", onclick="show('mccutch-popup')">MCG</button>
-        <button class="grantbutton", href="#", onclick="show('grant-popup')">GSG</button>
+        <button class="corecbutton", href="#", data-occupancy="${corecOccupancy}", onclick="show('corec-popup')">CRL</button>
+        <button class="nwbutton", href="#", data-occupancy="${northwesternOccupancy}", onclick="show('nw-popup')">NWG</button>
+        <button class="univbutton", href="#", data-occupancy="${universityOccupancy}", onclick="show('univ-popup')">USG</button>
+        <button class="rossbutton", href="#", data-occupancy="${rossadeOccupancy}", onclick="show('rossade-popup')">RAL</button>
+        <button class="mccutchbutton", href="#", data-occupancy="${mccutcheonOccupancy}", onclick="show('mccutch-popup')">MCG</button>
+        <button class="grantbutton", href="#", data-occupancy="${grantOccupancy}", onclick="show('grant-popup')">GSG</button>
         <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>
@@ -523,6 +523,8 @@
             const color = calculateColor(occupancy);
             const hoverColor = calculateHoverColor(color);
             button.style.backgroundColor = color;
+            console.log("Test:", occupancy);
+
             button.addEventListener('mouseenter', () => {
                 button.style.backgroundColor = hoverColor;
             });

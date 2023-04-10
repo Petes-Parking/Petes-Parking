@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class NotificationService {
@@ -19,11 +20,15 @@ public class NotificationService {
     public void addIncomingFriendNotification(long receiverId, String senderName) {
         NotificationDTO incomingReqNotif = new NotificationDTO();
         incomingReqNotif.setUserId(receiverId);
-        incomingReqNotif.setRead(false);
+        incomingReqNotif.setStatus(false);
         incomingReqNotif.setTimeStamp(LocalDateTime.now().toString());
         incomingReqNotif.setMessage("You have an incoming friend request from " + senderName + "!");
-        incomingReqNotif.setPageToGoTo("Friend");
+        incomingReqNotif.setPageToGoTo("parkingpals");
         dao.save(incomingReqNotif);
+    }
+
+    public List<NotificationDTO> getUnreadNotificationsFor(long userid){
+        return dao.getNotificationDTOSByUserIdAndStatusEquals(userid, false);
     }
 
 
