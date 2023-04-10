@@ -1,117 +1,82 @@
 @charset "UTF-8";
+
+body {
+    background-color: #373A36;
+}
+
+.sidebarPageButtons {
+    width: 60%;
+    height: 7.5%;
+    background-color: #CEB888;
+    color: Black;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-right: 4%;
+    margin-top: 3.5%;
+}
+
+.sidebarPageButtons:hover {
+    background-color: #B89954;
+    transition: .3s;
+}
+
+.sidebarPageIcons {
+    width: 25%;
+    height: 7.5%;
+    float: left;
+    margin-left: 4%;
+    margin-top: 3.5%;
+}
+
 .sidebar {
-    width: 465px;
-    height: 1230px;
+    width: 20%;
+    height: 90%;
     background-color: #CEB888;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 2%;
     border-radius: 10px;
+    margin-top: 0.75%;
 }
 
 .profile-area {
-    background-color: #CEB888;
-    border: none;
-    color: black;
-    width: 465px;
-    height: 175px;
-    vertical-align: top;
-    float: left;
+    width: fit-content;
+    display: inline-block;
+    border: medium #0E0101;
 }
-.profile-bar {
-    background-color: #373A36;
-    border: none;
-    color: black;
-    width: 465px;
-    height: 10px;
-    float: left;
+
+.profile-pic {
+    height: 19%;
+    width: 50%;
+    align-self: center;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
+
 .profile-button {
-    height: 100px;
-    width: 250px;
-    background-color:#CEB888;
+    width: 60%;
+    height: 8%;
+    background-color: #CEB888;
+    margin-left: 6%;
+    margin-right: 5%;
+    border-radius: 5px;
     cursor: pointer;
-    margin-left: 15px;
-    font-size: 24pt;
-    border: none;
-    border-radius: 15px;
-    margin-top: 0px;
 }
-.profile-button:hover {background-color: #B89954; transition: .3s;}
+
 .home-button {
-    height: 100px;
-    width: 100px;
-    background-color:#CEB888;
+    width: 20%;
+    height: 8%;
+    background-color: #CEB888;
+    border-radius: 5px;
     cursor: pointer;
-    border: none;
-    border-radius: 250px;
-    margin-left: 0px;
-}
-.home-button:hover {background-color: #B89954; transition: .3s;}
-.settings-button {
-    background-color: #CEB888;
-    color: Black;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 15px;
-    display: inline-block;
-    vertical-align: middle;
-}
-.settings-button:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
-
-.bookBtn {
-    background-color: #CEB888;
-    color: Black;
-    padding: 16px;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-right: 0%;
-    display: inline-block;
-    z-index: 5;
-    float: right;
-}
-.favoriteBtn {
-    background-color: #CEB888;
-    color: Black;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 15px;
-    display: inline-block;
-}
-.palsBtn {
-    background-color: #CEB888;
-    color: Black;
-    padding: 16px;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 15px;
-}
-.reportBtn {
-    background-color: #CEB888;
-    color: Black;
-    padding: 16px;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 0%;
 }
 
-.dropdown {
+.button-area {
+    width: fit-content;
     display: inline-block;
-    z-index: 5;
+    border: medium #0E0101;
+    margin-top: 5%;
 }
 
 .dropdown-content1 {
@@ -144,16 +109,16 @@
 .favorite:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 
 .zoom_outer {
-    width: 2000px;
-    height: 1220px;
+    width: 75%;
+    height: 90%;
+    margin-left: 10px;
     display: inline-block;
-    margin-left: 50px;
     position: relative;
 }
 
 .zoom_outer img {
-    width: 100%;
-    height: auto;
+    width: 90%;
+    height: 90%;
 }
 
 .zoom_outer .corecbutton {
@@ -188,8 +153,6 @@
     width: 90px;
     height: 70px;
 }
-
-
 .zoom_outer .univbutton {
     position: absolute;
     top: 50%;
@@ -544,15 +507,4 @@
 
 .close:hover {background-color: #373A36; color: white; transition: .3s;}
 
-.favBtn {
-    font-size: 20px;
-    width: 220px;
-    height: 60px;
-    margin-left: 20px;
-    margin-top: 30px;
-    background-color: #CEB888;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-.favBtn:hover {background-color: #373A36; color: white; transition: .3s;}
+.favBtn:hover {background-color: #373A36; color: #000000; transition: .3s;}

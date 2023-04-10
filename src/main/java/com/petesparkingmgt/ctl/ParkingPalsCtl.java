@@ -168,16 +168,4 @@ public class ParkingPalsCtl {
         return "redirect:/parkingpals";
     }
 
-//    @GetMapping("/viewFriend")
-//    public String friendPage(@ModelAttribute("viewFriendForm") ViewFriendForm form, Model model, HttpSession session) {
-//
-//        UserDTO user = (UserDTO) session.getAttribute("user");
-//        if (user == null) return "error";
-//
-//        UserDTO myFriend = userDAO.findByEmail(form.getEmail());
-//        model.addAttribute("myFriend", myFriend);
-//
-//        return "friendpage";
-//    }
-
 }
