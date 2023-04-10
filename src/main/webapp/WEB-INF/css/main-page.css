@@ -1,117 +1,82 @@
 @charset "UTF-8";
+
+body {
+    background-color: #373A36;
+}
+
+.sidebarPageButtons {
+    width: 60%;
+    height: 7.5%;
+    background-color: #CEB888;
+    color: Black;
+    border-radius: 5px;
+    cursor: pointer;
+    float: right;
+    margin-right: 4%;
+    margin-top: 3.5%;
+}
+
+.sidebarPageButtons:hover {
+    background-color: #B89954;
+    transition: .3s;
+}
+
+.sidebarPageIcons {
+    width: 25%;
+    height: 7.5%;
+    float: left;
+    margin-left: 4%;
+    margin-top: 3.5%;
+}
+
 .sidebar {
-    width: 24%;
-    height: 100%;
+    width: 20%;
+    height: 90%;
     background-color: #CEB888;
     display: inline-block;
-    margin-left: 10px;
+    margin-left: 2%;
     border-radius: 10px;
+    margin-top: 0.75%;
 }
 
 .profile-area {
-    background-color: #CEB888;
-    border: none;
-    color: black;
-    width: 24%;
-    height: 40%;
-    vertical-align: top;
-    float: left;
+    width: fit-content;
+    display: inline-block;
+    border: medium #0E0101;
 }
-.profile-bar {
-    background-color: #373A36;
-    border: none;
-    color: black;
-    width: 24%;
-    height: 55%;
-    float: left;
+
+.profile-pic {
+    height: 19%;
+    width: 50%;
+    align-self: center;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
+
 .profile-button {
-    height: 100px;
-    width: 250px;
-    background-color:#CEB888;
+    width: 60%;
+    height: 8%;
+    background-color: #CEB888;
+    margin-left: 6%;
+    margin-right: 5%;
+    border-radius: 5px;
     cursor: pointer;
-    margin-left: 15px;
-    font-size: 24pt;
-    border: none;
-    border-radius: 15px;
-    margin-top: 0px;
 }
-.profile-button:hover {background-color: #B89954; transition: .3s;}
+
 .home-button {
-    height: 100px;
-    width: 100px;
-    background-color:#CEB888;
+    width: 20%;
+    height: 8%;
+    background-color: #CEB888;
+    border-radius: 5px;
     cursor: pointer;
-    border: none;
-    border-radius: 250px;
-    margin-left: 0px;
-}
-.home-button:hover {background-color: #B89954; transition: .3s;}
-.settings-button {
-    background-color: #CEB888;
-    color: Black;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 15px;
-    display: inline-block;
-    vertical-align: middle;
-}
-.settings-button:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
-
-.bookBtn {
-    background-color: #CEB888;
-    color: Black;
-    padding: 16px;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-right: 0%;
-    display: inline-block;
-    z-index: 5;
-    float: right;
-}
-.favoriteBtn {
-    background-color: #CEB888;
-    color: Black;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 15px;
-    display: inline-block;
-}
-.palsBtn {
-    background-color: #CEB888;
-    color: Black;
-    padding: 16px;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 15px;
-}
-.reportBtn {
-    background-color: #CEB888;
-    color: Black;
-    padding: 16px;
-    font-size: 26px;
-    border: none;
-    height: 140px;
-    width: 350px;
-    border-radius: 5px;
-    margin-left: 0%;
 }
 
-.dropdown {
+.button-area {
+    width: fit-content;
     display: inline-block;
-    z-index: 5;
+    border: medium #0E0101;
+    margin-top: 5%;
 }
 
 .dropdown-content1 {
@@ -144,112 +109,113 @@
 .favorite:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 
 .zoom_outer {
-    width: 70%;
-    height: 94%;
+    width: 75%;
+    height: 90%;
+    margin-left: 10px;
     display: inline-block;
-    vertical-align: top;
-    margin-left: 2.5%;
     position: relative;
-    background-size: cover;
 }
 
 .zoom_outer img {
-    width: 100%;
-    height: 100%;
-    margin-top: 1%;
-    background-size: cover;
+    width: 90%;
+    height: 90%;
 }
 
 .zoom_outer .corecbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-300%, 45%);
+    transform: translate(-500%, -90%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 5%;
-    height: 13%;
+    width: 90px;
+    height: 130px;
 }
 .zoom_outer .nwbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(580%, 25%);
+    transform: translate(640%, -10%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 5%;
-    height: 6%;
+    width: 90px;
+    height: 70px;
 }
-
-
 .zoom_outer .univbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(135%, 345%);
+    transform: translate(135%, 290%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 4%;
-    height: 6%;
+    width: 80px;
+    height: 80px;
 }
 .zoom_outer .rossbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-10%, -600%);
+    transform: translate(-15%, -760%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    width: 6%;
-    height: 8%;
+    text-align: center;
+    width: 80px;
+    height: 80px;
 }
 .zoom_outer .mccutchbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-910%, 250%);
+    transform: translate(-915%, 220%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    width: 4%;
-    height: 8.5%;
     text-align: center;
+    width: 80px;
+    height: 110px;
 }
 .zoom_outer .grantbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(850%, 500%);
+    transform: translate(990%, 455%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
+    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    width: 4%;
-    height: 6.2%;
     text-align: center;
+    width: 70px;
+    height: 80px;
 }
 .zoom_outer .corecbutton:hover {
     transition: .3s;
@@ -541,15 +507,4 @@
 
 .close:hover {background-color: #373A36; color: white; transition: .3s;}
 
-.favBtn {
-    font-size: 20px;
-    width: 220px;
-    height: 60px;
-    margin-left: 20px;
-    margin-top: 30px;
-    background-color: #CEB888;
-    border-radius: 10px;
-    display: inline-block;
-}
-
-.favBtn:hover {background-color: #373A36; color: white; transition: .3s;}
+.favBtn:hover {background-color: #373A36; color: #000000; transition: .3s;}

@@ -1,15 +1,105 @@
 @charset "UTF-8";
 
-.profile{
-    width: 400px;
-    height: 220px;
-    margin-right: auto;
-    background-color: transparent;
-    opacity: 100%;
+.profile-page-pic {
+    width: 200px;
+    height: 200px;
+    margin-top: 3%;
+    margin-left: 3%;
+}
+
+.name-header {
+    display: inline-block;
+    margin-left: 12%;
+}
+
+.edit-picture-button {
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-left: 6%;
+    margin-top: 1%;
+}
+
+.edit-picture-button:hover {
+    background-color: #555;
+}
+
+.logout-button{
+    float: right;
+    position: relative;
+    margin-top: 3%;
+    margin-right: 3%;
+    background-color: #333;
+    color: white;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    padding: 5px 10px;
+}
+
+.logout-button:hover {
+    background-color: #555;
 }
 
 .trash {
-    margin-right: 20px;
+    display: inline-block;
+    margin-top: 16%;
+    margin-left: 1%;
+    width: 30px;
+    height: 30px;
+}
+
+#trash-image:hover{
+    background-color: #555;
+}
+
+.user-info {
+    margin-left: 3%;
+    margin-top: 5%;
+}
+
+.car-1 {
+    margin-left: 38%;
+    margin-top: -30%;
+}
+
+.car-2 {
+    margin-left: 67%;
+    margin-top: -29%;
+}
+
+h5 {
+    margin-bottom: 3%;
+}
+
+input {
+    margin-top: -1%;
+    margin-bottom: 1%;
+}
+
+.box {
+    width: 75%;
+    height: 90%;
+    margin-left: 1%;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 0.75%;
+    background-color: #CEB888;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+body {
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: medium;
+    background: #373A36;
+}
+
+.profile {
+    background-color: transparent;
     opacity: 100%;
 }
 
@@ -17,174 +107,26 @@
     border-radius: 5px;
 }
 
-.user_info {
-    margin-top: 40px;
-    margin-left: 20px;
-}
-
-
-.car_1 {
-    margin-top: 40px;
-    margin-left: 20px;
-}
-
-.car_2 {
-    margin-top: 40px;
-    margin-left: 20px;
-}
-
-.make1div {
-    float: left;
-    margin-right: 120px;
-}
-
-.userdiv {
-    float: left;
-    margin-right: 120px;
-}
-
-.color1div {
-    float: left;
-    margin-right: 120px;
-}
-
-.make2div {
-    float: left;
-    margin-right: 120px;
-}
-
-.color2div {
-    float: left;
-    margin-right: 120px;
-}
-
 .delete-button {
-    padding: 10px;
+    padding: 5px 10px;
     background-color: #333;
     color: white;
-    border: none;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    margin-left: 200px;
+    margin-bottom: 5%;
+    margin-left: 3%;
 }
-.save-button{
-    margin-left: 10px;
-    padding: 10px;
+
+.save-button {
+    padding: 5px 10px;
     background-color: #333;
     color: white;
-    border: none;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-}
-
-.points_level {
-    float: right
-}
-
-p1 { /*john purdue*/
-    font-size: 45px;
-    font-family: Calibri;
-}
-p2 { /*Username*/
-    margin-top: 50px;
-    font-size: 20px;
-    font-family: Calibri;
-}
-p3 { /*Password*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p4 { /*Email*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p5 { /*Car 1*/
-    font-size: 20px;
-    font-family: Calibri;
-    font-weight: bold;
-}
-p6 { /*Make 1*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p7 { /*Model 1*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p8 { /*Color 1*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p9 { /*License 1*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p10 { /*Car 2*/
-    font-size: 20px;
-    font-family: Calibri;
-    font-weight: bold;
-}
-p11 { /*Make 2*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p12 { /*Model 2*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p13 { /*Color 2*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-p14 { /*Lic 2*/
-    font-size: 20px;
-    font-family: Calibri;
-}
-body {
-    background: #373A36;
-}
-
-button1{
-    padding: 10px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-    cursor: pointer;
-}
-
-button1:hover{
-    background-color: #555;
-}
-.trash{
-    margin-top: 200px;
-}
-#trash-image:hover{
-    background-color: #555;
-}
-.edit{
-    margin-top: -30px;
-}
-
-.logout-button{
-    float: right;
-    margin-top: 20px;
-    margin-right: 20px;
-}
-
-.box {
-    width: 1000px;
-    height: 1200px;
-    margin-left: 15px;
-    display: inline-block;
-    vertical-align: top;
-    margin-top: 10px;
-    background-color: #CEB888;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    margin-top: 5%;
+    margin-left: 50%;
 }
 
 .edit-popup {
@@ -198,20 +140,8 @@ button1:hover{
     border: 1px solid #ccc;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     display: none;
-
 }
 
-
-.corec-popup {
-    display: none;
-    position: fixed;
-    width: 350px;
-    height: 920px;
-    left: 35%;
-    top: 10%;
-    background: #CEB888;
-    z-index: 20;
-}
 #edit-popup:after {
     position: fixed;
     content: "";

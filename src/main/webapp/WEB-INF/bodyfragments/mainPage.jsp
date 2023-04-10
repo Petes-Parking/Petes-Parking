@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: alecs
-  Date: 3/2/2023
-  Time: 5:44 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,90 +6,71 @@
     <style>
         <%@include file="/WEB-INF/css/main-page.css"%>
         <%@include file="/WEB-INF/css/map-pan.css"%>
-
-
     </style>
     <link href="main-page.css" rel="stylesheet" type="text/css">
     <link href="map-pan.css" rel="stylesheet" type="text/css">
-
 </head>
-
-<body style="background-color: #373A36;">
-
+<body>
 <div class="sidebar">
-    <div class="buttons">
-        <div class="profile-area">
-            <div class="profile-bar"></div>
-            <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 91px; height: auto;">
-            <a href="${pageContext.request.contextPath}/profile">
-                <button class="profile-button">${user.firstName} ${user.lastName}</button>
-            </a>
+    <div class="profile-area">
+        <img class="profile-pic" src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture">
+        <a href="${pageContext.request.contextPath}/profile">
+            <button class="profile-button">${user.firstName} ${user.lastName}</button>
+        </a>
+        <a href="${pageContext.request.contextPath}/main">
+            <button class="home-button"><img style="width: 100%; height: 70%" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
+        </a>
+    </div>
 
-            <a href="${pageContext.request.contextPath}/main">
-                <button class="home-button"><img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png" alt="" width="50" height="50"></button>
-            </a>
-            <div class="profile-bar"></div>
-        </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; margin-bottom: 45px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
-        <div class="dropdown">
-            <a href="${pageContext.request.contextPath}/parkinglist">
-                <button class="bookBtn">Book Reservation</button>
-            </a>
-        </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; vertical-align: text-bottom; position: relative; margin-bottom: 30px;"/>
-        <div class="dropdown">
-            <a href="${pageContext.request.contextPath}/history">
-                <button class="favoriteBtn">View Favorite Parkings</button>
-            </a>
-        </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
-        <div class="dropdown">
-            <a href="${pageContext.request.contextPath}/parkingpals">
-                <button class="palsBtn">Parking Pals</button>
-            </a>
-        </div>
-
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 30px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
-        <div class="dropdown">
-            <a href="${pageContext.request.contextPath}/carpool">
-            <button class="favoriteBtn">Carpools</button>
-            </a>
-        </div>
-
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/referrals.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
-        <div class="dropdown">
-            <a href="${pageContext.request.contextPath}/referrals">
-
-                <button class="favoriteBtn">My Referrals</button>
-            </a>
-        </div>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; display: inline-block; position: relative;"/>
-        <a href="${pageContext.request.contextPath}/settings">
-            <button class="settings-button">Settings</button>
+    <div class="button-area">
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png">
+        <a href="${pageContext.request.contextPath}/parkinglist">
+            <button class="sidebarPageButtons">Book Reservation</button>
         </a>
 
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; display: inline-block; vertical-align: text-bottom; position: relative;"/>
-        <div class="dropdown">
-            <button class="reportbtn">File a Report</button>
-            </a>
-            <div class="dropdown-content1">
-                <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
-                <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
-            </div>
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png"/>
+        <a href="${pageContext.request.contextPath}/history">
+            <button class="sidebarPageButtons">View Favorite Parkings</button>
+        </a>
+
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png"/>
+        <a href="${pageContext.request.contextPath}/parkingpals">
+            <button class="sidebarPageButtons">Parking Pals</button>
+        </a>
+
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png"/>
+        <a href="${pageContext.request.contextPath}/carpool">
+            <button class="sidebarPageButtons">Carpools</button>
+        </a>
+
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/referrals.png"/>
+        <a href="${pageContext.request.contextPath}/referrals">
+            <button class="sidebarPageButtons">My Referrals</button>
+        </a>
+
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png"/>
+        <a href="${pageContext.request.contextPath}/settings">
+            <button class="sidebarPageButtons">Settings</button>
+        </a>
+
+        <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png"/>
+        <button class="sidebarPageButtons">File a Report</button>
+        <div class="dropdown-content1">
+            <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
+            <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
         </div>
     </div>
 </div>
 
-
-<div class="zoom_outer" width="1400" align="right" height="1220">
-    <div id="zoom" width="1400" height="1220" align="right">
-        <button class="corecbutton", data-occupancy="${corecOccupancy}", href="#", onclick="show('corec-popup')">CRL</button>
-        <button class="nwbutton", data-occupancy="${northwesternOccupancy}", href="#", onclick="show('nw-popup')">NWG</button>
-        <button class="univbutton", data-occupancy="${universityOccupancy}", href="#", onclick="show('univ-popup')">USG</button>
-        <button class="rossbutton", data-occupancy="${rossadeOccupancy}", href="#", onclick="show('rossade-popup')">RAL</button>
-        <button class="mccutchbutton", data-occupancy="${mccutcheonOccupancy}" ,href="#", onclick="show('mccutch-popup')">MCG</button>
-        <button class="grantbutton", data-occupancy="${grantOccupancy}", href="#", onclick="show('grant-popup')">GSG</button>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" align="right" alt="zoom" style="height: 100%; width: 100%;">
+<div class="zoom_outer">
+    <div id="zoom">
+        <button class="corecbutton", href="#", onclick="show('corec-popup')">CRL</button>
+        <button class="nwbutton", href="#", onclick="show('nw-popup')">NWG</button>
+        <button class="univbutton", href="#", onclick="show('univ-popup')">USG</button>
+        <button class="rossbutton", href="#", onclick="show('rossade-popup')">RAL</button>
+        <button class="mccutchbutton", href="#", onclick="show('mccutch-popup')">MCG</button>
+        <button class="grantbutton", href="#", onclick="show('grant-popup')">GSG</button>
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
     </div>
 </div>
 <%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
@@ -372,10 +346,8 @@
 </div>
 </div>
 <%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
-
-
 <script>
-    var scale = 1,
+    var scale = 0.5,
         panning = false,
         pointX = 0,
         pointY = 0,
