@@ -1,17 +1,17 @@
 package com.petesparkingmgt.ctl;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
-import com.petesparkingmgt.dao.users.HistoryDAO;
-import com.petesparkingmgt.dto.parking.BookingDTO;
-import com.petesparkingmgt.dto.parking.ParkingDTO;
-import com.petesparkingmgt.dto.parking.SlotDTO;
-import com.petesparkingmgt.dto.user.HistoryDTO;
-import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.dao.FavoriteDAO;
+import com.petesparkingmgt.dao.HistoryDAO;
+import com.petesparkingmgt.dto.*;
+import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
+import com.petesparkingmgt.form.FavoriteForm;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +23,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.petesparkingmgt.dao.parking.BookingDAO;
+import com.petesparkingmgt.dao.BookingDAO;
 
-import com.petesparkingmgt.dao.parking.SlotDAO;
+import com.petesparkingmgt.dao.SlotDAO;
 import com.petesparkingmgt.exception.RecordNotFoundException;
 import com.petesparkingmgt.form.BookingForm;
 
@@ -71,7 +71,7 @@ public class BookingCtl {
 
 
 		ParkingDTO parkingDTO = parkingService.findParkingById(id);
-		List<SlotDTO> slotList = slotDAO.findByParkingIdAndStatus(id, true);
+		List<SlotDTO> slotList = slotDAO.findByParkingIdAndStatus(id, true);		
 		model.addAttribute("slotList", slotList);
 		model.addAttribute("user", user);
 		model.addAttribute("parkingDTO", parkingDTO);
@@ -223,6 +223,7 @@ public class BookingCtl {
 		return "redirect:/bookinglist";
 	}
 
+	
 	
 	@GetMapping("/userCancel")
 	public String cancel(Model model, @RequestParam("id") long id, HttpSession session) {
