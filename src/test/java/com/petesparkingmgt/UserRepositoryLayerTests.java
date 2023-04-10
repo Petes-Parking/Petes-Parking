@@ -18,8 +18,9 @@ import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabas
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.annotation.Rollback;
 
-import com.petesparkingmgt.dao.users.UserDAO;
-import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.dao.UserDAO;
+import com.petesparkingmgt.dto.UserDTO;
+import java.util.Optional;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = Replace.NONE)
@@ -38,6 +39,7 @@ public class UserRepositoryLayerTests {
 		
 		//Arrange
 		UserDTO user = new UserDTO();
+		user.setId(100);
 		user.setFirstName("dummy");
 		user.setLastName("Testing");
 		user.setDob("12/03/1999");
@@ -74,9 +76,12 @@ public class UserRepositoryLayerTests {
 	@Rollback(value = false)
 	void should_Get_Single_User_Test() {
 
-		UserDTO user = userdao.findByEmail("dummy@gmail.com");
+		UserDTO user = userdao.findById(72);
 
-		assertEquals("dummy", user.getFirstName());
+		UserDTO user1 = userdao.findByEmail("dummy@gmail.com");
+
+		
+		assertEquals("dummy", user1.getFirstName());
 		
 	}
 	
@@ -85,14 +90,20 @@ public class UserRepositoryLayerTests {
 	@Order(4)
 	@Rollback(value = false)
 	void should_Update_User_Test() {
-		UserDTO user = userdao.findByEmail("dummy@gmail.com");
+
+		UserDTO user = userdao.findById(72);
 		user.setFirstName("Updated_dummy");
 		userdao.save(user);
 		
-		assertNotEquals("dummy", userdao.findByEmail("dummy@gmail.com").getFirstName());
+		assertNotEquals("dummy", userdao.findById(72).getFirstName());
+
+		UserDTO user1 = userdao.findById(100);
+		user1.setFirstName("Updated_dummy");
+		userdao.save(user1);
+		
+		assertNotEquals("dummy", userdao.findById(100).getFirstName());
 
 		
-
 					
 	}
 
@@ -101,11 +112,17 @@ public class UserRepositoryLayerTests {
 	@Rollback(value = false)
 	void should_Delete_User_Test() {
 
-		UserDTO user = userdao.findByEmail("dummy@gmail.com");
+		UserDTO user = userdao.findById(72);
 		userdao.delete(user);
 		
-		assertThat(userdao.existsByEmail("dummy@gmail.com")).isFalse();
+		assertThat(userdao.existsById(72L)).isFalse();
 
+		UserDTO user1 = userdao.findById(100);
+		userdao.delete(user1);
+		
+		assertThat(userdao.existsById(100)).isFalse();
+
+		
 		//userdao.deleteById(65L);	
 		
 //		UserDTO user1 = null;

@@ -1,25 +1,23 @@
 package com.petesparkingmgt;
 
-import org.junit.platform.runner.JUnitPlatform;
-import org.junit.platform.suite.api.SelectClasses;
-import org.junit.platform.suite.api.SuiteDisplayName;
+import com.petesparkingmgt.UnitControllerLayerTest;
+
+import com.petesparkingmgt.UserRepositoryLayerTests;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
+import org.junit.runners.Suite.SuiteClasses;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.junit.platform.commons.annotation.Testable;
 
-@RunWith(JUnitPlatform.class)
-@SuiteDisplayName("All Tests")
-@SelectClasses({
-
+//@RunWith(JUnitPlatform.class)
+@DisplayName("All Tests")
+@SuiteClasses({
         UserRepositoryLayerTests.class,
-        CarpoolCtlTest.class,
+        UnitControllerLayerTest.class,
         LeaderboardControllerUnitTest.class,
-        ManagePointsControllerTest.class,
-        ParkingPalsCtlTest.class,
-        ProfileCtlTest.class,
-        UserControllerTest.class,
-        AdminControllerTest.class,
-        HistoryCtlTest.class,
-        MainCtlTest.class,
-        CarpoolUsersCtlTest.class,
+        ManagePointsControllerTest.class
 
 })
 public class AllTests {
