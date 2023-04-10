@@ -24,8 +24,8 @@
 <body style="background-color: #373A36;">
 
 <div class="sidebar">
-    <div class="buttons" width="465" height="920">
-        <div class="profile-area" width="150" height="175">
+    <div class="buttons">
+        <div class="profile-area">
             <div class="profile-bar"></div>
             <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 91px; height: auto;">
             <a href="${pageContext.request.contextPath}/profile">
@@ -96,7 +96,7 @@
         <button class="rossbutton", data-occupancy="${rossadeOccupancy}", href="#", onclick="show('rossade-popup')">RAL</button>
         <button class="mccutchbutton", data-occupancy="${mccutcheonOccupancy}" ,href="#", onclick="show('mccutch-popup')">MCG</button>
         <button class="grantbutton", data-occupancy="${grantOccupancy}", href="#", onclick="show('grant-popup')">GSG</button>
-        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" width="1400" height="1230" align="right" alt="zoom">
+        <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/map.PNG" align="right" alt="zoom" style="height: 100%; width: 100%;">
     </div>
 </div>
 <%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>

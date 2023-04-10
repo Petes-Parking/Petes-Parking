@@ -1,7 +1,7 @@
 @charset "UTF-8";
 .sidebar {
-    width: 465px;
-    height: 1230px;
+    width: 24%;
+    height: 100%;
     background-color: #CEB888;
     display: inline-block;
     margin-left: 10px;
@@ -12,8 +12,8 @@
     background-color: #CEB888;
     border: none;
     color: black;
-    width: 465px;
-    height: 175px;
+    width: 24%;
+    height: 40%;
     vertical-align: top;
     float: left;
 }
@@ -21,8 +21,8 @@
     background-color: #373A36;
     border: none;
     color: black;
-    width: 465px;
-    height: 10px;
+    width: 24%;
+    height: 55%;
     float: left;
 }
 .profile-button {
@@ -144,49 +144,51 @@
 .favorite:hover {background-color: #B89954; transition: .3s; border-radius: 35px; z-index: 5;}
 
 .zoom_outer {
-    width: 2000px;
-    height: 1220px;
+    width: 70%;
+    height: 94%;
     display: inline-block;
-    margin-left: 50px;
+    vertical-align: top;
+    margin-left: 2.5%;
     position: relative;
+    background-size: cover;
 }
 
 .zoom_outer img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    margin-top: 1%;
+    background-size: cover;
 }
 
 .zoom_outer .corecbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-500%, -90%);
+    transform: translate(-300%, 45%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 90px;
-    height: 130px;
+    width: 5%;
+    height: 13%;
 }
 .zoom_outer .nwbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(640%, -10%);
+    transform: translate(580%, 25%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 90px;
-    height: 70px;
+    width: 5%;
+    height: 6%;
 }
 
 
@@ -194,65 +196,60 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(135%, 290%);
+    transform: translate(135%, 345%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 4%;
+    height: 6%;
 }
 .zoom_outer .rossbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-15%, -760%);
+    transform: translate(-10%, -600%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
-    text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 6%;
+    height: 8%;
 }
 .zoom_outer .mccutchbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-915%, 220%);
+    transform: translate(-910%, 250%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 4%;
+    height: 8.5%;
     text-align: center;
-    width: 80px;
-    height: 110px;
 }
 .zoom_outer .grantbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(990%, 455%);
+    transform: translate(850%, 500%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    width: 4%;
+    height: 6.2%;
     text-align: center;
-    width: 70px;
-    height: 80px;
 }
 .zoom_outer .corecbutton:hover {
     transition: .3s;
