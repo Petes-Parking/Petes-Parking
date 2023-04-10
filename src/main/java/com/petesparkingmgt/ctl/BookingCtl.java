@@ -222,7 +222,7 @@ public class BookingCtl {
 		service.update(dto);	
 		return "redirect:/bookinglist";
 	}
-<<<<<<< HEAD
+
 	
 	
 	@GetMapping("/userCancel")
@@ -234,6 +234,5 @@ public class BookingCtl {
 		return "redirect:/bookinglist";
 	}
 	
-=======
->>>>>>> 2755eb0fa6ac37f74955151034915d1acc868ab0
+
 }
