@@ -2,7 +2,9 @@ package com.petesparkingmgt.ctl;
 
 import javax.servlet.http.HttpSession;
 
+import com.petesparkingmgt.dao.EmailPreferencesDAO;
 import com.petesparkingmgt.dao.users.UserDAO;
+import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
 import com.petesparkingmgt.service.PendingUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +34,9 @@ public class LoginCtl {
 
 	@Autowired
 	public UserDAO dao;
+
+	@Autowired
+	public EmailPreferencesDAO emailDAO;
 
 	@GetMapping("/login")
 	public String loginPage() {
@@ -77,6 +82,19 @@ public class LoginCtl {
 					service.update(user);
 				}
 
+				EmailPreferencesDTO emailDTO = emailDAO.getByUserID(user.getId());
+				if (emailDTO == null) {
+					System.out.println("Email null for user " + user.getId());
+					EmailPreferencesDTO newEmailDTO = new EmailPreferencesDTO();
+					newEmailDTO.setExpirationPref(1);
+					newEmailDTO.setParkingPalPref(1);
+					newEmailDTO.setReportPref(1);
+					newEmailDTO.setTimer(30);
+					newEmailDTO.setUserID(user.getId());
+					emailDAO.save(newEmailDTO);
+				} else {
+					System.out.println("Email not null for user " + user.getId());
+				}
 
 				session.setAttribute("user", user);
 				return "redirect:/main";
