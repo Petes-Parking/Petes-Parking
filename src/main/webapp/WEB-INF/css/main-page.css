@@ -125,97 +125,91 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-500%, -90%);
+    transform: translate(-450%, -90%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 90px;
-    height: 130px;
+    width: 5%;
+    height: 10%;
 }
 .zoom_outer .nwbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(640%, -10%);
+    transform: translate(575%, 0%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 90px;
-    height: 70px;
+    width: 5%;
+    height: 4.5%;
 }
 .zoom_outer .univbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(135%, 290%);
+    transform: translate(100%, 290%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 5%;
+    height: 6.5%;
 }
 .zoom_outer .rossbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-15%, -760%);
+    transform: translate(-15%, -700%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 80px;
-    height: 80px;
+    width: 5%;
+    height: 7%;
 }
 .zoom_outer .mccutchbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-915%, 220%);
+    transform: translate(-815%, 210%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 80px;
-    height: 110px;
+    width: 4.5%;
+    height: 9%;
 }
 .zoom_outer .grantbutton {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(990%, 455%);
+    transform: translate(850%, 500%);
     background-color: #373A36;
     color: white;
     font-size: 16px;
-    padding: 12px 24px;
     border: none;
     cursor: pointer;
     border-radius: 5px;
     text-align: center;
-    width: 70px;
-    height: 80px;
+    width: 4%;
+    height: 6%;
 }
 .zoom_outer .corecbutton:hover {
     transition: .3s;
