@@ -78,25 +78,20 @@ public class PoorParkReportCtl {
         if (vehicle != null) {
             UserDTO reported = userDAO.findById(vehicle.getUserId());
             if (reported != null) {
-                EmailPreferencesDTO emailDTO = new EmailPreferencesDTO();
-                if (emailDAO.getByUserID(reported.getId()) == null) {
-                    emailDTO.setParkingPalPref(1);
-                    emailDTO.setReportPref(1);
-                    emailDTO.setExpirationPref(1);
-                    emailDTO.setTimer(30);
-                    emailDTO.setUserID(reported.getId());
-                    emailDAO.save(emailDTO);
+                EmailPreferencesDTO emailDTO = emailDAO.getByUserID(reported.getId());
+                if (emailDTO != null) {
+                    int emailPref = emailDTO.getReportPref();
+                    System.out.print("Email preference: ");
+                    System.out.println(emailPref);
+                    if (emailPref == 1) {
+                        EmailService emailService = new EmailService();
+                        emailService.createPoorParkReportedEmail(poorParkReport, reported);
+                    } else {
+                        System.out.println("No email sent since pref is off");
+                    }
                 } else {
-                    emailDTO = emailDAO.getByUserID(reported.getId());
-                }
-                int emailPref = emailDTO.getReportPref();
-                System.out.print("Email preference: ");
-                System.out.println(emailPref);
-                if (emailPref == 1) {
-                    EmailService emailService = new EmailService();
-                    emailService.createPoorParkReportedEmail(poorParkReport, reported);
-                } else {
-                    System.out.println("No email sent since pref is off");
+                    //Shouldn't reach this since it null checks upon login
+                    System.out.println("Email pref is null so it won't send");
                 }
             } else {
                 System.out.println("No user found");
