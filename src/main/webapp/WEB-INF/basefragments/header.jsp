@@ -18,7 +18,7 @@
 <%--	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"--%>
 <%--	crossorigin="anonymous"></script>--%>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddceac">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddceac;">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -58,7 +58,7 @@
 
 						<li class="nav-item dropdown">
 							<a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell.png" style="width: 30px; height: 30px;">
+								<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell.png" style="width: 25px; height: 25px;">
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 

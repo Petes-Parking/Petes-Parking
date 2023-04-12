@@ -1,57 +1,59 @@
 @charset "UTF-8";
 
 .box {
-    width: 1600px;
-    height: 1200px;
-    margin-left: 220px;
+    width: 75%;
+    height: 90%;
     display: inline-block;
-    vertical-align: top;
-    margin-top: 10px;
+    float: right;
+    margin-top: 0.75%;
+    margin-left: 1%;
+    margin-right: 2%;
     background-color: #CEB888;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .history-area {
-    margin-left: 25px;
-    margin-top: 100px;
-    width: 750px;
-    height: 1000px;
+    margin-left: 6%;
+    margin-top: 4%;
+    width: 42%;
+    height: 80%;
     display: inline-block;
-    vertical-align: top;
 
 }
 .favorites-area {
-    margin-left: 50px;
-    margin-top: 100px;
-    width: 750px;
-    height: 1000px;
+    margin-right: 5%;
+    margin-top: 4%;
+    width: 42%;
+    height: 80%;
     display: inline-block;
-    vertical-align: top;
     float: right;
 }
 
 .historyButton {
-    width: 650px;
-    height: 60px;
+    width: 15%;
+    height: 5%;
     font-size: 14px;
+    background-color: #333;
+    color: white;
 }
 .historyButton:hover {background-color: #373A36; transition: .3s; color: white;}
 
 .bookButton {
-    width: 350px;
-    height: 60px;
+    width: 15%;
+    height: 5%;
     font-size: 20px;
-    background-color: #CEB888;
+    background-color: #333;
+    color: white;
     border: thick;
     border-radius: 12px;
-    margin-left: 10px;
+    margin-left: 1%;
 }
 .bookButton:hover {background-color: #373A36; transition: .3s; color: white;}
 
 .favoritesButton {
-    width: 650px;
-    height: 60px;
+    width: 15%;
+    height: 5%;
     font-size: 14px;
 }
 .favoritesButton:hover {background-color: #373A36; transition: .3s; color: white;}

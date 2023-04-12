@@ -94,60 +94,50 @@
 <body style="background-color: #373A36;">
 
 <div class="sidebar">
-  <div class="buttons" width="465" height="920">
-    <div class="profile-area" width="150" height="175">
-      <div class="profile-bar"></div>
-      <img src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture" style="max-width: 91px; height: auto;">
-      <a href="${pageContext.request.contextPath}/profile">
-        <button class="profile-button">${username}</button>
-      </a>
-
-      <a href="${pageContext.request.contextPath}/main">
-        <button class="home-button"><img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png" alt="" width="50" height="50"></button>
-      </a>
-      <div class="profile-bar"></div>
-    </div>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" width="100" height="50" alt="" style="border-radius: 425px; z-index: 0; display: inline-block; margin-bottom: 45px; vertical-align: top;"/>
-    <div class="dropdown">
-      <a href="${pageContext.request.contextPath}/parkinglist">
-        <button class="bookBtn">Book Reservation</button>
-      </a>
-    </div>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
-    <div class="dropdown">
-      <a href="${pageContext.request.contextPath}/history">
-        <button class="favoriteBtn">View Favorite Parkings</button>
-      </a>
-    </div>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
-    <div class="dropdown">
-      <a href="${pageContext.request.contextPath}/parkingpals">
-        <button class="palsBtn">Parking Pals</button>
-      </a>
-    </div>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
-    <div class="dropdown">
-      <a href="${pageContext.request.contextPath}/carpool">
-
-        <button class="favoriteBtn">Carpools</button>
-      </a>
-    </div>
-
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/referrals.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; display: inline-block; margin-bottom: 30px; vertical-align: top;"/>
-    <div class="dropdown">
-      <a href="${pageContext.request.contextPath}/referrals">
-
-        <button class="favoriteBtn">My Referrals</button>
-      </a>
-    </div>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 15px; vertical-align: bottom;"/>
-    <a href="${pageContext.request.contextPath}/settings">
-      <button class="settings-button">Settings</button>
+  <div class="profile-area">
+    <img class="profile-pic" src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture">
+    <a href="${pageContext.request.contextPath}/profile">
+      <button class="profile-button">${user.firstName} ${user.lastName}</button>
     </a>
-    <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" width="75" height="75" alt="" style="border-radius: 425px; margin-left: 2.4%; z-index: 0; margin-bottom: 35px; vertical-align: top;"/>
+    <a href="${pageContext.request.contextPath}/main">
+      <button class="home-button"><img style="width: 80%; height: 70%;" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
+    </a>
+  </div>
+
+  <div class="button-area">
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" style="width: 32%; margin-left: 2%">
+    <a href="${pageContext.request.contextPath}/parkinglist">
+      <button class="sidebarPageButtons">Book Reservation</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" style="width: 24%; margin-left: 6%"/>
+    <a href="${pageContext.request.contextPath}/history">
+      <button class="sidebarPageButtons">View Favorite Parkings</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" style="width: 23%; margin-left: 6%"/>
+    <a href="${pageContext.request.contextPath}/parkingpals">
+      <button class="sidebarPageButtons">Parking Pals</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" style="width: 22%; margin-left: 7%"/>
+    <a href="${pageContext.request.contextPath}/carpool">
+      <button class="sidebarPageButtons">Carpools</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/referrals.png" style="width: 23%; margin-left: 6%"/>
+    <a href="${pageContext.request.contextPath}/referrals">
+      <button class="sidebarPageButtons">My Referrals</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" style="width: 23%; margin-left: 7%"/>
+    <a href="${pageContext.request.contextPath}/settings">
+      <button class="sidebarPageButtons">Settings</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" style="width: 26%; margin-left: 6%; margin-right: 4%"/>
     <div class="dropdown">
-      <button class="reportbtn">File a Report</button>
-      </a>
+      <button style="width: 100%; position: relative; padding: 13px 30px; margin-top: 6%; background-color: #D6C49B; border-radius: 5px;">File a Report</button>
       <div class="dropdown-content1">
         <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
         <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
@@ -156,23 +146,23 @@
   </div>
 </div>
 
-<div class = "box" >
+<div class="box">
   <body onload="generateLists()"></body>
   <div class="history-area">
     <h1>Parking History</h1>
-    <div id="historyList" data-histories="${histories}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
+    <div id="historyList" data-histories="${histories}" style="overflow-y: scroll; height: 80%; margin-left: 1%;">
     </div>
   </div>
 
   <div class="favorites-area">
     <h1>Favorite Parking Areas</h1>
-    <div id="favoritesList" data-favorites="${favorites}" style="overflow-y: scroll; height: 900px; margin-left: 10px;">
+    <div id="favoritesList" data-favorites="${favorites}" style="overflow-y: scroll; height: 80%; margin-left: 1%;">
     </div>
   </div>
 
   <div id="bookShortcut">
   </div>
-
 </div>
+
 </body>
 </html>
