@@ -224,6 +224,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/referrals.jsp" />
     </definition>
 
+    <!--        Admin Edit View-->
+    <definition name="specificArea" template="/WEB-INF/bodyfragments/specificArea.jsp">
+        <put-attribute name="title" value="" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/specificArea.jsp" />
+    </definition>
+
     <!-- Admin Review Exp -->
     <definition name="adminExpReport" extends="base.definition">
         <put-attribute name="title" value="Admin Review Exp Reports" />

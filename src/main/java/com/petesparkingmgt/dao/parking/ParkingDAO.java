@@ -9,4 +9,6 @@ public interface ParkingDAO extends JpaRepository<ParkingDTO, Long>{
 	public ParkingDTO findByParkingName(String parkingName);
 	public ParkingDTO findById(long id);
 	public ParkingDTO findTopByOrderByIdDesc();
+
+
 }
