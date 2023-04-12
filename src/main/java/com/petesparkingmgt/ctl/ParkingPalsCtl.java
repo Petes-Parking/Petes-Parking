@@ -123,6 +123,9 @@ public class ParkingPalsCtl {
             } else {
                 System.out.println("No email sent since pref is off");
             }
+        } else {
+            //Shouldn't reach this since it null checks upon login
+            System.out.println("Email pref is null so it won't send");
         }
 
 

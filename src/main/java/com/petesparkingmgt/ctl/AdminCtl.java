@@ -1,10 +1,12 @@
 package com.petesparkingmgt.ctl;
 
 
+import com.petesparkingmgt.dao.parking.ParkingDAO;
 import com.petesparkingmgt.dao.reports.ExpReportDAO;
 import com.petesparkingmgt.dao.reports.PoorParkReportDAO;
 import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.PendingUserDTO;
@@ -22,6 +24,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
@@ -47,6 +50,9 @@ public class AdminCtl {
 
     @Autowired
     public PoorParkReportDAO poorParkDAO;
+
+    @Autowired
+    public ParkingDAO parkingDAO;
 
 
     @GetMapping("/adminview")
@@ -169,6 +175,13 @@ public class AdminCtl {
         return "adminReviewExpDetailed";
     }
 
+    @GetMapping("/admin/parkingArea={area}")
+    public String editSpecificArea(@PathVariable("area") String area, Model model) {
+        ParkingDTO DTO = parkingDAO.findByParkingName(area);
+        model.addAttribute("parkingArea", DTO);
+        return "specificArea";
+    }
+
     @GetMapping("/admin/review-poorpark/{poorParkReportID}")
     public String adminReviewPoorParkDetailed(@PathVariable("poorParkReportID") Long poorParkReportID, Model model) {
 
@@ -261,12 +274,26 @@ public class AdminCtl {
     }
 
 
+    @Autowired
+    public ParkingDAO editParkingInfoDAO;
     @GetMapping("/admin/editparkinginfo")
-    public String EditParkingInfo(Model model) {
-        List<UserDTO> users = dao.findAll();
-        model.addAttribute("editparkinginfo", users);
+    public String EditParkingInfoPage(Model model, HttpSession session) {
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        if (user == null) {
+            return "error";
+        }
+        List<ParkingDTO> parkingareaList = editParkingInfoDAO.findAll();
+        List<String> formattedAreaList = new ArrayList<>();
+        for (ParkingDTO editParkingInfoDTO : parkingareaList) {
+            String s1 = editParkingInfoDTO.getParkingName();
+            formattedAreaList.add(s1);
+        }
+        formattedAreaList.forEach(System.out::println);
+        model.addAttribute("parkingAreas", formattedAreaList);
         return "editparkinginfo";
     }
+
+
 
 
     @PostMapping("/admin/updatePoint")
@@ -280,8 +307,6 @@ public class AdminCtl {
             model.addAttribute("errors", "Do not use negative values!");
             return "managePoints";
         }
-
-
 
         if (form.getType().equalsIgnoreCase("add")) {
             user.setPoints(user.getPoints() + form.getAmount());

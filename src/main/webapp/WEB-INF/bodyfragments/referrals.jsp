@@ -110,6 +110,7 @@
   <tbody>
   <!-- Replace with dynamic data -->
   <c:if test="${not empty referralCodes}">
+    <c:if test="${not empty studentsUsed}">
     <c:forEach items="${studentsUsed}" var="names">
 
     <tr>
@@ -127,7 +128,20 @@
       </c:if>
     </tr>
       </c:forEach>
+    </c:if>
+    <c:if test="${empty studentsUsed}">
+
+      <tr>
+        <td>
+          <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${referralCodes.code}">
+              ${referralCodes.code}
+          </button></td>
+        <td>None</td>
+      </tr>
+    </c:if>
   </c:if>
+
+
   </tbody>
 </table>
 

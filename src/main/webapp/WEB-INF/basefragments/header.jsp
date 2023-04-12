@@ -55,20 +55,29 @@
 							aria-current="page"
 							href="${pageContext.request.contextPath}/bookinglist">Booking</a></li>
 
+
 						<li class="nav-item dropdown">
 							<a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 								<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell.png" style="width: 30px; height: 30px;">
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
-								<a class="dropdown-item" href="test">
-									Test
-									<span class="timestamp">9am</span>
-								</a>
+
+								<c:if test="${empty notifications}">
+									<p style="color: red;">No notifications found.</p>
+
+								</c:if>
+
+
+								<c:if test="${not empty notifications}">
+									<p style="color: green;">${notifications}</p>
+								</c:if>
 <%--								<c:forEach var="notification" items="${notifications}">--%>
-<%--									<a class="dropdown-item" href="${notification.pageToGoTo}">--%>
-<%--											${notification.message}--%>
-<%--										<span class="timestamp">${notification.timeStamp}</span>--%>
-<%--									</a>--%>
+<%--&lt;%&ndash;									<a class="dropdown-item" href="0">&ndash;%&gt;--%>
+<%--											${notification}--%>
+<%--&lt;%&ndash;										<span class="timestamp">${notification}</span>&ndash;%&gt;--%>
+<%--&lt;%&ndash;									</a>&ndash;%&gt;--%>
+<%--									<!-- Debug: print notification.message -->--%>
+<%--									<c:out value="TEST ${notification}" />--%>
 <%--								</c:forEach>--%>
 							</div>
 						</li>
