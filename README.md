@@ -1,19 +1,12 @@
 # Petes-Parking
-CS307 Project
+
 
 Pete’s Parking
-
-Sprint 1 Planning Document
-
-Team 34: Max Fuligni, Alhagie Jaiteh, Sam Zola, Alec Sabia, Naia Echevarria, Aakash Jariwala
-GitHub: https://github.com/Petes-Parking
 
 Sprint Overview
 During this sprint, our main goal is to get our application up and running. We hope to create the framework of Pete’s Parking so that we can build upon it in future sprints. Since we currently have no code written for our project, we want to build a base for the project before adding any of the complex features. Some of the goals we hope to accomplish are to create a functional login system, have a viewable parking map, and a parking reservation system. To do this, we have chosen user stories that accomplish these tasks.
 
-Scrum Master: Max Fuligni
 
-Meeting Plan: Tuesdays/Thursdays @ 5:30pm
 
 Risks and Challenges:
 One of the main challenges we expect to encounter includes developing our frontend UI so that it matches what we designed for our complex UI mockups, as well as overcoming the initial learning curve with HTML and CSS. Because of this, our initial development speed might be slow, but this is anticipated. Another challenge is to have our application up and running after this sprint, which is a relatively large undertaking but still an important goal to reach. It is crucial for us to successfully implement the user stories in this sprint and have a functional application in order to stay on schedule and have successful future sprints.
