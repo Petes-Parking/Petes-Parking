@@ -30,7 +30,7 @@ public class EmailService {
         String recipientEmail = request.getRecipientEmail();
 
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String strDate = dateFormat.format(date);
         DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
         String strTime = timeFormat.format(date);
@@ -49,15 +49,79 @@ public class EmailService {
                 "To accept or deny this request, you can log into Pete’s Parking and navigate to the Parking Pals section.\n" +
                 "\n" +
                 "Pete’s Parking Team" + "\n" +
-                "petesparkingapp@gmail.com";
+                "petesparkingpurdue@gmail.com";
         sendEmail(recipientEmail, subject, body);
+    }
+
+    public void createParkingPalAcceptedEmail(FriendDTO request) throws NoSuchAlgorithmException, KeyManagementException {
+        String senderFirst = request.getSenderFirstName();
+        String senderLast = request.getSenderLastName();
+        String senderEmail = request.getSenderEmail();
+
+        String recipientFirst = request.getRecipientFirstName();
+        String recipientLast = request.getRecipientLastName();
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String strDate = dateFormat.format(date);
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String strTime = timeFormat.format(date);
+
+        String subject = "[Pete’s Parking] A Parking Pal Request you sent has been Accepted!";
+        String body = "Dear " + senderFirst + " " + senderLast + ",\n" +
+                "\n" +
+                "Your parking pal request on Pete’s Parking has been accepted. Please read the following information about the request:\n" +
+                "\n" +
+                "Date Request Accepted: " + strDate + "\n" +
+                "\n" +
+                "Time Request Accepted: " + strTime + "\n" +
+                "\n" +
+                "User who Accepted Request: " + recipientFirst + " " + recipientLast + "\n" +
+                "\n" +
+                "To see more about your new friend, you can log into Pete’s Parking and navigate to the Parking Pals section.\n" +
+                "\n" +
+                "Pete’s Parking Team" + "\n" +
+                "petesparkingpurdue@gmail.com";
+        sendEmail(senderEmail, subject, body);
+    }
+
+    public void createParkingPalRejectedEmail(FriendDTO request) throws NoSuchAlgorithmException, KeyManagementException {
+        String senderFirst = request.getSenderFirstName();
+        String senderLast = request.getSenderLastName();
+        String senderEmail = request.getSenderEmail();
+
+        String recipientFirst = request.getRecipientFirstName();
+        String recipientLast = request.getRecipientLastName();
+
+        Date date = Calendar.getInstance().getTime();
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+        String strDate = dateFormat.format(date);
+        DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
+        String strTime = timeFormat.format(date);
+
+        String subject = "[Pete’s Parking] A Parking Pal Request you sent has been Rejected!";
+        String body = "Dear " + senderFirst + " " + senderLast + ",\n" +
+                "\n" +
+                "Your parking pal request on Pete’s Parking has been rejected. Please read the following information about the request:\n" +
+                "\n" +
+                "Date Request Rejected: " + strDate + "\n" +
+                "\n" +
+                "Time Request Rejected: " + strTime + "\n" +
+                "\n" +
+                "User who Rejected Request: " + recipientFirst + " " + recipientLast + "\n" +
+                "\n" +
+                "To see more, you can log into Pete’s Parking and navigate to the Parking Pals section.\n" +
+                "\n" +
+                "Pete’s Parking Team" + "\n" +
+                "petesparkingpurdue@gmail.com";
+        sendEmail(senderEmail, subject, body);
     }
 
     public void createPoorParkReportedEmail(PoorParkReportDTO poorParkReport, UserDTO user) throws NoSuchAlgorithmException, KeyManagementException {
         String recipientEmail = user.getEmail();
 
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String strDate = dateFormat.format(date);
         DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
         String strTime = timeFormat.format(date);
@@ -80,7 +144,7 @@ public class EmailService {
                 "If you are found in violation of parking rules, you may receive a parking ticket. A Pete’s Parking admin will review this report shortly. Thank you for understanding.\n" +
                 "\n" +
                 "Pete’s Parking Team" + "\n" +
-                "petesparkingapp@gmail.com";
+                "petesparkingpurdue@gmail.com";
         sendEmail(recipientEmail, subject, body);
     }
 
@@ -88,7 +152,7 @@ public class EmailService {
         String recipientEmail = user.getEmail();
 
         Date date = Calendar.getInstance().getTime();
-        DateFormat dateFormat = new SimpleDateFormat("MM-dd-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
         String strDate = dateFormat.format(date);
         DateFormat timeFormat = new SimpleDateFormat("hh:mm aa");
         String strTime = timeFormat.format(date);
@@ -111,7 +175,7 @@ public class EmailService {
                 "If you are found in violation of parking rules, you may receive a parking ticket. A Pete’s Parking admin will review this report shortly. Thank you for understanding.\n" +
                 "\n" +
                 "Pete’s Parking Team" + "\n" +
-                "petesparkingapp@gmail.com";
+                "petesparkingpurdue@gmail.com";
         sendEmail(recipientEmail, subject, body);
     }
 
@@ -141,7 +205,7 @@ public class EmailService {
             MimeMessage message = new MimeMessage(mySession);
 
             // Set From: header field of the header.
-            message.setFrom(new InternetAddress("petesparkingapp@gmail.com"));
+            message.setFrom(new InternetAddress("petesparkingpurdue@gmail.com"));
 
             // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(recipient));

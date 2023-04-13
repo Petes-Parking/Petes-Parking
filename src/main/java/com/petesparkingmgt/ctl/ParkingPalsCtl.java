@@ -142,7 +142,7 @@ public class ParkingPalsCtl {
     }
 
     @PostMapping("/friendInviteResponse")
-    public String inviteResponse(@ModelAttribute("friendResponseForm") FriendResponseForm form, Model model, HttpSession session) {
+    public String inviteResponse(@ModelAttribute("friendResponseForm") FriendResponseForm form, Model model, HttpSession session) throws NoSuchAlgorithmException, KeyManagementException {
 
         UserDTO user = (UserDTO) session.getAttribute("user");
         if (user == null) return "error";
@@ -162,8 +162,50 @@ public class ParkingPalsCtl {
         String sender = form.getEmail();
 
         if (action.equalsIgnoreCase("accept")) {
+
+            //Send email to sender if request is accepted and notifications are on
+            FriendDTO currentRequest = dao.getFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(sender, user.getEmail(), 0);
+            UserDTO userSender = userDAO.findByEmail(sender);
+            EmailPreferencesDTO emailDTO = emailDAO.getByUserID(userSender.getId());
+
+            if (emailDTO != null) {
+                int emailPref = emailDTO.getParkingPalPref();
+                System.out.print("Email preference: ");
+                System.out.println(emailPref);
+                if (emailPref == 1) {
+                    EmailService emailService = new EmailService();
+                    System.out.println("Email pref is on");
+                    emailService.createParkingPalAcceptedEmail(currentRequest);
+                } else {
+                    System.out.println("No email sent since pref is off");
+                }
+            } else {
+                System.out.println("email is null!");
+            }
+
             service.acceptInvite(user.getEmail(), sender);
         } else if (action.equalsIgnoreCase("reject")) {
+
+            //Send email to sender if request is denied & notifications are on
+            FriendDTO currentRequest = dao.getFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(sender, user.getEmail(), 0);
+            UserDTO userSender = userDAO.findByEmail(sender);
+            EmailPreferencesDTO emailDTO = emailDAO.getByUserID(userSender.getId());
+
+            if (emailDTO != null) {
+                int emailPref = emailDTO.getParkingPalPref();
+                System.out.print("Email preference: ");
+                System.out.println(emailPref);
+                if (emailPref == 1) {
+                    EmailService emailService = new EmailService();
+                    System.out.println("Email pref is on");
+                    emailService.createParkingPalRejectedEmail(currentRequest);
+                } else {
+                    System.out.println("No email sent since pref is off");
+                }
+            } else {
+                System.out.println("email is null!");
+            }
+
             service.rejectInvite(user.getEmail(), sender);
         } else {
             // should never reach here but we'll return error anyways
