@@ -1,5 +1,8 @@
 package com.petesparkingmgt.ctl;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +20,7 @@ import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.parking.SlotDTO;
 import com.petesparkingmgt.dto.user.HistoryDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.form.BookingPaymentForm;
 import com.petesparkingmgt.form.FavoriteForm;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
@@ -32,6 +36,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.petesparkingmgt.exception.RecordNotFoundException;
 import com.petesparkingmgt.form.BookingForm;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -94,6 +100,8 @@ public class BookingCtl {
 			System.out.println("bindingResult : "+bindingResult);
 			return "booking";
 		}else {
+
+
 			if (carpoolUsersService.isInCarpoolButNotLeader(user.getId())){
 				// do not allow them to book, only the leader can book
 				model.addAttribute("error", "Only the carpool leader can reserve a slot!");
@@ -104,6 +112,23 @@ public class BookingCtl {
 				return "booking";
 			}
 			BookingDTO bean = form.getDTO();
+			if (isDateInFuture(bean.getFromBookingDate())) {
+				// trying to book in the future, cancel and send payment page
+				model.addAttribute("firstName", bean.getFirstName());
+				model.addAttribute("lastName", bean.getLastName());
+				model.addAttribute("email", bean.getEmail());
+				model.addAttribute("phoneNumber", bean.getPhoneNumber());
+				model.addAttribute("parkingName", bean.getParkingName());
+				model.addAttribute("slotId", bean.getSlotId());
+				model.addAttribute("fromBookingDate", bean.getFromBookingDate().toString());
+				model.addAttribute("toBookingDate", bean.getToBookingDate().toString());
+				model.addAttribute("fromTime", bean.getFromTime());
+				model.addAttribute("toTime", bean.getToTime());
+
+				model.addAttribute("requiredPoints", service.calculatePoints(bean));
+				model.addAttribute("userPoints", user.getPoints());
+				return "bookingpayment";
+			}
 
 			HistoryDTO historyBean = new HistoryDTO();
 			historyBean.setUserId(user.getId());
@@ -183,6 +208,73 @@ public class BookingCtl {
 			return "booking";
 		}
 	}
+
+	// NOT DONE YET, MAKE SURE EVERYTHING WORKS LIKE HISTORY & CARPOOLS AND POINTS AND LEVELS
+	@PostMapping("/booking/confirmPayment")
+	public ModelAndView confirmPayment(@Valid @ModelAttribute("bookingForm") BookingPaymentForm form, BindingResult bindingResult, Model model, RedirectAttributes attributes, HttpSession session) {
+		System.out.println(form + " ++ confirmPayment");
+		BookingDTO bean = form.getDTO();
+		int cost = form.getCost();
+		System.out.println(cost + " -- cost " + bean + " -- confirm payment");
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		user.setPoints(user.getPoints() - cost);
+
+		HistoryDTO historyBean = new HistoryDTO();
+		historyBean.setUserId(user.getId());
+		historyBean.setArea(bean.getParkingName());
+		historyBean.setDate(form.getFromBookingDate());
+		historyDAO.save(historyBean);
+
+		SlotDTO slotDTO =	slotDAO.findById(bean.getSlotId());
+		bean.setSlot(slotDTO.getSlot());
+		bean.setSlotId(slotDTO.getId());
+		bean.setStatus("Cancel");
+		bean.setReqstatus("Pending");
+		if (carpoolUsersService.isLeader(user.getId())) {
+			bean.setCarpoolId(carpoolUsersService.getCarpoolFor(user.getId()).getCarpoolId());
+
+		} else {
+			// not a leader and not in a carpool, so set to -1 to ignore
+			bean.setCarpoolId(-1);
+		}
+		service.Add(bean);
+
+
+		userService.update(user);
+
+
+		ModelAndView modelAndView = new ModelAndView("redirect:/bookinglist");
+
+
+		if (bean.getCarpoolId() > 0 ){
+			String carpoolName = carpoolUsersService.getCarpoolNameFor(user.getId());
+			List<UserDTO> members = carpoolService.getUserDTOSForCarpool(bean.getCarpoolId());
+
+			// set points for every member in the carpool
+			for (UserDTO member : members) {
+				if (member.getId() == user.getId()) continue;
+
+				int addedPoints = historyService.getPointsFor(member.getId());
+				System.out.println("Adding " + addedPoints + " to " + member.getPoints() + " for " + member.getEmail());
+				member.setPoints(member.getPoints() + addedPoints);
+				PointsManager.LevelWrapper memWrapper = PointsManager.getLevel(user.getPoints());
+
+				member.setLevel(memWrapper.getLevel());
+				userService.update(member);
+
+			}
+
+			attributes.addFlashAttribute("success", "Booking successful for carpool: " + carpoolName);
+
+		} else {
+			attributes.addFlashAttribute("success", "Booking successfully!");
+			attributes.addFlashAttribute("success", "You spent  " + cost + " points. You now have " + user.getPoints() + " total points!");
+
+		}
+
+
+		return modelAndView;
+	}
 	
 	
 	@GetMapping("/cancelBooking")
@@ -237,6 +329,11 @@ public class BookingCtl {
 		service.update(dto);	
 		return "redirect:/bookinglist";
 	}
-	
+
+	public boolean isDateInFuture(Date givenDate) {
+		LocalDate localGivenDate = givenDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+		LocalDate today = LocalDate.now();
+		return localGivenDate.isAfter(today);
+	}
 
 }

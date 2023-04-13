@@ -1,5 +1,9 @@
 package com.petesparkingmgt.service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +52,23 @@ public class BookingService {
 		SlotDTO dto = slotDAO.findById(id);
 		return dto;
 	}
-	
+
+	public int calculatePoints(BookingDTO bookingDetails) {
+		Date bookingDate = bookingDetails.getFromBookingDate();
+		LocalDate currentDate = LocalDate.now();
+		long daysDifference = ChronoUnit.DAYS.between(currentDate, convertDateToLocalDate(bookingDate));
+
+		int basePoints = 10;
+		int additionalPointsPerDay = 20;
+		return basePoints + (int) (additionalPointsPerDay * daysDifference);
+
+	}
+
+	private LocalDate convertDateToLocalDate(Date date) {
+		return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+	}
+
+
 	public BookingDTO findBookingById(long id) {
 		return dao.findById(id);
 	}
