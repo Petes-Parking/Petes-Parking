@@ -4,6 +4,7 @@ import com.petesparkingmgt.dao.EmailPreferencesDAO;
 import com.petesparkingmgt.dao.users.FriendDAO;
 import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;
+import com.petesparkingmgt.dto.user.NotificationDTO;
 import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
 import com.petesparkingmgt.service.EmailService;
@@ -24,6 +25,7 @@ import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.lang.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class ParkingPalsCtl {
@@ -67,6 +69,11 @@ public class ParkingPalsCtl {
         List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
 
+        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
+        if (!allNotifications.isEmpty()) {
+            model.addAttribute("notifications", allNotifications);
+        }
+
         return "parkingpals";
 
     }
@@ -107,7 +114,7 @@ public class ParkingPalsCtl {
         dto.setRecipientLastName(toInvite.getLastName());
         dao.save(dto);
 
-        notificationService.addIncomingFriendNotification(toInvite.getId(), user.getFirstName() + " " + user.getLastName());
+        notificationService.addNotificationFor(toInvite.getId(), "You have an incoming friend request from " + user.getFirstName() + " " + user.getLastName()+"!", "parkingpals");
 
 
 
@@ -119,13 +126,13 @@ public class ParkingPalsCtl {
             System.out.println(emailPref);
             if (emailPref == 1) {
                 EmailService emailService = new EmailService();
+                System.out.println("Email pref is on");
                 emailService.createParkingPalRequestEmail(dto);
             } else {
                 System.out.println("No email sent since pref is off");
             }
         } else {
-            //Shouldn't reach this since it null checks upon login
-            System.out.println("Email pref is null so it won't send");
+            System.out.println("email is null!");
         }
 
 

@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Service
@@ -17,13 +18,16 @@ public class NotificationService {
     public NotificationDAO dao;
 
 
-    public void addIncomingFriendNotification(long receiverId, String senderName) {
+    public void addNotificationFor(long receiverId, String message, String page) {
         NotificationDTO incomingReqNotif = new NotificationDTO();
         incomingReqNotif.setUserId(receiverId);
         incomingReqNotif.setStatus(false);
-        incomingReqNotif.setTimeStamp(LocalDateTime.now().toString());
-        incomingReqNotif.setMessage("You have an incoming friend request from " + senderName + "!");
-        incomingReqNotif.setPageToGoTo("parkingpals");
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd HH:mm");
+        String formattedDateTime = currentDateTime.format(formatter);
+        incomingReqNotif.setTimeStamp(formattedDateTime);
+        incomingReqNotif.setMessage(message);
+        incomingReqNotif.setPageToGoTo(page);
         dao.save(incomingReqNotif);
     }
 

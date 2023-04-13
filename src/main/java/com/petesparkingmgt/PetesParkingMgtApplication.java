@@ -1,7 +1,6 @@
 package com.petesparkingmgt;
 
 
-import com.petesparkingmgt.utility.RegisterEmailSender;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

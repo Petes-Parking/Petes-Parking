@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <title>Pete's Parking</title>
     <style>
-        <%@include file="/WEB-INF/css/main-page.css"%>
         <%@include file="/WEB-INF/css/map-pan.css"%>
+        <%@include file="/WEB-INF/css/main-page.css"%>
+
     </style>
-    <link href="main-page.css" rel="stylesheet" type="text/css">
-    <link href="map-pan.css" rel="stylesheet" type="text/css">
+<%--    <link href="main-page.css" rel="stylesheet" type="text/css">--%>
+<%--    <link href="map-pan.css" rel="stylesheet" type="text/css">--%>
 </head>
 <body>
 <div class="sidebar">

@@ -51,17 +51,12 @@ public class MainCtl {
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
         parkingService.addOccupancyData(model);
-       // List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
-        List<String> allNotifications = notificationService.getUnreadNotificationsFor(user.getId())
-                .stream()
-                .map(NotificationDTO::getMessage)
-                .collect(Collectors.toList());
-
-        if (!allNotifications.isEmpty()) {
-            model.addAttribute("notifications", allNotifications.get(0));
-        }
-
+        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
         allNotifications.forEach(System.out::println);
+
+        model.addAttribute("notifications", allNotifications);
+
+
 
 
         return "mainPage";

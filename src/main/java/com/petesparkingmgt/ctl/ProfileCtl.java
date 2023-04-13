@@ -2,10 +2,12 @@ package com.petesparkingmgt.ctl;
 
 import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dao.users.VehicleDAO;
+import com.petesparkingmgt.dto.user.NotificationDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.user.VehicleDTO;
 import com.petesparkingmgt.form.VehicleForm;
 import com.petesparkingmgt.points.PointsManager;
+import com.petesparkingmgt.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 
 @Controller
 public class ProfileCtl {
@@ -28,6 +31,9 @@ public class ProfileCtl {
 
     @Autowired
     public UserDAO userdao;
+
+    @Autowired
+    public NotificationService notificationService;
 
     @GetMapping("/profile")
     public String profilePage(Model model, HttpSession session) {
@@ -53,6 +59,10 @@ public class ProfileCtl {
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
 
+        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
+        if (!allNotifications.isEmpty()) {
+            model.addAttribute("notifications", allNotifications);
+        }
 
         return "profilePage";
     }

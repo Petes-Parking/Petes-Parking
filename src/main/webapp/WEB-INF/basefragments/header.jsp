@@ -58,19 +58,38 @@
 
 						<li class="nav-item dropdown">
 							<a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell.png" style="width: 25px; height: 25px;">
+
+						<c:if test="${empty notifications}">
+
+						<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell.png" style="width: 25px; height: 25px;">
+						</c:if>
+								<c:if test="${not empty notifications}">
+
+									<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell_alert.png" style="width: 25px; height: 25px;">
+								</c:if>
+
 							</a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 								<c:if test="${empty notifications}">
-									<p style="color: red;">No notifications found.</p>
+									<p style="overflow: visible; position: absolute; z-index: 9999; color: red;">No notifications found.</p>
 
 								</c:if>
+
 
 
 								<c:if test="${not empty notifications}">
-									<p style="color: green;">${notifications}</p>
+									<c:forEach items="${notifications}" var="notif">
+										<a href="${pageContext.request.contextPath}/${notif.pageToGoTo}">
+									<p style="z-index: 10; color: green;">${notif.message}</p>
+										</a>
+									<span class="timestamp">${notif.timeStamp}</span>
+										<span><hr></span>
+
+									</c:forEach>
 								</c:if>
+
+
 <%--								<c:forEach var="notification" items="${notifications}">--%>
 <%--&lt;%&ndash;									<a class="dropdown-item" href="0">&ndash;%&gt;--%>
 <%--											${notification}--%>
