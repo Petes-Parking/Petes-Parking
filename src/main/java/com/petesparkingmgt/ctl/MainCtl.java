@@ -51,11 +51,10 @@ public class MainCtl {
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
         parkingService.addOccupancyData(model);
-        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
-        allNotifications.forEach(System.out::println);
 
-        model.addAttribute("notifications", allNotifications);
 
+
+        NotificationService.addNotifications(model, notificationService, user.getId());
 
 
 

@@ -79,9 +79,12 @@
 
 
 								<c:if test="${not empty notifications}">
-									<c:forEach items="${notifications}" var="notif">
-										<a href="${pageContext.request.contextPath}/${notif.pageToGoTo}">
-									<p style="z-index: 10; color: green;">${notif.message}</p>
+									<c:forEach items="${notifications}" var="notif" varStatus="status">
+<%--										<a href="${pageContext.request.contextPath}/${notif.pageToGoTo}">--%>
+
+										<a href="${pageContext.request.contextPath}/${notificationUrls[status.index]}">
+
+										<p style="z-index: 10; color: green;">${notif.message}</p>
 										</a>
 									<span class="timestamp">${notif.timeStamp}</span>
 										<span><hr></span>

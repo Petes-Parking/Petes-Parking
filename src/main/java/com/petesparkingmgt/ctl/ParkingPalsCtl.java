@@ -69,10 +69,8 @@ public class ParkingPalsCtl {
         List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
 
-        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
-        if (!allNotifications.isEmpty()) {
-            model.addAttribute("notifications", allNotifications);
-        }
+        NotificationService.addNotifications(model, notificationService, user.getId());
+
 
         return "parkingpals";
 

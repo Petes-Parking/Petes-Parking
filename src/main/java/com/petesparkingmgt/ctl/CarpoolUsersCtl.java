@@ -10,6 +10,7 @@ import com.petesparkingmgt.form.CarpoolAddMemberForm;
 import com.petesparkingmgt.form.CarpoolResponseForm;
 import com.petesparkingmgt.service.CarpoolService;
 import com.petesparkingmgt.service.CarpoolUsersService;
+import com.petesparkingmgt.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,6 +38,9 @@ public class CarpoolUsersCtl {
 
     @Autowired
     public CarpoolDAO carpoolDAO;
+
+    @Autowired
+    public NotificationService notificationService;
 
 
 
@@ -81,6 +85,7 @@ public class CarpoolUsersCtl {
             dto.setCarpoolId(carpool.getId());
             dto.setUserId(toInvite.getId());
             dto.setStatus(0);
+            notificationService.addNotificationFor(toInvite.getId(), "You have been invited to Carpool: " + carpool.getCarPoolName() + "!", "carpool");
             dao.save(dto);
         }
         return "carpool";

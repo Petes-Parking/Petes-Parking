@@ -15,6 +15,7 @@ import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.ManagePointForm;
 import com.petesparkingmgt.form.UserForm;
 import com.petesparkingmgt.service.BookingService;
+import com.petesparkingmgt.service.NotificationService;
 import com.petesparkingmgt.service.PendingUserService;
 import com.petesparkingmgt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +54,8 @@ public class AdminCtl {
 
     @Autowired
     public ParkingDAO parkingDAO;
+    @Autowired
+    public NotificationService notificationService;
 
 
     @GetMapping("/adminview")
@@ -207,10 +210,14 @@ public class AdminCtl {
 
     @PostMapping("/admin/deleteExpReport/{expReportID}")
     public ModelAndView deleteExpReport(@PathVariable("expReportID") Long expReportID, RedirectAttributes attributes) {
+        long reporterID = dao.findByEmail(expDAO.getById(expReportID).getReporterEmail()).getId();
         expDAO.deleteById(expReportID);
 
         ModelAndView modelAndView = new ModelAndView("redirect:/admin/review-exp");
         attributes.addFlashAttribute("message", "Report deleted successfully!");
+        if (reporterID > 0) {
+            notificationService.addNotificationFor(reporterID, "Your report with ID: " + expReportID + " has been dismissed!", "main");
+        }
 
         return modelAndView;
     }

@@ -59,10 +59,8 @@ public class ProfileCtl {
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
 
-        List<NotificationDTO> allNotifications = notificationService.getUnreadNotificationsFor(user.getId());
-        if (!allNotifications.isEmpty()) {
-            model.addAttribute("notifications", allNotifications);
-        }
+        NotificationService.addNotifications(model, notificationService, user.getId());
+
 
         return "profilePage";
     }
