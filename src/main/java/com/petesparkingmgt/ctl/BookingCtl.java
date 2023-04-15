@@ -120,8 +120,8 @@ public class BookingCtl {
 				model.addAttribute("phoneNumber", bean.getPhoneNumber());
 				model.addAttribute("parkingName", bean.getParkingName());
 				model.addAttribute("slotId", bean.getSlotId());
-				model.addAttribute("fromBookingDate", bean.getFromBookingDate().toString());
-				model.addAttribute("toBookingDate", bean.getToBookingDate().toString());
+				model.addAttribute("fromBookingDate", form.getFromBookingDate());
+				model.addAttribute("toBookingDate", form.getToBookingDate());
 				model.addAttribute("fromTime", bean.getFromTime());
 				model.addAttribute("toTime", bean.getToTime());
 
