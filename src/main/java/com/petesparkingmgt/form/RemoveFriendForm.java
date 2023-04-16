@@ -7,18 +7,22 @@ import javax.validation.constraints.NotEmpty;
 
 @Getter
 @Setter
-public class AddFriendForm {
+public class RemoveFriendForm {
 
-    public AddFriendForm(String email) {
+    public RemoveFriendForm(String email, String requestSentBy) {
         this.email = email;
+        this.requestSentBy = requestSentBy;
     }
 
     @NotEmpty(message = "Email is needed")
     private String email;
 
+    @NotEmpty
+    private String requestSentBy;
+
     @Override
     public String toString() {
-        return "AddFriendForm [email=" + email + "]";
+        return "RemoveFriendForm [email=" + email + requestSentBy + "]";
     }
 
 }

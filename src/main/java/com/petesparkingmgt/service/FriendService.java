@@ -22,20 +22,16 @@ public class FriendService {
     }
 
     public List<FriendDTO> getConfirmedUsersFor(String userEmail) {
-
         List<FriendDTO> confirmed = dao.getFriendDTOSByRecipientEmailAndStatusEquals(userEmail, 1);
         confirmed.addAll(dao.getFriendDTOSBySenderEmailAndStatusEquals(userEmail, 1));
         return confirmed;
-
     }
 
     public List<FriendDTO> getOutgoingRequestsFor(String userEmail) {
-
         return dao.getFriendDTOSBySenderEmailAndStatusEquals(userEmail, 0);
     }
 
     public void acceptInvite(String recipientEmail, String senderEmail) {
-
         FriendDTO temp = dao.getFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(senderEmail, recipientEmail, 0);
 
         FriendDTO accepted = new FriendDTO();
@@ -49,11 +45,14 @@ public class FriendService {
         dao.save(accepted);
 
         dao.deleteFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(senderEmail, recipientEmail, 0);
-
     }
 
     public void rejectInvite(String recipientEmail, String senderEmail) {
         dao.deleteFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(senderEmail, recipientEmail, 0);
+    }
+
+    public void removeFriend(String senderEmail, String recipientEmail) {
+        dao.deleteFriendDTOBySenderEmailAndRecipientEmailAndStatusEquals(senderEmail, recipientEmail, 1);
     }
 
 }

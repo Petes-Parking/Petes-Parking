@@ -18,7 +18,7 @@
 <%--	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"--%>
 <%--	crossorigin="anonymous"></script>--%>
 
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddceac;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ddceac; font-family: Verdana, Helvetica, sans-serif;">
 	<div class="container-fluid">
 		<a class="navbar-brand" href="#"></a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -65,7 +65,7 @@
 						</c:if>
 								<c:if test="${not empty notifications}">
 
-									<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell_alert.png" style="width: 25px; height: 25px;">
+									<img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/notification_bell_alert.png" style="width: 35px; height: 25px;">
 								</c:if>
 
 							</a>
