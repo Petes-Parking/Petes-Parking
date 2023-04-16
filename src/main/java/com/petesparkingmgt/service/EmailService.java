@@ -1,5 +1,6 @@
 package com.petesparkingmgt.service;
 
+import com.petesparkingmgt.dto.parking.BookingDTO;
 import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;
@@ -179,6 +180,29 @@ public class EmailService {
         sendEmail(recipientEmail, subject, body);
     }
 
+    public void createExpiringTimerEmail(BookingDTO booking, long timer) throws NoSuchAlgorithmException, KeyManagementException {
+        String firstName = booking.getFirstName();
+        String lastName = booking.getLastName();
+        String recipientEmail = booking.getEmail();
+
+        String subject = "[Pete’s Parking] Your Timer is Almost Expired!";
+        String body = "Dear " + firstName + " " + lastName + ",\n" +
+                "\n" +
+                "Your Pete’s Parking booking is almost expired. Please read the following information about your reservation to avoid being late:\n" +
+                "\n" +
+                "Parking Lot: " + booking.getParkingName() + "\n" +
+                "\n" +
+                "Expiration Time: " + booking.getToTime() + "\n" +
+                "\n" +
+                "Time Remaining: " + timer + " + minutes\n" +
+                "\n" +
+                "If you are still parked after your timer has expired, you may receive a parking ticket. Please ensure that your car is removed before the reservation ends. Thank you.\n" +
+                "\n" +
+                "Pete’s Parking Team" + "\n" +
+                "petesparkingpurdue@gmail.com";
+        sendEmail(recipientEmail, subject, body);
+    }
+
     public void sendEmail(String recipient, String subject, String body) throws NoSuchAlgorithmException, KeyManagementException {
         // Set SSL context with TLSv1.2 protocol explicitly
         SSLContext sslContext = SSLContext.getInstance("TLSv1.2");
@@ -224,4 +248,6 @@ public class EmailService {
             mex.printStackTrace();
         }
     }
+
+
 }
