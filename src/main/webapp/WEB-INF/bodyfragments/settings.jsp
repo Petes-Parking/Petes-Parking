@@ -96,6 +96,7 @@
       z-index: 9999;
       display: none;
       text-align: center;
+      align-items: center;
     }
 
     .popup p {
@@ -111,6 +112,7 @@
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       cursor: pointer;
+      margin-top: 15%;
     }
 
     .popup button:hover {
@@ -268,7 +270,14 @@
         <label for="timerInput">Enter number of minutes left on timer when email notification should be sent:</label>
         <input type="number" id="timerInput" name="timerInput" style="text-align:left; padding-right: 5px" min="1" value="${theTimer}" ${expirationPref ? '' : 'disabled'}>
       </div>
-      <button id="save-email" type="submit">Save Changes</button><br>
+      <button id="save-email" type="button" onclick="show('confirmed-popup')">Save Changes</button><br>
+    </div>
+
+    <div class="popup" id="confirmed-popup">
+      <div class="text">
+        <p3>Settings Saved.</p3>
+      </div>
+      <button class="submit", type="submit" id="submit" onclick="hide('confirmed-popup')">Close</button>
     </div>
   </form>
 
@@ -344,6 +353,17 @@
     } else {
       timerInput.disabled = true;
     }
+  }
+
+  $ = function(id) {
+    return document.getElementById(id);
+  }
+
+  var show = function(id) {
+    $(id).style.display ='block';
+  }
+  var hide = function(id) {
+    $(id).style.display ='none';
   }
 
 </script>
