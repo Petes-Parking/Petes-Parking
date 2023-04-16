@@ -40,7 +40,6 @@ public class NotificationService {
     public void markAsRead(long notificationId) {
         NotificationDTO notification = dao.getById(notificationId);
         notification.setStatus(true);
-        // Save the updated notification to the database using your DAO.
         update(notification);
 
 

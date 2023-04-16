@@ -9,14 +9,14 @@
     body {
       background-color: #CEB888;
       color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Verdana, Helvetica, sans-serif;
     }
     h1 {
       text-align: center;
       color: black;
     }
 
-    h3 {
+    h4 {
       color: black;
     }
 
@@ -31,9 +31,9 @@
     }
 
     input {
-      padding: 10px;
+      padding: 8px;
       width: 95%;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       border-width: thin;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -41,21 +41,59 @@
     }
 
     .add-friend-button {
-      background-color: #CEB888;
+      background-color: #333;
       color: #fff;
       border: none;
       border-radius: 5px;
-      padding: 5px 10px;
+      padding: 7px 8px 5px;
+      margin-bottom: -10px;
       cursor: pointer;
     }
 
+    .add-friend-button:hover {
+        border-radius: 15px;
+        transition: .3s;
+        background-color: #555;
+    }
+
     .view-friend-button {
-      background-color: #CEB888;
+      background-color: #333;
       color: #fff;
       border: none;
       border-radius: 5px;
-      padding: 5px 10px;
+      padding: 8px 10px 6px;
       cursor: pointer;
+      margin-bottom: -10px;
+    }
+
+    .view-friend-button:hover {
+      border-radius: 15px;
+      transition: .3s;
+      background-color: #555;
+    }
+
+    .x-button {
+      width: 30px;
+      height: 30px;
+      background-color: #333;
+      border-radius: 5px;
+      margin-bottom: -10px;
+    }
+
+    .x-button:hover {
+      border-radius: 10px;
+      transition: .3s;
+      background-color: #555;
+    }
+
+    .btn-success:hover {
+      border-radius: 15px;
+      transition: .3s;
+    }
+
+    .btn-danger:hover {
+        border-radius: 15px;
+        transition: .3s;
     }
 
     table {
@@ -67,13 +105,13 @@
       background-color: #A4A4A4;
       color: #000;
       text-align: left;
-      padding: 10px;
+      padding: 8px;
       font-size: 1.1rem;
     }
 
     td {
       border-bottom: 1px solid #000;
-      padding: 10px;
+      padding: 8px;
       font-size: 1rem;
       color: #000
     }
@@ -84,9 +122,8 @@
   </style>
 </head>
 <body>
-<h1 style="text-align: center; margin-top: 30px">Parking Pals</h1>
-<div class="container" style="float: left; margin-left: 20px; width: 55%; height: auto">
-  <h3>Add new Parking Pals:</h3>
+<div class="container" style="float: left; margin-left: 5%; width: 50%; height: auto">
+  <h4>Add new Parking Pals:</h4>
   <input type="text" id="search" placeholder="Search for a name here...">
   <div style="overflow-y: auto; height: auto; max-height: 240px;">
   <table class="add-parking-pals-table">
@@ -114,7 +151,7 @@
             <td>${li.email}</td>
             <td>
               <form method="post" action="${pageContext.request.contextPath}/friendInvite">
-                <input type="hidden" class="form-control" name="email" value="${li.email}" />
+                <input type="hidden" class="form-control" name="email" value="${li.email}"/>
                 <c:set var="isPending" value="false" />
                 <c:forEach items="${outgoingRequests}" var="out">
                   <c:if test="${li.email == out.recipientEmail}">
@@ -123,7 +160,7 @@
                 </c:forEach>
                 <c:if test="${not isPending}">
                   <button type="submit" class="add-friend-button" name="submit">
-                    Send friend request
+                    Send request
                   </button>
                 </c:if>
                 <c:if test="${isPending}">
@@ -141,8 +178,8 @@
   </table>
   </div>
 </div>
-<div class="container" style="float: right; margin-right: 20px; width: 40%; text-align: center">
-  <h3>Incoming Friend Requests:</h3>
+<div class="container" style="float: right; margin-right: 5%; width: 38%; text-align: center">
+  <h4>Incoming Friend Requests:</h4>
   <form method="post" action="${pageContext.request.contextPath}/friendInviteResponse">
     <label class="form-label">Select Friend Request</label>
     <select id="request-select" name="email" class="form-select">
@@ -150,12 +187,12 @@
         <option name="option" value="${request.senderEmail}">${request.senderFirstName} ${request.senderLastName}</option>
       </c:forEach>
     </select><br>
-    <button id="accept-btn" class="btn btn-success" type="submit" name="action" value="accept">Accept</button>
+    <button id="accept-btn" class="btn btn-success" type="submit" name="action" value="accept" style="margin-right: 10px">Accept</button>
     <button id="reject-btn" class="btn btn-danger" type="submit" name="action" value="reject">Reject</button>
   </form>
 </div>
-<div class="container" style="float: left; margin-left: 20px; width: 55%; height: auto">
-  <h3>My current Parking Pals:</h3>
+<div class="container" style="float: left; margin-left: 5%; width: 50%; height: auto">
+  <h4>My current Parking Pals:</h4>
   <div style="overflow-y: auto; height: auto; max-height: 200px">
   <table>
     <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
@@ -164,10 +201,10 @@
       <th scope="col">Last Name</th>
       <th scope="col">Email</th>
       <th scope="col"></th> <!-- Column for the "Send friend request" button -->
+      <th scope="col"></th> <!-- Column for the "X" button -->
     </tr>
     </thead>
     <tbody>
-    <form method="post" action="${pageContext.request.contextPath}/friendpage">
     <c:forEach items="${friends}" var="friend">
       <c:if test="${friend.senderEmail != user.email}">
       <tr>
@@ -175,9 +212,19 @@
         <td>${friend.senderLastName}</td>
         <td>${friend.senderEmail}</td>
         <td>
-          <button type="submit" class="view-friend-button" name="email" value="${friend.senderEmail}">
-            View friend profile
-          </button>
+          <form method="post" action="${pageContext.request.contextPath}/friendpage">
+            <button type="submit" class="view-friend-button" name="email" value="${friend.senderEmail}">
+              View profile
+            </button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="${pageContext.request.contextPath}/removeFriend">
+            <button type="submit" class="x-button" name="email" value="${friend.senderEmail}">
+              <img style="width: 100%; height: 50%; -webkit-filter: invert(1); filter: invert(1);" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/x-icon.png">
+            </button>
+            <input type="hidden" class="form-control" name="requestSentBy" value="friend"/>
+          </form>
         </td>
       </tr>
       </c:if>
@@ -187,14 +234,23 @@
         <td>${friend.recipientLastName}</td>
         <td>${friend.recipientEmail}</td>
         <td>
-          <button type="submit" class="view-friend-button" name="email" value="${friend.recipientEmail}">
-            View friend profile
-          </button>
+          <form method="post" action="${pageContext.request.contextPath}/friendpage">
+            <button type="submit" class="view-friend-button" name="email" value="${friend.recipientEmail}">
+              View profile
+            </button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="${pageContext.request.contextPath}/removeFriend">
+            <button type="submit" class="x-button" name="email" value="${friend.recipientEmail}">
+              <img style="width: 100%; height: 50%; -webkit-filter: invert(1); filter: invert(1);" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/x-icon.png">
+            </button>
+            <input type="hidden" class="form-control" name="requestSentBy" value="user"/>
+          </form>
         </td>
       </tr>
       </c:if>
     </c:forEach>
-    </form>
     </tbody>
   </table>
   </div>
@@ -207,6 +263,7 @@
   const requestSelect = document.getElementById('request-select');
   const acceptBtn = document.getElementById('accept-btn');
   const rejectBtn = document.getElementById('reject-btn');
+  const xBtn = document.querySelectorAll('.x-button');
 
   searchInput.addEventListener('input', () => {
     const searchValue = searchInput.value.toLowerCase();
@@ -223,9 +280,19 @@
   });
 
   addButton.forEach(button => {
-
     button.addEventListener('click', () => {
       alert('Friend request sent!');
+    });
+  });
+
+  xBtn.forEach(button => {
+    button.addEventListener('click', () => {
+      const response = confirm("Are you sure you want to remove friend?");
+      if (response) {
+        alert('Friend removed.');
+      } else {
+        alert("Action cancelled.");
+      }
     });
   });
 
@@ -248,10 +315,6 @@
       window.location.replace("/PeteParkingMgt/parkingpals");
     }
   });
-   //
-   // setTimeout(() => {
-   //   location.reload();
-   // }, 5000);
 
 </script>
 </body>

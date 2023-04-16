@@ -74,6 +74,12 @@
         <put-attribute name="body" value="/WEB-INF/bodyfragments/adminview.jsp" />
     </definition>
 
+    <!-- Booking Payment Page  -->
+    <definition name="bookingpayment" template="/WEB-INF/bodyfragments/bookingpayment.jsp">
+        <put-attribute name="title" value="Admin View" />
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/bookingpayment.jsp" />
+    </definition>
+
     <!-- Leaderboard Page  -->
     <definition name="leaderboard" template="/WEB-INF/bodyfragments/leaderboard.jsp">
         <put-attribute name="title" value="Leaderboard" />

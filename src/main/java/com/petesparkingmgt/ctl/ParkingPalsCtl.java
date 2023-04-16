@@ -7,6 +7,7 @@ import com.petesparkingmgt.dto.user.FriendDTO;
 import com.petesparkingmgt.dto.user.NotificationDTO;
 import com.petesparkingmgt.form.AddFriendForm;
 import com.petesparkingmgt.form.FriendResponseForm;
+import com.petesparkingmgt.form.RemoveFriendForm;
 import com.petesparkingmgt.service.EmailService;
 import com.petesparkingmgt.service.FriendService;
 import com.petesparkingmgt.service.NotificationService;
@@ -59,9 +60,9 @@ public class ParkingPalsCtl {
         List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
         model.addAttribute("requests", requests); // can be empty
 
-        System.out.println("In requests---");
-        requests.forEach(System.out::println);
-        System.out.println("-");
+        //System.out.println("In requests---");
+        //requests.forEach(System.out::println);
+        //System.out.println("-");
 
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
@@ -70,7 +71,6 @@ public class ParkingPalsCtl {
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
 
         NotificationService.addNotifications(model, notificationService, user.getId());
-
 
         return "parkingpals";
 
@@ -87,8 +87,6 @@ public class ParkingPalsCtl {
 
         List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
         model.addAttribute("requests", requests); // can be empty
-
-
 
         List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
@@ -114,8 +112,6 @@ public class ParkingPalsCtl {
 
         notificationService.addNotificationFor(toInvite.getId(), "You have an incoming friend request from " + user.getFirstName() + " " + user.getLastName()+"!", "parkingpals");
 
-
-
         EmailPreferencesDTO emailDTO = emailDAO.getByUserID(toInvite.getId());
 
         if (emailDTO != null) {
@@ -132,8 +128,6 @@ public class ParkingPalsCtl {
         } else {
             System.out.println("email is null!");
         }
-
-
 
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
@@ -152,8 +146,6 @@ public class ParkingPalsCtl {
 
         List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
         model.addAttribute("requests", requests); // can be empty
-
-
 
         List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
         model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
@@ -218,4 +210,37 @@ public class ParkingPalsCtl {
         return "redirect:/parkingpals";
     }
 
+    @PostMapping("/removeFriend")
+    public String remove(@ModelAttribute("removeFriendForm") RemoveFriendForm form, Model model, HttpSession session) {
+
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        if (user == null) return "error";
+
+        List<UserDTO> users = userDAO.findAll();
+        model.addAttribute("users", users);
+
+        List<FriendDTO> requests = service.getInvitesForUser(user.getEmail());
+        model.addAttribute("requests", requests); // can be empty
+
+        List<FriendDTO> outgoingRequests = service.getOutgoingRequestsFor(user.getEmail());
+        model.addAttribute("outgoingRequests", outgoingRequests); // can be empty
+
+        String email = form.getEmail();
+        String requestSentBy = form.getRequestSentBy();
+
+
+        if (requestSentBy.equalsIgnoreCase("friend")) {
+            service.removeFriend(email, user.getEmail());
+        } else if (requestSentBy.equalsIgnoreCase("user")) {
+            service.removeFriend(user.getEmail(), email);
+        } else {
+            // should never reach here but we'll return error anyways
+            return "error";
+        }
+
+        List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
+        model.addAttribute("friends", friends); // can be empty
+
+        return "redirect:/parkingpals";
+    }
 }
