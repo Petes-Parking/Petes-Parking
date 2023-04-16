@@ -139,18 +139,41 @@
             <p>License Plate Number: ${vehicle.license2}</p>
             <input class="text-field" type="lic2" placeholder="Enter license number" onClick="this.select();" id="license2" name="license2">
         </div>
-
         <a href="${pageContext.request.contextPath}/addVehicle">
             <button class="save-button" type="submit">Save Changes</button>
         </a>
+        <button class="delete-button" type="button" onclick="showPopup1()">
+            <a class="nav-link" href="${pageContext.request.contextPath}/logout">Delete Account</a>
+        </button>
+        <body onload="checkPermits()"></body>
+        <h4 style="margin-left: 3%; margin-top: 3%;">Select the permits you own:</h4>
+        <input type="checkbox" id="permitA" name="permitA" data-permits="${vehicle.permitA}" style="margin-left: 10%;">
+        <label for="permitA" style="display: inline-block; margin-left: 1%;"> A Permit</label><br>
+        <input type="checkbox" id="permitB" name="permitB" data-permits="${vehicle.permitB}" style="margin-left: 10%;">
+        <label for="permitB" style="display: inline-block; margin-left: 1%;"> B Permit</label><br>
+        <input type="checkbox" id="permitC" name="permitC" data-permits="${vehicle.permitC}" style="margin-left: 10%;">
+        <label for="permitC" style="display: inline-block; margin-left: 1%;"> C Permit</label><br>
+        <input type="checkbox" id="permitD" name="permitD" data-permits="${vehicle.permitD}" style="margin-left: 10%; display: inline-block;">
+        <label for="permitD" style="display: inline-block; margin-left: 1%;"> Disability Permit</label><br>
     </form>
-
-    <button class="delete-button" type="button" onclick="showPopup1()">
-        <a class="nav-link" href="${pageContext.request.contextPath}/logout">Delete Account</a>
-    </button>
 </div>
 
 <script>
+    function checkPermits() {
+        let permA = document.getElementById("permitA").getAttribute("data-permits");
+        let permB = document.getElementById("permitB").getAttribute("data-permits");
+        let permC = document.getElementById("permitC").getAttribute("data-permits");
+        let permD = document.getElementById("permitD").getAttribute("data-permits");
+            if (permA.includes("on")) {
+                document.getElementById("permitA").checked = true;
+            } if (permB.includes("on")) {
+                document.getElementById("permitB").checked = true;
+            } if (permC.includes("on")) {
+                document.getElementById("permitC").checked = true;
+            } if (permD.includes("on")) {
+                document.getElementById("permitD").checked = true;
+            }
+    }
     $ = function(id) {
         return document.getElementById(id);
     }
