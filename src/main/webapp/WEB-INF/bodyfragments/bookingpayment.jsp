@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: goldenrod;
+      background-color: darkgoldenrod;
       color: white;
     }
     .container, .info-container {
@@ -77,6 +77,8 @@
     </c:when>
     <c:otherwise>
       <p>You don't have enough points to make this booking.</p>
+      <input type="button" value="Back" onclick="location.href='${pageContext.request.contextPath}/parkinglist'" />
+
     </c:otherwise>
   </c:choose>
 </div>

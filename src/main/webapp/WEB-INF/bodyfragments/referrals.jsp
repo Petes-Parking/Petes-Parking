@@ -8,19 +8,27 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
 
   <style>
-
     body {
       font-family: Arial, sans-serif;
       color: black;
+      background-color: #f8f9fa;
     }
 
-    h1 {
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
+    h1, h2 {
       color: goldenrod;
+      text-align: center;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
+      margin-top: 20px;
+      margin-bottom: 40px;
     }
 
     th {
@@ -28,7 +36,7 @@
       color: black;
     }
 
-    .code-btn {
+    .code-btn, .generate-btn {
       background-color: goldenrod;
       border: none;
       color: black;
@@ -37,13 +45,10 @@
       text-decoration: none;
       font-size: 14px;
       cursor: pointer;
+      margin: 5px;
     }
 
-    .code-btn:hover{
-      background-color: darkgoldenrod;
-    }
-
-    .generate-btn:hover{
+    .code-btn:hover, .generate-btn:hover {
       background-color: darkgoldenrod;
     }
 
@@ -57,28 +62,20 @@
       background-color: #f2f2f2;
     }
 
-    .generate-btn {
-      background-color: goldenrod;
-      border: none;
-      color: black;
-      padding: 10px 20px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 10px 2px;
-      cursor: pointer;
+    .back-btn {
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
-<c:if test="${not empty message}">
+<div class="container">
+  <c:if test="${not empty message}">
   <div class="alert alert-success" role="alert">
       ${message}
   </div>
-</c:if>
+  </c:if>
 
-<c:if test="${not empty error}">
+  <c:if test="${not empty error}">
   <div class="alert alert-danger">
     <ul>
       <c:forEach items="${error}" var="error">
@@ -86,91 +83,88 @@
       </c:forEach>
     </ul>
   </div>
-</c:if>
-<h1>Pete's Parking Referrals</h1>
-<h2>Your Used Referral Code</h2>
-<c:choose>
+  </c:if>
+  <h1>Pete's Parking Referrals</h1>
+  <h2>Your Used Referral Code</h2>
+  <c:choose>
   <c:when test="${not empty creator}">
-    <p id="usedReferralCode">Student who referred you: ${creator} </p>
-    <p>Points gained: 20</p>
+  <p id="usedReferralCode" class="text-center">Student who referred you: ${creator} </p>
+  <p class="text-center">Points gained: 20</p>
   </c:when>
   <c:otherwise>
-    <p id="usedReferralCode">You have not used any referral code.</p>
+  <p id="usedReferralCode" class="text-center">You have not used any referral code.</p>
   </c:otherwise>
-</c:choose>
+  </c:choose>
 
-<h2>Your Referral Codes</h2>
-<table>
-  <thead>
-  <tr>
-    <th>Referral Code <span style="font-size: smaller;font-weight: lighter; font-style: italic;">(Click to copy)</span></th>
-    <th>Used By</th>
-  </tr>
-  </thead>
-  <tbody>
-  <!-- Replace with dynamic data -->
-  <c:if test="${not empty referralCodes}">
-    <c:if test="${not empty studentsUsed}">
-    <c:forEach items="${studentsUsed}" var="names">
-
+  <h2>Your Referral Codes</h2>
+  <table>
+    <thead>
     <tr>
-
-      <td>
-        <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${referralCodes.code}">
-            ${referralCodes.code}
-        </button></td>
-        <%--      <td>${code.usedBy}</td>--%>
-      <c:if test="${referralCodes.uses > 0}">
-        <td>${names} - <span style="color: #45a049">+20 points</span></td>
-      </c:if>
-      <c:if test="${referralCodes.uses == 0}">
-        <td>None</td>
-      </c:if>
+      <th>Referral Code <span style="font-size: smaller;font-weight: lighter; font-style: italic;">(Click to copy)</span></th>
+      <th>Used By</th>
     </tr>
-      </c:forEach>
+    </thead>
+    <tbody>
+    <c:if test="${not empty referralCodes}">
+      <c:if test="${not empty studentsUsed}">
+        <c:forEach items="${studentsUsed}" var="names">
+          <tr>
+            <td>
+              <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${referralCodes.code}">
+                  ${referralCodes.code}
+              </button>
+            </td>
+            <c:if test="${referralCodes.uses > 0}">
+              <td>${names} - <span style="color: #45a049">+20 points</span></td>
+            </c:if>
+            <c:if test="${referralCodes.uses == 0}">
+              <td>None</td>
+            </c:if>
+          </tr>
+        </c:forEach>
+      </c:if>
+      <c:if test="${empty studentsUsed}">
+        <tr>
+          <td>
+            <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${referralCodes.code}">
+                ${referralCodes.code}
+            </button>
+          </td>
+          <td>None</td>
+        </tr>
+      </c:if>
     </c:if>
-    <c:if test="${empty studentsUsed}">
+    </tbody>
+  </table>
 
-      <tr>
-        <td>
-          <button class="code-btn" onclick="copyCodeToClipboard(this)" data-code="${referralCodes.code}">
-              ${referralCodes.code}
-          </button></td>
-        <td>None</td>
-      </tr>
-    </c:if>
-  </c:if>
+  <h2>Generate a Referral Code</h2>
+  <p class="text-center">If you don't have a referral code, click the button below to generate one:</p>
+  <div class="text-center">
+    <a href="${pageContext.request.contextPath}/generateReferralCode">
+      <button class="generate-btn">Generate Code</button>
+    </a>
+  </div>
+  <p id="generatedCode" class="text-center"></p>
 
+  <div class="text-center">
+    <a href="${pageContext.request.contextPath}/main">
+      <button class="btn btn-secondary back-btn">Back</button>
+    </a>
+  </div>
 
-  </tbody>
-</table>
+  <script>
+    function copyCodeToClipboard(element) {
+      var code = element.getAttribute('data-code');
+      var textarea = document.createElement('textarea');
+      textarea.value = code;
+      document.body.appendChild(textarea);
+      textarea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textarea);
 
-<h2>Generate a Referral Code</h2>
-<p>If you don't have a referral code, click the button below to generate one:</p>
-<a href="${pageContext.request.contextPath}/generateReferralCode">
-  <button class="generate-btn">Generate Code</button>
-</a>
-<p id="generatedCode"></p>
-
-<a href="${pageContext.request.contextPath}/main">
-  <button class="btn btn-secondary back-btn">Back</button>
-</a>
-
-<script>
-
-
-  function copyCodeToClipboard(element) {
-    var code = element.getAttribute('data-code');
-    var textarea = document.createElement('textarea');
-    textarea.value = code;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-
-    alert('Referral code copied: ' + code);
-  }
-
-</script>
+      alert('Referral code copied: ' + code);
+    }
+  </script>
+</div>
 </body>
 </html>

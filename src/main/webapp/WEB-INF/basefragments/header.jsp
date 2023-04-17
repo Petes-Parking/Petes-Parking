@@ -72,7 +72,7 @@
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 								<c:if test="${empty notifications}">
-									<p style="overflow: visible; position: absolute; z-index: 9999; color: red;">No notifications found.</p>
+									<p style="z-index: 9999; color: red;">No notifications found.</p>
 
 								</c:if>
 
