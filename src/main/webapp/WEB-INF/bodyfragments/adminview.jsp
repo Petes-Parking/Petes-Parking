@@ -124,6 +124,8 @@
             <h3>Users List:</h3>
             <form action="" method="POST" id="userForm">
                 <input type="hidden" name="selectedUserId" id="selectedUserId">
+                <div style="height: 500px; overflow-y: scroll;">
+
                 <table class="table table-striped">
                     <thead>
                     <tr>
@@ -147,6 +149,7 @@
                     </c:forEach>
                     </tbody>
                 </table>
+                </div>
             </form>
         </div>
     </div>
