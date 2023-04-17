@@ -3,6 +3,7 @@ package com.petesparkingmgt.service;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -77,6 +78,30 @@ public class BookingService {
 		
 		return dao.saveAndFlush(dto);
 	}
-	
 
+
+    public List<BookingDTO> getActiveBookings() {
+		List<BookingDTO> bookingDTOList = dao.findAll();
+		List<BookingDTO> activeBookings = new ArrayList<>();
+
+
+		for (BookingDTO dto : bookingDTOList) {
+			if (!findSlotById(dto.getSlotId()).isStatus()){
+				activeBookings.add(dto);
+			}
+		}
+		return activeBookings;
+    }
+
+	public void updateSlotStatus(long bookingId, boolean isAvalible) {
+		BookingDTO toChange = dao.findById(bookingId);
+		if (toChange != null) {
+			SlotDTO slot = slotDAO.findById(toChange.getSlotId());
+			slot.setStatus(isAvalible);
+			slotDAO.saveAndFlush(slot);
+		}
+
+
+
+	}
 }
