@@ -29,27 +29,40 @@ public class PaymentRequestServiceCtl {
 	
 	@Autowired
 	public PaymentRequestService paymentRequestService ;
-//	
-//	@PostMapping("/paymentRequest")
-//	public String add(@ModelAttribute("form")PaymentRequestForm form, BindingResult bindingResult, Model model, HttpSession session ) {
-//         	
-//		PaymentRequestDTO dto = form.getDTO();	
-//		
-//		long userId = dto.getUserID();
-//		PaymentRequestDTO  paymentRequestDTO =  paymentRequestService.paymentRequestDTOByUserID(userId);
-//		if(paymentRequestDTO == null ) {
-//			dto.setStatus("unpaid");
-//			service.Add(dto);
-//			model.addAttribute("success", "Request Sent");
-//		}else {
-//			model.addAttribute("error", "Request alreay Sent");
-//		}
-//		
-//		
-//		return "paymentRequest";
-//	}
-//	
-//	
+	
+	@PostMapping("/paymentRequest")
+	public String add(@ModelAttribute("form")PaymentRequestForm form, BindingResult bindingResult, Model model, HttpSession session ) {
+         	
+		PaymentRequestDTO dto = form.getDTO();	
+		
+		long userId = dto.getUserID();
+		PaymentRequestDTO  paymentRequestDTO =  paymentRequestService.paymentRequestDTOByUserID(userId);
+		
+		System.out.println("paymentRequestDTO: "+paymentRequestDTO);
+		
+		if(paymentRequestDTO == null)
+		{
+			dto.setStatus("unpaid");
+			service.Add(dto);
+			model.addAttribute("success", "Request Sent");
+		}else if(paymentRequestDTO.getStatus().equals("paid")) {
+			
+			System.out.println("Second if is runnig now......");
+
+			System.out.println("Second if is runnig now......dto: "+dto);
+			service.updateExisting(dto);
+			model.addAttribute("success", "Request Sent");
+		}
+		
+		else {
+			model.addAttribute("error", "Request alreay Sent");
+		}
+		
+		
+		return "bookinglist";
+	}
+	
+	
 
 	
 	

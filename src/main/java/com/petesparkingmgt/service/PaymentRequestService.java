@@ -37,6 +37,15 @@ public class PaymentRequestService {
 	
 	}
 	
+	public PaymentRequestDTO updateExisting(PaymentRequestDTO dto) {
+		PaymentRequestDTO prDto = dao.findByUserID(dto.getUserID());
+		prDto.setStatus("unpaid");
+		prDto.setAmount(dto.getAmount());
+		dao.saveAndFlush(prDto);
+		
+		return 	dto;
+	}
+	
 	public PaymentRequestDTO paymentRequestDTOByUserID(long userId) {
 		return 	dao.findByUserID(userId);
 		}
