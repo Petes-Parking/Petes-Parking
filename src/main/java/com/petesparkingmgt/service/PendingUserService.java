@@ -25,6 +25,9 @@ public class PendingUserService {
     public UserService userService;
 
     @Autowired
+    public PermissionService permissionService;
+
+    @Autowired
     public ReferralService referralService;
 
     @Autowired
@@ -48,6 +51,7 @@ public class PendingUserService {
 
 
         ReferralUserDTO referralUserDTO = new ReferralUserDTO();
+        permissionService.addDefaultPermission(transfer.getId());
         if (transfer.getReferralCodeUsed() != null && !transfer.getReferralCodeUsed().isEmpty()
         && referralService.isValidReferralCode(transfer.getReferralCodeUsed())) {
             ReferralDTO referral = referralService.getReferralForCode(transfer.getReferralCodeUsed());

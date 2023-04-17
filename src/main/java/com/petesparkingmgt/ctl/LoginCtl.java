@@ -5,7 +5,9 @@ import javax.servlet.http.HttpSession;
 import com.petesparkingmgt.dao.EmailPreferencesDAO;
 import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
+import com.petesparkingmgt.dto.user.PermissionDTO;
 import com.petesparkingmgt.service.PendingUserService;
+import com.petesparkingmgt.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,9 @@ public class LoginCtl {
 
 	@Autowired
 	public PendingUserService pendingUserService;
+
+	@Autowired
+	public PermissionService permissionService;
 
 	@Autowired
 	public UserDAO dao;
@@ -82,6 +87,10 @@ public class LoginCtl {
 					service.update(user);
 				}
 
+				PermissionDTO permissionDTO = permissionService.permissionDAO.findByUserID(user.getId());
+				if (permissionDTO == null) {
+					permissionService.addDefaultPermission(user.getId());
+				}
 				EmailPreferencesDTO emailDTO = emailDAO.getByUserID(user.getId());
 				if (emailDTO == null) {
 					System.out.println("Email null for user " + user.getId());

@@ -14,10 +14,7 @@ import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.ManagePointForm;
 import com.petesparkingmgt.form.UserForm;
-import com.petesparkingmgt.service.BookingService;
-import com.petesparkingmgt.service.NotificationService;
-import com.petesparkingmgt.service.PendingUserService;
-import com.petesparkingmgt.service.UserService;
+import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -39,6 +36,9 @@ public class AdminCtl {
 
     @Autowired
     public PendingUserService pendingUserService;
+
+    @Autowired
+    public PermissionService permissionService;
     
     @Autowired
     public BookingService service2;
@@ -81,6 +81,22 @@ public class AdminCtl {
 
         // Return the view name for the edit user page
         return "adminEditUser";
+    }
+
+    @GetMapping("/admin/removeReportPriv/{email}")
+    public ModelAndView adminRemoveReportPriv(@PathVariable("email") String email, RedirectAttributes attributes) {
+        // Retrieve the user by the userId from the database
+        UserDTO user = service.getByEmail(email);
+        System.out.println(email);
+        permissionService.changeReportPermission(user.getId(), false);
+
+        System.out.println("Removed " + user.getEmail() + " privS!" );
+        // Add the user object to the model
+        ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
+        attributes.addFlashAttribute("message", "Removed privileges successfully!");
+
+        // Return the view name for the edit user page
+        return modelAndView;
     }
 
     @PostMapping("/admin/update")

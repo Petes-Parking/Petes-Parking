@@ -94,6 +94,8 @@
 <div class="container">
     <form class="container2" method="post" id="expDismissForm" action="${pageContext.request.contextPath}/admin/deleteExpReport/${report.id}">
         <div class="text">
+            <input type="hidden" id="reportedEmail" value="${report.reporterEmail}">
+
             <p><label>Report Date:</label> ${report.reportDate}</p>
             <p><label>Reporter Email:</label> ${report.reporterEmail}</p>
             <p><label>Parking Lot:</label> ${report.parkingLot}</p>
@@ -106,7 +108,20 @@
     <form action="${pageContext.request.contextPath}/admin/backToExpReport" method="post">
         <button type="submit">Back</button>
     </form>
-
+    <button class="btn btn-warning" id="remove-priv">Remove reporting privileges</button>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    // Add click event listeners for buttons
+    $('#remove-priv').on('click', function() {
+        console.log("here! clicked remove button")
+        let selectedEmail = $('#reportedEmail').val();
+
+        window.location.href = `${pageContext.request.contextPath}/admin/removeReportPriv/` + selectedEmail;
+    });
+</script>
 </body>
 </html>

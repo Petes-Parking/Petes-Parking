@@ -9,8 +9,10 @@ import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.user.VehicleDTO;
 import com.petesparkingmgt.service.EmailService;
+import com.petesparkingmgt.service.PermissionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -35,10 +37,19 @@ public class ExpReportCtl {
     public VehicleDAO vehicleDAO;
 
     @Autowired
+    public PermissionService permissionService;
+
+
+    @Autowired
     public UserDAO userDAO;
 
     @GetMapping("/exp-report")
-    public String MainPage() {
+    public String MainPage(Model model, HttpSession session) {
+        UserDTO user = (UserDTO) session.getAttribute("user");
+        if (user == null) {
+            return "error";
+        }
+        model.addAttribute("hasPermission", permissionService.hasPermissionToReport(user.getId()));
         return "exp-report";
     }
 
@@ -57,13 +68,30 @@ public class ExpReportCtl {
         return "mainPage";
     }*/
 
+    @GetMapping("/noPermissionExpReport")
+    public String noSubmissionExpReport(Model model, HttpSession session){
+        UserDTO user = (UserDTO) session.getAttribute("user");
+
+        System.out.println("Tried to submit exp report park but no permission!");
+        model.addAttribute("error", "Your permission to report has been revoked for inaccurate reports!");
+
+        return "exp-report";
+    }
     @PostMapping("/submitExpReport")
     public String saveReport(@RequestParam("licensePlate") String licensePlate,
                                              @RequestParam("description") String description,
                                              @RequestParam("imageData") MultipartFile imageData,
-                                             @RequestParam("parkingLot") String parkingLot,
+                                             @RequestParam("parkingLot") String parkingLot, Model model,
                                              HttpSession session) throws IOException, NoSuchAlgorithmException, KeyManagementException {
+
         UserDTO user = (UserDTO) session.getAttribute("user");
+
+        if (!permissionService.hasPermissionToReport(user.getId())) {
+            System.out.println("Here!");
+            model.addAttribute("error", "Your permission to report has been revoked for inaccurate reports!");
+            return "exp-report";
+        }
+
         ExpReportDTO expReport = new ExpReportDTO();
         expReport.setLicensePlate(licensePlate);
         expReport.setDescription(description);

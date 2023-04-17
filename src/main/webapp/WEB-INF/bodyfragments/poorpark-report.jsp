@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -140,8 +141,14 @@
 </head>
 <body>
 <div class="container">
+  <c:if test="${not empty error}">
+    <div class="alert alert-error" role="alert" style="color: red">
+        ${error}
+    </div>
+  </c:if>
   <h1>Poor Parking Report</h1>
   <p>Please enter information about a car that is parked incorrectly. We will review the report as soon as possible and reward points for correct reports.</p>
+  <input type="hidden" id="hasPermission" value="${hasPermission}">
   <form method="post" action="${pageContext.request.contextPath}/submitPoorParkReport" enctype="multipart/form-data" style="display: inline;">
 
     <label for="licensePlate">License Plate:</label>
@@ -179,9 +186,22 @@
   const saveButton = document.getElementById("save-button");
   const closeButton = document.getElementById("submit");
   const popup = document.getElementById("confirmed-popup");
+  let permission = document.getElementById("hasPermission").value;
+  console.log('Permission ', permission)
+  console.log('Permission type ', typeof permission)
+
 
   saveButton.addEventListener("click", () => {
-    popup.style.display = "block";
+    if (permission === "false") {
+
+      console.log(`here! 1`)
+      document.location.href = "${pageContext.request.contextPath}/noPermissionPoorPark";
+
+
+    } else {
+      popup.style.display = "block";
+      console.log(`here! 2`)
+    }
   });
 
   closeButton.addEventListener("click", () => {

@@ -100,6 +100,10 @@ public class UserService {
 
 
 	}
+
+	public UserDTO getByEmail(String email) {
+		return dao.findByEmail(email);
+	}
 	
 
 
