@@ -222,6 +222,20 @@ public class DataUtility {
 		Random rand = new Random();
 		return rand.nextInt(10000);
 	}
+	
+	public static Date getDateAndTime(String val) {
+	    Date date = null;
+	    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+	    try {
+	        date = formatter.parse(val);
+	    } catch (ParseException e) {
+	        System.err.println("Error parsing date: " + e.getMessage());
+	    }
+
+	    return date;
+	}
+
 
 	public static long getDateDiffrence(Date sessionDate) {
 		long difference_In_Days = 0;
