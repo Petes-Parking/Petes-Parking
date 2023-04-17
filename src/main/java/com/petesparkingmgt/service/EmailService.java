@@ -14,6 +14,7 @@ import javax.net.ssl.SSLContext;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -185,6 +186,19 @@ public class EmailService {
         String lastName = booking.getLastName();
         String recipientEmail = booking.getEmail();
 
+        String toTime = booking.getToTime();
+        SimpleDateFormat inputFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("hh:mm aa");
+        String outputTime = toTime;
+        try {
+            Date date = inputFormat.parse(toTime);
+            outputTime = outputFormat.format(date);
+            System.out.println(outputTime);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
         String subject = "[Pete’s Parking] Your Timer is Almost Expired!";
         String body = "Dear " + firstName + " " + lastName + ",\n" +
                 "\n" +
@@ -192,9 +206,9 @@ public class EmailService {
                 "\n" +
                 "Parking Lot: " + booking.getParkingName() + "\n" +
                 "\n" +
-                "Expiration Time: " + booking.getToTime() + "\n" +
+                "Expiration Time: " + outputTime + "\n" +
                 "\n" +
-                "Time Remaining: " + timer + " + minutes\n" +
+                "Time Remaining: " + timer + "minutes\n" +
                 "\n" +
                 "If you are still parked after your timer has expired, you may receive a parking ticket. Please ensure that your car is removed before the reservation ends. Thank you.\n" +
                 "\n" +
