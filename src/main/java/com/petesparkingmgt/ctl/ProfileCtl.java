@@ -83,7 +83,15 @@ public class ProfileCtl {
             exist.setModel2(form.getModel2());
             exist.setColor2(form.getColor2());
             exist.setLicense2(form.getLicense2());
+            exist.setPermitA(form.getPermitA());
+            exist.setPermitB(form.getPermitB());
+            exist.setPermitC(form.getPermitC());
+            exist.setPermitD(form.getPermitD());
             dao.save(exist);
+            model.addAttribute("permitA", form.getPermitA());
+            model.addAttribute("permitB", form.getPermitB());
+            model.addAttribute("permitC", form.getPermitC());
+            model.addAttribute("permitD", form.getPermitD());
             model.addAttribute("success", "Updated car(s)!");
 
         } else {

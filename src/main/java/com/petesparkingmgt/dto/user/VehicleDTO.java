@@ -41,8 +41,14 @@ public class VehicleDTO extends BaseDTO {
 
     @Column(name = "license2", length = 755)
     private String license2;
-
-
+    @Column(name = "permitA", length = 755)
+    private String permitA;
+    @Column(name = "permitB", length = 755)
+    private String permitB;
+    @Column(name = "permitC", length = 755)
+    private String permitC;
+    @Column(name = "permitD", length = 755)
+    private String permitD;
     @Override
     public String toString() {
         return "VehicleDTO [make1=" + make1 + ", model1=" + model1 + ", color1=" + color1 + ", license1=" + license1

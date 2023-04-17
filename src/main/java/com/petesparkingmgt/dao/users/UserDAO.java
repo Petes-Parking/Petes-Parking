@@ -8,6 +8,7 @@ import com.petesparkingmgt.dto.user.UserDTO;
 
 import java.util.List;
 
+
 public interface UserDAO extends JpaRepository<UserDTO, Long> {
 	
 	public UserDTO findByEmailAndPassword(String email, String password);
@@ -17,7 +18,7 @@ public interface UserDAO extends JpaRepository<UserDTO, Long> {
 	
 	//Optional<UserDTO> OptionalfindUserByEmail(String email);
 	
-
+	public List<UserDTO> getUserDTOSById(long id);
 	public List<UserDTO> getAllByUserRole(String userRole);
 	public boolean existsById(long i);
 

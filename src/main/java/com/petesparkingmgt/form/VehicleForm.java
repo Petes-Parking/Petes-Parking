@@ -26,6 +26,11 @@ public class VehicleForm extends BaseDTO {
 
     private String license2;
 
+    private String permitA;
+    private String permitB;
+    private String permitC;
+    private String permitD;
+
     public VehicleDTO getDTO() {
         VehicleDTO bean=new VehicleDTO();
         bean.setId(id);
@@ -37,8 +42,10 @@ public class VehicleForm extends BaseDTO {
         bean.setModel2(model2);
         bean.setColor2(color2);
         bean.setLicense2(license2);
-
-
+        bean.setPermitA(permitA);
+        bean.setPermitA(permitB);
+        bean.setPermitA(permitC);
+        bean.setPermitA(permitD);
 
         return bean;
     }
