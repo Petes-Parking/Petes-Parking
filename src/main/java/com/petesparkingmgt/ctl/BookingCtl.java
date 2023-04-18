@@ -1,15 +1,19 @@
 package com.petesparkingmgt.ctl;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 
+import com.petesparkingmgt.dao.EmailPreferencesDAO;
 import com.petesparkingmgt.dao.parking.BookingDAO;
 import com.petesparkingmgt.dao.parking.SlotDAO;
 import com.petesparkingmgt.dao.users.HistoryDAO;
@@ -19,6 +23,7 @@ import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
 import com.petesparkingmgt.dto.parking.BookingDTO;
 import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.parking.SlotDTO;
+import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
 import com.petesparkingmgt.dto.user.HistoryDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.user.VehicleDTO;
@@ -73,6 +78,8 @@ public class BookingCtl {
 
 	@Autowired
 	public HistoryDAO historyDAO;
+	@Autowired
+	public EmailPreferencesDAO emailDAO;
 
 
 
@@ -211,6 +218,62 @@ public class BookingCtl {
 						bean.setCarpoolId(-1);
 					}
 					service.Add(bean);
+					EmailPreferencesDTO emailDTO = emailDAO.getByUserID(user.getId());
+					if (emailDTO != null) {
+						int emailPref = emailDTO.getExpirationPref();
+						System.out.print("Email preference: ");
+						System.out.println(emailPref);
+						if (emailPref == 1) {
+							EmailService emailService = new EmailService();
+							System.out.println("Email pref is on");
+							Date toDate = bean.getToBookingDate();
+							String toTime = bean.getToTime();
+							String toDateString = toDate.toString();
+							toDateString = toDateString.substring(0, 11) + toTime + toDateString.substring(16, 28);
+
+							Date fromDate = bean.getFromBookingDate();
+							String fromTime = bean.getFromTime();
+							String fromDateString = fromDate.toString();
+							fromDateString = fromDateString.substring(0, 11) + fromTime + fromDateString.substring(16, 28);
+
+							SimpleDateFormat dateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss zzz yyyy");
+							Date endDate = dateFormat.parse(toDateString);
+							Date startDate = dateFormat.parse(fromDateString);
+							System.out.println("Date before time subtracted: " + endDate);
+
+							int expTimer = (int) emailDTO.getTimer();
+
+							Calendar calendar = Calendar.getInstance();
+							calendar.setTime(endDate);
+							calendar.add(Calendar.MINUTE, -expTimer);
+
+							Date newEndDate = calendar.getTime();
+							System.out.println("Date after time subtracted: " + newEndDate);
+
+							if (newEndDate.after(startDate)) {
+								System.out.println("new end date is after start date, will send email");
+								Timer timer = new Timer();
+
+								timer.schedule(new TimerTask() {
+									public void run() {
+										try {
+											emailService.createExpiringTimerEmail(bean, expTimer);
+										} catch (NoSuchAlgorithmException e) {
+											throw new RuntimeException(e);
+										} catch (KeyManagementException e) {
+											throw new RuntimeException(e);
+										}
+									}
+								}, newEndDate);
+							} else {
+								System.out.println("new end date is before start date, don't send email!!!!");
+							}
+						} else {
+							System.out.println("No email sent since pref is off");
+						}
+					} else {
+						System.out.println("email is null!");
+					}
 					int points = historyService.getPointsFor(user.getId());
 					int priorLevel = user.getLevel();
 					int totalPoints = points + user.getPoints();
@@ -269,7 +332,9 @@ public class BookingCtl {
 				model.addAttribute("error", e.getMessage());
 				e.printStackTrace();
 				return "booking";
-			}
+			} catch (ParseException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	// NOT DONE YET, MAKE SURE EVERYTHING WORKS LIKE HISTORY & CARPOOLS AND POINTS AND LEVELS
