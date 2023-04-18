@@ -1,26 +1,26 @@
 // Copy and past the below text into your MySQL workbench and run it
 
 
-INSERT INTO parking (address, number_of_slot, parking_name)
+INSERT INTO parking (address, number_of_slot, parking_name, permita, permitb, permitc, permitd, permitcg, permitr)
 VALUES ("France A. Córdova Recreational Sports Center
-        355 N Martin Jischke Dr, West Lafayette, IN 47906", 10, "Corec Parking Lot");
+        355 N Martin Jischke Dr, West Lafayette, IN 47906", 10, "Corec Parking Lot", "on", "on", "on", "off", "off", "off");
 
-INSERT INTO parking (address, number_of_slot, parking_name)
+INSERT INTO parking (address, number_of_slot, parking_name, permita, permitb, permitc, permitd, permitcg, permitr)
 VALUES ("McCutcheon Drive Parking GarageWest Lafayette, IN 47906
-", 9, "McCutcheon Drive Parking Garage");
+", 9, "McCutcheon Drive Parking Garage", "off", "off", "off", "off", "off", "on");
 
 
-INSERT INTO parking (address, number_of_slot, parking_name)
-VALUES ("University St. Parking Garage", 9, "University St. Parking Garage");
+INSERT INTO parking (address, number_of_slot, parking_name, permita, permitb, permitc, permitd, permitcg, permitr)
+VALUES ("University St. Parking Garage", 9, "University St. Parking Garage", "on", "off", "off", "off", "on", "off");
 
-INSERT INTO parking (address, number_of_slot, parking_name)
-VALUES ("850 Steven Beering Drive, West Lafayette, IN 47906", 5, "Ross-Ade Stadium Parking Lot");
+INSERT INTO parking (address, number_of_slot, parking_name, permita, permitb, permitc, permitd, permitcg, permitr)
+VALUES ("850 Steven Beering Drive, West Lafayette, IN 47906", 5, "Ross-Ade Stadium Parking Lot", "on", "on", "on", "off", "off", "off");
 
-INSERT INTO parking (address, number_of_slot, parking_name)
-VALUES ("504 Northwestern Ave, West Lafayette, IN 47906", 7, "Northwestern St. Parking Garage");
+INSERT INTO parking (address, number_of_slot, parking_name, permita, permitb, permitc, permitd, permitcg, permitr)
+VALUES ("504 Northwestern Ave, West Lafayette, IN 47906", 7, "Northwestern St. Parking Garage", "on", "off", "off", "off", "on", "off");
 
-INSERT INTO parking (address, number_of_slot, parking_name)
-VALUES ("120 Grant St, West Lafayette, IN 47906" , 5, "Grant St. Parking Garage");
+INSERT INTO parking (address, number_of_slot, parking_name, permita, permitb, permitc, permitd, permitcg, permitr)
+VALUES ("120 Grant St, West Lafayette, IN 47906" , 5, "Grant St. Parking Garage", "off", "off", "off", "off", "off", "off");
 
 
 
