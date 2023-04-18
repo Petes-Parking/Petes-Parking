@@ -22,6 +22,18 @@ public class ParkingDTO extends BaseDTO {
 	
 	@Column(name = "numberOfSlot")
 	private long numberOfSlot;
+	@Column(name = "permitA")
+	private String permitA;
+	@Column(name = "permitB")
+	private String permitB;
+	@Column(name = "permitC")
+	private String permitC;
+	@Column(name = "permitCG")
+	private String permitCG;
+	@Column(name = "permitR")
+	private String permitR;
+	@Column(name = "permitD")
+	private String permitD;
 	
 
 }

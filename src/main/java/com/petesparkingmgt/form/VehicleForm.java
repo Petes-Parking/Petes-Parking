@@ -29,6 +29,8 @@ public class VehicleForm extends BaseDTO {
     private String permitA;
     private String permitB;
     private String permitC;
+    private String permitCG;
+    private String permitR;
     private String permitD;
 
     public VehicleDTO getDTO() {
@@ -45,6 +47,8 @@ public class VehicleForm extends BaseDTO {
         bean.setPermitA(permitA);
         bean.setPermitA(permitB);
         bean.setPermitA(permitC);
+        bean.setPermitA(permitCG);
+        bean.setPermitA(permitR);
         bean.setPermitA(permitD);
 
         return bean;

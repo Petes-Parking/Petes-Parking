@@ -47,6 +47,10 @@ public class VehicleDTO extends BaseDTO {
     private String permitB;
     @Column(name = "permitC", length = 755)
     private String permitC;
+    @Column(name = "permitCG", length = 755)
+    private String permitCG;
+    @Column(name = "permitR", length = 755)
+    private String permitR;
     @Column(name = "permitD", length = 755)
     private String permitD;
     @Override
