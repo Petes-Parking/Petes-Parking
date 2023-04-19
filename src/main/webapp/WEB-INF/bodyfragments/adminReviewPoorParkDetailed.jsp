@@ -100,6 +100,15 @@
     <img src="data:image/jpeg;base64,${reportImage}" alt="Report Image" style="max-width: 500px; height: auto; padding-bottom: 15px;"><br>
     <button type="submit">Dismiss Report</button>
   </form>
+    <form action="${pageContext.request.contextPath}/admin/awardPoints" method="post">
+        <input type="hidden" name="reportedEmail" value="${report.reporterEmail}">
+
+        <button type="submit" style="float: left;">Award Points</button>
+    </form>
+    <form action="${pageContext.request.contextPath}/admin/deductPoints" method="post">
+        <input type="hidden" name="reportedEmail" value="${report.reporterEmail}">
+        <button type="submit" >Deduct Points</button>
+    </form>
   <form action="${pageContext.request.contextPath}/admin/backToPoorParkReport" method="post">
     <button type="submit">Back</button>
   </form>
