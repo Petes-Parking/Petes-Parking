@@ -103,6 +103,9 @@
   <form action="${pageContext.request.contextPath}/admin/backToPoorParkReport" method="post">
     <button type="submit">Back</button>
   </form>
+    <form action="${pageContext.request.contextPath}/bookinglist" method="get">
+    <button type="submit">Fine/Ticket</button>
+  </form>
     <button class="btn btn-warning" id="remove-priv">Remove reporting privileges</button>
 </div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

@@ -1,7 +1,7 @@
 package com.petesparkingmgt.form;
 
 import com.petesparkingmgt.dto.BaseDTO;
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.utility.DataUtility;
 import lombok.Getter;
 import lombok.Setter;

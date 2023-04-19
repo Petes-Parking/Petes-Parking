@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import com.petesparkingmgt.dao.parking.BookingDAO;
 import com.petesparkingmgt.dao.parking.SlotDAO;
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.dto.parking.SlotDTO;
 import com.petesparkingmgt.utility.DataUtility;
 
@@ -105,34 +105,35 @@ public class BookingService {
 
 	}
 	
-	@Scheduled(fixedDelay = 60000)
-	 public void scheduleFixedDelayTask() {
-	     List<BookingDTO> bookingList = dao.findAll();     
-	     List<SlotDTO> slotList = slotDAO.findAll();
-	     
-	     for (BookingDTO bookingDTO : bookingList) {
-	      
-	      long slot_id = bookingDTO.getSlotId();
-	      String toBookingDate = DataUtility.getDateString1(bookingDTO.getToBookingDate());
-	      
-	      String toTime = bookingDTO.getToTime();
-	      String finalBookingTime = toBookingDate+" "+toTime+":00";
-	      System.out.println("To Booking Date and time: "+finalBookingTime);
-	      System.out.println("Current Time: "+DataUtility.getCurrentTimestamp());
-	      
-	      int b3 = DataUtility.getCurrentTimestamp().compareTo(DataUtility.getDateAndTime(finalBookingTime));  
-	      System.out.println("Compare Status: "+b3);
-	      
-	      SlotDTO slotDTO = slotDAO.findById(slot_id);
-	      
-	      if(slotDTO.isStatus()) {
-	       //System.out.println("Current Time: "+DataUtility.getCurrentTimestamp());
-	      }else if(b3>=0){   
-	       slotDTO.setStatus(true);
-	       slotDAO.saveAndFlush(slotDTO);
-	      }
-	   
-	  }
-	
-	}
+	// update upon time reguest
+//	@Scheduled(fixedDelay = 60000)
+//	 public void scheduleFixedDelayTask() {
+//	     List<BookingDTO> bookingList = dao.findAll();     
+//	     List<SlotDTO> slotList = slotDAO.findAll();
+//	     
+//	     for (BookingDTO bookingDTO : bookingList) {
+//	      
+//	      long slot_id = bookingDTO.getSlotId();
+//	      String toBookingDate = DataUtility.getDateString1(bookingDTO.getToBookingDate());
+//	      
+//	      String toTime = bookingDTO.getToTime();
+//	      String finalBookingTime = toBookingDate+" "+toTime+":00";
+//	      System.out.println("To Booking Date and time: "+finalBookingTime);
+//	      System.out.println("Current Time: "+DataUtility.getCurrentTimestamp());
+//	      
+//	      int b3 = DataUtility.getCurrentTimestamp().compareTo(DataUtility.getDateAndTime(finalBookingTime));  
+//	      System.out.println("Compare Status: "+b3);
+//	      
+//	      SlotDTO slotDTO = slotDAO.findById(slot_id);
+//	      
+//	      if(slotDTO.isStatus()) {
+//	       //System.out.println("Current Time: "+DataUtility.getCurrentTimestamp());
+//	      }else if(b3>=0){   
+//	       slotDTO.setStatus(true);
+//	       slotDAO.saveAndFlush(slotDTO);
+//	      }
+//	   
+//	  }
+//	
+//	}
 }

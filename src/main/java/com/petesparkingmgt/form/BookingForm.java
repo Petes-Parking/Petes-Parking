@@ -1,9 +1,11 @@
 package com.petesparkingmgt.form;
 
+import java.util.List;
+
 import javax.validation.constraints.NotEmpty;
 
 import com.petesparkingmgt.dto.BaseDTO;
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.utility.DataUtility;
 
 import lombok.Getter;
@@ -29,7 +31,7 @@ public class BookingForm extends BaseDTO {
 	private String parkingName;
 	
 	@NotEmpty(message = "First name is required")
-	private String slotId;;
+	private String slotId;
 	
 	@NotEmpty(message = "First name is required")
 	private String fromBookingDate;
@@ -42,6 +44,10 @@ public class BookingForm extends BaseDTO {
 	
 	@NotEmpty(message = "First name is required")
 	private String toTime;
+	
+	private String userId;
+	
+	
 	
 
 	public BookingDTO getDTO() {
@@ -59,6 +65,11 @@ public class BookingForm extends BaseDTO {
 		bean.setToBookingDate(DataUtility.getDate1(toBookingDate));
 		bean.setFromTime(fromTime);
 		bean.setToTime(toTime);
+		
+		bean.setUserId(DataUtility.getLong(userId));
+	
+		
+		
 
 		return bean;
 	}
@@ -76,18 +87,20 @@ public class BookingForm extends BaseDTO {
 		toBookingDate = DataUtility.getStringData(bean.getToBookingDate());
 		fromTime = bean.getFromTime();
 		toTime = bean.getToTime();
-
+       
+        userId = DataUtility.getStringData(bean.getUserId());
+      
 	}
 
 	@Override
 	public String toString() {
 		return "BookingForm [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="
-				+ phoneNumber + ", parkingName=" + parkingName + ", slotId=" + slotId + ", fromBookingDate="
-				+ fromBookingDate + ", toBookingDate=" + toBookingDate + ", fromTime=" + fromTime + ", toTime=" + toTime
-				+ "]";
+				+ phoneNumber + ", parkingName=" + parkingName + ", slotId=" + slotId + ","
+						+ " fromBookingDate=" + fromBookingDate + ", toBookingDate=" + toBookingDate + ","
+								+ " fromTime=" + fromTime + ", toTime=" + toTime + ", userId=" + userId + "]";
 	}
-	
-	
-	
+
+
+
 	
 }

@@ -1,6 +1,6 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;

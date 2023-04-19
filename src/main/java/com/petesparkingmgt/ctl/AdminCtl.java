@@ -5,7 +5,7 @@ import com.petesparkingmgt.dao.parking.ParkingDAO;
 import com.petesparkingmgt.dao.reports.ExpReportDAO;
 import com.petesparkingmgt.dao.reports.PoorParkReportDAO;
 import com.petesparkingmgt.dao.users.UserDAO;
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
@@ -266,21 +266,21 @@ public class AdminCtl {
         return modelAndView;
     }
     
-	@GetMapping("/bookinglist")
-	public String list(@ModelAttribute("form")BookingForm form, Model model, HttpSession session){
-		List<BookingDTO> list = null;
-		UserDTO user = (UserDTO) session.getAttribute("user");
-		String email  = user.getEmail();
-		System.out.println("Booking list email: "+email);
-		if(user.getUserRole().equals("Admin")) {
-			 list = service2.list();
-		}else {
-			list = service2.findBookingByEmail(email);
-		}
-	model.addAttribute("list", list);
-	return "bookinglist";
-		
-	}
+//	@GetMapping("/bookinglist")
+//	public String list(@ModelAttribute("form")BookingForm form, Model model, HttpSession session){
+//		List<BookingDTO> list = null;
+//		UserDTO user = (UserDTO) session.getAttribute("user");
+//		String email  = user.getEmail();
+//		System.out.println("Booking list email: "+email);
+//		if(user.getUserRole().equals("Admin")) {
+//			 list = service2.list();
+//		}else {
+//			list = service2.findBookingByEmail(email);
+//		}
+//	model.addAttribute("list", list);
+//	return "bookinglist";
+//		
+//	}
 	
 	@GetMapping("/userList")
 	public String list(@ModelAttribute("form") UserForm form, Model model) {
