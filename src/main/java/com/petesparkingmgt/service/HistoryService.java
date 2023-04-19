@@ -32,11 +32,12 @@ public class HistoryService {
         UserDTO user = userService.findUserById(userid);
         List<HistoryDTO> historyDTOList = dao.getHistoryDTOSByUserId(userid);
         // Need to sort this by date
-        List<LocalDate> dateFormatted = historyDTOList.stream()
-                .map(historyDTO -> LocalDate.parse(historyDTO.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))).collect(Collectors.toList())
-                .stream()
-                .sorted(Comparator.reverseOrder())
-                .collect(Collectors.toList());
+            List<LocalDate> dateFormatted = historyDTOList.stream()
+                    .map(historyDTO -> LocalDate.parse(historyDTO.getDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd"))).collect(Collectors.toList())
+                    .stream()
+                    .sorted(Comparator.reverseOrder())
+                    .collect(Collectors.toList());
+
 
         List<LocalDate> threeLatest = new ArrayList<>();
         int j = Math.min(3, dateFormatted.size());

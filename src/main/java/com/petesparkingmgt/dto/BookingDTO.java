@@ -58,6 +58,7 @@ public class BookingDTO extends BaseDTO {
 	
 	@Column(name = "reqtatus", length = 755)
 	private String reqstatus;
+<<<<<<< HEAD:src/main/java/com/petesparkingmgt/dto/BookingDTO.java
 	
 	@Column(name = "totalPrice")
 	private long totalPrice;
@@ -68,6 +69,12 @@ public class BookingDTO extends BaseDTO {
 	@Column(name = "carpoolId")
 	private long carpoolId;
 	
+=======
+
+	@Column(name = "active")
+	private boolean taken;
+
+>>>>>>> e4b53022104f5e145e0b077ec7a1334810fc79d1:src/main/java/com/petesparkingmgt/dto/parking/BookingDTO.java
 
 //	@Column(name = "isActive", length = 755)
 //	private boolean isActive;

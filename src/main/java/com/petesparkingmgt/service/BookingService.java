@@ -1,7 +1,7 @@
 package com.petesparkingmgt.service;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Date;
@@ -37,6 +37,7 @@ public class BookingService {
 
 	    SlotDTO slot = slotDAO.findById(booking.getSlotId());
 	    slot.setStatus(false);
+		dto.setTaken(true);
 	    slotDAO.saveAndFlush(slot);
        return  booking;
 	}
@@ -88,7 +89,7 @@ public class BookingService {
 
 
 		for (BookingDTO dto : bookingDTOList) {
-			if (!findSlotById(dto.getSlotId()).isStatus()){
+			if (dto.isTaken()){
 				activeBookings.add(dto);
 			}
 		}
@@ -100,10 +101,13 @@ public class BookingService {
 		if (toChange != null) {
 			SlotDTO slot = slotDAO.findById(toChange.getSlotId());
 			slot.setStatus(isAvalible);
+			toChange.setTaken(false);
+			update(toChange);
 			slotDAO.saveAndFlush(slot);
 		}
 
 	}
+<<<<<<< HEAD
 	
 	// update upon time reguest
 //	@Scheduled(fixedDelay = 60000)
@@ -136,4 +140,34 @@ public class BookingService {
 //	  }
 //	
 //	}
+=======
+
+	public boolean isBookingDurationValid(BookingDTO booking) {
+		Instant startDateInstant = booking.getFromBookingDate().toInstant();
+		LocalDateTime bookingStartDate = startDateInstant.atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+		Instant endDateInstant = booking.getToBookingDate().toInstant();
+		LocalDateTime bookingEndDate = endDateInstant.atZone(ZoneId.systemDefault()).toLocalDateTime();
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+		LocalTime bookingStartTime = LocalTime.parse(booking.getFromTime(), formatter);
+		LocalTime bookingEndTime = LocalTime.parse(booking.getToTime(), formatter);
+
+		LocalDateTime bookingStart = bookingStartDate.with(bookingStartTime);
+		LocalDateTime bookingEnd = bookingEndDate.with(bookingEndTime);
+
+		Duration bookingDuration = Duration.between(bookingStart, bookingEnd);
+		long bookingDurationInHours = bookingDuration.toHours();
+
+		// Check if the booking duration is more than 10 hours
+		if (bookingDurationInHours > 10) {
+			System.out.println("The maximum duration you can book is 10 hours.");
+			return false;
+		}
+
+		return true;
+	}
+	
+
+>>>>>>> e4b53022104f5e145e0b077ec7a1334810fc79d1
 }
