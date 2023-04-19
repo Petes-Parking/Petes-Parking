@@ -14,4 +14,6 @@ public interface BookingDAO extends JpaRepository<BookingDTO, Long>{
 
 	public BookingDTO getBookingDTOByCarpoolId(long carpoolID);
 
+	public BookingDTO findBySlotIdAndTakenEquals(long slotid, boolean taken);
+
 }
