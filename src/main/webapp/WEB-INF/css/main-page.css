@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-    background-color: #373A36;
+    background-color: #333;
     font-family: Verdana, Helvetica, sans-serif;
 }
 
@@ -156,7 +156,6 @@ body {
 
 .dropdown:hover .dropdown-content1 {
     display: block;
-
     z-index: 5;
     overflow: hidden;
 

@@ -34,10 +34,10 @@
     position: relative;
     margin-top: 3%;
     margin-right: 3%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     background-color: #333;
     color: white;
     border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
     padding: 5px 10px;
 }
@@ -67,7 +67,7 @@
 
 .car-1 {
     margin-left: 38%;
-    margin-top: -30%;
+    margin-top: -38%;
 }
 
 .car-2 {
@@ -95,7 +95,7 @@ input {
 body {
     font-family: Verdana, Helvetica, sans-serif;
     font-size: medium;
-    background: #373A36;
+    background-color: #333;
 }
 
 .profile {
@@ -113,9 +113,9 @@ body {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    align: bottom;
-    margin-bottom: 5%;
-    margin-left: 3%;
+    margin-left: 15%;
+    display: inline-block;
+    padding: 5px 10px;
 }
 
 .delete-button:hover {
@@ -125,20 +125,26 @@ body {
 }
 
 .save-button {
-    position: relative;
     background-color: #333;
     color: white;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    margin-top: 5%;
     margin-left: 55%;
+    display: inline-block;
+    padding: 5px 10px;
 }
 
 .save-button:hover {
     background-color: #555;
     transition: .3s;
     border-radius: 15px;
+}
+
+.permits {
+    margin-left: 45%;
+    margin-top: -1%;
+    margin-bottom: 3%;
 }
 
 .edit-popup {

@@ -108,6 +108,7 @@ public class BookingService {
 
 	}
 
+
 	
 	// update upon time reguest
 //	@Scheduled(fixedDelay = 60000)
@@ -141,6 +142,8 @@ public class BookingService {
 //	
 //	}
 
+
+
 	public boolean isBookingDurationValid(BookingDTO booking) {
 		Instant startDateInstant = booking.getFromBookingDate().toInstant();
 		LocalDateTime bookingStartDate = startDateInstant.atZone(ZoneId.systemDefault()).toLocalDateTime();
@@ -167,7 +170,5 @@ public class BookingService {
 		return true;
 	}
 	
-
-
 
 }

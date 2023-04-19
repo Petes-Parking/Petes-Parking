@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: aakashjariwala
-  Date: 2/28/23
-  Time: 7:09 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html xmlns:th="http://www.thymeleaf.org">
 
@@ -24,9 +17,9 @@
     .container {
       width: 70%;
       margin: auto;
-      margin-top: 50px;
+      margin-top: 20px;
       padding: 10px;
-      padding-bottom: 30px;
+      padding-bottom: 20px;
       background-color: #fff;
       border-radius: 10px;
       box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
@@ -38,14 +31,15 @@
       padding-left: 10px;
     }
 
-    h1 {
+    h2 {
       text-align: center;
       margin-bottom: 20px;
       font-weight: bold;
     }
 
-    h3 {
+    h4 {
       text-align: center;
+      font-weight: bold;
     }
 
     form {
@@ -68,18 +62,21 @@
     }
 
     button {
-      padding: 10px;
-      width: 30%;
+      padding: 8px;
+      width: 18%;
       background-color: #333;
       color: #fff;
       border: none;
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       cursor: pointer;
+      align-self: center;
     }
 
     button:hover {
       background-color: #414141;
+      transition: 0.3s;
+      border-radius: 15px;
     }
 
     .popup {
@@ -220,24 +217,22 @@
 <body>
 <div class="container">
   <a href="${pageContext.request.contextPath}/main">
-    <p id="return" href="/main">< Return to main page</p><br><br>
+    <button id="return" href="/main" style="float: left; font-size: small; width: 8%; margin-top: 1%; margin-left: 1%">Back</button><br><br>
   </a>
-  <h1>Settings</h1>
-  <s:bind path="mode">
-  <h3>Color Preferences</h3>
-  <input type="radio" id="lightmode" name="mode" value="light">
-  <label for="lightmode">Light mode</label><br>
-  <input type="radio" id="darkmode" name="mode" value="dark">
-  <label for="darkmode">Dark mode</label><br><br>
-  </s:bind>
 
-  <s:bind path="hexColor">
-  <label for="color-input">Background Color (Hexadecimal):</label>
-  <input type="text" id="color-input" name="color" pattern="^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})?$"><br><br>
-  </s:bind>
-  <button id="save-button" type="submit">Save</button><br>
+  <h2>Settings</h2>
+  <h4>Color Preferences</h4>
+  <form method="post">
+    <label for="lightmode" style="display: inline-block;">Light mode
+      <input type="radio" id="lightmode" name="preference" value="light">
+    </label>
+    <label for="darkmode" style="display: inline-block;">Dark mode
+      <input type="radio" id="darkmode" name="preference" value="dark">
+    </label>
+    <button id="theme-save-button" type="submit">Save Theme</button><br>
+  </form>
 
-  <h3 style="padding-top: 50px;">Email Notification Preferences</h3>
+  <h4 style="padding-top: 1px;">Email Notification Preferences</h4>
   <p2>Select the notifications you'd like to receive from Pete's Parking.</p2><br>
 
   <form method="post" action="${pageContext.request.contextPath}/settingsSaveEmail">
@@ -268,7 +263,7 @@
       </div>
       <div class="time">
         <label for="timerInput">Enter number of minutes left on timer when email notification should be sent:</label>
-        <input type="number" id="timerInput" name="timerInput" style="text-align:left; padding-right: 5px" min="1" value="${theTimer}" ${expirationPref ? '' : 'disabled'}>
+        <input type="number" id="timerInput" name="timerInput" style="text-align:left; width: 15%; margin-left: 15px" min="1" value="${theTimer}" ${expirationPref ? '' : 'disabled'}>
       </div>
       <button id="save-email" type="button" onclick="show('confirmed-popup')">Save Changes</button><br>
     </div>
@@ -277,74 +272,52 @@
       <div class="text">
         <p3>Settings Saved.</p3>
       </div>
-      <button class="submit", type="submit" id="submit" onclick="hide('confirmed-popup')">Close</button>
+      <button class="submit" type="submit" id="submit" onclick="hide('confirmed-popup')">Close</button>
     </div>
   </form>
 
-
-</div>
-<div id="popup" class="popup">
-  <br><br><p>Settings saved!</p><br>
-  <button id="close-button" type="button">Close</button>
 </div>
 <script>
-  const saveButton = document.getElementById("save-button");
-  const container = document.querySelector(".container");
-  const body = document.querySelector("body");
-  const popup = document.getElementById("popup");
-  const closeButton = document.getElementById("close-button");
+  const themeSaveButton = document.getElementById('theme-save-button');
+  const container = document.querySelector('.container');
+  const body = document.querySelector('body');
 
-  // Get the saved mode from local storage
-  let savedMode = localStorage.getItem("mode");
+  // Check if themePreference is already set in localStorage
+  if (!localStorage.getItem('themePreference')) {
+    // Set default value if themePreference is not set
+    localStorage.setItem('themePreference', "light");
+  }
 
-  // Set the initial mode based on the saved mode or default to light mode
-  let currentMode = savedMode || "light";
+  themeSaveButton.addEventListener("click", () => {
+    const selectedMode = document.querySelector('input[name="preference"]:checked').value;
+    localStorage.setItem('themePreference', selectedMode);
+    alert('Theme preference saved!');
+    updateTheme(selectedMode);
+  });
+
+  // Get the user's theme preference
+  const savedMode = localStorage.getItem('themePreference');
 
   // Set the radio button based on the current mode
-  if (currentMode === "light") {
+  if (savedMode === "light") {
+    updateTheme("light");
     document.getElementById("lightmode").checked = true;
-  } else {
+  } else if (savedMode === "dark") {
+    updateTheme("dark");
     document.getElementById("darkmode").checked = true;
   }
 
-  saveButton.addEventListener("click", () => {
-    const lightMode = document.getElementById("lightmode");
-    const darkMode = document.getElementById("darkmode");
-    const colorInput = document.getElementById("color-input");
-
-    if (lightMode.checked) {
+  function updateTheme(mode) {
+    if (mode === "light") {
       container.style.backgroundColor = "#fff";
       container.style.color = "#333";
       body.style.backgroundColor = "#CEB888";
-      lightMode.parentElement.style.color = "#333";
-      darkMode.parentElement.style.color = "#333";
-      currentMode = "light";
-    } else if (darkMode.checked) {
+    } else if (mode === "dark") {
       container.style.backgroundColor = "#565656";
       container.style.color = "#fff";
-      body.style.backgroundColor = "#333333";
-      lightMode.parentElement.style.color = "#fff";
-      darkMode.parentElement.style.color = "#fff";
-      currentMode = "dark";
+      body.style.backgroundColor = "#333";
     }
-
-    // Set the background color based on the input value
-    if (colorInput.value.match(/^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})?$/)) {
-      body.style.backgroundColor = colorInput.value;
-    }
-
-    // Save the mode to local storage
-    localStorage.setItem("mode", currentMode);
-    localStorage.setItem("color", colorInput.value);
-
-    // Show the popup
-    popup.style.display = "block";
-  });
-
-  closeButton.addEventListener("click", () => {
-    // Hide the popup
-    popup.style.display = "none";
-  });
+  }
 
   function toggleInputField() {
     var timerInput = document.getElementById("timerInput");

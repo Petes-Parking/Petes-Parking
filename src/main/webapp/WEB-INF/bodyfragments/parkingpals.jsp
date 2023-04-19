@@ -22,7 +22,7 @@
 
     .container {
       margin: auto;
-      margin-top: 20px;
+      margin-top: 3%;
       padding: 30px;
       background-color: #fff;
       border-radius: 10px;
@@ -264,6 +264,36 @@
   const acceptBtn = document.getElementById('accept-btn');
   const rejectBtn = document.getElementById('reject-btn');
   const xBtn = document.querySelectorAll('.x-button');
+
+  const container = document.querySelector('.container');
+  const body = document.querySelector('body');
+
+  // Check if themePreference is already set in localStorage
+  if (!localStorage.getItem('themePreference')) {
+    // Set default value if themePreference is not set
+    localStorage.setItem('themePreference', "light");
+  }
+
+  // Get the user's theme preference
+  const savedMode = localStorage.getItem('themePreference');
+
+  // Set the radio button based on the current mode
+  if (savedMode === "light") {
+    updateTheme("light");
+  } else if (savedMode === "dark") {
+    updateTheme("dark");
+  }
+
+  function updateTheme(mode) {
+    if (mode === "light") {
+      container.style.backgroundColor = "#fff";
+      container.style.color = "#333";
+      body.style.backgroundColor = "#CEB888";
+    } else if (mode === "dark") {
+      container.style.color = "#fff";
+      body.style.backgroundColor = "#333";
+    }
+  }
 
   searchInput.addEventListener('input', () => {
     const searchValue = searchInput.value.toLowerCase();

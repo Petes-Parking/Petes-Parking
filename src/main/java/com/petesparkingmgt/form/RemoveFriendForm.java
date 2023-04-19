@@ -22,7 +22,7 @@ public class RemoveFriendForm {
 
     @Override
     public String toString() {
-        return "RemoveFriendForm [email=" + email + requestSentBy + "]";
+        return "RemoveFriendForm [email=" + email + " requestSentBy=" + requestSentBy + "]";
     }
 
 }

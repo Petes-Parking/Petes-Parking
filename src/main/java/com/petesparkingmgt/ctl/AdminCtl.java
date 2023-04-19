@@ -11,6 +11,7 @@ import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.PendingUserDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
+import com.petesparkingmgt.form.AdminReportChangePointsForm;
 import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.ManagePointForm;
 import com.petesparkingmgt.form.UserForm;
@@ -107,6 +108,38 @@ public class AdminCtl {
         // Redirect back to the admin view page with an updated users list
         ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
         attributes.addFlashAttribute("message", "User updated successfully!");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/admin/awardPoints")
+    public ModelAndView adminAwardPointsAccurateReport(@ModelAttribute AdminReportChangePointsForm form, RedirectAttributes attributes) {
+        // Update the user information in the database using the userService
+        UserDTO user = service.getByEmail(form.getReportedEmail());
+        int previous = user.getPoints();
+
+        user.setPoints(user.getPoints() + 10);
+        service.update(user);
+
+        // Redirect back to the admin view page with an updated users list
+        ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
+        attributes.addFlashAttribute("message", "You have awarded 10 points to " + user.getEmail() + "! They now have " + user.getPoints() + " points instead of " + previous + " points!");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/admin/deductPoints")
+    public ModelAndView adminDeductPointsInaccurateReport(@ModelAttribute AdminReportChangePointsForm form, RedirectAttributes attributes) {
+        // Update the user information in the database using the userService
+        UserDTO user = service.getByEmail(form.getReportedEmail());
+        int previous = user.getPoints();
+        int points = Math.max(user.getPoints() - 10, 0);
+        user.setPoints(points);
+        service.update(user);
+
+        // Redirect back to the admin view page with an updated users list
+        ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
+        attributes.addFlashAttribute("message", "You have deducted points from " + user.getEmail() + "! They now have " + points + " points instead of " + previous + " points!");
 
         return modelAndView;
     }
