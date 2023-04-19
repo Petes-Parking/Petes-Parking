@@ -1,6 +1,6 @@
 package com.petesparkingmgt.service;
 
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;
@@ -208,7 +208,7 @@ public class EmailService {
                 "\n" +
                 "Expiration Time: " + outputTime + "\n" +
                 "\n" +
-                "Time Remaining: " + timer + "minutes\n" +
+                "Time Remaining: " + timer + " minutes\n" +
                 "\n" +
                 "If you are still parked after your timer has expired, you may receive a parking ticket. Please ensure that your car is removed before the reservation ends. Thank you.\n" +
                 "\n" +

@@ -29,5 +29,13 @@ public class PaymentDTO extends BaseDTO {
 	
 	@Column(name = "totalPrice")
 	private long totalPrice;
+
+	@Override
+	public String toString() {
+		return "PaymentDTO [cardNumber=" + cardNumber + ", nameOnCard=" + nameOnCard + ", expireDate=" + expireDate
+				+ ", email=" + email + ", totalPrice=" + totalPrice + "]";
+	}
+	
+	
 	
 }

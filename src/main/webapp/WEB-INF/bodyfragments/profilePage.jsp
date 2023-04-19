@@ -146,11 +146,16 @@
             <input type="checkbox" id="permitA" name="permitA" data-permits="${vehicle.permitA}" style="margin-left: 10%;">
             <label for="permitA" style="display: inline-block; margin-left: 1%;"> A Permit</label>
             <input type="checkbox" id="permitB" name="permitB" data-permits="${vehicle.permitB}" style="margin-left: 10%;">
-            <label for="permitB" style="display: inline-block; margin-left: 1%;"> B Permit</label><br>
+            <label for="permitB" style="display: inline-block; margin-left: 1%;"> B Permit</label>
             <input type="checkbox" id="permitC" name="permitC" data-permits="${vehicle.permitC}" style="margin-left: 10%;">
-            <label for="permitC" style="display: inline-block; margin-left: 1%;"> C Permit</label>
+            <label for="permitC" style="display: inline-block; margin-left: 1%;"> C Permit</label><br>
+
+            <input type="checkbox" id="permitCG" name="permitCG" data-permits="${vehicle.permitCG}" style="margin-left: 10%;">
+            <label for="permitCG" style="display: inline-block;"> C Garage Permit</label>
+            <input type="checkbox" id="permitR" name="permitR" data-permits="${vehicle.permitR}" style="margin-left: 10%;">
+            <label for="permitR" style="display: inline-block;"> Residence Hall Permit</label>
             <input type="checkbox" id="permitD" name="permitD" data-permits="${vehicle.permitD}" style="margin-left: 10%;">
-            <label for="permitD" style="display: inline-block; margin-left: 1%;"> Disability Permit</label><br>
+            <label for="permitD" style="display: inline-block;"> Disability Permit</label>
         </div>
 
         <a href="${pageContext.request.contextPath}/addVehicle">
@@ -238,6 +243,8 @@
         let permA = document.getElementById("permitA").getAttribute("data-permits");
         let permB = document.getElementById("permitB").getAttribute("data-permits");
         let permC = document.getElementById("permitC").getAttribute("data-permits");
+        let permCG = document.getElementById("permitCG").getAttribute("data-permits");
+        let permR = document.getElementById("permitR").getAttribute("data-permits");
         let permD = document.getElementById("permitD").getAttribute("data-permits");
             if (permA.includes("on")) {
                 document.getElementById("permitA").checked = true;
@@ -245,6 +252,10 @@
                 document.getElementById("permitB").checked = true;
             } if (permC.includes("on")) {
                 document.getElementById("permitC").checked = true;
+            } if (permCG.includes("on")) {
+                document.getElementById("permitCG").checked = true;
+            } if (permR.includes("on")) {
+                document.getElementById("permitR").checked = true;
             } if (permD.includes("on")) {
                 document.getElementById("permitD").checked = true;
             }

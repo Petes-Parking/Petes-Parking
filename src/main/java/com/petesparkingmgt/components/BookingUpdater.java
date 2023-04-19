@@ -1,6 +1,6 @@
 package com.petesparkingmgt.components;
 
-import com.petesparkingmgt.dto.parking.BookingDTO;
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -28,9 +28,11 @@ public class BookingUpdater {
         for (BookingDTO booking : activeBookings) {
             if (isBookingExpired(booking)) {
                 // Update booking status to expired
+                System.out.println("Setting " + booking.getEmail() + " slot " + booking.getSlotId());
                 bookingService.updateSlotStatus(booking.getId(), true);
             }
         }
+        System.out.println("------------------------------------------------------------");
     }
 
     private boolean isBookingExpired(BookingDTO booking) {
@@ -44,7 +46,22 @@ public class BookingUpdater {
             LocalTime bookingEndTime = LocalTime.parse(booking.getToTime(), formatter);
 
             LocalDateTime bookingEnd = bookingEndDate.with(bookingEndTime);
+
+            boolean expired = now.isAfter(bookingEnd);
+            // Debugging information
+            System.out.println("----");
+            System.out.println("User: " + booking.getEmail() + " in " + booking.getParkingName() + " expired: " + expired + "!");
+            System.out.println("Now: " + now);
+            System.out.println("BookingDTO end date: " + booking.getToBookingDate());
+            System.out.println("bookingEndDate: " + bookingEndDate);
+            System.out.println("bookingEnd: " + bookingEnd);
+            System.out.println("-------");
+
+            // Check if now is strictly after the booking end time
             return now.isAfter(bookingEnd);
-        } else return false;
+        } else {
+            return false;
+        }
     }
+
 }

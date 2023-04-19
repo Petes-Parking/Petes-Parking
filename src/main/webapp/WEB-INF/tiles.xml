@@ -259,6 +259,20 @@
         <put-attribute name="title" value="Admin Review Poor Park Detailed" />
         <put-attribute name="body" value="/WEB-INF/bodyfragments/adminReviewPoorParkDetailed.jsp" />
     </definition>
+    
+             <!-- Payment List View  -->
+    <definition name="paymentlist" extends="base.definition">  
+        <put-attribute name="title" value="Booking View List" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/paymentlistview.jsp" />  
+    </definition> 
+
+         <!-- Payment View  -->
+    <definition name="payment" extends="base.definition">  
+        <put-attribute name="title" value="View slots List" />  
+        <put-attribute name="body" value="/WEB-INF/bodyfragments/paymentview.jsp" />  
+    </definition> 
+    
+    
 
 
 

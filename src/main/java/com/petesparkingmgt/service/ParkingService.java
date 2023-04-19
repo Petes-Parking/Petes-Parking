@@ -2,6 +2,8 @@ package com.petesparkingmgt.service;
 
 import java.util.List;
 
+import com.petesparkingmgt.dao.parking.BookingDAO;
+import com.petesparkingmgt.dto.BookingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.petesparkingmgt.dao.parking.ParkingDAO;
@@ -17,6 +19,9 @@ public class ParkingService {
 
 	@Autowired
 	public ParkingDAO dao;
+
+	@Autowired
+	public BookingDAO bookingDAO;
 	@Autowired
 	public SlotDAO slotDao;
 
@@ -46,7 +51,6 @@ public class ParkingService {
 			long total = parking.getNumberOfSlot();
 			long occupied = slots.stream().filter(slotDTO -> !slotDTO.isStatus()).count();
 			double occupancy = (double) occupied / total;
-			System.out.println("Occupied: " + occupied + " for " + name + " with value " + occupancy);
 			model.addAttribute(name+"Occupancy", occupancy );
 		}
 
@@ -63,6 +67,10 @@ public class ParkingService {
 	    System.out.println("dto Before Save: "+dto);
 	    parking = dao.save(dto);
        return  parking;
+	}
+
+	public BookingDTO findActiveBookingDTOwithSlotID(long slotid){
+		return bookingDAO.findBySlotIdAndTakenEquals(slotid, true);
 	}
 	
 

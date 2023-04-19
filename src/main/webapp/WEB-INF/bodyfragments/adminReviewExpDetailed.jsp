@@ -105,6 +105,15 @@
             <button type="submit">Dismiss Report</button>
         </div>
     </form>
+    <form action="${pageContext.request.contextPath}/admin/awardPoints" method="post">
+        <input type="hidden" name="reportedEmail" value="${report.reporterEmail}">
+
+        <button type="submit" style="float: left;">Award Points</button>
+    </form>
+    <form action="${pageContext.request.contextPath}/admin/deductPoints" method="post">
+        <input type="hidden" name="reportedEmail" value="${report.reporterEmail}">
+        <button type="submit" >Deduct Points</button>
+    </form>
     <form action="${pageContext.request.contextPath}/admin/backToExpReport" method="post">
         <button type="submit">Back</button>
     </form>

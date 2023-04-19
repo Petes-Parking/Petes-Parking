@@ -53,6 +53,9 @@ public class UserDTO extends BaseDTO {
 
 	@Column(name = "userRole", length = 755)
 	private String userRole;
+	
+	@Column(name = "status", length = 755)
+	private String status;
 
 	@Column(name = "points")
 	private int points;

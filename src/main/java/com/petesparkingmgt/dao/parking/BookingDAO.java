@@ -3,7 +3,8 @@ package com.petesparkingmgt.dao.parking;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.petesparkingmgt.dto.parking.BookingDTO;
+
+import com.petesparkingmgt.dto.BookingDTO;
 
 public interface BookingDAO extends JpaRepository<BookingDTO, Long>{
 	
@@ -12,5 +13,7 @@ public interface BookingDAO extends JpaRepository<BookingDTO, Long>{
 	
 
 	public BookingDTO getBookingDTOByCarpoolId(long carpoolID);
+
+	public BookingDTO findBySlotIdAndTakenEquals(long slotid, boolean taken);
 
 }

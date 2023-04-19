@@ -2,6 +2,8 @@ package com.petesparkingmgt.ctl;
 
 import java.util.List;
 
+import com.petesparkingmgt.dto.BookingDTO;
+import com.petesparkingmgt.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +23,9 @@ public class ParkingCtl {
 	
 	@Autowired
 	public ParkingService service;
+
+	@Autowired
+	public BookingService bookingService;
 	
 	@Autowired
 	public SlotDAO slotDao;
@@ -49,6 +54,42 @@ public class ParkingCtl {
 		List<SlotDTO> slots = slotDao.findByParkingId(id);
         model.addAttribute("list", slots);
 		return "viewslots";
+	}
+	
+	@GetMapping("/updateslot")	
+	public String updateSlot(@ModelAttribute("form")ParkingForm form, Model model, @RequestParam("id") long id ) throws Exception{
+		SlotDTO slot = slotDao.findById(id);
+		slot.setStatus(true);
+
+		// need to find any bookingDTO associated with this slot and set taken to false
+		BookingDTO correspondingBooking = service.findActiveBookingDTOwithSlotID(id);
+		if (correspondingBooking != null) {
+			correspondingBooking.setTaken(false);
+			bookingService.update(correspondingBooking);
+		}
+		slotDao.saveAndFlush(slot);
+		System.out.println("parkingId: "+parkingId);
+		 List<SlotDTO> slots = slotDao.findByParkingId(parkingId);
+	     model.addAttribute("list", slots);
+		return "viewslots";
+	}
+	
+	@GetMapping("/parkingEdit")	
+	public String update(@ModelAttribute("form")ParkingForm form, Model model, @RequestParam("id") long id ){
+		ParkingDTO bean = service.findParkingById(id);
+		form.populate(bean);
+		model.addAttribute("bean",bean);	
+		return "parking";
+	}
+	
+	@GetMapping("/parkingDelete")	
+	public String delete(@ModelAttribute("form")ParkingForm form, Model model, @RequestParam("id") long id ) throws Exception{
+		service.delete(id);	
+		
+		List<ParkingDTO> list =	service.list();
+		model.addAttribute("list", list);
+		model.addAttribute("success", "Parking Deleted successfully");
+		return "parkinglist";
 	}
 	
 
