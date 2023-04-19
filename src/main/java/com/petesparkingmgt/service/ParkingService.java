@@ -46,7 +46,6 @@ public class ParkingService {
 			long total = parking.getNumberOfSlot();
 			long occupied = slots.stream().filter(slotDTO -> !slotDTO.isStatus()).count();
 			double occupancy = (double) occupied / total;
-			System.out.println("Occupied: " + occupied + " for " + name + " with value " + occupancy);
 			model.addAttribute(name+"Occupancy", occupancy );
 		}
 

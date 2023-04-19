@@ -52,7 +52,9 @@ public class ProfileCtl {
         } else {
             // currently does not exist in database
             vehicleDTO = new VehicleDTO();
+            vehicleDTO.setUserId(user.getId());
             model.addAttribute(vehicleDTO);
+            dao.save(vehicleDTO);
         }
 
         byte[] imageData = user.getProfilePicture();

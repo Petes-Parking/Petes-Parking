@@ -59,6 +59,7 @@ public class BookingForm extends BaseDTO {
 		bean.setToBookingDate(DataUtility.getDate1(toBookingDate));
 		bean.setFromTime(fromTime);
 		bean.setToTime(toTime);
+		bean.setTaken(true);
 
 		return bean;
 	}

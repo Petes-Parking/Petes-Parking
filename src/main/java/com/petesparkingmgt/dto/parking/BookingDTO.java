@@ -60,6 +60,9 @@ public class BookingDTO extends BaseDTO {
 	@Column(name = "reqtatus", length = 755)
 	private String reqstatus;
 
+	@Column(name = "active")
+	private boolean taken;
+
 
 //	@Column(name = "isActive", length = 755)
 //	private boolean isActive;

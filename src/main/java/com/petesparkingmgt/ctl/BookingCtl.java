@@ -123,6 +123,11 @@ public class BookingCtl {
 				}
 				BookingDTO bean = form.getDTO();
 
+				if (!service.isBookingDurationValid(bean)){
+					model.addAttribute("error", "The maximum duration is 10 hours! Please choose a shorter duration.");
+					return "booking";
+				}
+
 				HistoryDTO historyBean = new HistoryDTO();
 				int year1 = bean.getFromBookingDate().getYear() + 1900;
 				int year2 = bean.getToBookingDate().getYear() + 1900;
