@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.petesparkingmgt.dao.PaymentRequestDAO;
+import com.petesparkingmgt.dto.parking.*;
 import com.petesparkingmgt.dto.PaymentRequestDTO;
+import com.petesparkingmgt.exception.RecordNotFoundException;
+import com.petesparkingmgt.utility.DataUtility;
 
 @Service
 public class PaymentRequestService {
@@ -23,13 +26,20 @@ public class PaymentRequestService {
 	
 	public PaymentRequestDTO update(long userId) {
 		
-		PaymentRequestDTO dto = dao.findByUserID(userId);
-		
+		PaymentRequestDTO dto = dao.findByUserID(userId);	
 		dto.setStatus("paid");
 		dao.saveAndFlush(dto);
-		return 	dto;
 		
+		return 	dto;
+	}
 	
+	public PaymentRequestDTO updateExisting(PaymentRequestDTO dto) {
+		PaymentRequestDTO prDto = dao.findByUserID(dto.getUserID());
+		prDto.setStatus("unpaid");
+		prDto.setAmount(dto.getAmount());
+		dao.saveAndFlush(prDto);
+		
+		return 	dto;
 	}
 	
 	public PaymentRequestDTO paymentRequestDTOByUserID(long userId) {

@@ -107,7 +107,7 @@ public class BookingService {
 		}
 
 	}
-<<<<<<< HEAD
+
 	
 	// update upon time reguest
 //	@Scheduled(fixedDelay = 60000)
@@ -140,7 +140,6 @@ public class BookingService {
 //	  }
 //	
 //	}
-=======
 
 	public boolean isBookingDurationValid(BookingDTO booking) {
 		Instant startDateInstant = booking.getFromBookingDate().toInstant();
@@ -169,5 +168,6 @@ public class BookingService {
 	}
 	
 
->>>>>>> e4b53022104f5e145e0b077ec7a1334810fc79d1
+
+
 }

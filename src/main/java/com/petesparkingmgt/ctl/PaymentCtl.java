@@ -11,10 +11,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.petesparkingmgt.dto.BookingDTO;
 import com.petesparkingmgt.dto.PaymentDTO;
 import com.petesparkingmgt.dto.user.*;
 import com.petesparkingmgt.form.PaymentForm;
+import com.petesparkingmgt.service.BookingService;
 import com.petesparkingmgt.service.PaymentRequestService;
 import com.petesparkingmgt.service.PaymentService;
 
@@ -31,6 +34,9 @@ public class PaymentCtl {
 	@Autowired
 	private PaymentRequestService paymentRequestService;
 	
+	@Autowired
+	private BookingService bookingService;
+	
 	@GetMapping("/payment")
 	public String payment(@ModelAttribute("form")PaymentForm form, Model model) {
 		 
@@ -38,7 +44,7 @@ public class PaymentCtl {
 	}
 	
 	@PostMapping("/addPayment")
-	public String add(@ModelAttribute("form")PaymentForm form, BindingResult bindingResult, Model model, HttpSession session ) {
+	public String add(@ModelAttribute("form")PaymentForm form, BindingResult bindingResult, Model model, HttpSession session,@RequestParam("id") long id ) {
 
 		
 		if(bindingResult.hasErrors()) {
@@ -49,8 +55,10 @@ public class PaymentCtl {
 			UserDTO user = (UserDTO)session.getAttribute("user");
 			dto.setEmail(user.getEmail());
 			service.Add(dto);
-			
 			paymentRequestService.update(user.getId());
+			BookingDTO bookingDTO = bookingService.findBookingById(id);
+			bookingDTO.setPaymentStatus("Paid");
+			bookingService.update(bookingDTO);
 			model.addAttribute("success", "Payment Done!");
 		}
 		return "payment";

@@ -11,12 +11,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.petesparkingmgt.dto.PaymentDTO;
 import com.petesparkingmgt.dto.PaymentRequestDTO;
-import com.petesparkingmgt.dto.user.*;
 import com.petesparkingmgt.form.BookingForm;
 import com.petesparkingmgt.form.PaymentForm;
 import com.petesparkingmgt.form.PaymentRequestForm;
 import com.petesparkingmgt.service.BookingService;
 import com.petesparkingmgt.service.PaymentRequestService;
+import com.petesparkingmgt.utility.DataUtility;
+import com.petesparkingmgt.dto.user.*;
 
 @Controller
 public class PaymentRequestServiceCtl {
@@ -37,17 +38,29 @@ public class PaymentRequestServiceCtl {
 		
 		long userId = dto.getUserID();
 		PaymentRequestDTO  paymentRequestDTO =  paymentRequestService.paymentRequestDTOByUserID(userId);
-		if(paymentRequestDTO == null ) {
+		
+		if(paymentRequestDTO == null)
+		{
 			dto.setStatus("unpaid");
 			service.Add(dto);
 			model.addAttribute("success", "Request Sent");
-		}else {
+		}else if(paymentRequestDTO.getStatus().equals("paid")) {
+			
+			System.out.println("Second if is runnig now......dto: "+dto);
+			service.updateExisting(dto);
+			model.addAttribute("success", "Request Sent");
+		}
+		
+		else {
 			model.addAttribute("error", "Request alreay Sent");
 		}
 		
 		
 		return "bookinglist";
 	}
-		
+	
+	
+
+	
 	
 }

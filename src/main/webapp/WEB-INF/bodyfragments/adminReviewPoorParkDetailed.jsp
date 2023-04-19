@@ -100,11 +100,11 @@
     <img src="data:image/jpeg;base64,${reportImage}" alt="Report Image" style="max-width: 500px; height: auto; padding-bottom: 15px;"><br>
     <button type="submit">Dismiss Report</button>
   </form>
+      <form action="${pageContext.request.contextPath}/bookinglist" method="get">
+    <button type="submit">Fine/Ticket</button>
+  </form>
   <form action="${pageContext.request.contextPath}/admin/backToPoorParkReport" method="post">
     <button type="submit">Back</button>
-  </form>
-    <form action="${pageContext.request.contextPath}/bookinglist" method="get">
-    <button type="submit">Fine/Ticket</button>
   </form>
     <button class="btn btn-warning" id="remove-priv">Remove reporting privileges</button>
 </div>
