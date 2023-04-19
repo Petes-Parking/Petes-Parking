@@ -6,57 +6,54 @@
     <style>
         <%@include file="/WEB-INF/css/map-pan.css"%>
         <%@include file="/WEB-INF/css/main-page.css"%>
-
     </style>
-<%--    <link href="main-page.css" rel="stylesheet" type="text/css">--%>
-<%--    <link href="map-pan.css" rel="stylesheet" type="text/css">--%>
 </head>
 <body>
 <div class="sidebar">
     <div class="profile-area">
         <img class="profile-pic" src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture">
         <a href="${pageContext.request.contextPath}/profile">
-            <button class="profile-button">${user.firstName} ${user.lastName}</button>
+            <button id="profileBtn" class="profile-button">${user.firstName} ${user.lastName}</button>
         </a>
         <a href="${pageContext.request.contextPath}/main">
-            <button class="home-button"><img style="width: 80%; height: 70%;" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
+            <button id="homeBtn" class="home-button"><img id="homeIcon" style="width: 62%; height: 65%;" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
         </a>
     </div>
 
     <div class="button-area">
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" style="width: 32%; margin-left: 2%">
         <a href="${pageContext.request.contextPath}/parkinglist">
-            <button class="sidebarPageButtons">Book Reservation</button>
+            <button id="bookBtn" class="sidebarPageButtons">Book Reservation</button>
         </a>
 
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" style="width: 24%; margin-left: 6%"/>
         <a href="${pageContext.request.contextPath}/history">
-            <button class="sidebarPageButtons">View Favorite Parkings</button>
+            <button id="starBtn" class="sidebarPageButtons">View Favorite Parkings</button>
         </a>
 
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" style="width: 23%; margin-left: 6%"/>
         <a href="${pageContext.request.contextPath}/parkingpals">
-            <button class="sidebarPageButtons">Parking Pals</button>
+            <button id="palBtn" class="sidebarPageButtons">Parking Pals</button>
         </a>
 
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" style="width: 22%; margin-left: 7%"/>
         <a href="${pageContext.request.contextPath}/carpool">
-            <button class="sidebarPageButtons">Carpools</button>
+            <button id="carBtn" class="sidebarPageButtons">Carpools</button>
         </a>
 
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/referrals.png" style="width: 23%; margin-left: 6%"/>
         <a href="${pageContext.request.contextPath}/referrals">
-            <button class="sidebarPageButtons">My Referrals</button>
+            <button id="refBtn" class="sidebarPageButtons">My Referrals</button>
         </a>
 
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" style="width: 23%; margin-left: 7%"/>
         <a href="${pageContext.request.contextPath}/settings">
-            <button class="sidebarPageButtons">Settings</button>
+            <button id="settingsBtn" class="sidebarPageButtons">Settings</button>
         </a>
 
         <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" style="width: 26%; margin-left: 6%; margin-right: 4%"/>
         <div class="dropdown">
-            <button style="width: 100%; position: relative; padding: 13px 30px; margin-top: 6%; background-color: #D6C49B; border-radius: 5px;">File a Report</button>
+            <button id="reportBtn" style="width: 100%; position: relative; padding: 13px 30px; margin-top: 6%; background-color: #D6C49B; border-radius: 5px;">File a Report</button>
             <div class="dropdown-content1">
                 <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
                 <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
@@ -350,6 +347,60 @@
 </div>
 <%--////////////////////////////////////////////////////////////////////////////////////////////////////////////////--%>
 <script>
+    const sidebar = document.querySelector('.sidebar');
+    const profileBtn = document.getElementById('profileBtn');
+    const homeBtn = document.getElementById('homeBtn');
+    const homeIcon = document.getElementById('homeIcon');
+    const bookBtn = document.getElementById('bookBtn');
+    const starBtn = document.getElementById('starBtn');
+    const palBtn = document.getElementById('palBtn');
+    const carBtn = document.getElementById('carBtn');
+    const refBtn = document.getElementById('refBtn');
+    const settingsBtn = document.getElementById('settingsBtn');
+    const reportBtn = document.getElementById('reportBtn');
+
+    // Check if themePreference is already set in localStorage
+    if (!localStorage.getItem('themePreference')) {
+        // Set default value if themePreference is not set
+        localStorage.setItem('themePreference', "light");
+    }
+
+    // Get the user's theme preference
+    const savedMode = localStorage.getItem('themePreference');
+
+    // Set the radio button based on the current mode
+    if (savedMode === "light") {
+        updateTheme("light");
+    } else if (savedMode === "dark") {
+        updateTheme("dark");
+    }
+
+    function updateTheme(mode) {
+        if (mode === "light") {
+            sidebar.style.backgroundColor = "#CEB888";
+        } else if (mode === "dark") {
+            sidebar.style.backgroundColor = "#565656";
+            profileBtn.style.backgroundColor = "#333";
+            homeBtn.style.backgroundColor = "#333";
+            bookBtn.style.backgroundColor = "#333";
+            starBtn.style.backgroundColor = "#333";
+            palBtn.style.backgroundColor = "#333";
+            carBtn.style.backgroundColor = "#333";
+            refBtn.style.backgroundColor = "#333";
+            settingsBtn.style.backgroundColor = "#333";
+            reportBtn.style.backgroundColor = "#333";
+            profileBtn.style.color = "#fff";
+            homeIcon.style.filter = "invert(1)";
+            bookBtn.style.color = "#fff";
+            starBtn.style.color = "#fff";
+            palBtn.style.color = "#fff";
+            carBtn.style.color = "#fff";
+            refBtn.style.color = "#fff";
+            settingsBtn.style.color = "#fff";
+            reportBtn.style.color = "#fff";
+        }
+    }
+
     var scale = 1,
         panning = false,
         pointX = 0,
