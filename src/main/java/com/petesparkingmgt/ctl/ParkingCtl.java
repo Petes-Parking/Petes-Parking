@@ -51,6 +51,35 @@ public class ParkingCtl {
 		return "viewslots";
 	}
 	
+	@GetMapping("/updateslot")	
+	public String updateSlot(@ModelAttribute("form")ParkingForm form, Model model, @RequestParam("id") long id ) throws Exception{
+		SlotDTO slot = slotDao.findById(id);
+		slot.setStatus(true);
+		slotDao.saveAndFlush(slot);
+		System.out.println("parkingId: "+parkingId);
+		 List<SlotDTO> slots = slotDao.findByParkingId(parkingId);
+	     model.addAttribute("list", slots);
+		return "viewslots";
+	}
+	
+	@GetMapping("/parkingEdit")	
+	public String update(@ModelAttribute("form")ParkingForm form, Model model, @RequestParam("id") long id ){
+		ParkingDTO bean = service.findParkingById(id);
+		form.populate(bean);
+		model.addAttribute("bean",bean);	
+		return "parking";
+	}
+	
+	@GetMapping("/parkingDelete")	
+	public String delete(@ModelAttribute("form")ParkingForm form, Model model, @RequestParam("id") long id ) throws Exception{
+		service.delete(id);	
+		
+		List<ParkingDTO> list =	service.list();
+		model.addAttribute("list", list);
+		model.addAttribute("success", "Parking Deleted successfully");
+		return "parkinglist";
+	}
+	
 
 	
 	

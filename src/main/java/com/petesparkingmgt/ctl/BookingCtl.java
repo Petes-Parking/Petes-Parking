@@ -20,7 +20,6 @@ import com.petesparkingmgt.dao.users.HistoryDAO;
 import com.petesparkingmgt.dao.users.VehicleDAO;
 import com.petesparkingmgt.dto.*;
 import com.petesparkingmgt.dto.carpools.CarpoolUserDTO;
-import com.petesparkingmgt.dto.parking.BookingDTO;
 import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.parking.SlotDTO;
 import com.petesparkingmgt.dto.user.EmailPreferencesDTO;
@@ -29,6 +28,7 @@ import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.user.VehicleDTO;
 import com.petesparkingmgt.form.BookingPaymentForm;
 import com.petesparkingmgt.form.FavoriteForm;
+import com.petesparkingmgt.form.PaymentRequestForm;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +80,9 @@ public class BookingCtl {
 	public HistoryDAO historyDAO;
 	@Autowired
 	public EmailPreferencesDAO emailDAO;
+	
+	@Autowired
+    public PaymentRequestService paymentRequestService;
 
 
 
@@ -408,7 +411,29 @@ public class BookingCtl {
 
 		return modelAndView;
 	}
+
 	
+	@GetMapping("/bookinglist")
+	public String list(@ModelAttribute("form")PaymentRequestForm form, Model model, HttpSession session){
+		List<BookingDTO> list = null;
+		PaymentRequestDTO paymentRequestDTO = null;
+		
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		String email  = user.getEmail();
+		
+		paymentRequestDTO    = paymentRequestService.DuePaymentByUser(user.getId(), "unpaid");
+		if(user.getUserRole().equals("Admin")) {
+			 list = service.list();
+		}else {
+			list = service.findBookingByEmail(email);
+			
+		}
+	model.addAttribute("list", list);
+	model.addAttribute("paymentRequestDTO", paymentRequestDTO);
+	
+	return "bookinglist";
+		
+	}
 	
 	@GetMapping("/cancelBooking")
 	public String cancelBooking(@ModelAttribute("form")BookingForm form, Model model, @RequestParam("id") long id, @RequestParam("slotid") long slotid, HttpSession session) {

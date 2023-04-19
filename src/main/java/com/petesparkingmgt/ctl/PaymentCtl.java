@@ -56,6 +56,7 @@ public class PaymentCtl {
 		return "payment";
 	}
 	
+	
 	@GetMapping("/paymentlist")
 	public String list(@ModelAttribute("form")PaymentForm form, Model model, HttpSession session) {
 		

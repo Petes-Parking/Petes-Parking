@@ -54,6 +54,10 @@
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
 							href="${pageContext.request.contextPath}/bookinglist">Booking</a></li>
+						
+						<li class="nav-item"><a class="nav-link active"
+							aria-current="page"
+							href="${pageContext.request.contextPath}/paymentlist">Payment History</a></li>
 
 
 						<li class="nav-item dropdown">

@@ -1,12 +1,14 @@
-package com.petesparkingmgt.dto.parking;
+package com.petesparkingmgt.dto;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
-import com.petesparkingmgt.dto.BaseDTO;
+import org.springframework.data.annotation.Transient;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import lombok.Getter;
@@ -53,16 +55,26 @@ public class BookingDTO extends BaseDTO {
 	
 	@Column(name = "status", length = 755)
 	private String status;
-
-	@Column(name = "carpoolId")
-	private long carpoolId;
 	
 	@Column(name = "reqtatus", length = 755)
 	private String reqstatus;
+<<<<<<< HEAD:src/main/java/com/petesparkingmgt/dto/BookingDTO.java
+	
+	@Column(name = "totalPrice")
+	private long totalPrice;
+	
+	@Column(name = "userId")
+	private long userId;
+	
+	@Column(name = "carpoolId")
+	private long carpoolId;
+	
+=======
 
 	@Column(name = "active")
 	private boolean taken;
 
+>>>>>>> e4b53022104f5e145e0b077ec7a1334810fc79d1:src/main/java/com/petesparkingmgt/dto/parking/BookingDTO.java
 
 //	@Column(name = "isActive", length = 755)
 //	private boolean isActive;
@@ -73,7 +85,7 @@ public class BookingDTO extends BaseDTO {
 		return "BookingDTO [firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", phoneNumber="
 				+ phoneNumber + ", parkingName=" + parkingName + ", slot=" + slot + ", slotId=" + slotId
 				+ ", fromBookingDate=" + fromBookingDate + ", toBookingDate=" + toBookingDate + ", fromTime=" + fromTime
-				+ ", toTime=" + toTime + "]";
+				+ ", toTime=" + toTime + "status=" + status+"]";
 	}
 	
 	

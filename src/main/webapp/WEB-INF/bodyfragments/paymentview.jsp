@@ -96,8 +96,8 @@ body {
                  <s:bind path="totalPrice">
                   <div class="form-outline">
                   <font color="red" style="font-size: 15px"><sf:errors path="${status.expression}" /></font>
-                    <sf:input type="tel" id="totalPrice" class="form-control form-control-lg" path="totalPrice" value="${totalPrice}" readonly="true"/>
-                    <label class="form-label" for="totalPrice">Total Price</label>
+                    <sf:input type="hidden" id="totalPrice" class="form-control form-control-lg" path="totalPrice" value="${totalPrice}" readonly="true"/>
+                    <label class="form-label" for="totalPrice"></label>
                   </div>
 					</s:bind>
                 </div>
@@ -106,16 +106,16 @@ body {
   				<c:when test="${form.id>0}">
    				  <div class="mt-4 pt-2">
                 <input class="btn btn-primary btn-lg" type="submit" value="Update" />
-              </div>
+              </div>   
  			</c:when>
 
   			<c:otherwise>
-             <div class="mt-4 pt-2 text-center">
-                <input class="btn btn-primary btn-lg" type="submit" value="Pay" />
-              </div>
-  			</c:otherwise>
-			</c:choose>
+	          <div style="text-align: center;">
+				    <input class="btn btn-primary btn-lg" type="submit" value="Pay"/>
+			</div>
 
+  			</c:otherwise>
+			</c:choose> 
         </sf:form>
 
 						<form action="${pageContext.request.contextPath}/main"

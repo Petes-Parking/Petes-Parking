@@ -37,33 +37,17 @@ public class PaymentRequestServiceCtl {
 		
 		long userId = dto.getUserID();
 		PaymentRequestDTO  paymentRequestDTO =  paymentRequestService.paymentRequestDTOByUserID(userId);
-		
-		System.out.println("paymentRequestDTO: "+paymentRequestDTO);
-		
-		if(paymentRequestDTO == null)
-		{
+		if(paymentRequestDTO == null ) {
 			dto.setStatus("unpaid");
 			service.Add(dto);
 			model.addAttribute("success", "Request Sent");
-		}else if(paymentRequestDTO.getStatus().equals("paid")) {
-			
-			System.out.println("Second if is runnig now......");
-
-			System.out.println("Second if is runnig now......dto: "+dto);
-			service.updateExisting(dto);
-			model.addAttribute("success", "Request Sent");
-		}
-		
-		else {
+		}else {
 			model.addAttribute("error", "Request alreay Sent");
 		}
 		
 		
 		return "bookinglist";
 	}
-	
-	
-
-	
+		
 	
 }

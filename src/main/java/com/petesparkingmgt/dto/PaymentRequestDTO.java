@@ -21,4 +21,12 @@ public class PaymentRequestDTO extends BaseDTO {
 	 
 	 @Column(name = "status")
 	 private String status;
+
+	@Override
+	public String toString() {
+		return "PaymentRequestDTO [userID=" + userID + ", amount=" + amount + ", status=" + status + "]";
+	}
+	 
+	 
+	 
 }
