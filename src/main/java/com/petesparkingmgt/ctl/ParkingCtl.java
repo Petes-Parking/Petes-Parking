@@ -1,8 +1,11 @@
 package com.petesparkingmgt.ctl;
 
+import java.util.Base64;
 import java.util.List;
 
+import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dto.BookingDTO;
+import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.service.BookingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +20,8 @@ import com.petesparkingmgt.dto.parking.ParkingDTO;
 import com.petesparkingmgt.dto.parking.SlotDTO;
 import com.petesparkingmgt.dao.parking.SlotDAO;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class ParkingCtl {
@@ -29,6 +34,9 @@ public class ParkingCtl {
 	
 	@Autowired
 	public SlotDAO slotDao;
+
+	@Autowired
+	public UserDAO userDAO;
 	
 	
 	@GetMapping("/parking")
@@ -38,9 +46,13 @@ public class ParkingCtl {
 	
 
 	@GetMapping("/parkinglist")
-	public String list(@ModelAttribute("form")ParkingForm form, Model model){
-	List<ParkingDTO> list = service.list();
-	model.addAttribute("list", list);
+	public String list(@ModelAttribute("form")ParkingForm form, Model model, HttpSession session){
+		List<ParkingDTO> list = service.list();
+		model.addAttribute("list", list);
+		UserDTO user = (UserDTO) session.getAttribute("user");
+		byte[] imageData = user.getProfilePicture();
+		String base64Image = Base64.getEncoder().encodeToString(imageData);
+		model.addAttribute("profilePic", base64Image);
 	return "parkinglist";
 		
 	}
