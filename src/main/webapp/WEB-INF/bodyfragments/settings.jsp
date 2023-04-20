@@ -222,15 +222,14 @@
 
   <h2>Settings</h2>
   <h4>Color Preferences</h4>
-  <form method="post">
-    <label for="lightmode" style="display: inline-block;">Light mode
-      <input type="radio" id="lightmode" name="preference" value="light">
-    </label>
-    <label for="darkmode" style="display: inline-block;">Dark mode
-      <input type="radio" id="darkmode" name="preference" value="dark">
-    </label>
-    <button id="theme-save-button" type="submit">Save Theme</button><br>
-  </form>
+
+  <label for="lightmode" style="display: inline-block;">Light mode
+    <input type="radio" id="lightmode" name="preference" value="light">
+  </label><br>
+  <label for="darkmode" style="display: inline-block;">Dark mode
+    <input type="radio" id="darkmode" name="preference" value="dark">
+  </label><br>
+  <button id="theme-save-button" type="submit" style="margin-bottom: 2%">Save Theme</button><br>
 
   <h4 style="padding-top: 1px;">Email Notification Preferences</h4>
   <p2>Select the notifications you'd like to receive from Pete's Parking.</p2><br>
