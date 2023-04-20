@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -98,6 +99,9 @@ public class CarpoolCtl {
         } else {
             model.addAttribute("hasCarpool", false);
         }
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "carpool";
     }
 
@@ -157,6 +161,9 @@ public class CarpoolCtl {
             System.out.println("CarpoolDTO was null!");
 
         }
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "carpool";
     }
 
@@ -181,7 +188,9 @@ public class CarpoolCtl {
         carpoolUsersService.leaveCarpoolFor(user.getId(), leaving.getCarpoolId());
 
 
-
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "carpool";
 
     }
