@@ -15,7 +15,6 @@
       margin: 4px 2px;
       cursor: pointer;
       border-radius: 12px;
-      padding: 10px 24px;
       transition-duration: 0.4s;
     }
 
