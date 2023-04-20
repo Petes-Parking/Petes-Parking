@@ -66,7 +66,8 @@ public class BookingForm extends BaseDTO {
 		bean.setFromTime(fromTime);
 		bean.setToTime(toTime);
 
-		
+
+		System.out.println("UserID in bookingForm: " + userId) ;
 		bean.setUserId(DataUtility.getLong(userId));
 	
 		

@@ -14,7 +14,9 @@
             <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Book Parking</h3>
             <sf:form method="post" action="${pageContext.request.contextPath}/addBooking" modelAttribute="form">
             <sf:input type="hidden" id="id" class="form-control form-control-lg" path="id" name="id" value="${form.id}"/>
-              <div class="row">
+                <sf:input type="hidden" id="id" class="form-control form-control-lg" path="userId" name="userId" value="${user.id}"/>
+
+                <div class="row">
               
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">   

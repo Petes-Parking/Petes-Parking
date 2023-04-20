@@ -53,6 +53,7 @@ public class PaymentCtl {
 			PaymentDTO dto = form.getDTO();
 			
 			UserDTO user = (UserDTO)session.getAttribute("user");
+			System.out.println(user.getEmail());
 			dto.setEmail(user.getEmail());
 			service.Add(dto);
 			paymentRequestService.update(user.getId());

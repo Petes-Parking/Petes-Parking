@@ -68,7 +68,7 @@ input[type="text"] {
 						<th scope="col">To Time</th>
 						<th scope="col">Request Status</th>
 						<th scope="col">Action</th>
-						<th scope="col">Payment Request</th>
+<%--						<th scope="col">Payment Request</th>--%>
 					</tr>
 				</thead>
 				<tbody>
@@ -108,6 +108,10 @@ input[type="text"] {
 														</s:bind>
 														<sf:input type="hidden" id="userId" class="form-control"
 															path="userId" name="userId" value="${li.userId }" />
+														<script>
+															let userId = document.getElementById("userId");
+															console.log("Clicked userid: ", userId)
+														</script>
 
 														<input type="submit" name="payment" value="Pay Request">
 													</sf:form>

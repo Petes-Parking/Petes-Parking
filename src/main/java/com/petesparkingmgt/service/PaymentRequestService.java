@@ -25,8 +25,8 @@ public class PaymentRequestService {
 	}
 	
 	public PaymentRequestDTO update(long userId) {
-		
-		PaymentRequestDTO dto = dao.findByUserID(userId);	
+		System.out.println("User ID: " + userId);
+		PaymentRequestDTO dto = dao.findByUserID(userId);	 // THIS IS NULL
 		dto.setStatus("paid");
 		dao.saveAndFlush(dto);
 		

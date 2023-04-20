@@ -31,6 +31,7 @@ import com.petesparkingmgt.form.FavoriteForm;
 import com.petesparkingmgt.form.PaymentRequestForm;
 import com.petesparkingmgt.points.PointsManager;
 import com.petesparkingmgt.service.*;
+import com.petesparkingmgt.utility.DataUtility;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -411,6 +412,41 @@ public class BookingCtl {
 
 		return modelAndView;
 	}
+
+//	@PostMapping("/addBooking")
+//	public String Add(@Valid @ModelAttribute("form")BookingForm form,  BindingResult bindingResult, Model model) {
+//
+//		System.out.println("Parking booking form: "+form);
+//		try {
+//			if (bindingResult.hasErrors()) {
+//				System.out.println("bindingResult : "+bindingResult);
+//				return "booking";
+//			}else {
+//				BookingDTO bean = form.getDTO();
+//				bean.setId(0);
+//
+//				List<String> slotList =  form.getSlotId2();
+//
+//				for (String id : slotList ) {
+//					SlotDTO slotDTO =	slotDAO.findById(DataUtility.getLong(id));
+//					bean.setSlot(slotDTO.getSlot());
+//					bean.setSlotId(slotDTO.getId());
+//					bean.setStatus("Cancel");
+//					bean.setReqstatus("Request");
+//					bean.setTotalPrice(DataUtility.getLong("50"));
+//					service.Add(bean);
+//
+//				}
+//				model.addAttribute("success", "Booking successfully");
+//				//model.addAttribute("totalPrice", 50);
+//				return "booking";
+//			}}catch (RecordNotFoundException e) {
+//			// TODO: handle exception
+//			model.addAttribute("error", e.getMessage());
+//			e.printStackTrace();
+//			return "booking";
+//		}
+//	}
 
 	
 	@GetMapping("/bookinglist")
