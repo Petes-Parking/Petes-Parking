@@ -5,10 +5,11 @@
 <html>
 <head>
   <title>My Parking Pals</title>
-  <style><%@include file="/WEB-INF/css/main-page.css"%></style>
   <style>
+    <%@include file="/WEB-INF/css/main-page.css"%>
     body {
-      color: #CEB888;
+      background-color: #333333;
+      color: #fff;
       font-family: Verdana, Helvetica, sans-serif;
     }
     h1 {
@@ -18,6 +19,16 @@
 
     h4 {
       color: black;
+    }
+
+    .container {
+      margin-left: 1%;
+      margin-top: 3%;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: inline-block;
     }
 
     input {
@@ -41,9 +52,9 @@
     }
 
     .add-friend-button:hover {
-        border-radius: 15px;
-        transition: .3s;
-        background-color: #555;
+      border-radius: 15px;
+      transition: .3s;
+      background-color: #555;
     }
 
     .view-friend-button {
@@ -82,18 +93,17 @@
     }
 
     .btn-danger:hover {
-        border-radius: 15px;
-        transition: .3s;
+      border-radius: 15px;
+      transition: .3s;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      background-color: #fff;
     }
 
     th {
-      background-color: #B89954;
+      background-color: #A4A4A4;
       color: #000;
       text-align: left;
       padding: 8px;
@@ -104,21 +114,33 @@
       border-bottom: 1px solid #000;
       padding: 8px;
       font-size: 1rem;
-      color: #000;
+      color: #000
     }
 
+    tr:hover {
+      background-color: #CEB888;
+    }
 
+    .pals-area {
+      width: 75%;
+      height: 89%;
+      border-radius: 10px;
+      float: right;
+      background-color: #CEB888;
+      margin-top: 1%;
+      margin-right: 2%;
+    }
   </style>
 </head>
 <body>
-<div class="sidebar" >
+<div class="sidebar">
   <div class="profile-area">
     <img class="profile-pic" src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture">
     <a href="${pageContext.request.contextPath}/profile">
       <button id="profileBtn" class="profile-button">${user.firstName} ${user.lastName}</button>
     </a>
     <a href="${pageContext.request.contextPath}/main">
-      <button id="homeBtn" class="home-button"><img id="homeIcon" style="width: 62%; height: 65%;" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
+      <button id="homeBtn" class="home-button"><img id="homeIcon" style="width: 80%; height: 70%;" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
     </a>
   </div>
 
@@ -163,68 +185,77 @@
     </div>
   </div>
 </div>
-<div id="main" style="vertical-align: top; display: inline-block; position: relative; width: 70%; margin-top: .8%; background-color: #CEB888; height: 90%; border-radius: 10px;">
-
-
-
-
-<div class="container" style="display: inline-block; margin-left: 5%; width: 100%; height: 50%; vertical-align: top; margin-top: 2%; border-width: 4px;">
-  <h4 id="parkingTitle">Add new Parking Pals:</h4>
-  <input type="text" id="search" placeholder="Search for a name here...">
-  <div style="overflow-y: auto; height: auto; max-height: 240px;">
-  <table id="testTable" class="add-parking-pals-table"  style="background-color: #CEB888;">
-    <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col"></th> <!-- Column for the "Send friend request" button -->
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${users}" var="li" varStatus="u">
-      <c:if test="${li.email != user.email && li.userRole != 'Admin'}">
-        <c:set var="isFriend" value="false" />
-        <c:forEach items="${friends}" var="friend">
-          <c:if test="${li.email == friend.senderEmail || li.email == friend.recipientEmail}">
-            <c:set var="isFriend" value="true" />
+<div class="pals-area">
+  <div class="container" style="float: left; margin-left: 3%; width: 55%; height: auto">
+    <h4>Add new Parking Pals:</h4>
+    <input type="text" id="search" placeholder="Search for a name here...">
+    <div style="overflow-y: auto; height: auto; max-height: 240px;">
+      <table class="add-parking-pals-table">
+        <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th> <!-- Column for the "Send friend request" button -->
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${users}" var="li" varStatus="u">
+          <c:if test="${li.email != user.email && li.userRole != 'Admin'}">
+            <c:set var="isFriend" value="false" />
+            <c:forEach items="${friends}" var="friend">
+              <c:if test="${li.email == friend.senderEmail || li.email == friend.recipientEmail}">
+                <c:set var="isFriend" value="true" />
+              </c:if>
+            </c:forEach>
+            <c:if test="${not isFriend}">
+              <tr>
+                <td>${li.firstName}</td>
+                <td>${li.lastName}</td>
+                <td>${li.email}</td>
+                <td>
+                  <form method="post" action="${pageContext.request.contextPath}/friendInvite">
+                    <input type="hidden" class="form-control" name="email" value="${li.email}"/>
+                    <c:set var="isPending" value="false" />
+                    <c:forEach items="${outgoingRequests}" var="out">
+                      <c:if test="${li.email == out.recipientEmail}">
+                        <c:set var="isPending" value="true" />
+                      </c:if>
+                    </c:forEach>
+                    <c:if test="${not isPending}">
+                      <button type="submit" class="add-friend-button" name="submit">
+                        Send request
+                      </button>
+                    </c:if>
+                    <c:if test="${isPending}">
+                      <button type="button" class="add-friend-button" style="background-color: dimgray" name="pending" disabled>
+                        Request pending
+                      </button>
+                    </c:if>
+                  </form>
+                </td>
+              </tr>
+            </c:if>
           </c:if>
         </c:forEach>
-        <c:if test="${not isFriend}">
-          <tr>
-            <td>${li.firstName}</td>
-            <td>${li.lastName}</td>
-            <td>${li.email}</td>
-            <td>
-              <form method="post" action="${pageContext.request.contextPath}/friendInvite">
-                <input type="hidden" class="form-control" name="email" value="${li.email}"/>
-                <c:set var="isPending" value="false" />
-                <c:forEach items="${outgoingRequests}" var="out">
-                  <c:if test="${li.email == out.recipientEmail}">
-                    <c:set var="isPending" value="true" />
-                  </c:if>
-                </c:forEach>
-                <c:if test="${not isPending}">
-                  <button type="submit" class="add-friend-button" name="submit">
-                    Send request
-                  </button>
-                </c:if>
-                <c:if test="${isPending}">
-                  <button type="button" class="add-friend-button" style="background-color: dimgray" name="pending" disabled>
-                    Request pending
-                  </button>
-                </c:if>
-              </form>
-            </td>
-          </tr>
-        </c:if>
-      </c:if>
-    </c:forEach>
-    </tbody>
-  </table>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
-  <div class="container" style="background-color: #CEB888; margin-left: 5%; width: 100%; height: 25%; display: block;">
+  <div class="container" style="float: right; margin-right: 3%; width: 36%; text-align: center">
+    <h4>Incoming Friend Requests:</h4>
+    <form method="post" action="${pageContext.request.contextPath}/friendInviteResponse">
+      <label class="form-label">Select Friend Request</label>
+      <select id="request-select" name="email" class="form-select">
+        <c:forEach items="${requests}" var="request">
+          <option name="option" value="${request.senderEmail}">${request.senderFirstName} ${request.senderLastName}</option>
+        </c:forEach>
+      </select><br>
+      <button id="accept-btn" class="btn btn-success" type="submit" name="action" value="accept" style="margin-right: 10px">Accept</button>
+      <button id="reject-btn" class="btn btn-danger" type="submit" name="action" value="reject">Reject</button>
+    </form>
+  </div>
+  <div class="container" style="float: left; margin-left: 3%; width: 55%; height: auto">
     <h4>My current Parking Pals:</h4>
     <div style="overflow-y: auto; height: auto; max-height: 200px">
       <table>
@@ -288,19 +319,6 @@
       </table>
     </div>
   </div>
-<div class="container" style="margin-right: 5%; width: 100%; text-align: center; display: inline-block; vertical-align: top; position: relative; margin-left: 5%;">
-  <h4>Incoming Friend Requests:</h4>
-  <form method="post" action="${pageContext.request.contextPath}/friendInviteResponse">
-    <label class="form-label">Select Friend Request</label>
-    <select id="request-select" name="email" class="form-select">
-      <c:forEach items="${requests}" var="request">
-        <option name="option" value="${request.senderEmail}">${request.senderFirstName} ${request.senderLastName}</option>
-      </c:forEach>
-    </select><br>
-    <button id="accept-btn" class="btn btn-success" type="submit" name="action" value="accept" style="margin-right: 10px">Accept</button>
-    <button id="reject-btn" class="btn btn-danger" type="submit" name="action" value="reject">Reject</button>
-  </form>
-</div>
 </div>
 <script>
   const searchInput = document.getElementById('search');
@@ -312,8 +330,18 @@
   const rejectBtn = document.getElementById('reject-btn');
   const xBtn = document.querySelectorAll('.x-button');
 
-  const container = document.querySelector('.container');
-  const body = document.querySelector('body');
+  const sidebar = document.querySelector('.sidebar');
+  const profileBtn = document.getElementById('profileBtn');
+  const homeBtn = document.getElementById('homeBtn');
+  const homeIcon = document.getElementById('homeIcon');
+  const bookBtn = document.getElementById('bookBtn');
+  const starBtn = document.getElementById('starBtn');
+  const palBtn = document.getElementById('palBtn');
+  const carBtn = document.getElementById('carBtn');
+  const refBtn = document.getElementById('refBtn');
+  const settingsBtn = document.getElementById('settingsBtn');
+  const reportBtn = document.getElementById('reportBtn');
+  const palArea = document.querySelector('.pals-area');
 
   // Check if themePreference is already set in localStorage
   if (!localStorage.getItem('themePreference')) {
@@ -333,10 +361,28 @@
 
   function updateTheme(mode) {
     if (mode === "light") {
-      container.style.backgroundColor = "#CEB888";
-      container.style.color = "#333";
+      sidebar.style.backgroundColor = "#CEB888";
     } else if (mode === "dark") {
-      container.style.color = "#CEB888";
+      sidebar.style.backgroundColor = "#565656";
+      profileBtn.style.backgroundColor = "#333";
+      homeBtn.style.backgroundColor = "#333";
+      bookBtn.style.backgroundColor = "#333";
+      starBtn.style.backgroundColor = "#333";
+      palBtn.style.backgroundColor = "#333";
+      carBtn.style.backgroundColor = "#333";
+      refBtn.style.backgroundColor = "#333";
+      settingsBtn.style.backgroundColor = "#333";
+      reportBtn.style.backgroundColor = "#333";
+      profileBtn.style.color = "#fff";
+      homeIcon.style.filter = "invert(1)";
+      bookBtn.style.color = "#fff";
+      starBtn.style.color = "#fff";
+      palBtn.style.color = "#fff";
+      carBtn.style.color = "#fff";
+      refBtn.style.color = "#fff";
+      settingsBtn.style.color = "#fff";
+      reportBtn.style.color = "#fff";
+      palArea.style.backgroundColor = "#565656";
     }
   }
 
@@ -391,73 +437,6 @@
     }
   });
 
-</script>
-<script>
-  window.onload = function colorSwap() {
-  const sidebar = document.querySelector('.sidebar');
-const profileBtn = document.getElementById('profileBtn');
-const homeBtn = document.getElementById('homeBtn');
-const homeIcon = document.getElementById('homeIcon');
-const bookBtn = document.getElementById('bookBtn');
-const starBtn = document.getElementById('starBtn');
-const palBtn = document.getElementById('palBtn');
-const carBtn = document.getElementById('carBtn');
-const refBtn = document.getElementById('refBtn');
-const settingsBtn = document.getElementById('settingsBtn');
-    const main = document.getElementById('main');
-    const palsTitle = document.getElementById('palsTitle');
-    const body = document.getElementById('body');
-    const container = document.querySelector('.container');
-    const parkTable = document.getElementById('testTable');
-
-// Check if themePreference is already set in localStorage
-if (!localStorage.getItem('themePreference')) {
-  // Set default value if themePreference is not set
-  localStorage.setItem('themePreference', "light");
-}
-
-// Get the user's theme preference
-const savedMode = localStorage.getItem('themePreference');
-
-// Set the radio button based on the current mode
-if (savedMode === "light") {
-  updateTheme("light");
-} else if (savedMode === "dark") {
-  updateTheme("dark");
-}
-
-function updateTheme(mode) {
-  if (mode === "light") {
-    sidebar.style.backgroundColor = "#CEB888";
-  } else if (mode === "dark") {
-    sidebar.style.backgroundColor = "#565656";
-    profileBtn.style.backgroundColor = "#333";
-    homeBtn.style.backgroundColor = "#333";
-    bookBtn.style.backgroundColor = "#333";
-    starBtn.style.backgroundColor = "#333";
-    palBtn.style.backgroundColor = "#333";
-    carBtn.style.backgroundColor = "#333";
-    refBtn.style.backgroundColor = "#333";
-    settingsBtn.style.backgroundColor = "#333";
-    reportBtn.style.backgroundColor = "#333";
-    profileBtn.style.color = "#fff";
-    homeIcon.style.filter = "invert(1)";
-    bookBtn.style.color = "#fff";
-    starBtn.style.color = "#fff";
-    palBtn.style.color = "#fff";
-    carBtn.style.color = "#fff";
-    refBtn.style.color = "#fff";
-    settingsBtn.style.color = "#fff";
-    reportBtn.style.color = "#fff";
-    main.style.backgroundColor = "#565656";
-    palsTitle.style.color = "white";
-    body.style.backgroundColor = "#565656";
-    container.style.backgroundColor = "#565656";
-    parkTable.color = "#565656";
-    parkTable.style.backgroundColor = "#565656";
-  }
-}
-}
 </script>
 </body>
 </html>
