@@ -47,7 +47,8 @@
     color: white;
     border: thick;
     border-radius: 12px;
-    margin-left: 1%;
+    margin-left: 4%;
+    margin-top: 3%;
 }
 .bookButton:hover {background-color: #373A36; transition: .3s; color: white;}
 
