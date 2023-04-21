@@ -11,7 +11,8 @@
   <title>User List</title>
   <style><%@include file="/WEB-INF/css/main-page.css"%></style>
 </head>
-<body >
+<body>
+
 <div class="sidebar">
   <div class="profile-area">
     <img class="profile-pic" src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture">
@@ -64,6 +65,7 @@
     </div>
   </div>
 </div>
+
 <div class="container" style="background-color: #CEB888; border-radius: 20px; display: inline-block; vertical-align: top; margin-top: .8%; height: 90%; width: 75%; margin-left: 2%;">
 
   <h2 style="padding: 30px; margin-top: 2%;">Parking List</h2>

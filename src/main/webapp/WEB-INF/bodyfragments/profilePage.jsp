@@ -141,26 +141,27 @@
         </div>
         <body onload="checkPermits()"></body>
 
+        <a href="${pageContext.request.contextPath}/addVehicle">
+            <button class="save-button" type="submit" style="margin-top: 2%">Save Changes</button>
+        </a>
+
         <div class="permits">
             <h5 style="margin-left: 3%; margin-top: 10%;">Select the permits you own:</h5>
-            <input type="checkbox" id="permitA" name="permitA" data-permits="${vehicle.permitA}" style="margin-left: 10%;">
+            <input type="checkbox" id="permitA" name="permitA" data-permits="${vehicle.permitA}" style="margin-left: 6%;">
             <label for="permitA" style="display: inline-block; margin-left: 1%;"> A Permit</label>
-            <input type="checkbox" id="permitB" name="permitB" data-permits="${vehicle.permitB}" style="margin-left: 10%;">
+            <input type="checkbox" id="permitB" name="permitB" data-permits="${vehicle.permitB}" style="margin-left: 6%;">
             <label for="permitB" style="display: inline-block; margin-left: 1%;"> B Permit</label>
-            <input type="checkbox" id="permitC" name="permitC" data-permits="${vehicle.permitC}" style="margin-left: 10%;">
+            <input type="checkbox" id="permitC" name="permitC" data-permits="${vehicle.permitC}" style="margin-left: 6%;">
             <label for="permitC" style="display: inline-block; margin-left: 1%;"> C Permit</label><br>
 
-            <input type="checkbox" id="permitCG" name="permitCG" data-permits="${vehicle.permitCG}" style="margin-left: 10%;">
-            <label for="permitCG" style="display: inline-block;"> C Garage Permit</label>
-            <input type="checkbox" id="permitR" name="permitR" data-permits="${vehicle.permitR}" style="margin-left: 10%;">
-            <label for="permitR" style="display: inline-block;"> Residence Hall Permit</label>
-            <input type="checkbox" id="permitD" name="permitD" data-permits="${vehicle.permitD}" style="margin-left: 10%;">
-            <label for="permitD" style="display: inline-block;"> Disability Permit</label>
+            <input type="checkbox" id="permitCG" name="permitCG" data-permits="${vehicle.permitCG}" style="margin-left: 6%;">
+            <label for="permitCG" style="display: inline-block; margin-left: 1%;"> CG Permit</label>
+            <input type="checkbox" id="permitR" name="permitR" data-permits="${vehicle.permitR}" style="margin-left: 5%;">
+            <label for="permitR" style="display: inline-block; margin-left: 1%;"> R Permit</label>
+            <input type="checkbox" id="permitD" name="permitD" data-permits="${vehicle.permitD}" style="margin-left: 6%;">
+            <label for="permitD" style="display: inline-block; margin-left: 1%;"> D Permit</label><br>
         </div>
 
-        <a href="${pageContext.request.contextPath}/addVehicle">
-            <button class="save-button" type="submit">Save Changes</button>
-        </a>
         <a href="${pageContext.request.contextPath}/logout">
             <button class="delete-button" type="button" onclick="showPopup1()">Delete Account</button>
         </a>

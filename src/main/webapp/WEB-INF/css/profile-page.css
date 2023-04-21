@@ -116,6 +116,9 @@ body {
     margin-left: 15%;
     display: inline-block;
     padding: 5px 10px;
+    float: right;
+    margin-right: 2%;
+    margin-top: -3%;
 }
 
 .delete-button:hover {
@@ -142,9 +145,8 @@ body {
 }
 
 .permits {
-    margin-left: 45%;
-    margin-top: -1%;
-    margin-bottom: 3%;
+    margin-top: -5%;
+    margin-bottom: 2%;
 }
 
 .edit-popup {
