@@ -51,6 +51,7 @@ public class MainCtl {
         String base64Image = Base64.getEncoder().encodeToString(imageData);
         model.addAttribute("profilePic", base64Image);
         parkingService.addOccupancyData(model);
+        parkingService.addNameAndAdress(model);
 
 
 

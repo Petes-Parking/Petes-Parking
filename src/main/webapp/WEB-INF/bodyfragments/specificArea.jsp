@@ -54,6 +54,8 @@
 <div id="container">
   <h1>Edit Parking Area</h1>
   <form action="${pageContext.request.contextPath}/admin/updateparking" method="POST">
+    <input type="hidden" name="parkingId" id="parkingId" class="input-field" value="${parkingArea.id}" required>
+
     <div class="form-group">
       <label for="parkingName" class="input-label">Parking Name</label>
       <input type="text" name="parkingName" id="parkingName" class="input-field" value="${parkingArea.parkingName}" required>
@@ -62,7 +64,7 @@
       <label for="parkingAddress" class="input-label">Parking Address</label>
       <input type="text" name="parkingAddress" id="parkingAddress" class="input-field" value="${parkingArea.address}" required>
     </div>
-    <input type="hidden" name="parkingId" value="${parkingArea.id}">
+<%--    <input type="hidden" name="parkingId" value="${parkingArea.id}">--%>
     <input type="submit" value="Save Changes" class="input-button">
   </form>
   <a href="${pageContext.request.contextPath}/admin/editparking">

@@ -11,10 +11,7 @@ import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.PendingUserDTO;
 import com.petesparkingmgt.dto.user.UserDTO;
-import com.petesparkingmgt.form.AdminReportChangePointsForm;
-import com.petesparkingmgt.form.BookingForm;
-import com.petesparkingmgt.form.ManagePointForm;
-import com.petesparkingmgt.form.UserForm;
+import com.petesparkingmgt.form.*;
 import com.petesparkingmgt.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -160,6 +157,19 @@ public class AdminCtl {
 
         ModelAndView modelAndView = new ModelAndView("redirect:/adminview");
         attributes.addFlashAttribute("message", "Successfully given admin permissions!");
+
+        return modelAndView;
+    }
+
+    @PostMapping("/admin/updateparking")
+    public ModelAndView givePermissions(@ModelAttribute ChangeParkingForm form, RedirectAttributes attributes) {
+        ParkingDTO dto = parkingDAO.findById(form.getParkingId());
+        dto.setAddress(form.getAddress());
+        dto.setParkingName(form.getParkingName());
+
+        parkingDAO.save(dto);
+        ModelAndView modelAndView = new ModelAndView("redirect:/admin/editparkinginfo");
+        attributes.addFlashAttribute("message", "Edited " + dto.getParkingName() + " area!");
 
         return modelAndView;
     }

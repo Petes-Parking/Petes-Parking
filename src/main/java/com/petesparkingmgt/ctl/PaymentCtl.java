@@ -42,7 +42,6 @@ public class PaymentCtl {
 	
 	@GetMapping("/payment")
 	public String payment(@ModelAttribute("form")PaymentForm form, Model model) {
-		 
 		return "payment";
 	}
 	
@@ -54,7 +53,7 @@ public class PaymentCtl {
 			return "payment";
 		}else {
 			PaymentDTO dto = form.getDTO();
-			
+
 			UserDTO user = (UserDTO)session.getAttribute("user");
 			System.out.println(user.getEmail());
 			dto.setEmail(user.getEmail());
