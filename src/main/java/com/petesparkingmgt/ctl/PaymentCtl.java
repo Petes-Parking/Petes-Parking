@@ -1,9 +1,12 @@
 package com.petesparkingmgt.ctl;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import com.petesparkingmgt.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +47,7 @@ public class PaymentCtl {
 	}
 	
 	@PostMapping("/addPayment")
-	public String add(@ModelAttribute("form")PaymentForm form, BindingResult bindingResult, Model model, HttpSession session,@RequestParam("id") long id ) {
+	public String add(@ModelAttribute("form")PaymentForm form, BindingResult bindingResult, Model model, HttpSession session,@RequestParam("id") long id ) throws NoSuchAlgorithmException, KeyManagementException {
 
 		
 		if(bindingResult.hasErrors()) {
@@ -61,6 +64,9 @@ public class PaymentCtl {
 			bookingDTO.setPaymentStatus("Paid");
 			bookingService.update(bookingDTO);
 			model.addAttribute("success", "Payment Done!");
+
+			EmailService emailService = new EmailService();
+			emailService.createPaymentEmail(dto, user);
 		}
 		return "payment";
 	}

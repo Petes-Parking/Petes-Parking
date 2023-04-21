@@ -1,6 +1,7 @@
 package com.petesparkingmgt.service;
 
 import com.petesparkingmgt.dto.BookingDTO;
+import com.petesparkingmgt.dto.PaymentDTO;
 import com.petesparkingmgt.dto.reports.ExpReportDTO;
 import com.petesparkingmgt.dto.reports.PoorParkReportDTO;
 import com.petesparkingmgt.dto.user.FriendDTO;
@@ -22,6 +23,25 @@ import java.util.Properties;
 
 @Service
 public class EmailService {
+
+    public void createPaymentEmail(PaymentDTO payment, UserDTO user)  throws NoSuchAlgorithmException, KeyManagementException {
+        String subject = "[Pete’s Parking] Your Payment is Successful!";
+        String body = "Dear " + user.getFirstName() + " " + user.getLastName() + ",\n" +
+                "\n" +
+                "Your Pete's Parking payment was successful. Please read more about your payment: \n" +
+                "\n" +
+                "Amount Due: $" + payment.getTotalPrice() + "\n" +
+                "\n" +
+                "Name on Card: " + payment.getNameOnCard() + "\n" +
+                "\n" +
+                "Card Number: " + payment.getCardNumber() + "\n" +
+                "\n" +
+                "To see more, please view your account on Pete's Parking.\n" +
+                "\n" +
+                "Pete’s Parking Team" + "\n" +
+                "petesparkingpurdue@gmail.com";
+        sendEmail(user.getEmail(), subject, body);
+    }
 
     public void createParkingPalRequestEmail(FriendDTO request) throws NoSuchAlgorithmException, KeyManagementException {
         String senderFirst = request.getSenderFirstName();
@@ -234,7 +254,7 @@ public class EmailService {
         Session mySession = Session.getInstance(props,
                 new javax.mail.Authenticator() {
                     protected PasswordAuthentication getPasswordAuthentication() {
-                        return new PasswordAuthentication("petesparkingapp@gmail.com", "accuoanuljpemsuc");
+                        return new PasswordAuthentication("petesparkingpurdue@gmail.com", "kreknpitilraxtza");
                     }
                 });
 
