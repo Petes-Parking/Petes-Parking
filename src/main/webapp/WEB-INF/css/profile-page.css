@@ -9,7 +9,7 @@
 
 .name-header {
     display: inline-block;
-    margin-left: 12%;
+    margin-left: 1%;
 }
 
 .edit-picture-button {
@@ -66,13 +66,13 @@
 }
 
 .car-1 {
-    margin-left: 38%;
+    margin-left: 50%;
     margin-top: -38%;
 }
 
 .car-2 {
     margin-left: 67%;
-    margin-top: -29%;
+    margin-top: -22.1%;
 }
 
 input {
@@ -133,7 +133,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     cursor: pointer;
-    margin-left: 55%;
+    margin-left: 50%;
     display: inline-block;
     padding: 5px 10px;
 }
@@ -145,8 +145,8 @@ body {
 }
 
 .permits {
-    margin-top: -5%;
-    margin-bottom: 2%;
+    margin-top: 15%;
+    margin-left: 5%;
 }
 
 .edit-popup {
