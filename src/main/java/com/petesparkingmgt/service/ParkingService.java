@@ -31,18 +31,18 @@ public class ParkingService {
 
 		for (ParkingDTO parking : parkingArea) {
 			String name = "";
-			switch (parking.getParkingName()) {
-				case "Corec Parking Lot": name="corec";
+			switch ((int) parking.getId()) {
+				case 1: name="corec";
 				break;
-				case "McCutcheon Drive Parking Garage": name="mccutcheon";
+				case 2: name="mccutcheon";
 				break;
-				case "University St. Parking Garage": name="university";
+				case 3: name="university";
 				break;
-				case "Ross-Ade Stadium Parking Lot": name="rossade";
+				case 4: name="rossade";
 				break;
-				case "Northwestern St. Parking Garage": name="northwestern";
+				case 5: name="northwestern";
 				break;
-				case "Grant St. Parking Garage": name="grant";
+				case 6: name="grant";
 
 
 			}
@@ -53,6 +53,35 @@ public class ParkingService {
 			double occupancy = (double) occupied / total;
 			model.addAttribute(name+"Occupancy", occupancy );
 		}
+
+
+	}
+
+	public void addNameAndAdress(Model model){
+		ParkingDTO corec = dao.findById(1);
+		ParkingDTO mccutcheon = dao.findById(2);
+		ParkingDTO university = dao.findById(3);
+		ParkingDTO rossade = dao.findById(4);
+		ParkingDTO northwestern = dao.findById(5);
+		ParkingDTO grant = dao.findById(6);
+
+		model.addAttribute("corecName", corec.getParkingName());
+		model.addAttribute("corecAddress", corec.getAddress());
+
+		model.addAttribute("mccutcheonName", mccutcheon.getParkingName());
+		model.addAttribute("mccutcheonAddress", mccutcheon.getAddress());
+
+		model.addAttribute("universityName", university.getParkingName());
+		model.addAttribute("universityAddress", university.getAddress());
+
+		model.addAttribute("rossadeName", rossade.getParkingName());
+		model.addAttribute("rossadeAddress", rossade.getAddress());
+
+		model.addAttribute("northwesternName", northwestern.getParkingName());
+		model.addAttribute("northwesternAddress", northwestern.getAddress());
+
+		model.addAttribute("grantName", grant.getParkingName());
+		model.addAttribute("grantAddress", grant.getAddress());
 
 
 	}

@@ -80,9 +80,8 @@
         <div class="lotImage">
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/corec-lot.png" width="350" height="350" alt=""/>
         </div>
-        <h2 style="text-align: center">COREC Parking Lot</h2>
-        <p style="text-align: center"> France A. Cordova Recreational Sports Center
-            355 N Martin Jischke Dr, West Lafayette, IN 47906</p>
+        <h2 style="text-align: center">${corecName}</h2>
+        <p style="text-align: center"> ${corecAddress}</p>
         <div class="details">
             <div class="permits">
                 <div class="permit_pic">
@@ -128,8 +127,8 @@
         <div class="lotImage">
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/mccutcheon-lot.png" width="350" height="350" alt=""/>
         </div>
-        <h2 style="text-align: center">McCutcheon Dr. Parking Garage</h2>
-        <p style="text-align: center"> 400 McCutcheon Dr West Lafayette IN 47906</p>
+        <h2 style="text-align: center">${mccutcheonName}</h2>
+        <p style="text-align: center"> ${mccutcheonAddress}</p>
         <div class="details">
             <div class="permits">
                 <div class="permit_pic">
@@ -173,8 +172,8 @@
         <div class="lotImage">
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/rossade-lot.png" width="350" height="350" alt=""/>
         </div>
-        <h2 style="text-align: center">Ross-Ade Stadium Parking Lot</h2>
-        <p style="text-align: center"> 850 Steven Beering Drive, West Lafayette, Indiana 47906</p>
+        <h2 style="text-align: center">${rossadeName}</h2>
+        <p style="text-align: center"> ${rossadeAddress}</p>
         <div class="details">
             <div class="permits">
                 <div class="permit_pic">
@@ -218,8 +217,8 @@
         <div class="lotImage">
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/nw-lot.png" width="350" height="350" alt=""/>
         </div>
-        <h2 style="text-align: center">Northwestern Ave. Parking Garage</h2>
-        <p style="text-align: center"> 504 Northwestern Ave, West Lafayette, IN 47906</p>
+        <h2 style="text-align: center">${northwesternName}</h2>
+        <p style="text-align: center"> ${northwesternAddress}</p>
         <div class="details">
             <div class="permits">
                 <div class="permit_pic">
@@ -263,8 +262,8 @@
         <div class="lotImage">
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/univ-lot.png" width="350" height="350" alt=""/>
         </div>
-        <h2 style="text-align: center">University St. Parking Garage</h2>
-        <p style="text-align: center"> 201 N University St, West Lafayette, IN 47906</p>
+        <h2 style="text-align: center">${universityName}</h2>
+        <p style="text-align: center"> ${universityAddress}</p>
         <div class="details">
             <div class="permits">
                 <div class="permit_pic">
@@ -308,8 +307,8 @@
         <div class="lotImage">
             <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/grant-lot.png" width="350" height="350" alt=""/>
         </div>
-        <h2 style="text-align: center">Grant St. Parking Garage</h2>
-        <p style="text-align: center"> 120 Grant St, West Lafayette, IN 47906</p>
+        <h2 style="text-align: center">${grantName}</h2>
+        <p style="text-align: center"> ${grantAddress}</p>
         <div class="details">
             <div class="permits">
                 <div class="permit_pic">
