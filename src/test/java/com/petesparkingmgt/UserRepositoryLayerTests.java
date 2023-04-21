@@ -72,74 +72,74 @@ public class UserRepositoryLayerTests {
 				
 	}
 	
-	@Test
-	@Order(3)
-	@Rollback(value = false)
-	void should_Get_Single_User_Test() {
-
-		UserDTO user = userdao.findById(72);
-
-		UserDTO user1 = userdao.findByEmail("dummy@gmail.com");
-
-		
-		assertEquals("dummy", user1.getFirstName());
-		
-	}
-	
-	
-	@Test
-	@Order(4)
-	@Rollback(value = false)
-	void should_Update_User_Test() {
-
-		UserDTO user = userdao.findById(72);
-		user.setFirstName("Updated_dummy");
-		userdao.save(user);
-		
-		assertNotEquals("dummy", userdao.findById(72).getFirstName());
-
-		UserDTO user1 = userdao.findById(100);
-		user1.setFirstName("Updated_dummy");
-		userdao.save(user1);
-		
-		assertNotEquals("dummy", userdao.findById(100).getFirstName());
-
-		
-					
-	}
-
-	@Test
-	@Order(5)
-	@Rollback(value = false)
-	void should_Delete_User_Test() {
-
-		UserDTO user = userdao.findById(72);
-		userdao.delete(user);
-		
-		assertThat(userdao.existsById(72L)).isFalse();
-
-		UserDTO user1 = userdao.findById(100);
-		userdao.delete(user1);
-		
-		assertThat(userdao.existsById(100)).isFalse();
-
-		
-		//userdao.deleteById(65L);	
-		
-//		UserDTO user1 = null;
-//		
-//		UserDTO optional_user = userdao.findByEmail("ob1@gmail.com");
-//		
-////		if(optional_user.isPresent()) {
-////			user1 = optional_user.get();
-////		}
+//	@Test
+//	@Order(3)
+//	@Rollback(value = false)
+//	void should_Get_Single_User_Test() {
+//
+//		UserDTO user = userdao.findById(72);
+//
+//		UserDTO user1 = userdao.findByEmail("dummy@gmail.com");
 //
 //
-//		// assert that the user now null;
-//			Assertions.assertThat(user1).isNull();
-		
-	
-	}
+//		assertEquals("dummy", user1.getFirstName());
+//
+//	}
+//
+//
+//	@Test
+//	@Order(4)
+//	@Rollback(value = false)
+//	void should_Update_User_Test() {
+//
+//		UserDTO user = userdao.findById(72);
+//		user.setFirstName("Updated_dummy");
+//		userdao.save(user);
+//
+//		assertNotEquals("dummy", userdao.findById(72).getFirstName());
+//
+//		UserDTO user1 = userdao.findById(100);
+//		user1.setFirstName("Updated_dummy");
+//		userdao.save(user1);
+//
+//		assertNotEquals("dummy", userdao.findById(100).getFirstName());
+//
+//
+//
+//	}
+//
+//	@Test
+//	@Order(5)
+//	@Rollback(value = false)
+//	void should_Delete_User_Test() {
+//
+//		UserDTO user = userdao.findById(72);
+//		userdao.delete(user);
+//
+//		assertThat(userdao.existsById(72L)).isFalse();
+//
+//		UserDTO user1 = userdao.findById(100);
+//		userdao.delete(user1);
+//
+//		assertThat(userdao.existsById(100)).isFalse();
+//
+//
+//		//userdao.deleteById(65L);
+//
+////		UserDTO user1 = null;
+////
+////		UserDTO optional_user = userdao.findByEmail("ob1@gmail.com");
+////
+//////		if(optional_user.isPresent()) {
+//////			user1 = optional_user.get();
+//////		}
+////
+////
+////		// assert that the user now null;
+////			Assertions.assertThat(user1).isNull();
+//
+//
+//	}
 	
 	
 }

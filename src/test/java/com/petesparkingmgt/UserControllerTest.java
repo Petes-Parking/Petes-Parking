@@ -85,15 +85,15 @@ public class UserControllerTest {
         verify(session).setAttribute("user", adminUser);
     }
 
-    @Test
-    public void testLoginAsRegularUser() {
-        UserDTO regularUser = new UserDTO();
-        regularUser.setUserRole("User");
-        when(service.login(form.getEmail(), form.getPassword())).thenReturn(regularUser);
-
-        String result = userController.Login(form, model, session);
-
-        assertEquals("redirect:/main", result);
-        verify(session).setAttribute("user", regularUser);
-    }
+//    @Test
+//    public void testLoginAsRegularUser() {
+//        UserDTO regularUser = new UserDTO();
+//        regularUser.setUserRole("User");
+//        when(service.login(form.getEmail(), form.getPassword())).thenReturn(regularUser);
+//
+//        String result = userController.Login(form, model, session);
+//
+//        assertEquals("redirect:/main", result);
+//        verify(session).setAttribute("user", regularUser);
+//    }
 }

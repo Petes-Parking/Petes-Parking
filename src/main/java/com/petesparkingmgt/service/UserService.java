@@ -40,7 +40,7 @@ public class UserService {
 	
 
 	
-	public void update(UserDTO user){
+	public UserDTO update(UserDTO user){
 		UserDTO existingUser = dao.findById(user.getId());
 		if (existingUser != null) {
 			existingUser.setFirstName(user.getFirstName());
@@ -55,6 +55,7 @@ public class UserService {
 			// Save the updated user information to the database
 			dao.save(existingUser);
 		}
+		return existingUser;
 	}
 
 	public void giveAdminPermission(long userid){

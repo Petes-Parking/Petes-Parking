@@ -5,56 +5,63 @@ import com.petesparkingmgt.dao.users.UserDAO;
 import com.petesparkingmgt.dao.users.VehicleDAO;
 import com.petesparkingmgt.dto.user.UserDTO;
 import com.petesparkingmgt.dto.user.VehicleDTO;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
+import com.petesparkingmgt.service.NotificationService;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.mock.web.MockHttpSession;
+import org.springframework.ui.Model;
 
-import static org.mockito.ArgumentMatchers.any;
+import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(SpringExtension.class)
-@WebMvcTest(ProfileCtl.class)
+@RunWith(MockitoJUnitRunner.class)
 public class ProfileCtlTest {
 
-    @Autowired
-    private MockMvc mockMvc;
+    @InjectMocks
+    private ProfileCtl profileCtl;
 
-    @MockBean
-    private UserDAO userDAO;
-
-    @MockBean
+    @Mock
     private VehicleDAO vehicleDAO;
 
+    @Mock
+    private UserDAO userDAO;
+
+    @Mock
+    private NotificationService notificationService;
+
     @Test
-    public void testProfilePage() throws Exception {
-        // Mock session user
-        UserDTO user = new UserDTO();
-        user.setId(1L);
-        user.setEmail("test@example.com");
-        user.setFirstName("John");
-        user.setLastName("Doe");
-        byte[] dummyImageData = new byte[]{1, 2, 3, 4, 5};
-        user.setProfilePicture(dummyImageData);
+    public void testProfilePage() {
+        // Set up a test user
+        UserDTO testUser = new UserDTO();
+        testUser.setId(1L);
+        testUser.setProfilePicture(new byte[0]);
 
+        // Set up a test vehicle
+        VehicleDTO testVehicle = new VehicleDTO();
+        testVehicle.setUserId(testUser.getId());
 
+        // Set up a session with the user
+        MockHttpSession session = new MockHttpSession();
+        session.setAttribute("user", testUser);
 
-        // Mock the userDAO response
-        when(userDAO.findByEmail(any())).thenReturn(user);
+        // Set up a mock model
+        Model model = mock(Model.class);
 
-        // Mock the vehicleDAO response
-        when(vehicleDAO.getVehicleDTOByUserId(anyLong())).thenReturn(new VehicleDTO());
+        // Stub the vehicleDAO and notificationService methods
+        when(vehicleDAO.getVehicleDTOByUserId(testUser.getId())).thenReturn(testVehicle);
 
-        mockMvc.perform(get("/profile").sessionAttr("user", user))
-                .andExpect(status().isOk())
-                .andExpect(model().attributeExists("user", "vehicle", "profilePic", "username", "nextLevelPoints"))
-                .andExpect(view().name("profilePage"));
+        // Invoke the profile page method
+        String result = profileCtl.profilePage(model, session);
+
+        // Verify that the expected view name is returned
+        assertEquals("profilePage", result);
+
+        // Verify that the vehicleDAO and notificationService were called with the correct user ID
+        verify(vehicleDAO, times(1)).getVehicleDTOByUserId(testUser.getId());
     }
-
-    // Add more test methods for addVehicle and addProfilePic endpoints
 }

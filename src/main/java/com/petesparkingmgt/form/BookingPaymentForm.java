@@ -66,6 +66,21 @@ public class BookingPaymentForm extends BaseDTO {
     }
 
 
+    public void setDTO(BookingDTO dto) {
+
+       firstName = dto.getFirstName();
+       lastName = dto.getLastName();
+       email = dto.getEmail();
+       phoneNumber = dto.getPhoneNumber();
+       parkingName = dto.getParkingName();
+       slotId = String.valueOf(dto.getSlotId());
+       fromBookingDate = String.valueOf(dto.getFromBookingDate());
+       toBookingDate = String.valueOf(dto.getToBookingDate());
+       fromTime = dto.getFromTime();
+       toTime = dto.getToTime();
+
+    }
+
 
     @Override
     public String toString() {

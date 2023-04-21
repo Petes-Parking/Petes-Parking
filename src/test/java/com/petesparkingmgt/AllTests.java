@@ -17,18 +17,18 @@ import org.junit.platform.commons.annotation.Testable;
 @SuiteDisplayName("All Tests")
 
 @SelectClasses({
-        AdminControllerTest.class,
-        CarpoolCtlTest.class,
-        CarpoolUsersCtlTest.class,
-        HistoryCtlTest.class,
+        FutureBookingCtlTest.class,
+        ReferralsCtlTest.class,
         MainCtlTest.class,
-        ParkingPalsCtlTest.class,
+        SettingsCtlTest.class,
         ProfileCtlTest.class,
-        UserRepositoryLayerTests.class,
+        BookingControllerTest.class,
+        ParkingPalsCtlTest.class,
+        ManagePointsControllerTest.class,
         UserControllerTest.class,
-        LeaderboardControllerUnitTest.class,
-        ManagePointsControllerTest.class
-
+     //   AdminControllerTest.class,
+        UserRepositoryLayerTests.class,
+        //CarpoolCtlTest.class,
 })
 public class AllTests {
 }

@@ -67,5 +67,9 @@ public class NotificationService {
         model.addAttribute("notificationUrls", notificationUrls);
 
     }
+
+    public List<NotificationDTO> findAllByUserId(long anyLong) {
+        return dao.getNotificationDTOSByUserId(anyLong);
+    }
 }
 
