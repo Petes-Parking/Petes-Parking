@@ -174,6 +174,5 @@
   </section>
 </c:if>
 </div>
-<%--</div>--%>
 </body>
 </html>
