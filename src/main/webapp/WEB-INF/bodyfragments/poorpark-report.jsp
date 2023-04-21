@@ -13,7 +13,7 @@
       color: #333;
     }
     .container {
-      width: 50%;
+      width: 60%;
       margin: auto;
       margin-top: 50px;
       padding: 30px;
@@ -60,8 +60,9 @@
       border-radius: 5px;
       box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
       cursor: pointer;
-      width: 80%;
+      width: 50%;
       margin-bottom: 5px;
+      margin-top: 1%;
     }
 
     button:hover {
@@ -152,10 +153,10 @@
   <form method="post" action="${pageContext.request.contextPath}/submitPoorParkReport" enctype="multipart/form-data" style="display: inline;">
 
     <label for="licensePlate">License Plate:</label>
-    <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate"><br>
+    <input class="license" type="text" id="licensePlate" name="licensePlate" placeholder="License Plate" style="width: 65%"><br>
 
     <label for="parkingLot">Parking Lot:</label>
-    <select name="parkingLot" id="parkingLot" placeholder="Parking Lot">
+    <select name="parkingLot" id="parkingLot" placeholder="Parking Lot" style="width: 65%">
       <option value="COREC Parking Lot">COREC Parking Lot</option>
       <option value="McCutcheon Dr. Parking Garage">McCutcheon Dr. Parking Garage</option>
       <option value="Grant St. Parking Garage">Grant St. Parking Garage</option>
@@ -165,9 +166,9 @@
     </select><br>
 
     <label for="description">Description:</label>
-    <input class="desc" type="text" id="description" name="description" placeholder="Enter description here."><br>
+    <input class="desc" type="text" id="description" name="description" placeholder="Enter description here." style="width: 65%"><br>
     <label for="imageData">Image:</label>
-    <input class="image" type="file" id="imageData" name="imageData" accept="image/*"><br>
+    <input class="image" type="file" id="imageData" name="imageData" accept="image/*" style="width: 65%; margin-bottom: 2%"><br>
     <button type="file" id="image-input" style="display: none;" onchange="handleImageSelect(event)"/><br>
 
     <button type="button" class="save-button", id="save-button">Submit</button>
@@ -208,6 +209,33 @@
     popup.style.display = "none";
     document.location.href = "${pageContext.request.contextPath}/main";
   });
+</script>
+<script>
+  const body = document.querySelector('body');
+
+  // Check if themePreference is already set in localStorage
+  if (!localStorage.getItem('themePreference')) {
+    // Set default value if themePreference is not set
+    localStorage.setItem('themePreference', "light");
+  }
+
+  // Get the user's theme preference
+  const savedMode = localStorage.getItem('themePreference');
+
+  // Set the radio button based on the current mode
+  if (savedMode === "light") {
+    updateTheme("light");
+  } else if (savedMode === "dark") {
+    updateTheme("dark");
+  }
+
+  function updateTheme(mode) {
+    if (mode === "light") {
+
+    } else if (mode === "dark") {
+      body.style.backgroundColor = "#333";
+    }
+  }
 </script>
 </body>
 </html>
