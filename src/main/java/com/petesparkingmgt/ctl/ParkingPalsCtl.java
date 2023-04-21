@@ -24,6 +24,7 @@ import com.petesparkingmgt.dto.user.UserDTO;
 import javax.servlet.http.HttpSession;
 import java.security.KeyManagementException;
 import java.security.NoSuchAlgorithmException;
+import java.util.Base64;
 import java.util.List;
 import java.lang.*;
 import java.util.stream.Collectors;
@@ -72,6 +73,9 @@ public class ParkingPalsCtl {
 
         NotificationService.addNotifications(model, notificationService, user.getId());
 
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "parkingpals";
 
     }
@@ -131,7 +135,9 @@ public class ParkingPalsCtl {
 
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
-
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "redirect:/parkingpals";
     }
 
@@ -206,7 +212,9 @@ public class ParkingPalsCtl {
 
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
-
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "redirect:/parkingpals";
     }
 
@@ -240,7 +248,9 @@ public class ParkingPalsCtl {
 
         List<FriendDTO> friends = service.getConfirmedUsersFor(user.getEmail());
         model.addAttribute("friends", friends); // can be empty
-
+        byte[] imageData = user.getProfilePicture();
+        String base64Image = Base64.getEncoder().encodeToString(imageData);
+        model.addAttribute("profilePic", base64Image);
         return "redirect:/parkingpals";
     }
 }

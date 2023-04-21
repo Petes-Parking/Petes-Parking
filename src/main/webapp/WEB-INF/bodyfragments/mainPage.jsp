@@ -88,7 +88,7 @@
                 <div class="permit_pic">
                     <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/permit-image.png" height="50" alt=""/>
                 </div>
-                <p style="padding-top: 15px">ABC Permits Required</p>
+                <p style="padding-top: 15px">A, B, and C Permits Required</p>
             </div>
             <div class="hours">
                 <div class="hours_pic">
@@ -180,7 +180,7 @@
                 <div class="permit_pic">
                     <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/permit-image.png" height="50" alt=""/>
                 </div>
-                <p style="padding-top: 15px">ABC Permits Required</p>
+                <p style="padding-top: 15px">A, B, and C Permits Required</p>
             </div>
             <div class="hours">
                 <div class="hours_pic">
@@ -225,7 +225,7 @@
                 <div class="permit_pic">
                     <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/permit-image.png" height="50" alt=""/>
                 </div>
-                <p style="padding-top: 15px">AB Permits Required</p>
+                <p style="padding-top: 15px">A and C Garage Permits Required</p>
             </div>
             <div class="hours">
                 <div class="hours_pic">
@@ -270,7 +270,7 @@
                 <div class="permit_pic">
                     <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/permit-image.png" height="50" alt=""/>
                 </div>
-                <p style="padding-top: 15px">AB Permits Required</p>
+                <p style="padding-top: 15px">A and C Garage Permits Required</p>
             </div>
             <div class="hours">
                 <div class="hours_pic">
@@ -315,7 +315,7 @@
                 <div class="permit_pic">
                     <img src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/permit-image.png" height="50" alt=""/>
                 </div>
-                <p style="padding-top: 15px">AB Permits Required</p>
+                <p style="padding-top: 15px">No Permits Required</p>
             </div>
             <div class="hours">
                 <div class="hours_pic">

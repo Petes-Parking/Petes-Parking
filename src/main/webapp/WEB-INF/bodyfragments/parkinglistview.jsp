@@ -112,6 +112,69 @@
   <div height="10"></div>
 
 </div>
+<script>
+  window.onload = function colorSwap() {
+    const sidebar = document.querySelector('.sidebar');
+    const profileBtn = document.getElementById('profileBtn');
+    const homeBtn = document.getElementById('homeBtn');
+    const homeIcon = document.getElementById('homeIcon');
+    const bookBtn = document.getElementById('bookBtn');
+    const starBtn = document.getElementById('starBtn');
+    const palBtn = document.getElementById('palBtn');
+    const carBtn = document.getElementById('carBtn');
+    const refBtn = document.getElementById('refBtn');
+    const settingsBtn = document.getElementById('settingsBtn');
+    const main = document.getElementById('main');
+    const parkingTitle = document.getElementById('parkingTitle');
+    const body = document.getElementById('body');
+    const container = document.querySelector('.container');
 
+// Check if themePreference is already set in localStorage
+    if (!localStorage.getItem('themePreference')) {
+      // Set default value if themePreference is not set
+      localStorage.setItem('themePreference', "light");
+    }
+
+// Get the user's theme preference
+    const savedMode = localStorage.getItem('themePreference');
+
+// Set the radio button based on the current mode
+    if (savedMode === "light") {
+      updateTheme("light");
+    } else if (savedMode === "dark") {
+      updateTheme("dark");
+    }
+
+    function updateTheme(mode) {
+      if (mode === "light") {
+        sidebar.style.backgroundColor = "#CEB888";
+        container.style.backgroundColor = "#CEB888";
+      } else if (mode === "dark") {
+        sidebar.style.backgroundColor = "#565656";
+        profileBtn.style.backgroundColor = "#333";
+        homeBtn.style.backgroundColor = "#333";
+        bookBtn.style.backgroundColor = "#333";
+        starBtn.style.backgroundColor = "#333";
+        palBtn.style.backgroundColor = "#333";
+        carBtn.style.backgroundColor = "#333";
+        refBtn.style.backgroundColor = "#333";
+        settingsBtn.style.backgroundColor = "#333";
+        reportBtn.style.backgroundColor = "#333";
+        profileBtn.style.color = "#fff";
+        homeIcon.style.filter = "invert(1)";
+        bookBtn.style.color = "#fff";
+        starBtn.style.color = "#fff";
+        palBtn.style.color = "#fff";
+        carBtn.style.color = "#fff";
+        refBtn.style.color = "#fff";
+        settingsBtn.style.color = "#fff";
+        reportBtn.style.color = "#fff";
+        main.style.backgroundColor = "#565656";
+        container.style.backgroundColor = "red";
+
+      }
+    }
+  }
+</script>
 </body>
 </html>

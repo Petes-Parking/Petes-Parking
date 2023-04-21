@@ -5,10 +5,10 @@
 <html>
 <head>
   <title>My Parking Pals</title>
+  <style><%@include file="/WEB-INF/css/main-page.css"%></style>
   <style>
     body {
-      background-color: #CEB888;
-      color: #fff;
+      color: #CEB888;
       font-family: Verdana, Helvetica, sans-serif;
     }
     h1 {
@@ -18,16 +18,6 @@
 
     h4 {
       color: black;
-    }
-
-    .container {
-      margin: auto;
-      margin-top: 3%;
-      padding: 30px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-      display: inline-block;
     }
 
     input {
@@ -99,10 +89,11 @@
     table {
       width: 100%;
       border-collapse: collapse;
+      background-color: #fff;
     }
 
     th {
-      background-color: #A4A4A4;
+      background-color: #B89954;
       color: #000;
       text-align: left;
       padding: 8px;
@@ -113,20 +104,75 @@
       border-bottom: 1px solid #000;
       padding: 8px;
       font-size: 1rem;
-      color: #000
+      color: #000;
     }
 
-    tr:hover {
-      background-color: #CEB888;
-    }
+
   </style>
 </head>
 <body>
-<div class="container" style="float: left; margin-left: 5%; width: 50%; height: auto">
-  <h4>Add new Parking Pals:</h4>
+<div class="sidebar" >
+  <div class="profile-area">
+    <img class="profile-pic" src="data:image/jpeg;base64,${profilePic}" alt="Profile Picture">
+    <a href="${pageContext.request.contextPath}/profile">
+      <button id="profileBtn" class="profile-button">${user.firstName} ${user.lastName}</button>
+    </a>
+    <a href="${pageContext.request.contextPath}/main">
+      <button id="homeBtn" class="home-button"><img id="homeIcon" style="width: 62%; height: 65%;" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/HomeIcon.png"></button>
+    </a>
+  </div>
+
+  <div class="button-area">
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/BookIcon.png" style="width: 32%; margin-left: 2%">
+    <a href="${pageContext.request.contextPath}/parkinglist">
+      <button id="bookBtn" class="sidebarPageButtons">Book Reservation</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/StarIcon.png" style="width: 24%; margin-left: 6%"/>
+    <a href="${pageContext.request.contextPath}/history">
+      <button id="starBtn" class="sidebarPageButtons">View Favorite Parkings</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/PalsIcon.png" style="width: 23%; margin-left: 6%"/>
+    <a href="${pageContext.request.contextPath}/parkingpals">
+      <button id="palBtn" class="sidebarPageButtons">Parking Pals</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/carpool.png" style="width: 22%; margin-left: 7%"/>
+    <a href="${pageContext.request.contextPath}/carpool">
+      <button id="carBtn" class="sidebarPageButtons">Carpools</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/referrals.png" style="width: 23%; margin-left: 6%"/>
+    <a href="${pageContext.request.contextPath}/referrals">
+      <button id="refBtn" class="sidebarPageButtons">My Referrals</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/SettingsIcon.png" style="width: 23%; margin-left: 7%"/>
+    <a href="${pageContext.request.contextPath}/settings">
+      <button id="settingsBtn" class="sidebarPageButtons">Settings</button>
+    </a>
+
+    <img class="sidebarPageIcons" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/flagIcon.png" style="width: 26%; margin-left: 6%; margin-right: 4%"/>
+    <div class="dropdown">
+      <button id="reportBtn" style="width: 100%; position: relative; padding: 13px 30px; margin-top: 6%; background-color: #D6C49B; border-radius: 5px;">File a Report</button>
+      <div class="dropdown-content1">
+        <a href="${pageContext.request.contextPath}/exp-report">Expiration Report</a>
+        <a href="${pageContext.request.contextPath}/poorpark-report">Poor Parking Report</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="main" style="vertical-align: top; display: inline-block; position: relative; width: 70%; margin-top: .8%; background-color: #CEB888; height: 90%; border-radius: 10px;">
+
+
+
+
+<div class="container" style="display: inline-block; margin-left: 5%; width: 100%; height: 50%; vertical-align: top; margin-top: 2%; border-width: 4px;">
+  <h4 id="parkingTitle">Add new Parking Pals:</h4>
   <input type="text" id="search" placeholder="Search for a name here...">
   <div style="overflow-y: auto; height: auto; max-height: 240px;">
-  <table class="add-parking-pals-table">
+  <table id="testTable" class="add-parking-pals-table"  style="background-color: #CEB888;">
     <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
     <tr>
       <th scope="col">First Name</th>
@@ -178,7 +224,71 @@
   </table>
   </div>
 </div>
-<div class="container" style="float: right; margin-right: 5%; width: 38%; text-align: center">
+  <div class="container" style="background-color: #CEB888; margin-left: 5%; width: 100%; height: 25%; display: block;">
+    <h4>My current Parking Pals:</h4>
+    <div style="overflow-y: auto; height: auto; max-height: 200px">
+      <table>
+        <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
+        <tr>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th> <!-- Column for the "Send friend request" button -->
+          <th scope="col"></th> <!-- Column for the "X" button -->
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${friends}" var="friend">
+          <c:if test="${friend.senderEmail != user.email}">
+            <tr>
+              <td>${friend.senderFirstName}</td>
+              <td>${friend.senderLastName}</td>
+              <td>${friend.senderEmail}</td>
+              <td>
+                <form method="post" action="${pageContext.request.contextPath}/friendpage">
+                  <button type="submit" class="view-friend-button" name="email" value="${friend.senderEmail}">
+                    View profile
+                  </button>
+                </form>
+              </td>
+              <td>
+                <form method="post" action="${pageContext.request.contextPath}/removeFriend">
+                  <button type="submit" class="x-button" name="email" value="${friend.senderEmail}">
+                    <img style="width: 100%; height: 50%; -webkit-filter: invert(1); filter: invert(1);" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/x-icon.png">
+                  </button>
+                  <input type="hidden" class="form-control" name="requestSentBy" value="friend"/>
+                </form>
+              </td>
+            </tr>
+          </c:if>
+          <c:if test="${friend.senderEmail == user.email}">
+            <tr>
+              <td>${friend.recipientFirstName}</td>
+              <td>${friend.recipientLastName}</td>
+              <td>${friend.recipientEmail}</td>
+              <td>
+                <form method="post" action="${pageContext.request.contextPath}/friendpage">
+                  <button type="submit" class="view-friend-button" name="email" value="${friend.recipientEmail}">
+                    View profile
+                  </button>
+                </form>
+              </td>
+              <td>
+                <form method="post" action="${pageContext.request.contextPath}/removeFriend">
+                  <button type="submit" class="x-button" name="email" value="${friend.recipientEmail}">
+                    <img style="width: 100%; height: 50%; -webkit-filter: invert(1); filter: invert(1);" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/x-icon.png">
+                  </button>
+                  <input type="hidden" class="form-control" name="requestSentBy" value="user"/>
+                </form>
+              </td>
+            </tr>
+          </c:if>
+        </c:forEach>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<div class="container" style="margin-right: 5%; width: 100%; text-align: center; display: inline-block; vertical-align: top; position: relative; margin-left: 5%;">
   <h4>Incoming Friend Requests:</h4>
   <form method="post" action="${pageContext.request.contextPath}/friendInviteResponse">
     <label class="form-label">Select Friend Request</label>
@@ -191,69 +301,6 @@
     <button id="reject-btn" class="btn btn-danger" type="submit" name="action" value="reject">Reject</button>
   </form>
 </div>
-<div class="container" style="float: left; margin-left: 5%; width: 50%; height: auto">
-  <h4>My current Parking Pals:</h4>
-  <div style="overflow-y: auto; height: auto; max-height: 200px">
-  <table>
-    <thead style="position: sticky; position: -webkit-sticky; top: 0px;">
-    <tr>
-      <th scope="col">First Name</th>
-      <th scope="col">Last Name</th>
-      <th scope="col">Email</th>
-      <th scope="col"></th> <!-- Column for the "Send friend request" button -->
-      <th scope="col"></th> <!-- Column for the "X" button -->
-    </tr>
-    </thead>
-    <tbody>
-    <c:forEach items="${friends}" var="friend">
-      <c:if test="${friend.senderEmail != user.email}">
-      <tr>
-        <td>${friend.senderFirstName}</td>
-        <td>${friend.senderLastName}</td>
-        <td>${friend.senderEmail}</td>
-        <td>
-          <form method="post" action="${pageContext.request.contextPath}/friendpage">
-            <button type="submit" class="view-friend-button" name="email" value="${friend.senderEmail}">
-              View profile
-            </button>
-          </form>
-        </td>
-        <td>
-          <form method="post" action="${pageContext.request.contextPath}/removeFriend">
-            <button type="submit" class="x-button" name="email" value="${friend.senderEmail}">
-              <img style="width: 100%; height: 50%; -webkit-filter: invert(1); filter: invert(1);" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/x-icon.png">
-            </button>
-            <input type="hidden" class="form-control" name="requestSentBy" value="friend"/>
-          </form>
-        </td>
-      </tr>
-      </c:if>
-      <c:if test="${friend.senderEmail == user.email}">
-      <tr>
-        <td>${friend.recipientFirstName}</td>
-        <td>${friend.recipientLastName}</td>
-        <td>${friend.recipientEmail}</td>
-        <td>
-          <form method="post" action="${pageContext.request.contextPath}/friendpage">
-            <button type="submit" class="view-friend-button" name="email" value="${friend.recipientEmail}">
-              View profile
-            </button>
-          </form>
-        </td>
-        <td>
-          <form method="post" action="${pageContext.request.contextPath}/removeFriend">
-            <button type="submit" class="x-button" name="email" value="${friend.recipientEmail}">
-              <img style="width: 100%; height: 50%; -webkit-filter: invert(1); filter: invert(1);" src="https://raw.githubusercontent.com/Petes-Parking/Petes-Parking/master/src/main/webapp/resources/image/x-icon.png">
-            </button>
-            <input type="hidden" class="form-control" name="requestSentBy" value="user"/>
-          </form>
-        </td>
-      </tr>
-      </c:if>
-    </c:forEach>
-    </tbody>
-  </table>
-  </div>
 </div>
 <script>
   const searchInput = document.getElementById('search');
@@ -286,12 +333,10 @@
 
   function updateTheme(mode) {
     if (mode === "light") {
-      container.style.backgroundColor = "#fff";
+      container.style.backgroundColor = "#CEB888";
       container.style.color = "#333";
-      body.style.backgroundColor = "#CEB888";
     } else if (mode === "dark") {
-      container.style.color = "#fff";
-      body.style.backgroundColor = "#333";
+      container.style.color = "#CEB888";
     }
   }
 
@@ -346,6 +391,73 @@
     }
   });
 
+</script>
+<script>
+  window.onload = function colorSwap() {
+  const sidebar = document.querySelector('.sidebar');
+const profileBtn = document.getElementById('profileBtn');
+const homeBtn = document.getElementById('homeBtn');
+const homeIcon = document.getElementById('homeIcon');
+const bookBtn = document.getElementById('bookBtn');
+const starBtn = document.getElementById('starBtn');
+const palBtn = document.getElementById('palBtn');
+const carBtn = document.getElementById('carBtn');
+const refBtn = document.getElementById('refBtn');
+const settingsBtn = document.getElementById('settingsBtn');
+    const main = document.getElementById('main');
+    const palsTitle = document.getElementById('palsTitle');
+    const body = document.getElementById('body');
+    const container = document.querySelector('.container');
+    const parkTable = document.getElementById('testTable');
+
+// Check if themePreference is already set in localStorage
+if (!localStorage.getItem('themePreference')) {
+  // Set default value if themePreference is not set
+  localStorage.setItem('themePreference', "light");
+}
+
+// Get the user's theme preference
+const savedMode = localStorage.getItem('themePreference');
+
+// Set the radio button based on the current mode
+if (savedMode === "light") {
+  updateTheme("light");
+} else if (savedMode === "dark") {
+  updateTheme("dark");
+}
+
+function updateTheme(mode) {
+  if (mode === "light") {
+    sidebar.style.backgroundColor = "#CEB888";
+  } else if (mode === "dark") {
+    sidebar.style.backgroundColor = "#565656";
+    profileBtn.style.backgroundColor = "#333";
+    homeBtn.style.backgroundColor = "#333";
+    bookBtn.style.backgroundColor = "#333";
+    starBtn.style.backgroundColor = "#333";
+    palBtn.style.backgroundColor = "#333";
+    carBtn.style.backgroundColor = "#333";
+    refBtn.style.backgroundColor = "#333";
+    settingsBtn.style.backgroundColor = "#333";
+    reportBtn.style.backgroundColor = "#333";
+    profileBtn.style.color = "#fff";
+    homeIcon.style.filter = "invert(1)";
+    bookBtn.style.color = "#fff";
+    starBtn.style.color = "#fff";
+    palBtn.style.color = "#fff";
+    carBtn.style.color = "#fff";
+    refBtn.style.color = "#fff";
+    settingsBtn.style.color = "#fff";
+    reportBtn.style.color = "#fff";
+    main.style.backgroundColor = "#565656";
+    palsTitle.style.color = "white";
+    body.style.backgroundColor = "#565656";
+    container.style.backgroundColor = "#565656";
+    parkTable.color = "#565656";
+    parkTable.style.backgroundColor = "#565656";
+  }
+}
+}
 </script>
 </body>
 </html>
