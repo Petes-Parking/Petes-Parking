@@ -45,19 +45,19 @@
 
 
 						<li class="nav-item"><a class="nav-link active"
-												aria-current="page"
-												href="${pageContext.request.contextPath}/main">Map</a></li>
+							aria-current="page"
+							href="${pageContext.request.contextPath}/main" style="background-color: #CEB888;">Map</a></li>
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
-							href="${pageContext.request.contextPath}/leaderboard">Leaderboard</a></li>
+							href="${pageContext.request.contextPath}/leaderboard" style="background-color: #CEB888;">Leaderboard</a></li>
 
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
-							href="${pageContext.request.contextPath}/bookinglist">Booking</a></li>
+							href="${pageContext.request.contextPath}/bookinglist" style="background-color: #CEB888;">Booking</a></li>
 						
 						<li class="nav-item"><a class="nav-link active"
 							aria-current="page"
-							href="${pageContext.request.contextPath}/paymentlist">Payment History</a></li>
+							href="${pageContext.request.contextPath}/paymentlist" style="background-color: #CEB888;">Payment History</a></li>
 
 
 						<li class="nav-item dropdown">
