@@ -16,10 +16,9 @@ body {
     margin-right: 6%;
     margin-top: 3%;
     overflow: hidden;
-    padding: 13px 30px;
+    padding: 0px;
     display: inline-block;
-    text-align: center;
-    vertical-align: middle;
+    vertical-align: center;
 }
 
 .sidebarPageButtons:hover {

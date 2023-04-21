@@ -12,27 +12,35 @@
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: white;
-      color: goldenrod;
-    }
-    .btn {
-      background-color: goldenrod;
+      background-color: #CEB888;
       color: black;
     }
-    .table-striped tbody tr:nth-of-type(odd) {
-      background-color: goldenrod;
+    .btn {
+      background-color: #333;
+      color: white;
+    }
+    .container {
+      background-color: white;
+      border-radius: 10px;
+      padding: 10px;
+      margin-top: 3%;
+
     }
     .back-btn {
       position: absolute;
       top: 10px;
       left: 10px;
     }
+    th {
+      background-color: #333;
+      color: white;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h1 class="text-center">Leaderboard</h1>
+  <h1 class="text-center" style="margin-top: 1%; margin-bottom: 1%">Leaderboard</h1>
   <button class="btn btn-secondary back-btn" onclick="window.location.href='${pageContext.request.contextPath}/main'">&larr; Back</button>
   <hr/>
   <c:set var="ENTRIES_PER_PAGE" value="10" />
@@ -49,7 +57,7 @@
   </c:if>
 
 
-  <table class="table table-striped">
+  <table class="table table-striped" style="margin-bottom: 3%; width: 95%; margin-left: 2.5%">
     <thead>
     <tr>
       <th>Rank</th>
@@ -73,10 +81,10 @@
   </table>
 
   <div class="d-flex justify-content-between">
-    <button class="btn btn-primary" onclick="navigate('${currentPage - 1}')" <c:if test="${currentPage == 1}">disabled</c:if>>
+    <button class="btn btn-primary" style="width: 100px;" onclick="navigate('${currentPage - 1}')" <c:if test="${currentPage == 1}">disabled</c:if>>
       <i class="fas fa-arrow-left"></i> Back
     </button>
-    <button class="btn btn-primary" onclick="navigate('${currentPage + 1}')" <c:if test="${endIndex == fn:length(leaderboardList)}">disabled</c:if>>
+    <button class="btn btn-primary" style="width: 100px;" onclick="navigate('${currentPage + 1}')" <c:if test="${endIndex == fn:length(leaderboardList)}">disabled</c:if>>
       Next <i class="fas fa-arrow-right"></i>
     </button>
 
@@ -89,6 +97,41 @@
 
   }
 
+</script>
+
+<script>
+
+  const body = document.querySelector('body');
+  const container = document.querySelector('.container');
+  const table = document.querySelector('table');
+  const header = document.querySelector('h1');
+
+  // Check if themePreference is already set in localStorage
+  if (!localStorage.getItem('themePreference')) {
+    // Set default value if themePreference is not set
+    localStorage.setItem('themePreference', "light");
+  }
+
+  // Get the user's theme preference
+  const savedMode = localStorage.getItem('themePreference');
+
+  // Set the radio button based on the current mode
+  if (savedMode === "light") {
+    updateTheme("light");
+  } else if (savedMode === "dark") {
+    updateTheme("dark");
+  }
+
+  function updateTheme(mode) {
+    if (mode === "light") {
+
+    } else if (mode === "dark") {
+      body.style.backgroundColor = "#333";
+      container.style.backgroundColor = "#565656";
+      table.style.backgroundColor = "white";
+      header.style.color = "white";
+    }
+  }
 </script>
 </body>
 </html>

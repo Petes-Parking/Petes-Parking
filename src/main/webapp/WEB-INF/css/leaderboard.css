@@ -1,21 +1,17 @@
 @charset "UTF-8";
 
 #leaderboard-page{
-    background-color: goldenrod;
+    background-color: #CEB888;
     width: 500px;
     height: 700px;
-    margin:auto;
-    margin-top: 20px;
+    margin: auto;
 
 }
 .entry {
-    width: 495px;
-    height: 50px;
+    width: 70%;
+    height: 8%;
     color: black;
-    border: 100px solid;
-    border-color: gold;
-    border-width: medium;
-
+    border: 100px solid gold;
 }
 
 .entry:hover {
@@ -44,6 +40,6 @@
 }
 #header{
     color: #2A2626;
-    background-color: goldenrod;
+    background-color: #CEB888;
     height: 75px;
 }
